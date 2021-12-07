@@ -1,0 +1,12 @@
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\bin\Debug\net5.0\MembershipPortal.data.deps.json
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\bin\Debug\net5.0\MembershipPortal.data.dll
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\bin\Debug\net5.0\ref\MembershipPortal.data.dll
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\bin\Debug\net5.0\MembershipPortal.data.pdb
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.csproj.AssemblyReference.cache
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.AssemblyInfoInputs.cache
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.AssemblyInfo.cs
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.csproj.CoreCompileInputs.cache
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.dll
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\ref\MembershipPortal.data.dll
+C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.data\obj\Debug\net5.0\MembershipPortal.data.pdb
