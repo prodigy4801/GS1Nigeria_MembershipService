@@ -1,0 +1,126 @@
+@startuml
+class Product{
+    +int ID
+    +string **Gtin**: nvarchar[50]
+    +string **RegistrationID**: nvarchar[100]
+    +int **UnitOfMeasurementID**: integer
+    +string **BrandName**: : nvarchar[200]
+    +int **PackagingTypeID**: integer
+    +string **ProductDescription**: : nvarchar[200]
+    +string **MarketingMessage**: : nvarchar[500]
+    +int **TargetMarketID**: integer
+    +DateTime **ConsumerFirstAvailabilityDate**: DateTime
+    +decimal **NetWeight**: double
+    +bool **IsCompleted**: Boolean
+    +double **GrossWeight**: double
+    +int **BrickCategoryID**: integer
+    +String **FrontImage**: nvarchar[200]
+    +bool **HasImage**: Boolean
+    +String **BackImage**: nvarchar[200]
+    +DateTime **DateOfListing**: DateTime
+    +String **Ingredients**: nvarchar[500]
+    +String **AllergenInfo**: nvarchar[500]
+    +String **NafdacNumber**: nvarchar[100]
+    +String **StorageInstruction**: nvarchar[500]
+    +String **DirectionOfUse**: nvarchar[500]
+    +int **LifeSpan**: integer
+    +String **LifeSpanUnit**: nvarchar[500]
+    +String **RegistrationID**: nvarchar[50]
+    +int **PackagingLevelID**: integer
+    +CreateProduct()
+    +UpdateProduct()
+    +GetAllProduct()
+    +DeleteProduct()
+
+}
+class PackageLevel{
+    +int **ID**: integer
+    +String **Level**: nvarchar[100]
+    
+}
+
+class GtinInformation{
+    +int **ID**: integer
+    +String **RegistrationID**: nvarchar[50]
+    +String **CompanyPrefix**: nvarchar[50]
+    +String **ProductCode**: nvarchar[50]
+    +int **CheckSum**: integer
+    +String **GTIN**: nvarchar[50]
+    +CreateGtinInformation()
+    +UpdateGtinInformation()
+    +DeleteGtinInformation()
+    +GetAllGtinInformation()
+
+}
+
+class NetContent{
+    +int **ID**: integer
+    +String **code**: nvarchar[50]
+    +String **name**: nvarchar[100]
+    +String **description: nvarchar[200]
+    +List<Product> Products
+
+}
+class BrickCategory{
+    +int **id**: integer
+    +int **BrickID**: integer
+    +String **Brick**: nvarchar[100]
+    +List<Product> Products
+
+}
+
+class PackagingType{
+    +int **ID**: integer
+    +String **PackagingName**: nvarchar[100]
+    +List<Product> Products
+}
+
+class GLNInformation{
+    +int **ID**: integer
+    +String **RegistrationID**: nvarchar[50]
+    +String **GLN**: nvarchar[50]
+    +String **CompanyPrefix**: nvarchar[50]
+    +CreateGlnInformation()
+    +UpdateGlnInformation()
+    +DeleteGlnInformation()
+    +GetAllGlnInformation()
+
+}
+
+class ITFInformation{
+    +int **ID**: integer
+    +String **RegistrationID**: nvarchar[50]
+    +String **ITF14**: nvarchar[50]
+    +String **CompanyPrefix**: nvarchar[50]
+    +CreateITFInformation()
+    +DeleteITFInformation()
+    +UpdateITFInformation()
+    +GetAllITFInformation()
+}
+
+Product "1..m" -- "1..1" PackageLevel
+BrickCategory "1..1" ..> "1:m" Product : has 
+PackagingType "1..1" ..> "1:m" Product : has 
+NetContent "1..1" ..> "1:m" Product : has 
+
+note top of NetContent
+    This table will be seeded with content
+end note
+note top of BrickCategory
+    This table will be seeded with content
+end note
+
+note top of PackagingType
+    This table will be seeded with content
+end note
+note right of PackageLevel
+    This table will be seeded with content
+end note
+
+note right of Product::RegistrationID
+    RegistrationID will be extracted from the JWT Token
+    after user login
+end note
+
+
+@enduml
