@@ -19,7 +19,7 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(100)]
         public string registrationid { get; set; }
-        public int unitofmeasurement_id { get; set; }
+        public int netcontent_id { get; set; }
         [Required]
         [StringLength(200)]
         public string brandname { get; set; }
@@ -57,8 +57,19 @@ namespace MembershipPortal.data
         public DateTime createddate { get; set; }
         public DateTime modifieddate { get; set; }
 
+        [ForeignKey(nameof(brickcategory_id))]
         public BrickCategory BrickCategory { get; set; }
+
+        [ForeignKey(nameof(netcontent_id))]
+        public NetContent NetContent { get; set; }
+
+        [ForeignKey(nameof(packagingtype_id))]
         public PackagingType PackagingType { get; set; }
+
+        [ForeignKey(nameof(packaginglevel_id))]
         public PackageLevel PackageLevel { get; set; }
+
+        [ForeignKey(nameof(targetmarket_id))]
+        public TargetMarket TargetMarket { get; set; }
     }
 }

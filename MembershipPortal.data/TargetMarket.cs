@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace MembershipPortal.data
 {
-    public class PackagingType
+    public class TargetMarket
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
-        [StringLength(100)]
-        public string packagingname { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
-        public List<Product> Products { get; set; }
+        [StringLength(200)]
+        public string name { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace MembershipPortal.data
         public string itf14 { get; set; }
         [StringLength(50)]
         public string companyprefix { get; set; }
+        public DateTime createddate { get; set; }
+        public DateTime? modifieddate { get; set; }
     }
 }

@@ -18,5 +18,8 @@ namespace MembershipPortal.data
         [StringLength(100)]
         public string brick { get; set; }
         public List<Product> Products { get; set; }
+
+        public DateTime createddate { get; set; }
+        public DateTime? modifieddate { get; set; }
     }
 }

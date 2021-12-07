@@ -24,5 +24,7 @@ namespace MembershipPortal.data
         [StringLength(50)]
         public string productcode { get; set; }
         public int checksum { get; set; }
+        public DateTime createddate { get; set; }
+        public DateTime? modifieddate { get; set; }
     }
 }

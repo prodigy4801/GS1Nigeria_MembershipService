@@ -21,6 +21,8 @@ namespace MembershipPortal.data
         public string name { get; set; }
         [StringLength(200)]
         public string description { get; set; }
+        public DateTime createddate { get; set; }
+        public DateTime? modifieddate { get; set; }
         public List<Product> Products { get; set; }
     }
 }

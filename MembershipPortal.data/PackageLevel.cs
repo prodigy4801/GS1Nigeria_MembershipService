@@ -16,5 +16,7 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(100)]
         public string level { get; set; }
+        public DateTime createddate { get; set; }
+        public DateTime? modifieddate { get; set; }
     }
 }
