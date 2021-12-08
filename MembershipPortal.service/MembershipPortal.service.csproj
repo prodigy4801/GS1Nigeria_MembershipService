@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MembershipPortal.core\MembershipPortal.core.csproj" />
+    <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
+  </ItemGroup>
+
+</Project>
