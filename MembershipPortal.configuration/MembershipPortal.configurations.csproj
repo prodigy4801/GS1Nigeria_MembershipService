@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MembershipPortal.core\MembershipPortal.core.csproj" />
+    <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
+    <ProjectReference Include="..\MembershipPortal.service\MembershipPortal.service.csproj" />
+    <ProjectReference Include="..\MembershipPortal.viewmodels\MembershipPortal.viewmodels.csproj" />
+  </ItemGroup>
+
+</Project>
