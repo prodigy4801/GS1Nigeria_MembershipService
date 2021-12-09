@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipPortal.configurat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipPortal.viewmodels", "MembershipPortal.viewmodels\MembershipPortal.viewmodels.csproj", "{9CD70E8B-2AB8-4F62-B78B-2CBBB3F4821F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipPortal.api", "MembershipPortal.api\MembershipPortal.api.csproj", "{3A6F3CF3-AD5B-44FA-9E67-EEFC8F14CA16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipPortal.registrationimplementation", "MembershipPortal.registrationimplementation\MembershipPortal.registrationimplementation.csproj", "{BB561EC4-99F3-4006-9A1B-6F62DC9675CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{9CD70E8B-2AB8-4F62-B78B-2CBBB3F4821F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CD70E8B-2AB8-4F62-B78B-2CBBB3F4821F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CD70E8B-2AB8-4F62-B78B-2CBBB3F4821F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6F3CF3-AD5B-44FA-9E67-EEFC8F14CA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6F3CF3-AD5B-44FA-9E67-EEFC8F14CA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6F3CF3-AD5B-44FA-9E67-EEFC8F14CA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6F3CF3-AD5B-44FA-9E67-EEFC8F14CA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB561EC4-99F3-4006-9A1B-6F62DC9675CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB561EC4-99F3-4006-9A1B-6F62DC9675CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB561EC4-99F3-4006-9A1B-6F62DC9675CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB561EC4-99F3-4006-9A1B-6F62DC9675CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
