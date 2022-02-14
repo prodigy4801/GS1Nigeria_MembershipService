@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Seed\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MembershipPortal.configuration\MembershipPortal.configurations.csproj" />
     <ProjectReference Include="..\MembershipPortal.core\MembershipPortal.core.csproj" />
     <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
