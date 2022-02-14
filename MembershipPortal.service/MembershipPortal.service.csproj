@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Concrete\BrickCategorySvc-SamuelGS1.cs" />
+    <Compile Remove="Concrete\PackageLevelSvc-SamuelGS1.cs" />
+    <Compile Remove="Concrete\PackagingTypeSvc-SamuelGS1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MembershipPortal.core\MembershipPortal.core.csproj" />
     <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
   </ItemGroup>

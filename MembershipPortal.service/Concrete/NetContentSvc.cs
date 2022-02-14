@@ -84,13 +84,13 @@ namespace MembershipPortal.service.Concrete
         {
             if (profile.id == 0)
             {
-                profile.createddate = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                profile.modifieddate = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
