@@ -10,9 +10,10 @@ namespace MembershipPortal.viewmodels
     public class PackageLevelVM
     {
         public int id { get; set; }
-        public string level { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
     }
 
     public class PackageLevelVM_CRU

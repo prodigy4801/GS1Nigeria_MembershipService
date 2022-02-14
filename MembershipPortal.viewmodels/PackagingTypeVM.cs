@@ -10,9 +10,9 @@ namespace MembershipPortal.viewmodels
     public class PackagingTypeVM
     {
         public int id { get; set; }
-        public string packagingname { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        public string name { get; set; }
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
     }
 
     public class PackagingTypeVM_CRU
@@ -20,6 +20,6 @@ namespace MembershipPortal.viewmodels
         public int id { get; set; }
         [Required]
         [StringLength(100)]
-        public string packagingname { get; set; }
+        public string name { get; set; }
     }
 }

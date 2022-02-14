@@ -13,8 +13,8 @@ namespace MembershipPortal.viewmodels
         public string code { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
     }
 
     public class NetContentVM_CRU
