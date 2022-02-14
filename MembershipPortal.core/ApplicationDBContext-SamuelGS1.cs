@@ -85,23 +85,10 @@ namespace MembershipPortal.core
             //        new Role { id = 3, name = "SuperAdmin" }
             //    );
             //RegistrationBackend.core.Seed.EntitySeeder.Seed<ApplicationDBContext>();
-            modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
-            modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
-            modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
-            modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
-            modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
+            //modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
+            //modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
+            //modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
 
-        }
-
-        public List<NetContent> SeedNetContentData()
-        {
-            var netcontents = new List<NetContent>();
-            using (StreamReader r = new StreamReader(@"Seed/netcontents.json"))
-            {
-                string json = r.ReadToEnd();
-                netcontents = JsonConvert.DeserializeObject<List<NetContent>>(json);
-            }
-            return netcontents;
         }
         public List<BrickCategory> SeedBrickCategoryData()
         {
@@ -132,16 +119,6 @@ namespace MembershipPortal.core
                 packageTypes = JsonConvert.DeserializeObject<List<PackagingType>>(json);
             }
             return packageTypes;
-        }
-        public List<TargetMarket> SeedTargetMarketData()
-        {
-            var targetMarkets = new List<TargetMarket>();
-            using (StreamReader r = new StreamReader(@"Seed/targetMarket.json"))
-            {
-                string json = r.ReadToEnd();
-                targetMarkets = JsonConvert.DeserializeObject<List<TargetMarket>>(json);
-            }
-            return targetMarkets;
         }
 
         //public List<LocalGovt> SeedLocalGovtData()

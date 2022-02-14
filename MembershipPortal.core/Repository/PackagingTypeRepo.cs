@@ -24,7 +24,7 @@ namespace MembershipPortal.core.Repository
             PackagingType response = null;
             try
             {
-                response = await ApplicationDBContext.PackagingTypes.FirstOrDefaultAsync<PackagingType>(m => m.packagingname == profile.packagingname);
+                response = await ApplicationDBContext.PackagingTypes.FirstOrDefaultAsync<PackagingType>(m => m.name == profile.name);
             }
             catch (Exception ex)
             {
