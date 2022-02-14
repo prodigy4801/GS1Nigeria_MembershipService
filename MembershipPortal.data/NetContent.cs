@@ -17,12 +17,12 @@ namespace MembershipPortal.data
         [StringLength(50)]
         public string code { get; set; }
         [Required]
-        [StringLength(100)]
-        public string name { get; set; }
         [StringLength(200)]
+        public string name { get; set; }
+        [StringLength(500)]
         public string description { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
         public List<Product> Products { get; set; }
     }
 }
