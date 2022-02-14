@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "Each",
+    "description": "The lowest level of the item hierarchy intended or labeled for individual resale. Generally this is the consumer unit sold at check out or online."
+  },
+  {
+    "id": 2,
+    "name": "Inner Pack",
+    "description": "Each units may be packed into inner packs, which are then packed into a case. Most items do not have an inner pack"
+  },
+  {
+    "id": 3,
+    "name": "Case",
+    "description": "A standard shipping unit that contains eaches (packaged either individually or grouped as an inner pack). All of the items in a case must have the same GTIN."
+  },
+  {
+    "id": 4,
+    "name": "Mixed Case",
+    "description": "Contains more than one type of each, and must contain more than one GTIN. The case can contain eaches or inner packs."
+  },
+  {
+    "id": 5,
+    "name": "Pallet",
+    "description": "A shipping unit that contains either cases, inner packs, or eaches. It must contain one GTIN regardless of the number of items in the grouping."
+  },
+  {
+    "id": 6,
+    "name": "Mixed Pallet",
+    "description": "A shipping unit that can contain any combination of cases, inner packs, and/or eaches and must contain more than one GTIN."
+
+  },
+
+  {
+    "id": 7,
+    "name": "Case as Each",
+    "description": ""
+  }
+]

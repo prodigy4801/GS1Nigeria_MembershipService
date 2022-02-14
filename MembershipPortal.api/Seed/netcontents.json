@@ -1,0 +1,950 @@
+ [
+	{
+		"id" : 1,
+		"code" : "GRM",
+		"name" : "gram",
+		"description" : ""
+	},
+	{
+		"id" : 2,
+		"code" : "LTR",
+		"name" : "litre",
+		"description" : "Litre (1 dm3)"
+	},
+	{
+		"id" : 3,
+		"code" : "MLT",
+		"name" : "millilitre",
+		"description" : ""
+	},
+	{
+		"id" : 4,
+		"code" : "CLT",
+		"name" : "centilitre",
+		"description" : "A unit of volume equal to one hundreth of a liter."
+	},
+	{
+		"id" : 5,
+		"code" : "CMT",
+		"name" : "centimetre",
+		"description" : ""
+	},
+	{
+		"id" : 6,
+		"code" : "KGM",
+		"name" : "kilogram",
+		"description" : ""
+	},
+	{
+		"id" : 7,
+		"code" : "23",
+		"name" : "gram per cubic centimetre",
+		"description" : "g\/cm3 as a unit of measure for the density of gas. This is necessary for dangerous substance articles for determination of the quantities that can be stored together on the shelf."
+	},
+	{
+		"id" : 8,
+		"code" : "25",
+		"name" : "gram per square centimetre",
+		"description" : "A measure of weight in terms of gram per square centimetre."
+	},
+	{
+		"id" : 9,
+		"code" : "28",
+		"name" : "kilogram per square metre",
+		"description" : "Unit of measure expressed in kilogram per square metre."
+	},
+	{
+		"id" : 10,
+		"code" : "37",
+		"name" : "ounce per square foot",
+		"description" : ""
+	},
+	{
+		"id" : 11,
+		"code" : "59",
+		"name" : "part per million",
+		"description" : ""
+	},
+	{
+		"id" : 12,
+		"code" : "64",
+		"name" : "Pound per square inch, gauge",
+		"description" : "A unit of measure expressed in pound per square inch"
+	},
+	{
+		"id" : 13,
+		"code" : "001",
+		"name" : "Barrel (205 litres, 45 gallons) (GS1 Temporary Code)",
+		"description" : ""
+	},
+	{
+		"id" : 14,
+		"code" : "2N",
+		"name" : "decibel",
+		"description" : ""
+	},
+	{
+		"id" : 15,
+		"code" : "2X",
+		"name" : "metre per minute",
+		"description" : "A measure of speed in terms of metres per minute."
+	},
+	{
+		"id" : 16,
+		"code" : "4K",
+		"name" : "milliampere",
+		"description" : ""
+	},
+	{
+		"id" : 17,
+		"code" : "4L",
+		"name" : "megabyte",
+		"description" : "A unit of computer memory equal to 1.048.576 (i.e. 2 power 20) bytes."
+	},
+	{
+		"id" : 18,
+		"code" : "4O",
+		"name" : "microfarad",
+		"description" : "One millionth of a farad. A farad is the capacitance of a capacitor between the plates of which a potential of 1 volt is created by a charge of 1 Coulomb."
+	},
+	{
+		"id" : 19,
+		"code" : "4P",
+		"name" : "newton per metre",
+		"description" : ""
+	},
+	{
+		"id" : 20,
+		"code" : "A25",
+		"name" : "cheval vapeur",
+		"description" : ""
+	},
+	{
+		"id" : 21,
+		"code" : "A86",
+		"name" : "gigahertz",
+		"description" : "Hertz multiplied by 10*9."
+	},
+	{
+		"id" : 22,
+		"code" : "A99",
+		"name" : "Bit",
+		"description" : "A unit of information equal to one binary digit."
+	},
+	{
+		"id" : 23,
+		"code" : "ACR",
+		"name" : "acre",
+		"description" : "Acre (4840 yd2)"
+	},
+	{
+		"id" : 24,
+		"code" : "AD",
+		"name" : "byte",
+		"description" : "A unit of information stored in a computer, equal to eight bits"
+	},
+	{
+		"id" : 25,
+		"code" : "AMH",
+		"name" : "ampere hour",
+		"description" : "Ampere-hour (3,6kC)"
+	},
+	{
+		"id" : 26,
+		"code" : "AMP",
+		"name" : "ampere",
+		"description" : ""
+	},
+	{
+		"id" : 27,
+		"code" : "ANN",
+		"name" : "year",
+		"description" : "The expression of a year as a measure unit."
+	},
+	{
+		"id" : 28,
+		"code" : "APZ",
+		"name" : "Troy ounce or apothecary ounce",
+		"description" : ""
+	},
+	{
+		"id" : 29,
+		"code" : "ASM",
+		"name" : "alcoholic strength by mass",
+		"description" : "Alcoholic strength expressed by mass."
+	},
+	{
+		"id" : 30,
+		"code" : "ASU",
+		"name" : "alcoholic strength by volume",
+		"description" : "Alcoholic strength expressed by volume."
+	},
+	{
+		"id" : 31,
+		"code" : "AV",
+		"name" : "capsule",
+		"description" : "Encaspuled dosage form for pharmaceuticals."
+	},
+	{
+		"id" : 32,
+		"code" : "B13",
+		"name" : "Joule per square metre",
+		"description" : "A unit of measure of heat energy expressed in joule per square metre."
+	},
+	{
+		"id" : 33,
+		"code" : "B17",
+		"name" : "Credit",
+		"description" : "A unit of count defining the number of entries made to the credit side of an account"
+	},
+	{
+		"id" : 34,
+		"code" : "BAR",
+		"name" : "bar",
+		"description" : "A unit of measure equal to 106 dines per square centimeter."
+	},
+	{
+		"id" : 35,
+		"code" : "BTU",
+		"name" : "British thermal unit",
+		"description" : "British thermal unit (1,055 kilojoules)"
+	},
+	{
+		"id" : 36,
+		"code" : "C0",
+		"name" : "call",
+		"description" : "Unit of measure for telephone calls. Code value is C0 (C Zero)."
+	},
+	{
+		"id" : 37,
+		"code" : "C60",
+		"name" : "ohm centimetre",
+		"description" : "Unit of measure expressed in Ohm centimetre."
+	},
+	{
+		"id" : 38,
+		"code" : "C79",
+		"name" : "Kilovolt Ampere Hour",
+		"description" : "A unit of accumulated energy of 1000 volt amperes over a period of one hour."
+	},
+	{
+		"id" : 39,
+		"code" : "CDL",
+		"name" : "candela",
+		"description" : "Unit of measure of light intensity."
+	},
+	{
+		"id" : 40,
+		"code" : "CEL",
+		"name" : "degree celsius",
+		"description" : ""
+	},
+	{
+		"id" : 41,
+		"code" : "CF2",
+		"name" : "Colony forming unit per gram ",
+		"description" : "Colony forming units per gram is a unit of measure for micro-organisms, such as bacteria, in a food item. Micro-organisms form colonies that are be counted under determined conditions"
+	},
+	{
+		"id" : 42,
+		"code" : "CMK",
+		"name" : "square centimetre",
+		"description" : ""
+	},
+	{
+		"id" : 43,
+		"code" : "CMQ",
+		"name" : "cubic centimetre",
+		"description" : "A system of units for the measurement of volume based on the cubic centimetre."
+	},
+	{
+		"id" : 44,
+		"code" : "D19",
+		"name" : "Square metre kelvin per watt",
+		"description" : "Unit of measure of thermal insulance expressed in square metre kelvin per watt."
+	},
+	{
+		"id" : 45,
+		"code" : "D21",
+		"name" : "square metre per kilogram",
+		"description" : "Unit of measure expressed in square metre per kilogram."
+	},
+	{
+		"id" : 46,
+		"code" : "D32",
+		"name" : "Terawatt hour",
+		"description" : "A unit of measure expressed in terawatt hour"
+	},
+	{
+		"id" : 47,
+		"code" : "D5",
+		"name" : "Kilogram per square centimetre",
+		"description" : "A unit of measure expressed in kilogram per square centimetre"
+	},
+	{
+		"id" : 48,
+		"code" : "D55",
+		"name" : "Watt per square metre kelvin",
+		"description" : "Unit of measure of thermal conductance expressed in watt per square metre kelvin."
+	},
+	{
+		"id" : 49,
+		"code" : "D68",
+		"name" : "Number of Words",
+		"description" : "A unit of count defining the number of words."
+	},
+	{
+		"id" : 50,
+		"code" : "DAY",
+		"name" : "day",
+		"description" : "The expression of a day as a measure unit"
+	},
+	{
+		"id" : 51,
+		"code" : "DD",
+		"name" : "degree",
+		"description" : "Unit of measure of temperature."
+	},
+	{
+		"id" : 52,
+		"code" : "DMQ",
+		"name" : "cubic decimetre",
+		"description" : "Unit of measure expressed in cubic decimetre."
+	},
+	{
+		"id" : 53,
+		"code" : "DMT",
+		"name" : "decimetre",
+		"description" : ""
+	},
+	{
+		"id" : 54,
+		"code" : "DRG",
+		"name" : "Dragée",
+		"description" : "Number of dragées (coated tablets) contained in the item's package as a measurement unit."
+	},
+	{
+		"id" : 55,
+		"code" : "DZN",
+		"name" : "dozen",
+		"description" : "A unit of measure of 12 or group of 12."
+	},
+	{
+		"id" : 56,
+		"code" : "E09",
+		"name" : "Milliampere hour",
+		"description" : "A unit of power load delivered at the rate of one thousandth of an ampere over a period of one hour."
+	},
+	{
+		"id" : 57,
+		"code" : "E10",
+		"name" : "Degree day",
+		"description" : "A unit of measure used in meteorology and engineering to measure the demand for heating or cooling over a given period of days."
+	},
+	{
+		"id" : 58,
+		"code" : "E11",
+		"name" : "Gigacalorie",
+		"description" : "A unit of heat energy equal to one thousand million calories."
+	},
+	{
+		"id" : 59,
+		"code" : "E27",
+		"name" : "Dose",
+		"description" : "A unit of count defining the number of doses (dose: a definite quantity of a medicine or drug)."
+	},
+	{
+		"id" : 60,
+		"code" : "E31",
+		"name" : "Square metre per litre",
+		"description" : "A unit of count defining the number of square metres per litre."
+	},
+	{
+		"id" : 61,
+		"code" : "E32",
+		"name" : "Litre per hour",
+		"description" : "A unit of count defining the number of litres per hour."
+	},
+	{
+		"id" : 62,
+		"code" : "E34",
+		"name" : "Gigabyte",
+		"description" : "A unit of information equal to 10 E9 bytes."
+	},
+	{
+		"id" : 63,
+		"code" : "E37",
+		"name" : "Pixel",
+		"description" : "A unit of count defining the number of pixels (pixel: picture element)."
+	},
+	{
+		"id" : 64,
+		"code" : "E38",
+		"name" : "Megapixel",
+		"description" : "A unit of count equal to 10 E6 (1000000) pixels (picture elements)."
+	},
+	{
+		"id" : 65,
+		"code" : "E39",
+		"name" : "Dots per inch",
+		"description" : "A unit of information defining the number of dots per linear inch as a measure of the resolution or sharpness of an image."
+	},
+	{
+		"id" : 66,
+		"code" : "EA",
+		"name" : "each",
+		"description" : ""
+	},
+	{
+		"id" : 67,
+		"code" : "EV",
+		"name" : "envelope",
+		"description" : "A unit of measure pertaining to the number of envelopes."
+	},
+	{
+		"id" : 68,
+		"code" : "FAH",
+		"name" : "degree Fahrenheit",
+		"description" : ""
+	},
+	{
+		"id" : 69,
+		"code" : "FOT",
+		"name" : "foot",
+		"description" : "Foot (0,3048 m)"
+	},
+	{
+		"id" : 70,
+		"code" : "FP",
+		"name" : "Pound per square foot",
+		"description" : "A unit of measure expressed in pound per square foot"
+	},
+	{
+		"id" : 71,
+		"code" : "FTK",
+		"name" : "Square foot",
+		"description" : "A unit of measure expressed in square foot"
+	},
+	{
+		"id" : 72,
+		"code" : "FTQ",
+		"name" : "cubic foot",
+		"description" : ""
+	},
+	{
+		"id" : 73,
+		"code" : "GL",
+		"name" : "gram per litre",
+		"description" : ""
+	},
+	{
+		"id" : 74,
+		"code" : "GLI",
+		"name" : "gallon (UK)",
+		"description" : "Gallon (4,546092 dm3)"
+	},
+	{
+		"id" : 75,
+		"code" : "GM",
+		"name" : "gram per square metre",
+		"description" : "Unit of measure of grams per square metre."
+	},
+	{
+		"id" : 76,
+		"code" : "GRO",
+		"name" : "gross",
+		"description" : "A unit of measure of 12 dozens."
+	},
+	{
+		"id" : 77,
+		"code" : "GV",
+		"name" : "gigajoule",
+		"description" : ""
+	},
+	{
+		"id" : 78,
+		"code" : "GWH",
+		"name" : "gigawatt hour",
+		"description" : "Gigawatt-hour (1 million kW\/h)"
+	},
+	{
+		"id" : 79,
+		"code" : "H87",
+		"name" : "Piece",
+		"description" : "A unit of count defining the number of pieces (piece: a single item, article or exemplar)."
+	},
+	{
+		"id" : 80,
+		"code" : "HLT",
+		"name" : "hectolitre",
+		"description" : ""
+	},
+	{
+		"id" : 81,
+		"code" : "HMT",
+		"name" : "hectometre",
+		"description" : "A unit of linear measure equal to 10 E2 metres."
+	},
+	{
+		"id" : 82,
+		"code" : "HTZ",
+		"name" : "hertz",
+		"description" : "One cycle per second."
+	},
+	{
+		"id" : 83,
+		"code" : "HUR",
+		"name" : "hour",
+		"description" : "A unit of measure expressed in square inch"
+	},
+	{
+		"id" : 84,
+		"code" : "INH",
+		"name" : "inch",
+		"description" : "Inch (25,4 mm)"
+	},
+	{
+		"id" : 85,
+		"code" : "INK",
+		"name" : "Square inch",
+		"description" : ""
+	},
+	{
+		"id" : 86,
+		"code" : "JM",
+		"name" : "Megajoule per cubic metre",
+		"description" : ""
+	},
+	{
+		"id" : 87,
+		"code" : "JOU",
+		"name" : "joule",
+		"description" : ""
+	},
+	{
+		"id" : 88,
+		"code" : "K51",
+		"name" : "Kilocalorie (mean)",
+		"description" : ""
+	},
+	{
+		"id" : 89,
+		"code" : "KB",
+		"name" : "kilocharacter",
+		"description" : ""
+	},
+	{
+		"id" : 90,
+		"code" : "KBA",
+		"name" : "kilobar",
+		"description" : ""
+	},
+	{
+		"id" : 91,
+		"code" : "KEL",
+		"name" : "kelvin",
+		"description" : ""
+	},
+	{
+		"id" : 92,
+		"code" : "KHZ",
+		"name" : "kilohertz",
+		"description" : ""
+	},
+	{
+		"id" : 93,
+		"code" : "KJO",
+		"name" : "kilojoule",
+		"description" : ""
+	},
+	{
+		"id" : 94,
+		"code" : "KL",
+		"name" : "kilogram per metre",
+		"description" : "A measure of weight in terms of kilogram per metre."
+	},
+	{
+		"id" : 95,
+		"code" : "KMH",
+		"name" : "kilometre per hour",
+		"description" : "A unit of measure expressed in kilometre per hour."
+	},
+	{
+		"id" : 96,
+		"code" : "KMQ",
+		"name" : "kilogram per cubic metre",
+		"description" : "A measure of weight in terms of kilogram per cubic metre."
+	},
+	{
+		"id" : 97,
+		"code" : "KPA",
+		"name" : "kilopascal",
+		"description" : "Unit of measure expressed in kilopascal."
+	},
+	{
+		"id" : 98,
+		"code" : "KTM",
+		"name" : "kilometre",
+		"description" : ""
+	},
+	{
+		"id" : 99,
+		"code" : "KVA",
+		"name" : "kilovolt - ampere",
+		"description" : "A unit of electric power."
+	},
+	{
+		"id" : 100,
+		"code" : "KVT",
+		"name" : "kilovolt",
+		"description" : ""
+	},
+	{
+		"id" : 101,
+		"code" : "KWH",
+		"name" : "kilowatt hour",
+		"description" : ""
+	},
+	{
+		"id" : 102,
+		"code" : "KWT",
+		"name" : "kilowatt",
+		"description" : ""
+	},
+	{
+		"id" : 103,
+		"code" : "L2",
+		"name" : "litre per minute",
+		"description" : "Unit of measure expressed in litre per minute."
+	},
+	{
+		"id" : 104,
+		"code" : "LBR",
+		"name" : "Pound",
+		"description" : "A unit of measure defining the number of litres per day."
+	},
+	{
+		"id" : 105,
+		"code" : "LD",
+		"name" : "Litre per day",
+		"description" : ""
+	},
+	{
+		"id" : 106,
+		"code" : "LNE\t",
+		"name" : "Printed line count",
+		"description" : "The indication of the count of printed lines included on a paper communication (e.g. telegram) for invoicing purposes."
+	},
+	{
+		"id" : 107,
+		"code" : "LUX",
+		"name" : "lux",
+		"description" : "Unit of measure of illumination (it corresponds to the illumination of a surface which normally and uniformly receives a light flow of 1 lumen per square meter)."
+	},
+	{
+		"id" : 108,
+		"code" : "M4",
+		"name" : "Monetary value",
+		"description" : "A unit of measure expressed as a monetary amount."
+	},
+	{
+		"id" : 109,
+		"code" : "MAL",
+		"name" : "mega litre",
+		"description" : ""
+	},
+	{
+		"id" : 110,
+		"code" : "MAW",
+		"name" : "megawatt",
+		"description" : ""
+	},
+	{
+		"id" : 111,
+		"code" : "MC",
+		"name" : "microgram",
+		"description" : "One millionth of a gram."
+	},
+	{
+		"id" : 112,
+		"code" : "MCU",
+		"name" : "millicurie",
+		"description" : "Unit of measure for radioactivity."
+	},
+	{
+		"id" : 113,
+		"code" : "MGM",
+		"name" : "milligram",
+		"description" : ""
+	},
+	{
+		"id" : 114,
+		"code" : "MHZ",
+		"name" : "megahertz",
+		"description" : ""
+	},
+	{
+		"id" : 115,
+		"code" : "MIN",
+		"name" : "minute",
+		"description" : ""
+	},
+	{
+		"id" : 116,
+		"code" : "MMK",
+		"name" : "square millimetre",
+		"description" : "A unit to measure a surface equal to one millionth of a quadrate"
+	},
+	{
+		"id" : 117,
+		"code" : "MMQ",
+		"name" : "cubic millimetre",
+		"description" : "A unit of measure expressed in cubic milimetres."
+	},
+	{
+		"id" : 118,
+		"code" : "MMT",
+		"name" : "millimetre",
+		"description" : ""
+	},
+	{
+		"id" : 119,
+		"code" : "MON",
+		"name" : "month",
+		"description" : "The expression of a month as a measure unit."
+	},
+	{
+		"id" : 120,
+		"code" : "MPA",
+		"name" : "megapascal",
+		"description" : "A unit of measure expressed in Megapascal."
+	},
+	{
+		"id" : 121,
+		"code" : "MQH",
+		"name" : "Cubic metre per hour",
+		"description" : "A unit of measure defining the number of cubic metres per hour."
+	},
+	{
+		"id" : 122,
+		"code" : "MTK",
+		"name" : "square metre",
+		"description" : ""
+	},
+	{
+		"id" : 123,
+		"code" : "MTQ",
+		"name" : "cubic metre",
+		"description" : ""
+	},
+	{
+		"id" : 124,
+		"code" : "MTR",
+		"name" : "metre",
+		"description" : ""
+	},
+	{
+		"id" : 125,
+		"code" : "MTS",
+		"name" : "Metre per second",
+		"description" : "A unit of speed expressed in metres per second."
+	},
+	{
+		"id" : 126,
+		"code" : "MWH",
+		"name" : "megawatt hour (1000 kW.h)",
+		"description" : ""
+	},
+	{
+		"id" : 127,
+		"code" : "NAR",
+		"name" : "number of articles",
+		"description" : ""
+	},
+	{
+		"id" : 128,
+		"code" : "NEW",
+		"name" : "newton",
+		"description" : "The SI unit of force, equal to the force that would give a mass of one kilogram an acceleration of one metre per second."
+	},
+	{
+		"id" : 129,
+		"code" : "NIU",
+		"name" : "number of international units",
+		"description" : "A unit of count defining the number of international units."
+	},
+	{
+		"id" : 130,
+		"code" : "NRL",
+		"name" : "number of rolls",
+		"description" : ""
+	},
+	{
+		"id" : 131,
+		"code" : "ONZ",
+		"name" : "ounce",
+		"description" : "Ounce GB, US (28,349523 g)"
+	},
+	{
+		"id" : 132,
+		"code" : "OZA",
+		"name" : "fluid ounce (US)",
+		"description" : "Fluid ounce US (29,5735 cm3)"
+	},
+	{
+		"id" : 133,
+		"code" : "OZI",
+		"name" : "fluid ounce (UK)",
+		"description" : "Fluid ounce UK (28,413 cm3)"
+	},
+	{
+		"id" : 134,
+		"code" : "P1",
+		"name" : "percent",
+		"description" : "This code is used to indicate measurements in terms of percentages, e.g. the relative humidity (code RA in data element 6313) is 52%."
+	},
+	{
+		"id" : 135,
+		"code" : "PA",
+		"name" : "packet",
+		"description" : ""
+	},
+	{
+		"id" : 136,
+		"code" : "PAL",
+		"name" : "pascal",
+		"description" : "The SI unit of pressure, equal to one Newton per square metre."
+	},
+	{
+		"id" : 137,
+		"code" : "PF",
+		"name" : "pallet (lift)",
+		"description" : "A number of articles expressed in terms of pallets."
+	},
+	{
+		"id" : 138,
+		"code" : "PR",
+		"name" : "pair",
+		"description" : "Two articles which belong together but are not necessarily identical."
+	},
+	{
+		"id" : 139,
+		"code" : "PTI",
+		"name" : "pint (UK)",
+		"description" : "Pint UK (0,568262 dm3)"
+	},
+	{
+		"id" : 140,
+		"code" : "PTN",
+		"name" : "Portion ",
+		"description" : "The identification of the number of portions (doses in medical terms) into which a complete product may be broken into for serving purposes, e.g. a pie with 6 portions, a liquid medicine with 20 doses."
+	},
+	{
+		"id" : 141,
+		"code" : "QAN",
+		"name" : "quarter (of a year)",
+		"description" : ""
+	},
+	{
+		"id" : 142,
+		"code" : "QTI",
+		"name" : "quart (UK)",
+		"description" : "Quart UK (1,1136523 dm3)"
+	},
+	{
+		"id" : 143,
+		"code" : "RJH",
+		"name" : "Decanewton",
+		"description" : "A unit of force equal to 10 Newton."
+	},
+	{
+		"id" : 144,
+		"code" : "RPM",
+		"name" : "revolutions per minute",
+		"description" : ""
+	},
+	{
+		"id" : 145,
+		"code" : "RTO",
+		"name" : "Ratio",
+		"description" : ""
+	},
+	{
+		"id" : 146,
+		"code" : "SEC\t",
+		"name" : "second",
+		"description" : ""
+	},
+	{
+		"id" : 147,
+		"code" : "SMI",
+		"name" : "Mile (statute mile)",
+		"description" : "A unit of measure expressed in mile"
+	},
+	{
+		"id" : 148,
+		"code" : "ST",
+		"name" : "sheet",
+		"description" : "Metric ton (1000kg)"
+	},
+	{
+		"id" : 149,
+		"code" : "TNE",
+		"name" : "tonne (metric ton)",
+		"description" : "A unit of count defining the number of tablets (tablet: a small flat or compressed solid object). Dosage form for pharmaceuticals, pressed or compacted from a powder into a solid dose."
+	},
+	{
+		"id" : 150,
+		"code" : "U2",
+		"name" : "tablet",
+		"description" : ""
+	},
+	{
+		"id" : 151,
+		"code" : "UI",
+		"name" : "Unit of activity, predefined",
+		"description" : "A measure pertaining to a predefined activity."
+	},
+	{
+		"id" : 152,
+		"code" : "VI",
+		"name" : "vial",
+		"description" : "Small glass container. E.g. for a liquid medicine or perfume."
+	},
+	{
+		"id" : 153,
+		"code" : "VLT",
+		"name" : "volt",
+		"description" : ""
+	},
+	{
+		"id" : 154,
+		"code" : "WHR",
+		"name" : "watt hour",
+		"description" : ""
+	},
+	{
+		"id" : 155,
+		"code" : "WTT",
+		"name" : "watt",
+		"description" : ""
+	},
+	{
+		"id" : 156,
+		"code" : "YDK",
+		"name" : "Square yard",
+		"description" : "A unit of measure expressed in square yard"
+	},
+	{
+		"id" : 157,
+		"code" : "YRD",
+		"name" : "yard",
+		"description" : "Yard (0,9144 m)"
+	},
+	{
+		"id" : 158,
+		"code" : "ZP",
+		"name" : "page",
+		"description" : "The indication of a page as a measurement unit for invoicing purposes, e.g. fax pages."
+	}
+]
