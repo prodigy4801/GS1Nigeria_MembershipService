@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MembershipPortal.core.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class FirstTimeMembershipMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,8 @@ namespace MembershipPortal.core.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    brick_id = table.Column<int>(type: "int", nullable: false),
-                    brick = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
-                    modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    brick_id = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    brick = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +30,7 @@ namespace MembershipPortal.core.Migrations
                     registrationid = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     gln = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     companyprefix = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
+                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -51,7 +49,7 @@ namespace MembershipPortal.core.Migrations
                     companyprefix = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     productcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     checksum = table.Column<int>(type: "int", nullable: false),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
+                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -68,7 +66,7 @@ namespace MembershipPortal.core.Migrations
                     registrationid = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     itf14 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     companyprefix = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
+                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -83,10 +81,8 @@ namespace MembershipPortal.core.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     code = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
-                    modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,9 +95,8 @@ namespace MembershipPortal.core.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    level = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
-                    modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,9 +109,7 @@ namespace MembershipPortal.core.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    packagingname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
-                    modifieddate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,7 +160,7 @@ namespace MembershipPortal.core.Migrations
                     lifespan = table.Column<int>(type: "int", nullable: false),
                     lifespanunit = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     packaginglevel_id = table.Column<int>(type: "int", nullable: false),
-                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: DateTime.Now),
+                    createddate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     modifieddate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
