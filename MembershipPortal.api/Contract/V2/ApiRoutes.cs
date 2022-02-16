@@ -78,6 +78,7 @@ namespace MembershipPortal.api.Contract.V2
         {
             public const string GetAll = Base + "/product";
             public const string Create = Base + "/product";
+            public const string UploadCreate = Base + "/product/upload";
             public const string GetByID = Base + "/product/{id}";
             public const string Delete = Base + "/product";
             public const string Update = Base + "/product/{id}";
