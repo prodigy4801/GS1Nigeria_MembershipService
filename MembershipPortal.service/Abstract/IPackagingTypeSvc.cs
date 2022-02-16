@@ -9,5 +9,6 @@ namespace MembershipPortal.service
 {
     public interface IPackagingTypeSvc : IService<PackagingType>
     {
+        Task<PackagingType> GetByPackagingTypeName(string name);
     }
 }

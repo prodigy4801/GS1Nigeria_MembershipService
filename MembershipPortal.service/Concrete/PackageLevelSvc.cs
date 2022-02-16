@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.PackageLevelRP.GetByIdAsync(id);
         }
 
+        public async Task<PackageLevel> GetByPackageLevelName(string name)
+        {
+            return await _uow.PackageLevelRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<PackageLevel>> Remove(PackageLevel obj)
         {
             GenericResponse<PackageLevel> response = new GenericResponse<PackageLevel>

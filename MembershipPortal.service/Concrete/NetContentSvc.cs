@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.NetContentRP.GetByIdAsync(id);
         }
 
+        public async Task<NetContent> GetByNetContentName(string name)
+        {
+            return await _uow.NetContentRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<NetContent>> Remove(NetContent obj)
         {
             GenericResponse<NetContent> response = new GenericResponse<NetContent>

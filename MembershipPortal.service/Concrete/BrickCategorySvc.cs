@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.BrickCategoryRP.GetByIdAsync(id);
         }
 
+        public async Task<BrickCategory> GetByBrickName(string name)
+        {
+            return await _uow.BrickCategoryRP.GetSingleByAsync(s => s.brick == name);
+        }
+
         public async Task<GenericResponse<BrickCategory>> Remove(BrickCategory obj)
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>

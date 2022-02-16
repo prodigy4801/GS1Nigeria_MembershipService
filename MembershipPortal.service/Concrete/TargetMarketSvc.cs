@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.TargetMarketRP.GetByIdAsync(id);
         }
 
+        public async Task<TargetMarket> GetByTargetMarketName(string name)
+        {
+            return await _uow.TargetMarketRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<TargetMarket>> Remove(TargetMarket obj)
         {
             GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>

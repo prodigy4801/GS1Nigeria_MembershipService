@@ -9,5 +9,6 @@ namespace MembershipPortal.service
 {
     public interface ITargetMarketSvc : IService<TargetMarket>
     {
+        Task<TargetMarket> GetByTargetMarketName(string name);
     }
 }
