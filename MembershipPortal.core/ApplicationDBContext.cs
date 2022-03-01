@@ -68,6 +68,7 @@ namespace MembershipPortal.core
             {
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
+                entity.HasIndex(u => u.gtin).IsUnique();
             });
 
             modelBuilder.Entity<TargetMarket>(entity =>

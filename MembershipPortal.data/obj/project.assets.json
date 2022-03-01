@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\prodi\\.nuget\\packages\\": {}
+    "C:\\Users\\soliu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\prodi\\OneDrive\\Documents\\Visual Studio 2019\\Projects\\MembershipPortal\\MembershipPortal.data\\MembershipPortal.data.csproj",
+      "projectUniqueName": "C:\\Users\\soliu\\OneDrive\\Documents\\GS1Projects\\MembershipPortal\\MembershipPortal.data\\MembershipPortal.data.csproj",
       "projectName": "MembershipPortal.data",
-      "projectPath": "C:\\Users\\prodi\\OneDrive\\Documents\\Visual Studio 2019\\Projects\\MembershipPortal\\MembershipPortal.data\\MembershipPortal.data.csproj",
-      "packagesPath": "C:\\Users\\prodi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\prodi\\OneDrive\\Documents\\Visual Studio 2019\\Projects\\MembershipPortal\\MembershipPortal.data\\obj\\",
+      "projectPath": "C:\\Users\\soliu\\OneDrive\\Documents\\GS1Projects\\MembershipPortal\\MembershipPortal.data\\MembershipPortal.data.csproj",
+      "packagesPath": "C:\\Users\\soliu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\soliu\\OneDrive\\Documents\\GS1Projects\\MembershipPortal\\MembershipPortal.data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\prodi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\soliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

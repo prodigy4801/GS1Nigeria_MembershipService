@@ -14,7 +14,7 @@ using MembershipPortal.api.Authorization;
 
 namespace MembershipPortal.api.Controllers.V2
 {
-    [Authorize]
+    // [Authorize]
     [Route("")]
     [ApiController]
     public class NetContentController : ControllerBase
