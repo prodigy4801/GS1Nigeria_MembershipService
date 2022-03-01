@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.NetContentRP.GetByIdAsync(id);
         }
 
+        public async Task<NetContent> GetByNetContentName(string name)
+        {
+            return await _uow.NetContentRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<NetContent>> Remove(NetContent obj)
         {
             GenericResponse<NetContent> response = new GenericResponse<NetContent>
@@ -84,13 +89,13 @@ namespace MembershipPortal.service.Concrete
         {
             if (profile.id == 0)
             {
-                profile.createddate = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                profile.modifieddate = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }

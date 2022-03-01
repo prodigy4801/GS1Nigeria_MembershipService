@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.PackagingTypeRP.GetByIdAsync(id);
         }
 
+        public async Task<PackagingType> GetByPackagingTypeName(string name)
+        {
+            return await _uow.PackagingTypeRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<PackagingType>> Remove(PackagingType obj)
         {
             GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
@@ -84,13 +89,13 @@ namespace MembershipPortal.service.Concrete
         {
             if (profile.id == 0)
             {
-                profile.createddate = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                profile.modifieddate = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
@@ -142,7 +147,7 @@ namespace MembershipPortal.service.Concrete
             try
             {
                 var objEx = _uow.PackagingTypeRP.GetById(id);
-                objEx.packagingname = obj.packagingname != string.Empty || obj.packagingname != null ? obj.packagingname : objEx.packagingname;
+                objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
                 //objEx.ID = Id;
                 _uow.PackagingTypeRP.Update(objEx);
                 int result = await _uow.Complete();

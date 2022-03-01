@@ -8,33 +8,28 @@ using MembershipPortal.data;
 
 namespace MembershipPortal.service.Concrete
 {
-    public class TargetMarketSvc : ITargetMarketSvc
+    public class BrickCategorySvc : IBrickCategorySvc
     {
         private readonly IUnitOfWork _uow;
 
-        public TargetMarketSvc(IUnitOfWork uow)
+        public BrickCategorySvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<TargetMarket>> GetAll()
+        public async Task<IEnumerable<BrickCategory>> GetAll()
         {
-            return await _uow.TargetMarketRP.GetAllAsync();
+            return await _uow.BrickCategoryRP.GetAllAsync();
         }
 
-        public async Task<TargetMarket> GetByID(int id)
+        public async Task<BrickCategory> GetByID(int id)
         {
-            return await _uow.TargetMarketRP.GetByIdAsync(id);
+            return await _uow.BrickCategoryRP.GetByIdAsync(id);
         }
 
-        public async Task<TargetMarket> GetByTargetMarketName(string name)
+        public async Task<GenericResponse<BrickCategory>> Remove(BrickCategory obj)
         {
-            return await _uow.TargetMarketRP.GetSingleByAsync(s => s.name == name);
-        }
-
-        public async Task<GenericResponse<TargetMarket>> Remove(TargetMarket obj)
-        {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
                 Data = null,
                 IsSuccess = false,
@@ -42,7 +37,7 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                _uow.TargetMarketRP.Delete(obj);
+                _uow.BrickCategoryRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
@@ -58,9 +53,9 @@ namespace MembershipPortal.service.Concrete
             return response;
         }
 
-        public async Task<GenericResponse<TargetMarket>> Remove(int id)
+        public async Task<GenericResponse<BrickCategory>> Remove(int id)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
                 Data = null,
                 IsSuccess = false,
@@ -68,8 +63,8 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                var obj = _uow.TargetMarketRP.GetById(id);
-                _uow.TargetMarketRP.Delete(obj);
+                var obj = _uow.BrickCategoryRP.GetById(id);
+                _uow.BrickCategoryRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
@@ -85,24 +80,24 @@ namespace MembershipPortal.service.Concrete
             return response;
         }
 
-        public async Task<GenericResponse<TargetMarket>> Save(TargetMarket profile)
+        public async Task<GenericResponse<BrickCategory>> Save(BrickCategory profile)
         {
             if (profile.id == 0)
             {
-                //profile.create = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                //profile.modifiedon = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
-        private async Task<GenericResponse<TargetMarket>> Add(TargetMarket profile)
+        private async Task<GenericResponse<BrickCategory>> Add(BrickCategory profile)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
                 Data = null,
                 IsSuccess = false,
@@ -110,9 +105,9 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                if (!await _uow.TargetMarketRP.IsExists(profile))
+                if (!await _uow.BrickCategoryRP.IsExists(profile))
                 {
-                    _uow.TargetMarketRP.Add(profile);
+                    _uow.BrickCategoryRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
@@ -136,9 +131,9 @@ namespace MembershipPortal.service.Concrete
 
             return response;
         }
-        private async Task<GenericResponse<TargetMarket>> Update(int id, TargetMarket obj)
+        private async Task<GenericResponse<BrickCategory>> Update(int id, BrickCategory obj)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
                 Data = null,
                 IsSuccess = false,
@@ -146,11 +141,12 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                var objEx = _uow.TargetMarketRP.GetById(id);
-                objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
-                
+                var objEx = _uow.BrickCategoryRP.GetById(id);
+                objEx.brick = obj.brick != string.Empty || obj.brick != null ? obj.brick : objEx.brick;
+                objEx.brick_id = obj.brick_id != string.Empty || obj.brick_id != null ? obj.brick_id : objEx.brick_id;
+
                 //objEx.ID = Id;
-                _uow.TargetMarketRP.Update(objEx);
+                _uow.BrickCategoryRP.Update(objEx);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {

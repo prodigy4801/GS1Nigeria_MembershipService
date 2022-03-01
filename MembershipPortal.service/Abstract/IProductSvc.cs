@@ -9,5 +9,6 @@ namespace MembershipPortal.service
 {
     public interface IProductSvc : IService<Product>
     {
+        Task<GenericResponse<List<Product>>> SaveProductList(IEnumerable<Product> products);
     }
 }

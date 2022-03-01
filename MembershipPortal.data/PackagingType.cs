@@ -15,9 +15,9 @@ namespace MembershipPortal.data
         public int id { get; set; }
         [Required]
         [StringLength(100)]
-        public string packagingname { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        public string name { get; set; }
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
         public List<Product> Products { get; set; }
     }
 }

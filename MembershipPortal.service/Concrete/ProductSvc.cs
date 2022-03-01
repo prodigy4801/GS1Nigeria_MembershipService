@@ -82,6 +82,7 @@ namespace MembershipPortal.service.Concrete
 
         public async Task<GenericResponse<Product>> Save(Product profile)
         {
+
             if (profile.id == 0)
             {
                 profile.createddate = DateTime.Now;
@@ -93,6 +94,59 @@ namespace MembershipPortal.service.Concrete
                 profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
+        }
+
+        public async Task<GenericResponse<List<Product>>> SaveProductList(IEnumerable<Product> products)
+        {
+            List<Product> mainProductStore = new List<Product>();
+            GenericResponse<List<Product>> response = new GenericResponse<List<Product>>
+            {
+                Data = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
+            try
+            {
+                foreach(Product product in products)
+                {
+                    if (await _uow.ProductRP.IsExists(product))
+                    {
+                        response.Message += product.brandname + " exist in storage and cannot be saved. ";
+                    }
+                    else
+                    {
+                        mainProductStore.Add(product);
+                        response.Message += product.brandname + " successfully saved. ";
+                    }
+                }
+                if(mainProductStore.Count > 0)
+                {
+                    _uow.ProductRP.AddRange(mainProductStore);
+                    int result = await _uow.Complete();
+                    if (result > 0)
+                    {
+                        response.IsSuccess = true;
+                        response.Message = " Successful Saved Product(s) to Storage.";
+                        response.Data = mainProductStore;
+                    }
+                    else
+                    {
+                        response.Message += " Problem saving product records to storage. Please refer to technical team.";
+                        response.IsSuccess = false;
+                    }
+                }
+                else
+                {
+                    response.IsSuccess = true;
+                    response.Message = " No product was successfully saved.";
+                }
+            }
+            catch(Exception ex)
+            {
+                response.Message = ex.Message;
+                response.IsSuccess = false;
+            }
+            return response;
         }
 
         private async Task<GenericResponse<Product>> Add(Product profile)

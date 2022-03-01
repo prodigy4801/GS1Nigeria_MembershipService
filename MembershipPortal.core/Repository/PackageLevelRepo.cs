@@ -24,7 +24,7 @@ namespace MembershipPortal.core.Repository
             PackageLevel response = null;
             try
             {
-                response = await ApplicationDBContext.PackageLevels.FirstOrDefaultAsync<PackageLevel>(m => m.level == profile.level);
+                response = await ApplicationDBContext.PackageLevels.FirstOrDefaultAsync<PackageLevel>(m => m.name == profile.name);
             }
             catch (Exception ex)
             {

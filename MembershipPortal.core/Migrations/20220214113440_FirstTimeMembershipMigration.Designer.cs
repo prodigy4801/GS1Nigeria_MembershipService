@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MembershipPortal.core.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211209105141_First Migration")]
-    partial class FirstMigration
+    [Migration("20220214113440_FirstTimeMembershipMigration")]
+    partial class FirstTimeMembershipMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,17 +29,13 @@ namespace MembershipPortal.core.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("brick")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("brick_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("createddate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("modifieddate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("brick_id")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("id");
 
@@ -161,20 +157,14 @@ namespace MembershipPortal.core.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("createddate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("description")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<DateTime?>("modifieddate")
-                        .HasColumnType("datetime2");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("id");
 
@@ -188,16 +178,13 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("createddate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("level")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime?>("modifieddate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("id");
 
@@ -211,13 +198,7 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("createddate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("modifieddate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("packagingname")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");

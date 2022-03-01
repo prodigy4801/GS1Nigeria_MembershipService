@@ -15,11 +15,13 @@ namespace MembershipPortal.data
         public int id { get; set; }
         [Required]   
         public string code { get; set; }
-        [Required]      
-        public string name { get; set; }        
+        [Required]
+        [StringLength(200)]
+        public string name { get; set; }
+        [StringLength(500)]
         public string description { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime modifieddate { get; set; } 
+        //public DateTime createddate { get; set; }
+        //public DateTime? modifieddate { get; set; }
         public List<Product> Products { get; set; }
     }
 }

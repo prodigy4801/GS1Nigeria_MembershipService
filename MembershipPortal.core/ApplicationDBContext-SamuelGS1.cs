@@ -70,7 +70,6 @@ namespace MembershipPortal.core
             {
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
-                entity.HasIndex(u => u.gtin).IsUnique();
             });
 
             modelBuilder.Entity<TargetMarket>(entity =>
@@ -86,25 +85,12 @@ namespace MembershipPortal.core
             //        new Role { id = 3, name = "SuperAdmin" }
             //    );
             //RegistrationBackend.core.Seed.EntitySeeder.Seed<ApplicationDBContext>();
-            modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
-            modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
-            modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
-            modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
-            modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
+            //modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
+            //modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
+            //modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
 
         }
-
-        public List<NetContent> SeedNetContentData()
-        {
-            var netcontents = new List<NetContent>();
-            using (StreamReader r = new StreamReader(@"Seed/netcontents.json"))
-            {
-                string json = r.ReadToEnd();
-                netcontents = JsonConvert.DeserializeObject<List<NetContent>>(json);
-            }
-            return netcontents;
-        }
-        public List<BrickCategory> xSeedBrickCategoryData()
+        public List<BrickCategory> SeedBrickCategoryData()
         {
             var brickCategories = new List<BrickCategory>();
             using (StreamReader r = new StreamReader(@"Seed/brickcategory.json"))
@@ -114,7 +100,7 @@ namespace MembershipPortal.core
             }
             return brickCategories;
         }
-        public List<PackageLevel> SeedPackagingLevelData()
+        public List<PackageLevel> xSeedPackagingLevelData()
         {
             var packageLevels = new List<PackageLevel>();
             using (StreamReader r = new StreamReader(@"Seed/packaginglevel.json"))
@@ -124,7 +110,7 @@ namespace MembershipPortal.core
             }
             return packageLevels;
         }
-        public List<PackagingType> SeedPackagingTypeData()
+        public List<PackagingType> xSeedPackagingTypeData()
         {
             var packageTypes = new List<PackagingType>();
             using (StreamReader r = new StreamReader(@"Seed/packagingtype.json"))
@@ -133,16 +119,6 @@ namespace MembershipPortal.core
                 packageTypes = JsonConvert.DeserializeObject<List<PackagingType>>(json);
             }
             return packageTypes;
-        }
-        public List<TargetMarket> SeedTargetMarketData()
-        {
-            var targetMarkets = new List<TargetMarket>();
-            using (StreamReader r = new StreamReader(@"Seed/targetMarket.json"))
-            {
-                string json = r.ReadToEnd();
-                targetMarkets = JsonConvert.DeserializeObject<List<TargetMarket>>(json);
-            }
-            return targetMarkets;
         }
 
         //public List<LocalGovt> SeedLocalGovtData()

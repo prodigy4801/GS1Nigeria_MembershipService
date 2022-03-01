@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.BrickCategoryRP.GetByIdAsync(id);
         }
 
+        public async Task<BrickCategory> GetByBrickName(string name)
+        {
+            return await _uow.BrickCategoryRP.GetSingleByAsync(s => s.brick == name);
+        }
+
         public async Task<GenericResponse<BrickCategory>> Remove(BrickCategory obj)
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
@@ -84,13 +89,13 @@ namespace MembershipPortal.service.Concrete
         {
             if (profile.id == 0)
             {
-                profile.createddate = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                profile.modifieddate = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
@@ -143,8 +148,8 @@ namespace MembershipPortal.service.Concrete
             {
                 var objEx = _uow.BrickCategoryRP.GetById(id);
                 objEx.brick = obj.brick != string.Empty || obj.brick != null ? obj.brick : objEx.brick;
-                objEx.brick_id = obj.brick_id > 0 ? obj.brick_id : objEx.brick_id;
-                
+                objEx.brick_id = obj.brick_id != string.Empty || obj.brick_id != null ? obj.brick_id : objEx.brick_id;
+
                 //objEx.ID = Id;
                 _uow.BrickCategoryRP.Update(objEx);
                 int result = await _uow.Complete();

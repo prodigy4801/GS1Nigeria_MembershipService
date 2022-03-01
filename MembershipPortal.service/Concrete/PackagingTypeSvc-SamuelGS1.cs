@@ -8,33 +8,28 @@ using MembershipPortal.data;
 
 namespace MembershipPortal.service.Concrete
 {
-    public class TargetMarketSvc : ITargetMarketSvc
+    public class PackagingTypeSvc : IPackagingTypeSvc
     {
         private readonly IUnitOfWork _uow;
 
-        public TargetMarketSvc(IUnitOfWork uow)
+        public PackagingTypeSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<TargetMarket>> GetAll()
+        public async Task<IEnumerable<PackagingType>> GetAll()
         {
-            return await _uow.TargetMarketRP.GetAllAsync();
+            return await _uow.PackagingTypeRP.GetAllAsync();
         }
 
-        public async Task<TargetMarket> GetByID(int id)
+        public async Task<PackagingType> GetByID(int id)
         {
-            return await _uow.TargetMarketRP.GetByIdAsync(id);
+            return await _uow.PackagingTypeRP.GetByIdAsync(id);
         }
 
-        public async Task<TargetMarket> GetByTargetMarketName(string name)
+        public async Task<GenericResponse<PackagingType>> Remove(PackagingType obj)
         {
-            return await _uow.TargetMarketRP.GetSingleByAsync(s => s.name == name);
-        }
-
-        public async Task<GenericResponse<TargetMarket>> Remove(TargetMarket obj)
-        {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
             {
                 Data = null,
                 IsSuccess = false,
@@ -42,7 +37,7 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                _uow.TargetMarketRP.Delete(obj);
+                _uow.PackagingTypeRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
@@ -58,9 +53,9 @@ namespace MembershipPortal.service.Concrete
             return response;
         }
 
-        public async Task<GenericResponse<TargetMarket>> Remove(int id)
+        public async Task<GenericResponse<PackagingType>> Remove(int id)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
             {
                 Data = null,
                 IsSuccess = false,
@@ -68,8 +63,8 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                var obj = _uow.TargetMarketRP.GetById(id);
-                _uow.TargetMarketRP.Delete(obj);
+                var obj = _uow.PackagingTypeRP.GetById(id);
+                _uow.PackagingTypeRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
@@ -85,24 +80,24 @@ namespace MembershipPortal.service.Concrete
             return response;
         }
 
-        public async Task<GenericResponse<TargetMarket>> Save(TargetMarket profile)
+        public async Task<GenericResponse<PackagingType>> Save(PackagingType profile)
         {
             if (profile.id == 0)
             {
-                //profile.create = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                //profile.modifiedon = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
-        private async Task<GenericResponse<TargetMarket>> Add(TargetMarket profile)
+        private async Task<GenericResponse<PackagingType>> Add(PackagingType profile)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
             {
                 Data = null,
                 IsSuccess = false,
@@ -110,9 +105,9 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                if (!await _uow.TargetMarketRP.IsExists(profile))
+                if (!await _uow.PackagingTypeRP.IsExists(profile))
                 {
-                    _uow.TargetMarketRP.Add(profile);
+                    _uow.PackagingTypeRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
@@ -136,9 +131,9 @@ namespace MembershipPortal.service.Concrete
 
             return response;
         }
-        private async Task<GenericResponse<TargetMarket>> Update(int id, TargetMarket obj)
+        private async Task<GenericResponse<PackagingType>> Update(int id, PackagingType obj)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
+            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
             {
                 Data = null,
                 IsSuccess = false,
@@ -146,11 +141,10 @@ namespace MembershipPortal.service.Concrete
             };
             try
             {
-                var objEx = _uow.TargetMarketRP.GetById(id);
+                var objEx = _uow.PackagingTypeRP.GetById(id);
                 objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
-                
                 //objEx.ID = Id;
-                _uow.TargetMarketRP.Update(objEx);
+                _uow.PackagingTypeRP.Update(objEx);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {

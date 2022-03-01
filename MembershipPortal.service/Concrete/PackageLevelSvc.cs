@@ -27,6 +27,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.PackageLevelRP.GetByIdAsync(id);
         }
 
+        public async Task<PackageLevel> GetByPackageLevelName(string name)
+        {
+            return await _uow.PackageLevelRP.GetSingleByAsync(s => s.name == name);
+        }
+
         public async Task<GenericResponse<PackageLevel>> Remove(PackageLevel obj)
         {
             GenericResponse<PackageLevel> response = new GenericResponse<PackageLevel>
@@ -84,13 +89,13 @@ namespace MembershipPortal.service.Concrete
         {
             if (profile.id == 0)
             {
-                profile.createddate = DateTime.Now;
+                //profile.createddate = DateTime.Now;
 
                 return await Add(profile);
             }
             else
             {
-                profile.modifieddate = DateTime.Now;
+                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
@@ -142,7 +147,8 @@ namespace MembershipPortal.service.Concrete
             try
             {
                 var objEx = _uow.PackageLevelRP.GetById(id);
-                objEx.level = obj.level != string.Empty || obj.level != null ? obj.level : objEx.level;
+                objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
+                objEx.description = obj.description != string.Empty || obj.description != null ? obj.description : objEx.description;
                 //objEx.ID = Id;
                 _uow.PackageLevelRP.Update(objEx);
                 int result = await _uow.Complete();
