@@ -4,14 +4,16 @@ using MembershipPortal.core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MembershipPortal.core.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220301145457_brick-full-len")]
+    partial class brickfulllen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +37,7 @@ namespace MembershipPortal.core.Migrations
                     b.Property<DateTime>("createddate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("modifieddate")
+                    b.Property<DateTime?>("modifieddate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("id");
@@ -155,20 +157,23 @@ namespace MembershipPortal.core.Migrations
 
                     b.Property<string>("code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("createddate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("modifieddate")
+                    b.Property<DateTime?>("modifieddate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("id");
 

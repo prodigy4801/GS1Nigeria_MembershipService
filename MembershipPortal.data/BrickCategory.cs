@@ -15,11 +15,11 @@ namespace MembershipPortal.data
         public int id { get; set; }
         [Required]
         public int brick_id { get; set; }
-        [StringLength(100)]
+        public DateTime createddate { get; set; }
+        public DateTime modifieddate { get; set; } 
         public string brick { get; set; }
         public List<Product> Products { get; set; }
 
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+       
     }
 }

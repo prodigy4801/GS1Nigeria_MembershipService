@@ -13,16 +13,13 @@ namespace MembershipPortal.data
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        [Required]
-        [StringLength(50)]
+        [Required]   
         public string code { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string name { get; set; }
-        [StringLength(200)]
+        [Required]      
+        public string name { get; set; }        
         public string description { get; set; }
         public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        public DateTime modifieddate { get; set; } 
         public List<Product> Products { get; set; }
     }
 }
