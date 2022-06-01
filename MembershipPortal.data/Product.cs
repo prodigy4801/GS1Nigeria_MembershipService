@@ -19,41 +19,41 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(100)]
         public string registrationid { get; set; }
-        public int netcontent_id { get; set; }
+        public int? netcontent_id { get; set; }
         [Required]
         [StringLength(200)]
         public string brandname { get; set; }
-        public int packagingtype_id { get; set; }
-        [StringLength(200)]
+        public int? packagingtype_id { get; set; }
+        // [StringLength(200)]
         public string productdescription { get; set; }
-        [StringLength(500)]
+        // [StringLength(500)]
         public string marketingmessage { get; set; }
-        public int targetmarket_id { get; set; }
+        public int? targetmarket_id { get; set; }
         public DateTime consumerfirstavailabilitydate { get; set; }
         public double netweight { get; set; }
         public bool iscompleted { get; set; }
         public double grossweight { get; set; }
-        public int brickcategory_id { get; set; }
-        [StringLength(200)]
+        public int? brickcategory_id { get; set; }
+        [StringLength(500)]
         public string frontimage { get; set; }
         public bool hasimage { get; set; }
-        [StringLength(200)]
+        [StringLength(500)]
         public string backimage { get; set; }
         public DateTime dateoflisting { get; set; }
-        [StringLength(500)]
+        // [StringLength(500)]
         public string ingredients { get; set; }
         [StringLength(500)]
         public string allergeninfo { get; set; }
         [StringLength(100)]
         public string nafdacnumber { get; set; }
-        [StringLength(500)]
+        // [StringLength(500)]
         public string storageinstruction { get; set; }
-        [StringLength(500)]
+        // [StringLength(500)]
         public string directionofuse { get; set; }
         public int lifespan { get; set; }
         [StringLength(500)]
         public string lifespanunit { get; set; }
-        public int packaginglevel_id { get; set; }
+        public int? packaginglevel_id { get; set; }
         public DateTime createddate { get; set; }
         public DateTime modifieddate { get; set; }
 
@@ -71,5 +71,7 @@ namespace MembershipPortal.data
 
         [ForeignKey(nameof(targetmarket_id))]
         public TargetMarket TargetMarket { get; set; }
+        public bool IsPharma { get; set; }
+        public PharmaceuticalInformation PharmaceuticalInformation { get; set; }
     }
 }

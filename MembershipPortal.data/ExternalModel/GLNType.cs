@@ -6,22 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MembershipPortal.data
+namespace RegistrationBackend.data.Models
 {
-    public class BrickCategory
+    public class GLNType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        //[Required]
-        [StringLength(100)]
-        public string brick_id { get; set; }
         [Required]
         [StringLength(100)]
-        public string brick { get; set; }
-        public List<Product> Products { get; set; }
+        public string glntype { get; set; }
+        public string description { get; set; }
 
-        //public DateTime createddate { get; set; }
-        //public DateTime? modifieddate { get; set; }
+        public ICollection<GLNFee> GLNFee_Type { get; set; }
     }
 }

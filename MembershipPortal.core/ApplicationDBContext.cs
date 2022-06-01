@@ -25,11 +25,14 @@ namespace MembershipPortal.core
         public virtual DbSet<PackageLevel> PackageLevels { get; set; }
         public virtual DbSet<PackagingType> PackagingTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<PharmaceuticalInformation> PharmaceuticalInformations { get; set; }
         public virtual DbSet<TargetMarket> TargetMarkets { get; set; }
+        public virtual DbSet<GCPInformation> GCPInformations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.HasDefaultSchema("dbo");
 
             modelBuilder.Entity<BrickCategory>(entity =>
             {
@@ -79,6 +82,12 @@ namespace MembershipPortal.core
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
             });
 
+            modelBuilder.Entity<PharmaceuticalInformation>()
+                .HasOne(p => p.Product)
+                .WithOne(ph => ph.PharmaceuticalInformation)
+                .IsRequired(false);
+
+                
             //modelBuilder.Entity<Role>()
             //    .HasData(
             //        new Role { id = 1, name = "Member" },
@@ -86,11 +95,11 @@ namespace MembershipPortal.core
             //        new Role { id = 3, name = "SuperAdmin" }
             //    );
             //RegistrationBackend.core.Seed.EntitySeeder.Seed<ApplicationDBContext>();
-            modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
-            modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
-            modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
-            modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
-            modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
+            // modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
+            // modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
+            // modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
+            // modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
+            // modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
 
         }
 
@@ -104,7 +113,7 @@ namespace MembershipPortal.core
             }
             return netcontents;
         }
-        public List<BrickCategory> xSeedBrickCategoryData()
+        public List<BrickCategory> SeedBrickCategoryData()
         {
             var brickCategories = new List<BrickCategory>();
             using (StreamReader r = new StreamReader(@"Seed/brickcategory.json"))

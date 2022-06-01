@@ -40,7 +40,10 @@ namespace MembershipPortal.api
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MembershipPortalConfig"),
                 x => x.MigrationsHistoryTable("__opensourcemigrationhistory")));
-            services.AddControllers();
+            services.AddDbContext<RegistrationDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("RegistrationConfig"),
+            x => x.MigrationsHistoryTable("__opensourcemigrationhistory")));
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "MembershipPortal.api", Version = "v2" });
@@ -48,6 +51,7 @@ namespace MembershipPortal.api
             services.AddCors();
             services.Configure<RegistrationAPI_Settings>(Configuration.GetSection("RegistrationAPI_Settings"));
             services.AddScoped<IAPICredentialsService, APICredentialsService>();
+            services.AddScoped<IDataService, DataService>();
 
             var customConfig = new AutoMapper.MapperConfiguration(cfg =>
             {
@@ -67,9 +71,10 @@ namespace MembershipPortal.api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "MembershipPortal.api v2"));
+
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "MembershipPortal.api v2"));
 
             app.UseCors(x => x
                 .AllowAnyOrigin()

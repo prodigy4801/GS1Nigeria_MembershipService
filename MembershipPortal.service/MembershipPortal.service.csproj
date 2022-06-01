@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MembershipPortal.core\MembershipPortal.core.csproj" />
     <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
+    <ProjectReference Include="..\MembershipPortal.viewmodels\MembershipPortal.viewmodels.csproj" />
   </ItemGroup>
 
 </Project>

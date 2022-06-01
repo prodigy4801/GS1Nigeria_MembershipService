@@ -2,21 +2,24 @@
 
 namespace MembershipPortal.core.Migrations
 {
-    public partial class makeprodunique : Migration
+    public partial class updateprod : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_gtin",
+            migrationBuilder.AddColumn<bool>(
+                name: "IsPharma",
+                schema: "dbo",
                 table: "Products",
-                column: "gtin",
-                unique: true);
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
-                name: "IX_Products_gtin",
+            migrationBuilder.DropColumn(
+                name: "IsPharma",
+                schema: "dbo",
                 table: "Products");
         }
     }

@@ -6,24 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MembershipPortal.data
+namespace RegistrationBackend.data.Models
 {
-    public class GLNInformation
+    public class ImageRequest
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(10)]
+        public string imagetype { get; set; }
+        [Required]
+        [StringLength(20)]
         public string registrationid { get; set; }
-        public int glnrequestid { get; set; }
+        public int imagecount { get; set; }
+        public Boolean isapproved { get; set; }
         [Required]
         [StringLength(50)]
-        public string gln { get; set; }
-        [StringLength(50)]
-        public string companyprefix { get; set; }
-        public string asignedby { get; set; }
-        public DateTime createddate { get; set; }
-        public DateTime? modifieddate { get; set; }
+        public string approvedby { get; set; }
+        public DateTime createdon { get; set; }
+        public DateTime updatedon { get; set; }
     }
 }
