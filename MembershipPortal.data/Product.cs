@@ -23,6 +23,7 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(200)]
         public string brandname { get; set; }
+        public int? brandinformation_id { get; set; }
         public int? packagingtype_id { get; set; }
         // [StringLength(200)]
         public string productdescription { get; set; }
@@ -59,6 +60,9 @@ namespace MembershipPortal.data
 
         [ForeignKey(nameof(brickcategory_id))]
         public BrickCategory BrickCategory { get; set; }
+
+        [ForeignKey(nameof(brandinformation_id))]
+        public BrandInformation BrandInformation { get; set; }
 
         [ForeignKey(nameof(netcontent_id))]
         public NetContent NetContent { get; set; }
