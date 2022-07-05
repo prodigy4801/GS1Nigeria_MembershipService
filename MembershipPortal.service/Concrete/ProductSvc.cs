@@ -19,12 +19,12 @@ namespace MembershipPortal.service.Concrete
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _uow.ProductRP.GetAllAsync();
+            return await _uow.ProductRP.GetAllDependencies();
         }
 
         public async Task<Product> GetByID(int id)
         {
-            return await _uow.ProductRP.GetByIdAsync(id);
+            return await _uow.ProductRP.GetByIDDependencies(id);
         }
 
         public async Task<GenericResponse<Product>> Remove(Product obj)
@@ -198,6 +198,7 @@ namespace MembershipPortal.service.Concrete
                 var objEx = _uow.ProductRP.GetById(id);
                 objEx.allergeninfo = obj.allergeninfo != string.Empty || obj.allergeninfo != null ? obj.allergeninfo : objEx.allergeninfo;
                 objEx.backimage = obj.backimage != string.Empty || obj.backimage != null ? obj.backimage : objEx.backimage;
+                objEx.brandinformation_id = obj.brandinformation_id;
                 objEx.brandname = obj.brandname != string.Empty || obj.brandname != null ? obj.brandname : objEx.brandname;
                 objEx.brickcategory_id = obj.brickcategory_id > 0 ? obj.brickcategory_id : objEx.brickcategory_id;
                 objEx.consumerfirstavailabilitydate = obj.consumerfirstavailabilitydate;
