@@ -14,6 +14,9 @@ namespace MembershipPortal.configurations
     {
         public MappingProfile()
         {
+            CreateMap<BrandInformationVM, BrandInformation>().ReverseMap();
+            CreateMap<BrandInformationVM_CRU, BrandInformation>().ReverseMap();
+
             CreateMap<BrickCategoryVM, BrickCategory>().ReverseMap();
             CreateMap<BrickCategoryVM_CRU, BrickCategory>().ReverseMap();
 

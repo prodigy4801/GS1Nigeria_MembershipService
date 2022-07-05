@@ -13,6 +13,7 @@ namespace MembershipPortal.configurations
     {
         public static void Configure(IServiceCollection services)
         {
+            services.AddScoped<IBrandInformationSvc, BrandInformationSvc>();
             services.AddScoped<IBrickCategorySvc, BrickCategorySvc>();
             services.AddScoped<IGLNInformationSvc, GLNInformationSvc>();
             services.AddScoped<IGTINInformationSvc, GTINInformationSvc>();

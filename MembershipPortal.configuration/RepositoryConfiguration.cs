@@ -15,6 +15,7 @@ namespace MembershipPortal.configurations
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddScoped<IBrandInformationRepo, BrandInformationRepo>();
             services.AddScoped<IBrickCategoryRepo, BrickCategoryRepo>();
             services.AddScoped<IGLNInformationRepo, GLNInformationRepo>();
             services.AddScoped<IGTINInformationRepo, GTINInformationRepo>();
