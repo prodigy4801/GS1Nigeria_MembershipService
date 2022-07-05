@@ -18,6 +18,7 @@ namespace MembershipPortal.core
         }
 
         public virtual DbSet<BrickCategory> BrickCategories { get; set; }
+        public virtual DbSet<BrandInformation> BrandInformations { get; set; }
         public virtual DbSet<GLNInformation> GLNInformations { get; set; }
         public virtual DbSet<GTINInformation> GTINInformations { get; set; }
         public virtual DbSet<ITFInformation> ITFInformations { get; set; }
@@ -38,6 +39,12 @@ namespace MembershipPortal.core
             {
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
+            });
+            modelBuilder.Entity<BrandInformation>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id).ValueGeneratedOnAdd();
+                entity.HasIndex(u => u.brandname).IsUnique();
             });
             modelBuilder.Entity<GLNInformation>(entity =>
             {

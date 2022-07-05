@@ -9,6 +9,7 @@ namespace MembershipPortal.core
 {
     public interface IUnitOfWork : IDisposable
     {
+        IBrandInformationRepo BrandInformationRP { get; }
         IBrickCategoryRepo BrickCategoryRP { get; }
         IGLNInformationRepo GLNInformationRP { get; }
         IGTINInformationRepo GTINInformationRP { get; }

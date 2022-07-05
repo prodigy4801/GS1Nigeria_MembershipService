@@ -14,6 +14,7 @@ namespace MembershipPortal.core
         public UnitOfWork(ApplicationDBContext context)
         {
             this._context = context;
+            BrandInformationRP = new BrandInformationRepo(_context);
             BrickCategoryRP = new BrickCategoryRepo(_context);
             GLNInformationRP = new GLNInformationRepo(_context);
             GTINInformationRP = new GTINInformationRepo(_context);
@@ -26,6 +27,9 @@ namespace MembershipPortal.core
         }
 
         public IBrickCategoryRepo BrickCategoryRP { get; private set; }
+
+        public IBrandInformationRepo BrandInformationRP { get; private set; }
+
         public IGLNInformationRepo GLNInformationRP { get; private set; }
 
         public IGTINInformationRepo GTINInformationRP { get; private set; }

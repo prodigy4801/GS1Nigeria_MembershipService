@@ -33,5 +33,34 @@ namespace MembershipPortal.core.Repository
 
             return response != null ? true : false;
         }
+        public async Task<IEnumerable<Product>> GetAllDependencies()
+        {
+            IEnumerable<Product> response = null;
+            try
+            {
+                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.TargetMarket).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+            return response;
+        }
+
+        public async Task<Product> GetByIDDependencies(int id)
+        {
+            Product response = null;
+            try
+            {
+                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.TargetMarket).FirstOrDefaultAsync<Product>(m => m.id == id);
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+            return response;
+        }
     }
 }

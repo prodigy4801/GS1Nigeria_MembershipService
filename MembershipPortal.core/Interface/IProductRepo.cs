@@ -10,5 +10,7 @@ namespace MembershipPortal.core.Repository
     public interface IProductRepo : IGenericRepository<Product>
     {
         Task<bool> IsExists(Product profile);
+        Task<IEnumerable<Product>> GetAllDependencies();
+        Task<Product> GetByIDDependencies(int id);
     }
 }
