@@ -11,6 +11,15 @@ namespace MembershipPortal.api.Contract.V2
         public const string Version = "v2";
         public const string Base = Root + "/" + Version;
 
+        public static class RBrandInformation
+        {
+            public const string GetAll = Base + "/brandinformation";
+            public const string Create = Base + "/brandinformation";
+            public const string GetByID = Base + "/brandinformation/{id}";
+            public const string Delete = Base + "/brandinformation";
+            public const string Update = Base + "/brandinformation/{id}";
+        }
+
         public static class RBrickCategory
         {
             public const string GetAll = Base + "/brickcategory";

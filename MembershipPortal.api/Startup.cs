@@ -71,8 +71,8 @@ namespace MembershipPortal.api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
             }
+            app.UseSwaggerAuthorized();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "MembershipPortal.api v2"));
 
