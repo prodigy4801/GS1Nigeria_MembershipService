@@ -11,6 +11,7 @@ namespace MembershipPortal.core
     {
         IBrandInformationRepo BrandInformationRP { get; }
         IBrickCategoryRepo BrickCategoryRP { get; }
+        IExternalUnifiedModelRepo ExternalUnifiedModelRP { get; }
         IGLNInformationRepo GLNInformationRP { get; }
         IGTINInformationRepo GTINInformationRP { get; }
         IITFInformationRepo ITFInformationRP { get; }

@@ -16,6 +16,7 @@ namespace MembershipPortal.core
             this._context = context;
             BrandInformationRP = new BrandInformationRepo(_context);
             BrickCategoryRP = new BrickCategoryRepo(_context);
+            ExternalUnifiedModelRP = new ExternalUnifiedModelRepo(_context);
             GLNInformationRP = new GLNInformationRepo(_context);
             GTINInformationRP = new GTINInformationRepo(_context);
             ITFInformationRP = new ITFInformationRepo(_context);
@@ -29,6 +30,7 @@ namespace MembershipPortal.core
         public IBrickCategoryRepo BrickCategoryRP { get; private set; }
 
         public IBrandInformationRepo BrandInformationRP { get; private set; }
+        public IExternalUnifiedModelRepo ExternalUnifiedModelRP { get; set; }
 
         public IGLNInformationRepo GLNInformationRP { get; private set; }
 

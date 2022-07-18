@@ -180,11 +180,11 @@ namespace MembershipPortal.core
             return await _dbSet.ToListAsync();
         }
 
-        public IEnumerable<T> GetBy(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int? skip = default(int?), int? take = default(int?), params string[] includeProperties)
+        public async Task<IEnumerable<T>> GetBy(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int? skip = default(int?), int? take = default(int?), params string[] includeProperties)
         {
             IQueryable<T> query = ConstructQuery(predicate, orderBy, skip, take, includeProperties);
 
-            return query.ToList();
+            return await query.ToListAsync();
         }
 
         public T GetById(object id)
