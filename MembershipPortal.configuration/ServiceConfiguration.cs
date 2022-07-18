@@ -15,6 +15,7 @@ namespace MembershipPortal.configurations
         {
             services.AddScoped<IBrandInformationSvc, BrandInformationSvc>();
             services.AddScoped<IBrickCategorySvc, BrickCategorySvc>();
+            services.AddScoped<IExternalUnifiedModelSvc, ExternalUnifiedModelSvc>();
             services.AddScoped<IGLNInformationSvc, GLNInformationSvc>();
             services.AddScoped<IGTINInformationSvc, GTINInformationSvc>();
             services.AddScoped<IITFInformationSvc, ITFInformationSvc>();

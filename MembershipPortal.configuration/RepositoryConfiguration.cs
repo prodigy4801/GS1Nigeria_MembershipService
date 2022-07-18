@@ -17,6 +17,7 @@ namespace MembershipPortal.configurations
 
             services.AddScoped<IBrandInformationRepo, BrandInformationRepo>();
             services.AddScoped<IBrickCategoryRepo, BrickCategoryRepo>();
+            services.AddScoped<IExternalUnifiedModelRepo, ExternalUnifiedModelRepo>();
             services.AddScoped<IGLNInformationRepo, GLNInformationRepo>();
             services.AddScoped<IGTINInformationRepo, GTINInformationRepo>();
             services.AddScoped<IITFInformationRepo, ITFInformationRepo>();

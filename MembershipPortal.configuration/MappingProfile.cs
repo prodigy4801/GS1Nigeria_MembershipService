@@ -20,6 +20,9 @@ namespace MembershipPortal.configurations
             CreateMap<BrickCategoryVM, BrickCategory>().ReverseMap();
             CreateMap<BrickCategoryVM_CRU, BrickCategory>().ReverseMap();
 
+            CreateMap<ExternalUnifiedModelVM, ExternalUnifiedModel>().ReverseMap();
+            CreateMap<ExternalUnifiedModelVM_CRU, ExternalUnifiedModel>().ReverseMap();
+
             CreateMap<GLNInformationVM, GLNInformation>().ReverseMap();
             CreateMap<GLNInformationVM_CRU, GLNInformation>().ReverseMap();
 
