@@ -19,6 +19,7 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(100)]
         public string registrationid { get; set; }
+        public bool isActive { get; set; }
         public DateTime createddate { get; set; }
         public DateTime modifieddate { get; set; }
 
