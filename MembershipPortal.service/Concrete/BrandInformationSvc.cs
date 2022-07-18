@@ -22,6 +22,11 @@ namespace MembershipPortal.service.Concrete
             return await _uow.BrandInformationRP.GetAllAsync();
         }
 
+        public async Task<IEnumerable<BrandInformation>> GetByRegistrationID(string regID)
+        {
+            return await _uow.BrandInformationRP.GetBy(s => s.registrationid == regID);
+        }
+
         public async Task<BrandInformation> GetByID(int id)
         {
             return await _uow.BrandInformationRP.GetByIdAsync(id);
@@ -48,6 +53,25 @@ namespace MembershipPortal.service.Concrete
             catch (Exception ex)
             {
                 response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
+        public async Task<bool> RecordExist(BrandInformation record)
+        {
+            bool response = false;
+
+            try
+            {
+                if (await _uow.BrandInformationRP.IsExists(record))
+                {
+                    response = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
 
             return response;
@@ -142,23 +166,34 @@ namespace MembershipPortal.service.Concrete
             try
             {
                 var objEx = _uow.BrandInformationRP.GetById(id);
-                if (!await _uow.BrandInformationRP.IsExists(obj))
+                objEx.brandname = obj.brandname != string.Empty || obj.brandname != null ? obj.brandname : objEx.brandname;
+                objEx.isActive = obj.isActive;
+                //objEx.ID = Id;
+                _uow.BrandInformationRP.Update(objEx);
+                int result = await _uow.Complete();
+                if (result > 0)
                 {
-                    objEx.brandname = obj.brandname != string.Empty || obj.brandname != null ? obj.brandname : objEx.brandname;
-                    //objEx.ID = Id;
-                    _uow.BrandInformationRP.Update(objEx);
-                    int result = await _uow.Complete();
-                    if (result > 0)
-                    {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully updated record";
-                        response.Data = objEx;
-                    }
+                    response.IsSuccess = true;
+                    response.Message = "Successfully updated record";
+                    response.Data = objEx;
                 }
-                else
-                {
-                    response.Message = "Information already exist.";
-                }
+                //if (!await _uow.BrandInformationRP.IsExists(obj))
+                //{
+                //    objEx.brandname = obj.brandname != string.Empty || obj.brandname != null ? obj.brandname : objEx.brandname;
+                //    //objEx.ID = Id;
+                //    _uow.BrandInformationRP.Update(objEx);
+                //    int result = await _uow.Complete();
+                //    if (result > 0)
+                //    {
+                //        response.IsSuccess = true;
+                //        response.Message = "Successfully updated record";
+                //        response.Data = objEx;
+                //    }
+                //}
+                //else
+                //{
+                //    response.Message = "Information already exist.";
+                //}
             }
             catch (Exception ex)
             {

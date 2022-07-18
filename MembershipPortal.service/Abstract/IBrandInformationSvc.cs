@@ -9,5 +9,7 @@ namespace MembershipPortal.service
 {
     public interface IBrandInformationSvc : IService<BrandInformation>
     {
+        Task<bool> RecordExist(BrandInformation record);
+        Task<IEnumerable<BrandInformation>> GetByRegistrationID(string regID);
     }
 }
