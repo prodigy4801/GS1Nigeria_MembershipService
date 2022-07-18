@@ -16,8 +16,10 @@ namespace MembershipPortal.api.Contract.V2
             public const string GetAll = Base + "/brandinformation";
             public const string Create = Base + "/brandinformation";
             public const string GetByID = Base + "/brandinformation/{id}";
-            public const string Delete = Base + "/brandinformation";
-            public const string Update = Base + "/brandinformation/{id}";
+            public const string GetByRegID = Base + "/brandinformation/getbyregistrationid/{registrationid}";
+            public const string Update = Base + "/brandinformation/update";
+            public const string Deactivate = Base + "/brandinformation/deactivate/{id}";
+            public const string Activate = Base + "/brandinformation/activate/{id}";
         }
 
         public static class RBrickCategory
@@ -27,6 +29,15 @@ namespace MembershipPortal.api.Contract.V2
             public const string GetByID = Base + "/brickcategory/{id}";
             public const string Delete = Base + "/brickcategory";
             public const string Update = Base + "/brickcategory/{id}";
+        }
+
+        public static class RExternalUnifiedModel
+        {
+            public const string GetAll = Base + "/externalunifiedmodel";
+            public const string Create = Base + "/externalunifiedmodel";
+            public const string GetByID = Base + "/externalunifiedmodel/{id}";
+            public const string Delete = Base + "/externalunifiedmodel";
+            public const string Update = Base + "/externalunifiedmodel/{id}";
         }
 
         public static class RGLNInformation

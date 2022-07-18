@@ -78,10 +78,41 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
+        // GET api/<BenefitController>/5
+        [HttpGet(ApiRoutes.RBrandInformation.GetByRegID)]
+        public async Task<IActionResult> GetByRegID(string registrationid)
+        {
+            try
+            {
+                var data = await _service.GetByRegistrationID(registrationid);
+
+                if (data != null)
+                {
+                    _logger.LogInformation("Success: Get BrandInformation with id " + registrationid);
+                    var obj = _mapper.Map<BrandInformationVM>(data);
+                    return Ok(obj);
+                }
+
+                _logger.LogInformation("NULL: Get BrandInformation with id " + registrationid);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed: Get BrandInformation with id with error " + ex);
+                return null;
+            }
+        }
+
         // POST api/<BenefitBrandInformationController>
         [HttpPost(ApiRoutes.RBrandInformation.Create)]
         public async Task<IActionResult> Post([FromBody] BrandInformationVM_CRU obj)
         {
+            ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
+            {
+                Data = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
@@ -90,28 +121,32 @@ namespace MembershipPortal.api.Controllers.V2
                     _logger.LogInformation("Failed: Create BrandInformation ", errors);
                     return BadRequest(errors);
                 }
-                else
+
+                BrandInformation data = _mapper.Map<BrandInformation>(obj);
+                data.isActive = true;
+                var result = await _service.Save(data);
+                if (result.IsSuccess)
                 {
-                    BrandInformation data = _mapper.Map<BrandInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create BrandInformation ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RBrandInformation.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create BrandInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                    response.IsSuccess = result.IsSuccess;
+                    _logger.LogInformation("Success: Create BrandInformation ", response);
+                    var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
+                    //return Created(locationUrl, response);
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                response.Message = result.Message;
+                _logger.LogError("Failed: Create BrandInformation ", response);
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+                //else
+                //{
+                //    _logger.LogError("Failed: Create BrandInformation ", result);
+                //    return StatusCode(StatusCodes.Status500InternalServerError, result);
+                //}
             }
             catch (Exception ex)
             {
                 _logger.LogError("Failed: Create BrandInformation " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
 
         }
@@ -119,38 +154,149 @@ namespace MembershipPortal.api.Controllers.V2
 
         // PUT api/<BenefitBrandInformationController>/5
         [HttpPut(ApiRoutes.RBrandInformation.Update)]
-        public async Task<IActionResult> Put([FromBody] BrandInformationVM_CRU obj)
+        public async Task<IActionResult> Update([FromBody] BrandInformationVM_CRU model)
         {
+            ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
+            {
+                Data = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
-                if (!ModelState.IsValid && obj.id == 0)
+                if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
                     _logger.LogInformation("Failed: Update BrandInformation ", errors);
-                    return BadRequest();
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+                var newObj = await _service.GetByID(model.id);
+                if (model.brandname != newObj.brandname)
                 {
-                    var data = _mapper.Map<BrandInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
+                    var data = _mapper.Map<BrandInformation>(model);
+                    if (await _service.RecordExist(data))
                     {
-                        _logger.LogInformation("Success: Update BrandInformation ", result);
-                        return Ok(result);
+                        response.Message = "Brand Name exist in storage.";
+                        return StatusCode(StatusCodes.Status400BadRequest, response);
                     }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update BrandInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
                 }
+
+                if (newObj != null)
+                {
+                    newObj.brandname = model.brandname;
+
+                    var obj = await _service.Save(newObj);
+                    if (obj.IsSuccess)
+                    {
+                        //response.data = data;
+                        response.Data = _mapper.Map<BrandInformationVM>(obj.Data);
+                        response.IsSuccess = obj.IsSuccess;
+
+                        return StatusCode(StatusCodes.Status200OK, response);
+                    }
+                    response.Message = obj.Message;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
+                }
+                response.Message = "Failed Updating Record.";
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
                 _logger.LogError("Failed: Update BrandInformation " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+            }
+        }
+
+        // PUT api/<BenefitBrandInformationController>/5
+        [HttpPut(ApiRoutes.RBrandInformation.Activate)]
+        public async Task<IActionResult> Activate(int id)
+        {
+            ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
+            {
+                Data = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
+            try
+            {
+                if (id == 0)
+                {
+                    response.Message = "Problem with request payload.";
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
+                }
+
+                var newObj = await _service.GetByID(id);
+                if (newObj != null)
+                {
+                    newObj.isActive = true;
+                    var result = await _service.Save(newObj);
+                    if (result.IsSuccess)
+                    {
+                        response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                        response.IsSuccess = result.IsSuccess;
+                        _logger.LogInformation("Success: Update BrandInformation ", result);
+                        return StatusCode(StatusCodes.Status200OK, response);
+                    }
+
+                    response.Message = result.Message;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
+                }
+                response.Message = "Failed retrieving requested data.";
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed: Update BrandInformation " + ex);
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+            }
+        }
+
+        [HttpPut(ApiRoutes.RBrandInformation.Deactivate)]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
+            {
+                Data = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
+            try
+            {
+                if (id == 0)
+                {
+                    response.Message = "Problem with request payload.";
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
+                }
+
+                var newObj = await _service.GetByID(id);
+                if (newObj != null)
+                {
+                    newObj.isActive = false;
+                    var result = await _service.Save(newObj);
+                    if (result.IsSuccess)
+                    {
+                        response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                        response.IsSuccess = result.IsSuccess;
+                        _logger.LogInformation("Success: Update BrandInformation ", result);
+                        return StatusCode(StatusCodes.Status200OK, response);
+                    }
+
+                    response.Message = result.Message;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
+                }
+                response.Message = "Failed retrieving requested data.";
+                return StatusCode(StatusCodes.Status400BadRequest, response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed: Update BrandInformation " + ex);
+                response.Message = ex.Message;
+                return BadRequest(response);
             }
         }
     }
