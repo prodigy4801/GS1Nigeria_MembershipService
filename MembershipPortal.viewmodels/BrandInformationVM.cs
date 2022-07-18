@@ -12,12 +12,15 @@ namespace MembershipPortal.viewmodels
         public int id { get; set; }
         public string brandname { get; set; }
         public string registrationid { get; set; }
-        public DateTime datecreated { get; set; }
-        public DateTime datemodified { get; set; }
+        public bool isActive { get; set; }
+        public DateTime createddate { get; set; }
+        public DateTime modifieddate { get; set; }
     }
 
     public class BrandInformationVM_CRU
     {
+        [Key]
+        [Required]
         public int id { get; set; }
         [Required]
         [StringLength(100)]

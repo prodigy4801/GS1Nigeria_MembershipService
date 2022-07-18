@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MembershipPortal.viewmodels
 {
-    public class Z_GenericResponsesVM<T> where T : class
+    public class ServiceResponseVM<T> where T : class
     {
         public T Data { get; set; }
         public string Message { get; set; }
