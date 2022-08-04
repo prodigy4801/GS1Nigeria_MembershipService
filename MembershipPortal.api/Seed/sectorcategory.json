@@ -1,0 +1,207 @@
+﻿[
+  {
+    "id": 1,
+    "sectorcode": "70000000",
+    "sectorcategory": "Arts/Crafts/Needlework"
+  },
+  {
+    "id": 2,
+    "sectorcode": "68000000",
+    "sectorcategory": "Audio Visual/Photography"
+  },
+  {
+    "id": 3,
+    "sectorcode": "53000000",
+    "sectorcategory": "Beauty/Personal Care/Hygiene"
+  },
+  {
+    "id": 4,
+    "sectorcode": "83000000",
+    "sectorcategory": "Building Products"
+  },
+  {
+    "id": 5,
+    "sectorcode": "74000000",
+    "sectorcategory": "Camping"
+  },
+  {
+    "id": 6,
+    "sectorcode": "47000000",
+    "sectorcategory": "Cleaning/Hygiene Products"
+  },
+  {
+    "id": 7,
+    "sectorcode": "67000000",
+    "sectorcategory": "Clothing"
+  },
+  {
+    "id": 8,
+    "sectorcode": "66000000",
+    "sectorcategory": "Communications"
+  },
+  {
+    "id": 9,
+    "sectorcode": "65000000",
+    "sectorcategory": "Computing"
+  },
+  {
+    "id": 10,
+    "sectorcode": "94000000",
+    "sectorcategory": "Crops"
+  },
+  {
+    "id": 11,
+    "sectorcode": "58000000",
+    "sectorcategory": "Cross Segment"
+  },
+  {
+    "id": 12,
+    "sectorcode": "78000000",
+    "sectorcategory": "Electrical Supplies"
+  },
+  {
+    "id": 13,
+    "sectorcode": "50000000",
+    "sectorcategory": "Food/Beverage/Tobacco"
+  },
+  {
+    "id": 14,
+    "sectorcode": "63000000",
+    "sectorcategory": "Footwear"
+  },
+  {
+    "id": 15,
+    "sectorcode": "87000000",
+    "sectorcategory": "Fuels/Gases"
+  },
+  {
+    "id": 16,
+    "sectorcode": "51000000",
+    "sectorcategory": "Healthcare"
+  },
+  {
+    "id": 17,
+    "sectorcode": "72000000",
+    "sectorcategory": "Home Appliances"
+  },
+  {
+    "id": 18,
+    "sectorcode": "93000000",
+    "sectorcategory": "Horticulture Plants"
+  },
+  {
+    "id": 19,
+    "sectorcode": "75000000",
+    "sectorcategory": "Household/Office Furniture/Furnishings"
+  },
+  {
+    "id": 20,
+    "sectorcode": "73000000",
+    "sectorcategory": "Kitchenware and Tableware"
+  },
+  {
+    "id": 21,
+    "sectorcode": "81000000",
+    "sectorcategory": "Lawn/Garden Supplies"
+  },
+  {
+    "id": 22,
+    "sectorcode": "89000000",
+    "sectorcategory": "Live Animals"
+  },
+  {
+    "id": 23,
+    "sectorcode": "88000000",
+    "sectorcategory": "Lubricants"
+  },
+  {
+    "id": 24,
+    "sectorcode": "96000000",
+    "sectorcategory": "Monetary Assets"
+  },
+  {
+    "id": 25,
+    "sectorcode": "61000000",
+    "sectorcategory": "Music"
+  },
+  {
+    "id": 26,
+    "sectorcode": "64000000",
+    "sectorcategory": "Personal Accessories"
+  },
+  {
+    "id": 27,
+    "sectorcode": "10000000",
+    "sectorcategory": "Pet Care/Food"
+  },
+  {
+    "id": 28,
+    "sectorcode": "79000000",
+    "sectorcategory": "Plumbing/Heating/Ventilation/Air Conditioning"
+  },
+  {
+    "id": 29,
+    "sectorcode": "98000000",
+    "sectorcategory": "Raw Materials (Non Food)"
+  },
+  {
+    "id": 30,
+    "sectorcode": "85000000",
+    "sectorcategory": "Safety/Protection - DIY"
+  },
+  {
+    "id": 31,
+    "sectorcode": "91000000",
+    "sectorcategory": "Safety/Security/Surveillance"
+  },
+  {
+    "id": 32,
+    "sectorcode": "95000000",
+    "sectorcategory": "Services/Vending Machines"
+  },
+  {
+    "id": 33,
+    "sectorcode": "71000000",
+    "sectorcategory": "Sports Equipment"
+  },
+  {
+    "id": 34,
+    "sectorcode": "62000000",
+    "sectorcategory": "Stationery/Office Machinery/Occasion Supplies"
+  },
+  {
+    "id": 35,
+    "sectorcode": "92000000",
+    "sectorcategory": "Storage/Haulage Containers"
+  },
+  {
+    "id": 36,
+    "sectorcode": "60000000",
+    "sectorcategory": "Textual/Printed/Reference Materials"
+  },
+  {
+    "id": 37,
+    "sectorcode": "84000000",
+    "sectorcategory": "Tool Storage/Workshop Aids"
+  },
+  {
+    "id": 38,
+    "sectorcode": "80000000",
+    "sectorcategory": "Tools/Equipment - Hand"
+  },
+  {
+    "id": 39,
+    "sectorcode": "82000000",
+    "sectorcategory": "Tools/Equipment - Power"
+  },
+  {
+    "id": 40,
+    "sectorcode": "86000000",
+    "sectorcategory": "Toys/Games"
+  },
+  {
+    "id": 41,
+    "sectorcode": "77000000",
+    "sectorcategory": "Vehicle"
+  }
+]
