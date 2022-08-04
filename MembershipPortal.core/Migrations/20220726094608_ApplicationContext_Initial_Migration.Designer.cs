@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MembershipPortal.core.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220601092622_initialCreate")]
-    partial class initialCreate
+    [Migration("20220726094608_ApplicationContext_Initial_Migration")]
+    partial class ApplicationContext_Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,40 @@ namespace MembershipPortal.core.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MembershipPortal.data.BrandInformation", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("brandname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("modifieddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("brandname")
+                        .IsUnique();
+
+                    b.ToTable("BrandInformations");
+                });
 
             modelBuilder.Entity("MembershipPortal.data.BrickCategory", b =>
                 {
@@ -41,6 +75,88 @@ namespace MembershipPortal.core.Migrations
                     b.HasKey("id");
 
                     b.ToTable("BrickCategories");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("atccode")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("createdby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("datecreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("datemodified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("functionalname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("genericname")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("labeldescription")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("modifiedby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("packsize")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("primarypackagingmaterial")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("product_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("productform")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("quantity")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("routeofadministration")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("shelflife")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("strength")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("tradeitemdescription")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("unitofmeasure")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("product_id")
+                        .IsUnique();
+
+                    b.ToTable("ExternalUnifiedModels");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.GCPInformation", b =>
@@ -258,7 +374,7 @@ namespace MembershipPortal.core.Migrations
 
             modelBuilder.Entity("MembershipPortal.data.PharmaceuticalInformation", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -284,7 +400,7 @@ namespace MembershipPortal.core.Migrations
                     b.Property<string>("ProductForm")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<string>("Quantity")
@@ -299,9 +415,9 @@ namespace MembershipPortal.core.Migrations
                     b.Property<string>("TradeItemDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("ProductId")
+                    b.HasIndex("ProductID")
                         .IsUnique();
 
                     b.ToTable("PharmaceuticalInformations");
@@ -314,6 +430,9 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("IsPharma")
+                        .HasColumnType("bit");
+
                     b.Property<string>("allergeninfo")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -321,6 +440,9 @@ namespace MembershipPortal.core.Migrations
                     b.Property<string>("backimage")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("brandinformation_id")
+                        .HasColumnType("int");
 
                     b.Property<string>("brandname")
                         .IsRequired()
@@ -408,6 +530,8 @@ namespace MembershipPortal.core.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("brandinformation_id");
+
                     b.HasIndex("brickcategory_id");
 
                     b.HasIndex("gtin")
@@ -441,17 +565,34 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("TargetMarkets");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("product_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.PharmaceuticalInformation", b =>
                 {
                     b.HasOne("MembershipPortal.data.Product", "Product")
-                        .WithOne("PharmaceuticalInformation")
-                        .HasForeignKey("MembershipPortal.data.PharmaceuticalInformation", "ProductId");
+                        .WithMany("PharmaceuticalInformation_Product")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.Product", b =>
                 {
+                    b.HasOne("MembershipPortal.data.BrandInformation", "BrandInformation")
+                        .WithMany("Products")
+                        .HasForeignKey("brandinformation_id");
+
                     b.HasOne("MembershipPortal.data.BrickCategory", "BrickCategory")
                         .WithMany("Products")
                         .HasForeignKey("brickcategory_id");
@@ -472,6 +613,8 @@ namespace MembershipPortal.core.Migrations
                         .WithMany()
                         .HasForeignKey("targetmarket_id");
 
+                    b.Navigation("BrandInformation");
+
                     b.Navigation("BrickCategory");
 
                     b.Navigation("NetContent");
@@ -481,6 +624,11 @@ namespace MembershipPortal.core.Migrations
                     b.Navigation("PackagingType");
 
                     b.Navigation("TargetMarket");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.BrandInformation", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.BrickCategory", b =>
@@ -500,7 +648,7 @@ namespace MembershipPortal.core.Migrations
 
             modelBuilder.Entity("MembershipPortal.data.Product", b =>
                 {
-                    b.Navigation("PharmaceuticalInformation");
+                    b.Navigation("PharmaceuticalInformation_Product");
                 });
 #pragma warning restore 612, 618
         }
