@@ -109,7 +109,7 @@ namespace MembershipPortal.api.Controllers.V2
         {
             ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -127,7 +127,7 @@ namespace MembershipPortal.api.Controllers.V2
                 var result = await _service.Save(data);
                 if (result.IsSuccess)
                 {
-                    response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                    response.ReturnedObject = _mapper.Map<BrandInformationVM>(result.ReturnedObject);
                     response.IsSuccess = result.IsSuccess;
                     _logger.LogInformation("Success: Create BrandInformation ", response);
                     var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
@@ -158,7 +158,7 @@ namespace MembershipPortal.api.Controllers.V2
         {
             ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -192,7 +192,7 @@ namespace MembershipPortal.api.Controllers.V2
                     if (obj.IsSuccess)
                     {
                         //response.data = data;
-                        response.Data = _mapper.Map<BrandInformationVM>(obj.Data);
+                        response.ReturnedObject = _mapper.Map<BrandInformationVM>(obj.ReturnedObject);
                         response.IsSuccess = obj.IsSuccess;
 
                         return StatusCode(StatusCodes.Status200OK, response);
@@ -217,7 +217,7 @@ namespace MembershipPortal.api.Controllers.V2
         {
             ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -236,7 +236,7 @@ namespace MembershipPortal.api.Controllers.V2
                     var result = await _service.Save(newObj);
                     if (result.IsSuccess)
                     {
-                        response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                        response.ReturnedObject = _mapper.Map<BrandInformationVM>(result.ReturnedObject);
                         response.IsSuccess = result.IsSuccess;
                         _logger.LogInformation("Success: Update BrandInformation ", result);
                         return StatusCode(StatusCodes.Status200OK, response);
@@ -261,7 +261,7 @@ namespace MembershipPortal.api.Controllers.V2
         {
             ServiceResponseVM<BrandInformationVM> response = new ServiceResponseVM<BrandInformationVM>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -280,7 +280,7 @@ namespace MembershipPortal.api.Controllers.V2
                     var result = await _service.Save(newObj);
                     if (result.IsSuccess)
                     {
-                        response.Data = _mapper.Map<BrandInformationVM>(result.Data);
+                        response.ReturnedObject = _mapper.Map<BrandInformationVM>(result.ReturnedObject);
                         response.IsSuccess = result.IsSuccess;
                         _logger.LogInformation("Success: Update BrandInformation ", result);
                         return StatusCode(StatusCodes.Status200OK, response);
