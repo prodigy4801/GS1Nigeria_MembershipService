@@ -116,7 +116,8 @@ namespace MembershipPortal.api.Contract.V2
         public static class RAPIAuthentication
         {
             public const string AuthenticateCredentials = Base + "/authentication/generate-token";
-            //public const string Register = Base + "/authentication/register";
+            public const string MemberLogin = Base + "/authentication/memberlogin";
+            public const string MemberRegistration = Base + "/authentication/memberregistration";
             //public const string GetByID = Base + "/authentication/{id}";
             //public const string Delete = Base + "/authentication";
             //public const string Update = Base + "/authentication/{id}";
