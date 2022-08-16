@@ -8,7 +8,7 @@ namespace MembershipPortal.viewmodels
 {
     public class ServiceResponseVM<T> where T : class
     {
-        public T Data { get; set; }
+        public T ReturnedObject { get; set; }
         public string Message { get; set; }
         public Boolean IsSuccess { get; set; }
     }
