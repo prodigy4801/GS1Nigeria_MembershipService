@@ -22,6 +22,8 @@ namespace MembershipPortal.core
         Task<T> GetByIdAsync(object id);
         IQueryable<T> GetQueryable(Expression<Func<T, bool>> predicate = null);
         Task<IEnumerable<T>> GetBy(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int? skip = default(int?), int? take = default(int?), params string[] includeProperties);
+        Task<T> GetByFirstOrDefault(Expression<Func<T, bool>> predicate, params string[] includeProperties);
+        Task<T> GetBySingleOrDefault(Expression<Func<T, bool>> predicate = null, params string[] includeProperties);
 
         long Count(Expression<Func<T, bool>> predicate = null);
         Task<long> CountAsync(Expression<Func<T, bool>> predicate = null);

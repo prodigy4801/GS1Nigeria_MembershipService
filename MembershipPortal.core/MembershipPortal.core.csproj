@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ExternalDataContext\**" />
+    <Compile Remove="Migrations\RegistrationDB\**" />
+    <EmbeddedResource Remove="ExternalDataContext\**" />
+    <EmbeddedResource Remove="Migrations\RegistrationDB\**" />
+    <None Remove="ExternalDataContext\**" />
+    <None Remove="Migrations\RegistrationDB\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="ApplicationDBContext-SamuelGS1.cs" />
+    <Compile Remove="RegistrationDBContext.cs" />
   </ItemGroup>
 
   <ItemGroup>

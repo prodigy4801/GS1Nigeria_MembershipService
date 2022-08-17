@@ -187,6 +187,27 @@ namespace MembershipPortal.core
             return await query.ToListAsync();
         }
 
+        public async Task<T> GetByFirstOrDefault(Expression<Func<T, bool>> predicate, params string[] includeProperties)
+        {
+            try
+            {
+                IQueryable<T> query = ConstructQuery(predicate, null, null, null, includeProperties);
+
+                return await query.FirstOrDefaultAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<T> GetBySingleOrDefault(Expression<Func<T, bool>> predicate, params string[] includeProperties)
+        {
+            IQueryable<T> query = ConstructQuery(predicate, null, null, null, includeProperties);
+
+            return await query.SingleOrDefaultAsync();
+        }
+
         public T GetById(object id)
         {
             return _dbSet.Find(id);

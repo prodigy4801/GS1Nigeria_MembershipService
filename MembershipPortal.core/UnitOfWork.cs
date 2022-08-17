@@ -54,11 +54,10 @@ namespace MembershipPortal.core
             {
                 return await _context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                ex.ToString();
+                throw ex.InnerException;
             }
-            return 0;
         }
 
         public void Dispose()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using MembershipPortal.data;
 using System;
 using System.Collections.Generic;
@@ -96,12 +97,20 @@ namespace MembershipPortal.core
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
             });
 
-            modelBuilder.Entity<PharmaceuticalInformation>()
-                .HasOne(p => p.Product)
-                .WithOne(ph => ph.PharmaceuticalInformation)
-                .IsRequired(false);
+            modelBuilder.Entity<PharmaceuticalInformation>(entity =>
+            {
+                entity.HasKey(e => e.ID);
+                entity.Property(e => e.ID).ValueGeneratedOnAdd();
+                entity.HasIndex(e => e.ProductID).IsUnique();
+            });
 
-                
+            //modelBuilder.Entity<PharmaceuticalInformation>()
+            //    .HasOne(p => p.Product)
+            //    .
+            //    .WithOne(ph => ph.PharmaceuticalInformation)
+            //    .IsRequired(false);
+
+
             //modelBuilder.Entity<Role>()
             //    .HasData(
             //        new Role { id = 1, name = "Member" },
@@ -109,11 +118,11 @@ namespace MembershipPortal.core
             //        new Role { id = 3, name = "SuperAdmin" }
             //    );
             //RegistrationBackend.core.Seed.EntitySeeder.Seed<ApplicationDBContext>();
-            // modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
-            // modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
-            // modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
-            // modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
-            // modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
+            modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
+            modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
+            modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
+            modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
+            modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
 
         }
 
@@ -167,16 +176,5 @@ namespace MembershipPortal.core
             }
             return targetMarkets;
         }
-
-        //public List<LocalGovt> SeedLocalGovtData()
-        //{
-        //    var lga = new List<LocalGovt>();
-        //    using (StreamReader r = new StreamReader(@"Seed/localgovts.json"))
-        //    {
-        //        string json = r.ReadToEnd();
-        //        lga = JsonConvert.DeserializeObject<List<LocalGovt>>(json);
-        //    }
-        //    return lga.Select(l => new LocalGovt() { id = l.id, name = l.name, state_id = l.state_id, }).ToList();
-        //}
     }
 }
