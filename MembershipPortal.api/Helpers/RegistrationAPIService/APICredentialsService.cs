@@ -24,7 +24,7 @@ namespace MembershipPortal.api.Helpers.RegistrationAPIService
         {
             RegistrationResponse response = new RegistrationResponse();
             var baseURL = this._registrationAPI.BaseUrl;
-            var registrationURL = this._registrationAPI.RegisterAPI;
+            var registrationURL = this._registrationAPI.LoginEndPoint;
 
             try
             {
