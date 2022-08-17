@@ -76,6 +76,6 @@ namespace MembershipPortal.data
         [ForeignKey(nameof(targetmarket_id))]
         public TargetMarket TargetMarket { get; set; }
         public bool IsPharma { get; set; }
-        public PharmaceuticalInformation PharmaceuticalInformation { get; set; }
+        public ICollection<PharmaceuticalInformation> PharmaceuticalInformation_Product { get; set; }
     }
 }

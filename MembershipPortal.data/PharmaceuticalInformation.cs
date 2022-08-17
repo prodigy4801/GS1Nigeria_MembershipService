@@ -17,9 +17,11 @@ namespace MembershipPortal.data
         public string  Quantity { get; set; }
         public string  PrimaryPackagingMaterial { get; set; }
         public string  Manufacturer { get; set; }
-        public string  ManufacturerAddress { get; set; }       
-        
+        public string  ManufacturerAddress { get; set; }
+
         public int ProductID { get; set; }
+
+        [ForeignKey(nameof(ProductID))]
         public Product Product { get; set; }
 
     }
