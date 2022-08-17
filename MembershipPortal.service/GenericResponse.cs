@@ -8,7 +8,15 @@ namespace MembershipPortal.service
 {
     public class GenericResponse<T> where T : class
     {
-        public T Data { get; set; }
+        public T ReturnedObject { get; set; }
+        public string Message { get; set; }
+        public Boolean IsSuccess { get; set; }
+    }
+
+    public class GenericResponseList<T> where T : class
+    {
+        public T ReturnedObject { get; set; }
+        public List<string> BadData { get; set; }
         public string Message { get; set; }
         public Boolean IsSuccess { get; set; }
     }

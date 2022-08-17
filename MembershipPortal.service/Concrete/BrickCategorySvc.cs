@@ -27,16 +27,16 @@ namespace MembershipPortal.service.Concrete
             return await _uow.BrickCategoryRP.GetByIdAsync(id);
         }
 
-        public async Task<BrickCategory> GetByBrickName(string name)
+        public async Task<BrickCategory> GetByBrickName(string category)
         {
-            return await _uow.BrickCategoryRP.GetSingleByAsync(s => s.brick == name);
+            return await _uow.BrickCategoryRP.GetByIdAsync(category);
         }
 
         public async Task<GenericResponse<BrickCategory>> Remove(BrickCategory obj)
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -62,7 +62,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -104,7 +104,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -118,7 +118,7 @@ namespace MembershipPortal.service.Concrete
                     {
                         response.IsSuccess = true;
                         response.Message = "Successfully added record.";
-                        response.Data = profile;
+                        response.ReturnedObject = profile;
                     }
                 }
                 else
@@ -140,7 +140,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -157,7 +157,7 @@ namespace MembershipPortal.service.Concrete
                 {
                     response.IsSuccess = true;
                     response.Message = "Successfully updated record";
-                    response.Data = objEx;
+                    response.ReturnedObject = objEx;
                 }
             }
             catch (Exception ex)

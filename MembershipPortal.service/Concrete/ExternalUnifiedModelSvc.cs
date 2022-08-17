@@ -11,6 +11,7 @@ namespace MembershipPortal.service.Concrete
     public class ExternalUnifiedModelSvc : IExternalUnifiedModelSvc
     {
         private readonly IUnitOfWork _uow;
+        private readonly string[] _includeProps = new string[] { "Product" };
 
         public ExternalUnifiedModelSvc(IUnitOfWork uow)
         {
@@ -19,19 +20,19 @@ namespace MembershipPortal.service.Concrete
 
         public async Task<IEnumerable<ExternalUnifiedModel>> GetAll()
         {
-            return await _uow.ExternalUnifiedModelRP.GetAllDependencies();
+            return await _uow.ExternalUnifiedModelRP.GetBy(null, x => x.OrderByDescending(n => n.id), null, null, _includeProps);
         }
 
         public async Task<ExternalUnifiedModel> GetByID(int id)
         {
-            return await _uow.ExternalUnifiedModelRP.GetByIDDependencies(id);
+            return await _uow.ExternalUnifiedModelRP.GetByFirstOrDefault(x => x.id == id, _includeProps);
         }
 
         public async Task<GenericResponse<ExternalUnifiedModel>> Remove(ExternalUnifiedModel obj)
         {
             GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -57,7 +58,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -98,7 +99,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -112,7 +113,7 @@ namespace MembershipPortal.service.Concrete
                     {
                         response.IsSuccess = true;
                         response.Message = "Successfully added record.";
-                        response.Data = profile;
+                        response.ReturnedObject = profile;
                     }
                 }
                 else
@@ -134,7 +135,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -163,7 +164,7 @@ namespace MembershipPortal.service.Concrete
                 {
                     response.IsSuccess = true;
                     response.Message = "Successfully updated record";
-                    response.Data = objEx;
+                    response.ReturnedObject = objEx;
                 }
             }
             catch (Exception ex)

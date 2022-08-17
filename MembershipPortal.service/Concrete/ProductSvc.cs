@@ -31,7 +31,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<Product> response = new GenericResponse<Product>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -57,7 +57,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<Product> response = new GenericResponse<Product>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -101,7 +101,7 @@ namespace MembershipPortal.service.Concrete
             List<Product> mainProductStore = new List<Product>();
             GenericResponse<List<Product>> response = new GenericResponse<List<Product>>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -127,7 +127,7 @@ namespace MembershipPortal.service.Concrete
                     {
                         response.IsSuccess = true;
                         response.Message = " Successful Saved Product(s) to Storage.";
-                        response.Data = mainProductStore;
+                        response.ReturnedObject = mainProductStore;
                     }
                     else
                     {
@@ -153,7 +153,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<Product> response = new GenericResponse<Product>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -167,7 +167,7 @@ namespace MembershipPortal.service.Concrete
                     {
                         response.IsSuccess = true;
                         response.Message = "Successfully added record.";
-                        response.Data = profile;
+                        response.ReturnedObject = profile;
                     }
                 }
                 else
@@ -189,7 +189,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<Product> response = new GenericResponse<Product>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -229,7 +229,7 @@ namespace MembershipPortal.service.Concrete
                 {
                     response.IsSuccess = true;
                     response.Message = "Successfully updated record";
-                    response.Data = objEx;
+                    response.ReturnedObject = objEx;
                 }
             }
             catch (Exception ex)

@@ -11,6 +11,7 @@ namespace MembershipPortal.service.Concrete
     public class GLNInformationSvc : IGLNInformationSvc
     {
         private readonly IUnitOfWork _uow;
+        private readonly string[] _includeProps = new string[] { "Product" };
 
         public GLNInformationSvc(IUnitOfWork uow)
         {
@@ -31,7 +32,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -57,7 +58,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -99,7 +100,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -113,7 +114,7 @@ namespace MembershipPortal.service.Concrete
                     {
                         response.IsSuccess = true;
                         response.Message = "Successfully added record.";
-                        response.Data = profile;
+                        response.ReturnedObject = profile;
                     }
                 }
                 else
@@ -135,7 +136,7 @@ namespace MembershipPortal.service.Concrete
         {
             GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
             {
-                Data = null,
+                ReturnedObject = null,
                 IsSuccess = false,
                 Message = string.Empty
             };
@@ -151,7 +152,7 @@ namespace MembershipPortal.service.Concrete
                 {
                     response.IsSuccess = true;
                     response.Message = "Successfully updated record";
-                    response.Data = objEx;
+                    response.ReturnedObject = objEx;
                 }
             }
             catch (Exception ex)

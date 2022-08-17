@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.core;
+using MembershipPortal.core.ExternalDataRepository.RegistrationBackendRepository;
 using MembershipPortal.service.MasterDataDTO;
 using MembershipPortal.viewmodels;
 using Microsoft.EntityFrameworkCore;
@@ -102,7 +103,7 @@ namespace MembershipPortal.service.Concrete
                         grossweight = prod.grossweight,
                         gtin = prod.gtin,
                         ingredients = prod.ingredients,
-                        lifespan = prod.lifespan,
+                        //lifespan = prod.lifespan,
                         lifespanunit = prod.lifespanunit,
                         marketingmessage = prod.marketingmessage,
                         nafdacnumber = prod.nafdacnumber,

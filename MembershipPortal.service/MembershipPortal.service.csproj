@@ -5,9 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ExternalDataService\**" />
+    <EmbeddedResource Remove="ExternalDataService\**" />
+    <None Remove="ExternalDataService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Concrete\BrickCategorySvc-SamuelGS1.cs" />
+    <Compile Remove="Concrete\DataService.cs" />
     <Compile Remove="Concrete\PackageLevelSvc-SamuelGS1.cs" />
     <Compile Remove="Concrete\PackagingTypeSvc-SamuelGS1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="106.13.0" />
   </ItemGroup>
 
   <ItemGroup>
