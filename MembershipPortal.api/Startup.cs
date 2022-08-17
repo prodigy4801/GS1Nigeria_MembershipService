@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using MembershipPortal.api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,6 @@ using MembershipPortal.configurations;
 using MembershipPortal.service;
 using MembershipPortal.service.Concrete;
 using MembershipPortal.core;
-using MembershipPortal.core.Repository;
 using MembershipPortal.api.Models;
 using MembershipPortal.api.Helpers.RegistrationAPIService;
 using MembershipPortal.api.Helpers;
@@ -32,17 +31,28 @@ namespace MembershipPortal.api
             Configuration = configuration;
         }
 
+        //public class ApplicationDBContextFactory : IDesignTimeDbContextFactory<ApplicationDBContext>
+        //{
+        //    public ApplicationDBContext CreateDbContext(string[] args)
+        //    {
+        //        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDBContext>();
+        //        optionsBuilder.UseSqlServer(@"data source=localhost;Initial Catalog=gs1ngorgonsource_db;Integrated Security=SSPI;persist security info=True;MultipleActiveResultSets=True");
+        //        //optionsBuilder.UseSqlServer(Configuration);
+
+        //        return new ApplicationDBContext(optionsBuilder.Options);
+        //    }
+        //}
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var conn = Configuration.GetConnectionString("MembershipPortalConfig");
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MembershipPortalConfig"),
                 x => x.MigrationsHistoryTable("__opensourcemigrationhistory")));
-            services.AddDbContext<RegistrationDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("RegistrationConfig"),
-            x => x.MigrationsHistoryTable("__opensourcemigrationhistory")));
+            
             services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
@@ -51,7 +61,6 @@ namespace MembershipPortal.api
             services.AddCors();
             services.Configure<RegistrationAPI_Settings>(Configuration.GetSection("RegistrationAPI_Settings"));
             services.AddScoped<IAPICredentialsService, APICredentialsService>();
-            services.AddScoped<IDataService, DataService>();
 
             var customConfig = new AutoMapper.MapperConfiguration(cfg =>
             {
@@ -80,6 +89,9 @@ namespace MembershipPortal.api
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+
+            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
 
