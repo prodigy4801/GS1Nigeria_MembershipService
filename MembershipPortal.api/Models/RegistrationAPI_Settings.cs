@@ -9,7 +9,7 @@ namespace MembershipPortal.api.Models
     {
         public string Key { get; set; }
         public string BaseUrl { get; set; }
-        public string RegisterAPI { get; set; }
+        public string LoginEndPoint { get; set; }
         public string TokenGenerator { get; set; }
         public string TokenValidator { get; set; }
     }
