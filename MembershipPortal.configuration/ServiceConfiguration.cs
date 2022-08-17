@@ -13,6 +13,7 @@ namespace MembershipPortal.configurations
     {
         public static void Configure(IServiceCollection services)
         {
+            services.AddScoped<IAuthenticationSvc, AuthenticationSvc>();
             services.AddScoped<IBrandInformationSvc, BrandInformationSvc>();
             services.AddScoped<IBrickCategorySvc, BrickCategorySvc>();
             services.AddScoped<IExternalUnifiedModelSvc, ExternalUnifiedModelSvc>();
