@@ -12,12 +12,14 @@ namespace MembershipPortal.core
         IBrandInformationRepo BrandInformationRP { get; }
         IBrickCategoryRepo BrickCategoryRP { get; }
         IExternalUnifiedModelRepo ExternalUnifiedModelRP { get; }
+        IGCPInformationRepo GCPInformationRP { get; }
         IGLNInformationRepo GLNInformationRP { get; }
         IGTINInformationRepo GTINInformationRP { get; }
         IITFInformationRepo ITFInformationRP { get; }
         INetContentRepo NetContentRP { get; }
         IPackageLevelRepo PackageLevelRP { get; }
         IPackagingTypeRepo PackagingTypeRP { get; }
+        IPharmaceuticalInformationRepo PharmaceuticalInformationRP { get; }
         IProductRepo ProductRP { get; }
         ITargetMarketRepo TargetMarketRP { get; }
 

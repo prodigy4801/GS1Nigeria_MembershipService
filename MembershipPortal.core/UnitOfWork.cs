@@ -17,12 +17,14 @@ namespace MembershipPortal.core
             BrandInformationRP = new BrandInformationRepo(_context);
             BrickCategoryRP = new BrickCategoryRepo(_context);
             ExternalUnifiedModelRP = new ExternalUnifiedModelRepo(_context);
+            GCPInformationRP = new GCPInformationRepo(_context);
             GLNInformationRP = new GLNInformationRepo(_context);
             GTINInformationRP = new GTINInformationRepo(_context);
             ITFInformationRP = new ITFInformationRepo(_context);
             NetContentRP = new NetContentRepo(_context);
             PackageLevelRP = new PackageLevelRepo(_context);
             PackagingTypeRP = new PackagingTypeRepo(_context);
+            PharmaceuticalInformationRP = new PharmaceuticalInformationRepo(_context);
             ProductRP = new ProductRepo(_context);
             TargetMarketRP = new TargetMarketRepo(_context);
         }
@@ -30,7 +32,10 @@ namespace MembershipPortal.core
         public IBrickCategoryRepo BrickCategoryRP { get; private set; }
 
         public IBrandInformationRepo BrandInformationRP { get; private set; }
+
         public IExternalUnifiedModelRepo ExternalUnifiedModelRP { get; set; }
+
+        public IGCPInformationRepo GCPInformationRP { get; set; }
 
         public IGLNInformationRepo GLNInformationRP { get; private set; }
 
@@ -43,6 +48,8 @@ namespace MembershipPortal.core
         public IPackageLevelRepo PackageLevelRP { get; private set; }
 
         public IPackagingTypeRepo PackagingTypeRP { get; private set; }
+
+        public IPharmaceuticalInformationRepo PharmaceuticalInformationRP { get; private set; }
 
         public IProductRepo ProductRP { get; private set; }
 
