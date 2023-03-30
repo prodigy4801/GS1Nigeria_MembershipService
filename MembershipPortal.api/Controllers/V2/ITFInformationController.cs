@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -31,125 +32,105 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitITFInformationController>
         [HttpGet(ApiRoutes.RITFInformation.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
             try
             {
-                var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                int skip = (pagination.PageNumber - 1) * pagination.PageSize;
+                int take = pagination.PageSize;
+                var obj = await _service.GetAll(skip, take);
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All GLN records");
-                    var result = _mapper.Map<IEnumerable<ITFInformationVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<ITFInformationVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all GLN ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
         [HttpGet(ApiRoutes.RITFInformation.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get ITFInformation with id " + id);
-                    var obj = _mapper.Map<ITFInformationVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<ITFInformationVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get ITFInformation with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get ITFInformation with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+        }
+
+        // GET api/<BenefitController>/5
+        [HttpGet(ApiRoutes.RITFInformation.GetByRegistrationID)]
+        public async Task<IActionResult> GetByRegID(string registrationid)
+        {
+            try
+            {
+                var obj = await _service.GetByRegistrationID(registrationid);
+
+                if (obj.IsSuccess && obj.ReturnedObject != null)
+                {
+                    var result = _mapper.Map<ITFInformationVM>(obj);
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitITFInformationController>
         [HttpPost(ApiRoutes.RITFInformation.Create)]
-        public async Task<IActionResult> Post([FromBody] ITFInformationVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] ITFInformationVM_Create req)
         {
+            ServiceResponse<ITFInformationVM> response = new ServiceResponse<ITFInformationVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create ITFInformation ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                ITFInformation model = _mapper.Map<ITFInformation>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<ITFInformationVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    ITFInformation data = _mapper.Map<ITFInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create ITFInformation ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RITFInformation.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create ITFInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create ITFInformation " + ex);
-                return null;
-            }
-
-        }
-
-        // PUT api/<BenefitITFInformationController>/5
-        [HttpPut(ApiRoutes.RITFInformation.Update)]
-        public async Task<IActionResult> Put([FromBody] ITFInformationVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update ITFInformation ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<ITFInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update ITFInformation ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update ITFInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update ITFInformation " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

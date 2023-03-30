@@ -9,5 +9,9 @@ namespace MembershipPortal.service
 {
     public interface IGTINInformationSvc : IService<GTINInformation>
     {
+        Task<GenericResponseList<GTINInformation>> GetAll(int? skip, int? take);
+        Task<GenericResponse<GTINInformation>> GetByRegistrationID(string regId);
+        Task<GenericResponseList<GTINInformation>> GetListByRegistrationID(string regId);
+        Task<GenericResponse<long>> CountListedGtinByRegID(string regId);
     }
 }

@@ -17,7 +17,7 @@ namespace MembershipPortal.viewmodels
         public DateTime? modifieddate { get; set; }
     }
 
-    public class ITFInformationVM_CRU
+    public class ITFInformationVM_Create
     {
         public int id { get; set; }
         [Required]

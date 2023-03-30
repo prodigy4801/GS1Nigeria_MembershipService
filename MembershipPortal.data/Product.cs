@@ -29,7 +29,7 @@ namespace MembershipPortal.data
         public string productdescription { get; set; }
         // [StringLength(500)]
         public string marketingmessage { get; set; }
-        public int? targetmarket_id { get; set; }
+        public string targetmarket_id { get; set; }
         public DateTime consumerfirstavailabilitydate { get; set; }
         public double netweight { get; set; }
         public bool iscompleted { get; set; }
@@ -40,6 +40,12 @@ namespace MembershipPortal.data
         public bool hasimage { get; set; }
         [StringLength(500)]
         public string backimage { get; set; }
+        [StringLength(500)]
+        public string leftimage { get; set; }
+        [StringLength(500)]
+        public string rightimage { get; set; }
+        [StringLength(500)]
+        public string otherimage { get; set; }
         public DateTime dateoflisting { get; set; }
         // [StringLength(500)]
         public string ingredients { get; set; }
@@ -57,6 +63,7 @@ namespace MembershipPortal.data
         public int? packaginglevel_id { get; set; }
         public DateTime createddate { get; set; }
         public DateTime modifieddate { get; set; }
+        public bool IsPharma { get; set; }
 
         [ForeignKey(nameof(brickcategory_id))]
         public BrickCategory BrickCategory { get; set; }
@@ -72,10 +79,7 @@ namespace MembershipPortal.data
 
         [ForeignKey(nameof(packaginglevel_id))]
         public PackageLevel PackageLevel { get; set; }
-
-        [ForeignKey(nameof(targetmarket_id))]
-        public TargetMarket TargetMarket { get; set; }
-        public bool IsPharma { get; set; }
+        public ICollection<ProductTargetMarket> ProductTargetMarket { get; set; }
         public ICollection<PharmaceuticalInformation> PharmaceuticalInformation_Product { get; set; }
     }
 }

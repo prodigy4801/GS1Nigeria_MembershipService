@@ -11,61 +11,86 @@ namespace MembershipPortal.service.Concrete
     public class TargetMarketSvc : ITargetMarketSvc
     {
         private readonly IUnitOfWork _uow;
+        private string[] _includes = { };
 
         public TargetMarketSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<TargetMarket>> GetAll()
+        public async Task<GenericResponseList<TargetMarket>> GetAll()
         {
-            return await _uow.TargetMarketRP.GetAllAsync();
+            try
+            {
+                var records = await _uow.TargetMarketRP.GetAll();
+                return new GenericResponseList<TargetMarket> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<TargetMarket>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.TargetMarketRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<TargetMarket> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<TargetMarket> GetByID(int id)
+        public async Task<GenericResponse<TargetMarket>> GetByMarketName(string marketname)
         {
-            return await _uow.TargetMarketRP.GetByIdAsync(id);
+            try
+            {
+                var record = await _uow.TargetMarketRP.GetByFirstOrDefault(x => x.name == marketname, _includes);
+                return new GenericResponse<TargetMarket> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<TargetMarket> GetByTargetMarketName(string name)
+        public async Task<GenericResponse<TargetMarket>> GetByID(int id)
         {
-            return await _uow.TargetMarketRP.GetSingleByAsync(s => s.name == name);
+            try
+            {
+                var record = await _uow.TargetMarketRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<TargetMarket> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
         public async Task<GenericResponse<TargetMarket>> Remove(TargetMarket obj)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.TargetMarketRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<TargetMarket>> Remove(int id)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.TargetMarketRP.GetById(id);
@@ -73,99 +98,70 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<TargetMarket>> Save(TargetMarket profile)
         {
             if (profile.id == 0)
             {
-                //profile.create = DateTime.Now;
-
                 return await Add(profile);
             }
             else
             {
-                //profile.modifiedon = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
         private async Task<GenericResponse<TargetMarket>> Add(TargetMarket profile)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.TargetMarketRP.IsExists(profile))
+                if (!await _uow.TargetMarketRP.AnyAsync(y => y.name == profile.name))
                 {
                     _uow.TargetMarketRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
+                        return new GenericResponse<TargetMarket> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
+                    return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
+                    return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
                 }
 
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
         private async Task<GenericResponse<TargetMarket>> Update(int id, TargetMarket obj)
         {
-            GenericResponse<TargetMarket> response = new GenericResponse<TargetMarket>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
-                var objEx = _uow.TargetMarketRP.GetById(id);
-                objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
-                
-                //objEx.ID = Id;
-                _uow.TargetMarketRP.Update(objEx);
+                _uow.TargetMarketRP.Update(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<TargetMarket> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
                 }
+                return new GenericResponse<TargetMarket> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<TargetMarket> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
     }
 }

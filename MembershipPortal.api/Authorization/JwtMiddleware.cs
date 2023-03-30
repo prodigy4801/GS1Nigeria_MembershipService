@@ -1,6 +1,13 @@
-﻿using MembershipPortal.api.Helpers.RegistrationAPIService;
+﻿using AutoMapper;
+using MembershipPortal.api.Helpers;
+using MembershipPortal.api.Helpers.RegistrationAPIService;
 using MembershipPortal.api.Helpers.RegistrationAPIService.Request;
 using MembershipPortal.api.Models;
+using MembershipPortal.data.ExternalEntries;
+using MembershipPortal.data.ExternalEntries.Models;
+using MembershipPortal.service;
+using MembershipPortal.service.Concrete.ExternalEntries;
+using MembershipPortal.viewmodels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System;
@@ -13,32 +20,62 @@ namespace MembershipPortal.api.Authorization
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly AppSettings _settings;
         private readonly RegistrationAPI_Settings _regApiSettings;
 
         //public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
-        public JwtMiddleware(RequestDelegate next, IOptions<RegistrationAPI_Settings> regApiSettings)
+        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> settings, IOptions<RegistrationAPI_Settings> regApiSettings)
         {
             this._next = next;
+            this._settings = settings.Value;
             this._regApiSettings = regApiSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IAPICredentialsService service)
+        public async Task Invoke(HttpContext context, IUserSvc service, IJwtUtils jwtUtils, IMapper mapper, IUserValidationTokenSvc uservalidationtokenservice)
         {
             
             try
             {
                 var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-                ValidateTokenRequest request = new ValidateTokenRequest
+                if (token != null)
                 {
-                     token = token,
-                     securityKey = this._regApiSettings.Key
-                };
-                var authenticatedUser = service.ValidateToken(request);
-                if (authenticatedUser != null)
-                {
-                    //var model = 
-                    //var obj = _mapper.Map<APICredentialsVM>(model);
-                    context.Items["AuthenticatedUser"] = authenticatedUser;
+                    var mainToken = token.Split(":").First();
+                    var refreshToken = token.Split(":").Last();
+                    var regid = jwtUtils.ValidateToken(mainToken, this._settings.Key);
+                    //get userregistrationid
+                    var baseURL = this._regApiSettings.BaseUrl;
+                    var endpoint = "api/v2/user/getbyregid";
+                    ExternalCallModels servicerequest = new ExternalCallModels()
+                    {
+                        baseURL = baseURL,
+                        endpoint = endpoint,
+                        Token = token
+                    };
+                    if (regid.istokenexpired && !regid.istokenvalid)
+                    {
+                        var principal = jwtUtils.GetPrincipalFromExpiredToken(mainToken);
+                        var userregid = principal.Identity?.Name;
+
+                        var userRecord = await service.GetByRegistrationID(userregid, servicerequest);
+
+                        if (userRecord.ReturnedObject != null && userRecord.IsSuccess)
+                        {
+                            var savedrefreshtoken = await uservalidationtokenservice.GetByRefreshToken(userRecord.ReturnedObject.id, refreshToken, servicerequest);
+                            if (savedrefreshtoken != null)
+                            {
+                                var generateToken = jwtUtils.GenerateJWTToken(userregid);
+                            }
+                            context.Items["AuthenticatedUser"] = mapper.Map<AuthenticatedPayload>(userRecord.ReturnedObject);
+                        }
+                    }
+                    else if (regid.istokenvalid && !regid.istokenexpired && regid != null)
+                    {
+                        var userRecord = await service.GetByRegistrationID(regid.tokenkey, servicerequest);
+                        if (userRecord.ReturnedObject != null)
+                        {
+                            context.Items["AuthenticatedUser"] = mapper.Map<AuthenticatedPayload>(userRecord.ReturnedObject);
+                        }
+                    }
                 }
             }
             catch (Exception e)

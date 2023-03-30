@@ -15,6 +15,26 @@
 
   <ItemGroup>
     <Compile Remove="ApplicationDBContext-SamuelGS1.cs" />
+    <Compile Remove="Migrations\20220726094608_ApplicationContext_Initial_Migration.cs" />
+    <Compile Remove="Migrations\20220726094608_ApplicationContext_Initial_Migration.Designer.cs" />
+    <Compile Remove="Migrations\20220726095211_ApplicationContext_SeedData.cs" />
+    <Compile Remove="Migrations\20220726095211_ApplicationContext_SeedData.Designer.cs" />
+    <Compile Remove="Migrations\20220916104601_ProductTargetMarketRelationship.cs" />
+    <Compile Remove="Migrations\20220916104601_ProductTargetMarketRelationship.Designer.cs" />
+    <Compile Remove="Migrations\20220927090403_Product_AddMoreImageFields.cs" />
+    <Compile Remove="Migrations\20220927090403_Product_AddMoreImageFields.Designer.cs" />
+    <Compile Remove="Migrations\20221107135902_ImageBank_InitialCreation.cs" />
+    <Compile Remove="Migrations\20221107135902_ImageBank_InitialCreation.Designer.cs" />
+    <Compile Remove="Migrations\20221216135051_GTINFee_InitialMigration.cs" />
+    <Compile Remove="Migrations\20221216135051_GTINFee_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20230104085734_Pharmaceutical_Fields_added.cs" />
+    <Compile Remove="Migrations\20230104085734_Pharmaceutical_Fields_added.Designer.cs" />
+    <Compile Remove="Migrations\20230119152920_Initial_Segement_Family_Class_CategoryTable.cs" />
+    <Compile Remove="Migrations\20230119152920_Initial_Segement_Family_Class_CategoryTable.Designer.cs" />
+    <Compile Remove="Migrations\20230131130636_seed_sectorcategory.cs" />
+    <Compile Remove="Migrations\20230131130636_seed_sectorcategory.Designer.cs" />
+    <Compile Remove="Migrations\20230131135910_seed_familycategory.cs" />
+    <Compile Remove="Migrations\20230131135910_seed_familycategory.Designer.cs" />
     <Compile Remove="RegistrationDBContext.cs" />
   </ItemGroup>
 

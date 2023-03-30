@@ -14,7 +14,7 @@ namespace MembershipPortal.core
         Task<bool> AddAsync(T entity);
         Task AddRangeAsync(IEnumerable<T> entities);
 
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> GetAllAsync();
         T GetSingleBy(Expression<Func<T, bool>> predicate);
         Task<T> GetSingleByAsync(Expression<Func<T, bool>> predicate);

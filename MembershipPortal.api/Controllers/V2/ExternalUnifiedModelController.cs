@@ -10,12 +10,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-//using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
-    //[Authorize]
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("")]
     [ApiController]
     public class ExternalUnifiedModelController : ControllerBase
     {
@@ -31,126 +32,165 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitExternalUnifiedModelController>
         [HttpGet(ApiRoutes.RExternalUnifiedModel.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
             try
             {
-                var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                int skip = (pagination.PageNumber - 1) * pagination.PageSize;
+                int take = pagination.PageSize;
+                var obj = await _service.GetAll(skip, take);
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All ExternalUnifiedModel records");
-                    var result = _mapper.Map<IEnumerable<ExternalUnifiedModelVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<ExternalUnifiedModelVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All ExternalUnifiedModel no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all ExternalUnifiedModel ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
         [HttpGet(ApiRoutes.RExternalUnifiedModel.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get ExternalUnifiedModel with id " + id);
-                    var obj = _mapper.Map<ExternalUnifiedModelVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<ExternalUnifiedModelVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get ExternalUnifiedModel with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get ExternalUnifiedModel with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+        }
+
+        // GET api/<BenefitController>/5
+        [HttpGet(ApiRoutes.RExternalUnifiedModel.GetByProductID)]
+        public async Task<IActionResult> GetByProductID(int productid)
+        {
+            try
+            {
+                if (productid < 1)
+                {
+                    string error = "Invalid request parameter.";
+                    return StatusCode(StatusCodes.Status400BadRequest, error);
+                }
+
+                var obj = await _service.GetByProductID(productid);
+                if (obj.IsSuccess && obj.ReturnedObject != null)
+                {
+                    var result = _mapper.Map<ExternalUnifiedModelVM>(obj);
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitExternalUnifiedModelController>
         [HttpPost(ApiRoutes.RExternalUnifiedModel.Create)]
-        public async Task<IActionResult> Post([FromBody] ExternalUnifiedModelVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] ExternalUnifiedModelVM_CRU req)
         {
+            ServiceResponse<ExternalUnifiedModelVM> response = new ServiceResponse<ExternalUnifiedModelVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create ExternalUnifiedModel ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                ExternalUnifiedModel model = _mapper.Map<ExternalUnifiedModel>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<ExternalUnifiedModelVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    ExternalUnifiedModel data = _mapper.Map<ExternalUnifiedModel>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create ExternalUnifiedModel ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RExternalUnifiedModel.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create ExternalUnifiedModel ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create ExternalUnifiedModel " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
 
         }
 
         // PUT api/<BenefitExternalUnifiedModelController>/5
-        [HttpPut(ApiRoutes.RExternalUnifiedModel.Update)]
-        public async Task<IActionResult> Put([FromBody] ExternalUnifiedModelVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update ExternalUnifiedModel ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<ExternalUnifiedModel>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update ExternalUnifiedModel ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update ExternalUnifiedModel ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update ExternalUnifiedModel " + ex);
-                return null;
-            }
-        }
+        //[HttpPut(ApiRoutes.RExternalUnifiedModel.Update)]
+        //public async Task<IActionResult> UpdateExternalUnifiedModel([FromBody] ExternalUnifiedModelVM_CRU req)
+        //{
+        //    ServiceResponseVM<ExternalUnifiedModelVM> response = new ServiceResponseVM<ExternalUnifiedModelVM>
+        //    {
+        //        ReturnedObject = null,
+        //        IsSuccess = false,
+        //        Message = string.Empty
+        //    };
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            var errors = string.Join("; ", ModelState.Values
+        //                                .SelectMany(x => x.Errors)
+        //                                .Select(x => x.ErrorMessage));
+        //            response.Message = errors;
+        //            return StatusCode(StatusCodes.Status400BadRequest, response);
+        //        }
+        //        var newObj = await _service.GetByID(req.id);
+        //        if (newObj.IsSuccess && newObj.ReturnedObject != null)
+        //        {
+        //            if (newObj.ReturnedObject.product_id != req.product_id)
+        //            {
+        //                var obj = _mapper.Map<ExternalUnifiedModel>(req);
+        //                var isExist = await _service.IsExist(obj);
+        //                if (isExist.IsSuccess && isExist.ReturnedObject)
+        //                {
+        //                    response.Message = "Model exist in storage.";
+        //                    return StatusCode(StatusCodes.Status302Found, response);
+        //                }
+        //            }
+        //            newObj.ReturnedObject.product_id = req.product_id;
+        //            newObj.ReturnedObject.
+        //            var result = await _service.Save(newObj.ReturnedObject);
+        //            response = _mapper.Map<ServiceResponseVM<ExternalUnifiedModelVM>>(result);
+        //            if (response.IsSuccess)
+        //            {
+        //                return StatusCode(StatusCodes.Status200OK, response);
+        //            }
+        //            return StatusCode(StatusCodes.Status304NotModified, response);
+        //        }
+        //        response.Message = "Brand Information cannot be found.";
+        //        return StatusCode(StatusCodes.Status404NotFound, response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Message = ex.Message;
+        //        return StatusCode(StatusCodes.Status400BadRequest, response);
+        //    }
+        //}
     }
 }

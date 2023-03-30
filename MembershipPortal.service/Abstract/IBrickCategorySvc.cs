@@ -9,6 +9,6 @@ namespace MembershipPortal.service
 {
     public interface IBrickCategorySvc : IService<BrickCategory>
     {
-        Task<BrickCategory> GetByBrickName(string category);
+        Task<GenericResponse<BrickCategory>> GetByBrickName(string brickname);
     }
 }

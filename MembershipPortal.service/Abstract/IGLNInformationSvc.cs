@@ -9,5 +9,7 @@ namespace MembershipPortal.service
 {
     public interface IGLNInformationSvc : IService<GLNInformation>
     {
+        Task<GenericResponseList<GLNInformation>> GetAll(int? skip, int? take);
+        Task<GenericResponse<GLNInformation>> GetByRegistrationID(string regId);
     }
 }

@@ -23,7 +23,7 @@ namespace MembershipPortal.data
         public string companyprefix { get; set; }
         [StringLength(50)]
         public string productcode { get; set; }
-        public int checksum { get; set; }
+        public string checksum { get; set; }
         public DateTime createddate { get; set; }
         public DateTime? modifieddate { get; set; }
     }

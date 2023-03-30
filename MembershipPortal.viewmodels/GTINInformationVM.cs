@@ -19,9 +19,8 @@ namespace MembershipPortal.viewmodels
         public DateTime? modifieddate { get; set; }
     }
 
-    public class GTINInformationVM_CRU
+    public class GTINInformationVM_Create
     {
-        public int id { get; set; }
         [Required]
         [StringLength(50)]
         public string registrationid { get; set; }

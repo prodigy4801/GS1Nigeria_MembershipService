@@ -11,57 +11,86 @@ namespace MembershipPortal.service.Concrete
     public class GLNInformationSvc : IGLNInformationSvc
     {
         private readonly IUnitOfWork _uow;
-        private readonly string[] _includeProps = new string[] { "Product" };
+        private string[] _includes = { };
 
         public GLNInformationSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<GLNInformation>> GetAll()
+        public async Task<GenericResponseList<GLNInformation>> GetAll()
         {
-            return await _uow.GLNInformationRP.GetAllAsync();
+            try
+            {
+                var records = await _uow.GLNInformationRP.GetBy(null, x => x.OrderByDescending(y => y.id), null, null, _includes);
+                return new GenericResponseList<GLNInformation> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<GLNInformation>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.GLNInformationRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<GLNInformation> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<GLNInformation> GetByID(int id)
+        public async Task<GenericResponse<GLNInformation>> GetByID(int id)
         {
-            return await _uow.GLNInformationRP.GetByIdAsync(id);
+            try
+            {
+                var record = await _uow.GLNInformationRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<GLNInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<GLNInformation>> GetByRegistrationID(string regId)
+        {
+            try
+            {
+                var record = await _uow.GLNInformationRP.GetByFirstOrDefault(x => x.registrationid == regId, _includes); ;
+                return new GenericResponse<GLNInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
         public async Task<GenericResponse<GLNInformation>> Remove(GLNInformation obj)
         {
-            GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.GLNInformationRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<GLNInformation>> Remove(int id)
         {
-            GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.GLNInformationRP.GetById(id);
@@ -69,16 +98,14 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<GLNInformation>> Save(GLNInformation profile)
@@ -86,7 +113,6 @@ namespace MembershipPortal.service.Concrete
             if (profile.id == 0)
             {
                 profile.createddate = DateTime.Now;
-
                 return await Add(profile);
             }
             else
@@ -98,70 +124,46 @@ namespace MembershipPortal.service.Concrete
 
         private async Task<GenericResponse<GLNInformation>> Add(GLNInformation profile)
         {
-            GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.GLNInformationRP.IsExists(profile))
+                if (!await _uow.GLNInformationRP.AnyAsync(y => y.registrationid == profile.registrationid))
                 {
                     _uow.GLNInformationRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
+                        return new GenericResponse<GLNInformation> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
+                    return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
+                    return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
                 }
 
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
         private async Task<GenericResponse<GLNInformation>> Update(int id, GLNInformation obj)
         {
-            GenericResponse<GLNInformation> response = new GenericResponse<GLNInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
-                var objEx = _uow.GLNInformationRP.GetById(id);
-                objEx.companyprefix = obj.companyprefix != string.Empty || obj.companyprefix != null ? obj.companyprefix : objEx.companyprefix;
-                objEx.gln = obj.gln != string.Empty || obj.gln != null ? obj.gln : objEx.gln;
-                //objEx.ID = Id;
-                _uow.GLNInformationRP.Update(objEx);
+                _uow.GLNInformationRP.Update(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<GLNInformation> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
                 }
+                return new GenericResponse<GLNInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
     }
 }

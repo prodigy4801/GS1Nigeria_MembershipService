@@ -8,8 +8,8 @@ namespace MembershipPortal.service
 {
     public interface IService<T> where T : class
     {
-        Task<T> GetByID(int id);
-        Task<IEnumerable<T>> GetAll();
+        Task<GenericResponseList<T>> GetAll();
+        Task<GenericResponse<T>> GetByID(int id);
         Task<GenericResponse<T>> Save(T obj);
         Task<GenericResponse<T>> Remove(T obj);
         Task<GenericResponse<T>> Remove(int id);

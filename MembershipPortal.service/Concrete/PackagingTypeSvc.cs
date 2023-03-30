@@ -11,61 +11,86 @@ namespace MembershipPortal.service.Concrete
     public class PackagingTypeSvc : IPackagingTypeSvc
     {
         private readonly IUnitOfWork _uow;
+        private string[] _includes = { };
 
         public PackagingTypeSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<PackagingType>> GetAll()
+        public async Task<GenericResponseList<PackagingType>> GetAll()
         {
-            return await _uow.PackagingTypeRP.GetAllAsync();
+            try
+            {
+                var records = await _uow.PackagingTypeRP.GetAll();
+                return new GenericResponseList<PackagingType> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<PackagingType>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.PackagingTypeRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<PackagingType> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<PackagingType> GetByID(int id)
+        public async Task<GenericResponse<PackagingType>> GetByID(int id)
         {
-            return await _uow.PackagingTypeRP.GetByIdAsync(id);
+            try
+            {
+                var record = await _uow.PackagingTypeRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<PackagingType> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<PackagingType> GetByPackagingTypeName(string name)
+        public async Task<GenericResponse<PackagingType>> GetByTypeName(string typename)
         {
-            return await _uow.PackagingTypeRP.GetSingleByAsync(s => s.name == name);
+            try
+            {
+                var record = await _uow.PackagingTypeRP.GetByFirstOrDefault(x => x.name == typename, _includes);
+                return new GenericResponse<PackagingType> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
         public async Task<GenericResponse<PackagingType>> Remove(PackagingType obj)
         {
-            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.PackagingTypeRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<PackagingType>> Remove(int id)
         {
-            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.PackagingTypeRP.GetById(id);
@@ -73,98 +98,70 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<PackagingType>> Save(PackagingType profile)
         {
             if (profile.id == 0)
             {
-                //profile.createddate = DateTime.Now;
-
                 return await Add(profile);
             }
             else
             {
-                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
         private async Task<GenericResponse<PackagingType>> Add(PackagingType profile)
         {
-            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.PackagingTypeRP.IsExists(profile))
+                if (!await _uow.PackagingTypeRP.AnyAsync(y => y.name == profile.name))
                 {
                     _uow.PackagingTypeRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
+                        return new GenericResponse<PackagingType> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
+                    return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
+                    return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
                 }
 
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
         private async Task<GenericResponse<PackagingType>> Update(int id, PackagingType obj)
         {
-            GenericResponse<PackagingType> response = new GenericResponse<PackagingType>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
-                var objEx = _uow.PackagingTypeRP.GetById(id);
-                objEx.name = obj.name != string.Empty || obj.name != null ? obj.name : objEx.name;
-                //objEx.ID = Id;
-                _uow.PackagingTypeRP.Update(objEx);
+                _uow.PackagingTypeRP.Update(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<PackagingType> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
                 }
+                return new GenericResponse<PackagingType> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<PackagingType> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
     }
 }

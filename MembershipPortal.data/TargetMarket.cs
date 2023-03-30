@@ -16,5 +16,6 @@ namespace MembershipPortal.data
         [Required]
         [StringLength(200)]
         public string name { get; set; }
+        public ICollection<ProductTargetMarket> ProductTargetMarket { get; set; }
     }
 }

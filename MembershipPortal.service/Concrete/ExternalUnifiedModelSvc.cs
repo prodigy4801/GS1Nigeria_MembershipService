@@ -11,57 +11,99 @@ namespace MembershipPortal.service.Concrete
     public class ExternalUnifiedModelSvc : IExternalUnifiedModelSvc
     {
         private readonly IUnitOfWork _uow;
-        private readonly string[] _includeProps = new string[] { "Product" };
+        private string[] _includes = { };
 
         public ExternalUnifiedModelSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<ExternalUnifiedModel>> GetAll()
+        public async Task<GenericResponseList<ExternalUnifiedModel>> GetAll()
         {
-            return await _uow.ExternalUnifiedModelRP.GetBy(null, x => x.OrderByDescending(n => n.id), null, null, _includeProps);
+            try
+            {
+                var records = await _uow.ExternalUnifiedModelRP.GetBy(null, x => x.OrderByDescending(y => y.id), null, null, _includes);
+                return new GenericResponseList<ExternalUnifiedModel> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<ExternalUnifiedModel>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.ExternalUnifiedModelRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<ExternalUnifiedModel> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<ExternalUnifiedModel> GetByID(int id)
+        public async Task<GenericResponse<ExternalUnifiedModel>> GetByID(int id)
         {
-            return await _uow.ExternalUnifiedModelRP.GetByFirstOrDefault(x => x.id == id, _includeProps);
+            try
+            {
+                var record = await _uow.ExternalUnifiedModelRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<ExternalUnifiedModel>> GetByProductID(int productId)
+        {
+            try
+            {
+                var record = await _uow.ExternalUnifiedModelRP.GetByFirstOrDefault(x => x.product_id == productId, _includes); ;
+                return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<bool>> IsExist(ExternalUnifiedModel profile)
+        {
+            try
+            {
+                var record = await _uow.ExternalUnifiedModelRP.AnyAsync(x => x.product_id == profile.product_id);
+                return new GenericResponse<bool> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<bool> { ReturnedObject = false, IsSuccess = false, Message = ex.Message };
+            }
         }
 
         public async Task<GenericResponse<ExternalUnifiedModel>> Remove(ExternalUnifiedModel obj)
         {
-            GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.ExternalUnifiedModelRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<ExternalUnifiedModel>> Remove(int id)
         {
-            GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.ExternalUnifiedModelRP.GetById(id);
@@ -69,111 +111,72 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<ExternalUnifiedModel>> Save(ExternalUnifiedModel profile)
         {
             if (profile.id == 0)
             {
-                profile.datecreated = DateTime.UtcNow;
+                profile.datecreated = DateTime.Now;
                 return await Add(profile);
             }
             else
             {
-                profile.datemodified = DateTime.UtcNow;
+                profile.datemodified = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
         private async Task<GenericResponse<ExternalUnifiedModel>> Add(ExternalUnifiedModel profile)
         {
-            GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.ExternalUnifiedModelRP.IsExists(profile))
+                if (!await _uow.ExternalUnifiedModelRP.AnyAsync(y => y.product_id == profile.product_id && y.productform == profile.productform))
                 {
                     _uow.ExternalUnifiedModelRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
+                        return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
+                    return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
+                    return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
                 }
 
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
         private async Task<GenericResponse<ExternalUnifiedModel>> Update(int id, ExternalUnifiedModel obj)
         {
-            GenericResponse<ExternalUnifiedModel> response = new GenericResponse<ExternalUnifiedModel>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
-                var objEx = _uow.ExternalUnifiedModelRP.GetById(id);
-                objEx.atccode = obj.atccode != string.Empty || obj.atccode != null ? obj.atccode : objEx.atccode;
-                objEx.functionalname = obj.functionalname != string.Empty || obj.functionalname != null ? obj.functionalname : objEx.functionalname;
-                objEx.genericname = obj.genericname != string.Empty || obj.genericname != null ? obj.genericname : objEx.genericname;
-                objEx.labeldescription = obj.labeldescription != string.Empty || obj.labeldescription != null ? obj.labeldescription : objEx.labeldescription;
-                objEx.modifiedby = obj.modifiedby;
-                objEx.packsize = obj.packsize != string.Empty || obj.packsize != null ? obj.packsize : objEx.packsize;
-                objEx.primarypackagingmaterial = obj.primarypackagingmaterial != string.Empty || obj.primarypackagingmaterial != null ? obj.primarypackagingmaterial : objEx.primarypackagingmaterial;
-                objEx.productform = obj.productform != string.Empty || obj.productform != null ? obj.productform : objEx.productform;
-                objEx.quantity = obj.quantity != string.Empty || obj.quantity != null ? obj.quantity : objEx.quantity;
-                objEx.routeofadministration = obj.routeofadministration != string.Empty || obj.routeofadministration != null ? obj.routeofadministration : objEx.routeofadministration;
-                objEx.shelflife = obj.shelflife != string.Empty || obj.shelflife != null ? obj.shelflife : objEx.shelflife;
-                objEx.strength = obj.strength != string.Empty || obj.strength != null ? obj.strength : objEx.strength;
-                objEx.tradeitemdescription = obj.tradeitemdescription != string.Empty || obj.tradeitemdescription != null ? obj.tradeitemdescription : objEx.tradeitemdescription;
-                objEx.unitofmeasure = obj.unitofmeasure != string.Empty || obj.unitofmeasure != null ? obj.unitofmeasure : objEx.unitofmeasure;
-
-                //objEx.ID = Id;
-                _uow.ExternalUnifiedModelRP.Update(objEx);
+                _uow.ExternalUnifiedModelRP.Update(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
                 }
+                return new GenericResponse<ExternalUnifiedModel> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<ExternalUnifiedModel> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
     }
 }

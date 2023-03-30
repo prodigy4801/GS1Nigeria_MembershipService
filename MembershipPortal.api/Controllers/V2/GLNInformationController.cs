@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -31,125 +32,105 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitGLNInformationController>
         [HttpGet(ApiRoutes.RGLNInformation.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
             try
             {
-                var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                int skip = (pagination.PageNumber - 1) * pagination.PageSize;
+                int take = pagination.PageSize;
+                var obj = await _service.GetAll(skip, take);
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All GLN records");
-                    var result = _mapper.Map<IEnumerable<GLNInformationVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<GLNInformationVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all GLN ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
         [HttpGet(ApiRoutes.RGLNInformation.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get GLNInformation with id " + id);
-                    var obj = _mapper.Map<GLNInformationVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<GLNInformationVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get GLNInformation with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get GLNInformation with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+        }
+
+        // GET api/<BenefitController>/5
+        [HttpGet(ApiRoutes.RGLNInformation.GetByRegistrationID)]
+        public async Task<IActionResult> GetByRegID(string registrationid)
+        {
+            try
+            {
+                var obj = await _service.GetByRegistrationID(registrationid);
+
+                if (obj.IsSuccess && obj.ReturnedObject != null)
+                {
+                    var result = _mapper.Map<GLNInformationVM>(obj);
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitGLNInformationController>
         [HttpPost(ApiRoutes.RGLNInformation.Create)]
-        public async Task<IActionResult> Post([FromBody] GLNInformationVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] GLNInformationVM_Create req)
         {
+            ServiceResponse<GLNInformationVM> response = new ServiceResponse<GLNInformationVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create GLNInformation ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                GLNInformation model = _mapper.Map<GLNInformation>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<GLNInformationVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    GLNInformation data = _mapper.Map<GLNInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create GLNInformation ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RGLNInformation.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create GLNInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create GLNInformation " + ex);
-                return null;
-            }
-
-        }
-
-        // PUT api/<BenefitGLNInformationController>/5
-        [HttpPut(ApiRoutes.RGLNInformation.Update)]
-        public async Task<IActionResult> Put([FromBody] GLNInformationVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update GLNInformation ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<GLNInformation>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update GLNInformation ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update GLNInformation ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update GLNInformation " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

@@ -21,6 +21,14 @@ using MembershipPortal.api.Models;
 using MembershipPortal.api.Helpers.RegistrationAPIService;
 using MembershipPortal.api.Helpers;
 using MembershipPortal.api.Authorization;
+using System.Reflection;
+using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace MembershipPortal.api
 {
@@ -31,24 +39,14 @@ namespace MembershipPortal.api
             Configuration = configuration;
         }
 
-        //public class ApplicationDBContextFactory : IDesignTimeDbContextFactory<ApplicationDBContext>
-        //{
-        //    public ApplicationDBContext CreateDbContext(string[] args)
-        //    {
-        //        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDBContext>();
-        //        optionsBuilder.UseSqlServer(@"data source=localhost;Initial Catalog=gs1ngorgonsource_db;Integrated Security=SSPI;persist security info=True;MultipleActiveResultSets=True");
-        //        //optionsBuilder.UseSqlServer(Configuration);
-
-        //        return new ApplicationDBContext(optionsBuilder.Options);
-        //    }
-        //}
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var conn = Configuration.GetConnectionString("MembershipPortalConfig");
+            var apiKey = Configuration["AppSettings:Key"];
+            var RegistrationApp = Configuration["RegistrationAPI_Settings:BaseURL"];
+
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MembershipPortalConfig"),
                 x => x.MigrationsHistoryTable("__opensourcemigrationhistory")));
@@ -57,17 +55,83 @@ namespace MembershipPortal.api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "MembershipPortal.api", Version = "v2" });
+                var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var filepath = Path.Combine(AppContext.BaseDirectory, fileName);
+                c.IncludeXmlComments(filepath);
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please insert generated token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                   {
+                       new OpenApiSecurityScheme
+                       {
+                           Reference = new OpenApiReference
+                           {
+                               Type = ReferenceType.SecurityScheme,
+                               Id = "Bearer"
+                           },
+                           Scheme = "oauth2",
+                           Name = "Bearer",
+                           In = ParameterLocation.Header
+                       },
+                       new string[]{}
+                   }
+                });
+            });
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(apiKey)),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["AppSettings:Issuer"],
+                    ValidIssuer = Configuration["AppSettings:Audience"],
+                    RequireExpirationTime = true,
+                    NameClaimType = JwtRegisteredClaimNames.Sub,
+                    ClockSkew = TimeSpan.Zero,
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        if (context.Exception.GetType() == typeof(SecurityTokenException))
+                        {
+                            context.Response.Headers.Add("IS-TOKEN-EXPIRED", "true");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             });
             services.AddCors();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<RegistrationAPI_Settings>(Configuration.GetSection("RegistrationAPI_Settings"));
-            services.AddScoped<IAPICredentialsService, APICredentialsService>();
+            services.AddScoped<IJwtUtils, JwtUtils>();
 
             var customConfig = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
+                cfg.AddProfile(new MappingModelProfile());
             });
             var customMapper = customConfig.CreateMapper();
             services.AddSingleton(customMapper);
+
+            services.AddTransient<IFileService, FileService>();
 
             RepositoryConfiguration.Configure(services);
             ServiceConfiguration.Configure(services);
@@ -81,10 +145,9 @@ namespace MembershipPortal.api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwaggerAuthorized();
+            //app.UseSwaggerAuthorized();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "MembershipPortal.api v2"));
-
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
@@ -104,6 +167,13 @@ namespace MembershipPortal.api
             app.UseMiddleware<JwtMiddleware>();
 
             //app.UseAuthorization();
+
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseEndpoints(endpoints =>
             {

@@ -10,4 +10,8 @@
     <None Remove="RegistrationBackendModel\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="ExternalEntries\Models\GTINRequestModel.cs" />
+  </ItemGroup>
+
 </Project>

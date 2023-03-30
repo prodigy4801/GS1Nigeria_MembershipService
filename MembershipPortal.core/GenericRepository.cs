@@ -163,11 +163,11 @@ namespace MembershipPortal.core
             await SaveAsync();
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             try
             {
-                return _dbSet.ToList();
+                return await _dbSet.ToListAsync();
             }
             catch (Exception e)
             {

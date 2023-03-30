@@ -49,4 +49,37 @@ namespace MembershipPortal.viewmodels
         [Required]
         public string packaginglevel { get; set; }
     }
+
+    public class ProductWithoutGTIN
+    {
+        [Required]
+        public string netcontent { get; set; }
+        [Required]
+        public string brandname { get; set; }
+        [Required]
+        public string packagingtype { get; set; }
+        [Required]
+        public string productdescription { get; set; }
+        public string marketingmessage { get; set; }
+        [Required]
+        public string targetmarket { get; set; }
+        public DateTime availabilitydate { get; set; }
+        [Required]
+        public double netweight { get; set; }
+        [Required]
+        public double grossweight { get; set; }
+        [Required]
+        public string category { get; set; }
+        public string ingredients { get; set; }
+        public string allergeninformation { get; set; }
+        public string nafdacnumber { get; set; }
+        public string storageinformation { get; set; }
+        public string directionofuse { get; set; }
+        [Required]
+        public int lifespan { get; set; }
+        [Required]
+        public string lifespanunit { get; set; }
+        [Required]
+        public string packaginglevel { get; set; }
+    }
 }

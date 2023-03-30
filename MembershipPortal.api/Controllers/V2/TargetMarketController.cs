@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -30,126 +31,84 @@ namespace MembershipPortal.api.Controllers.V2
             this._logger = logger;
         }
         // GET: api/<BenefitTargetMarketController>
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RTargetMarket.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination()
         {
             try
             {
                 var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All GLN records");
-                    var result = _mapper.Map<IEnumerable<TargetMarketVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<TargetMarketVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all GLN ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RTargetMarket.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get TargetMarket with id " + id);
-                    var obj = _mapper.Map<TargetMarketVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<TargetMarketVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get TargetMarket with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get TargetMarket with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitTargetMarketController>
         [HttpPost(ApiRoutes.RTargetMarket.Create)]
-        public async Task<IActionResult> Post([FromBody] TargetMarketVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] TargetMarketVM_CRU req)
         {
+            ServiceResponse<TargetMarketVM> response = new ServiceResponse<TargetMarketVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create TargetMarket ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                TargetMarket model = _mapper.Map<TargetMarket>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<TargetMarketVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    TargetMarket data = _mapper.Map<TargetMarket>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create TargetMarket ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RTargetMarket.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create TargetMarket ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create TargetMarket " + ex);
-                return null;
-            }
-
-        }
-
-        // PUT api/<BenefitTargetMarketController>/5
-        [HttpPut(ApiRoutes.RTargetMarket.Update)]
-        public async Task<IActionResult> Put([FromBody] TargetMarketVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update TargetMarket ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<TargetMarket>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update TargetMarket ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update TargetMarket ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update TargetMarket " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -30,126 +31,84 @@ namespace MembershipPortal.api.Controllers.V2
             this._logger = logger;
         }
         // GET: api/<BenefitPackageLevelController>
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RPackageLevel.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination()
         {
             try
             {
                 var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All GLN records");
-                    var result = _mapper.Map<IEnumerable<PackageLevelVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<PackageLevelVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all GLN ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RPackageLevel.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get PackageLevel with id " + id);
-                    var obj = _mapper.Map<PackageLevelVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<PackageLevelVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get PackageLevel with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get PackageLevel with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitPackageLevelController>
         [HttpPost(ApiRoutes.RPackageLevel.Create)]
-        public async Task<IActionResult> Post([FromBody] PackageLevelVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] PackageLevelVM_CRU req)
         {
+            ServiceResponse<PackageLevelVM> response = new ServiceResponse<PackageLevelVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create PackageLevel ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                PackageLevel model = _mapper.Map<PackageLevel>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<PackageLevelVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    PackageLevel data = _mapper.Map<PackageLevel>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create PackageLevel ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RPackageLevel.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create PackageLevel ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create PackageLevel " + ex);
-                return null;
-            }
-
-        }
-
-        // PUT api/<BenefitPackageLevelController>/5
-        [HttpPut(ApiRoutes.RPackageLevel.Update)]
-        public async Task<IActionResult> Put([FromBody] PackageLevelVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update PackageLevel ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<PackageLevel>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update PackageLevel ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update PackageLevel ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update PackageLevel " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

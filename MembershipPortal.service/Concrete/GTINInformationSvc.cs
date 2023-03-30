@@ -11,56 +11,112 @@ namespace MembershipPortal.service.Concrete
     public class GTINInformationSvc : IGTINInformationSvc
     {
         private readonly IUnitOfWork _uow;
+        private string[] _includes = { };
 
         public GTINInformationSvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<GTINInformation>> GetAll()
+        public async Task<GenericResponseList<GTINInformation>> GetAll()
         {
-            return await _uow.GTINInformationRP.GetAllAsync();
+            try
+            {
+                var records = await _uow.GTINInformationRP.GetBy(null, x => x.OrderByDescending(y => y.id), null, null, _includes);
+                return new GenericResponseList<GTINInformation> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<GTINInformation>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.GTINInformationRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<GTINInformation> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<GTINInformation> GetByID(int id)
+        public async Task<GenericResponse<GTINInformation>> GetByID(int id)
         {
-            return await _uow.GTINInformationRP.GetByIdAsync(id);
+            try
+            {
+                var record = await _uow.GTINInformationRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<GTINInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<GTINInformation>> GetByRegistrationID(string regId)
+        {
+            try
+            {
+                var record = await _uow.GTINInformationRP.GetByFirstOrDefault(x => x.registrationid == regId, _includes); ;
+                return new GenericResponse<GTINInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponseList<GTINInformation>> GetListByRegistrationID(string regId)
+        {
+            try
+            {
+                var record = await _uow.GTINInformationRP.GetBy(x => x.registrationid == regId, x => x.OrderByDescending(y => y.id), null, null, _includes); ;
+                return new GenericResponseList<GTINInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<long>> CountListedGtinByRegID(string regId)
+        {
+            try
+            {
+                var record = await _uow.GTINInformationRP.CountAsync(x => x.registrationid == regId); ;
+                return new GenericResponse<long> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<long> { Message = ex.Message, ReturnedObject = 0, IsSuccess = false };
+            }
         }
 
         public async Task<GenericResponse<GTINInformation>> Remove(GTINInformation obj)
         {
-            GenericResponse<GTINInformation> response = new GenericResponse<GTINInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.GTINInformationRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<GTINInformation>> Remove(int id)
         {
-            GenericResponse<GTINInformation> response = new GenericResponse<GTINInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.GTINInformationRP.GetById(id);
@@ -68,16 +124,14 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<GTINInformation>> Save(GTINInformation profile)
@@ -85,7 +139,6 @@ namespace MembershipPortal.service.Concrete
             if (profile.id == 0)
             {
                 profile.createddate = DateTime.Now;
-
                 return await Add(profile);
             }
             else
@@ -97,72 +150,46 @@ namespace MembershipPortal.service.Concrete
 
         private async Task<GenericResponse<GTINInformation>> Add(GTINInformation profile)
         {
-            GenericResponse<GTINInformation> response = new GenericResponse<GTINInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.GTINInformationRP.IsExists(profile))
+                if (!await _uow.GTINInformationRP.AnyAsync(y => y.registrationid == profile.registrationid))
                 {
                     _uow.GTINInformationRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
+                        return new GenericResponse<GTINInformation> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
+                    return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
                 }
                 else
                 {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
+                    return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
                 }
 
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
         private async Task<GenericResponse<GTINInformation>> Update(int id, GTINInformation obj)
         {
-            GenericResponse<GTINInformation> response = new GenericResponse<GTINInformation>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
-                var objEx = _uow.GTINInformationRP.GetById(id);
-                objEx.checksum = obj.checksum > 0 ? obj.checksum : objEx.checksum;
-                objEx.companyprefix = obj.companyprefix != string.Empty || obj.companyprefix != null ? obj.companyprefix : objEx.companyprefix;
-                objEx.gtin = obj.gtin != string.Empty || obj.gtin != null ? obj.gtin : objEx.gtin;
-                objEx.productcode = obj.productcode != string.Empty || obj.productcode != null ? obj.productcode : objEx.productcode;
-                //objEx.ID = Id;
-                _uow.GTINInformationRP.Update(objEx);
+                _uow.GTINInformationRP.Update(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<GTINInformation> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
                 }
+                return new GenericResponse<GTINInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
     }
 }

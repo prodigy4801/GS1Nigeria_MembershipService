@@ -4,6 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>2</WarningLevel>
+    <DocumentationFile>C:\Users\prodi\OneDrive\Documents\Visual Studio 2019\Projects\MembershipPortal\MembershipPortal.api\MembershipPortal.api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591,1572,1571,1573,1587,1570</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Controllers\V2\RegistrationBackend\**" />
     <Content Remove="Controllers\V2\RegistrationBackend\**" />
@@ -46,6 +52,10 @@
     <ProjectReference Include="..\MembershipPortal.data\MembershipPortal.data.csproj" />
     <ProjectReference Include="..\MembershipPortal.service\MembershipPortal.service.csproj" />
     <ProjectReference Include="..\MembershipPortal.viewmodels\MembershipPortal.viewmodels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

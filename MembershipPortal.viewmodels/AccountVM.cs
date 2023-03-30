@@ -24,12 +24,18 @@ namespace MembershipPortal.viewmodels
         public string firstname { get; set; }
         public string lastname { get; set; }
         public bool active { get; set; }
+        public string RefreshToken { get; set; }
+        public string tokenValidation { get; set; }
+        //public int gtinRequested { get; set; }
+        //public int gtinListed { get; set; }
+        //public int ImagesRequested { get; set; }
+        //public int ImagesUsed { get; set; }
         public DateTimeOffset createdon { get; set; }
         public DateTimeOffset modifiedon { get; set; }
 
-        public CompanyVM Companies { get; set; }
-        public RoleVM Roles { get; set; }
-        //public List<GLNRequestVM> User_GLNRequest { get; set; }
+        public CompanyVM Companies { get; set; } = null;
+        public RoleVM Roles { get; set; } = null;
+
     }
 
     public class RegistrationVM_CRU

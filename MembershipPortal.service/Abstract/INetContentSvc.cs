@@ -9,6 +9,6 @@ namespace MembershipPortal.service
 {
     public interface INetContentSvc : IService<NetContent>
     {
-        Task<NetContent> GetByNetContentName(string name);
+        Task<GenericResponse<NetContent>> GetByContentName(string contentname);
     }
 }

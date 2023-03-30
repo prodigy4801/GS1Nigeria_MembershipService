@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -30,42 +31,42 @@ namespace MembershipPortal.api.Controllers.V2
             this._logger = logger;
         }
         // GET: api/<BenefitBrickCategoryController>
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RBrickCategory.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
                 var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All BrickCategory records");
-                    var result = _mapper.Map<IEnumerable<BrickCategoryVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<BrickCategoryVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All BrickCategory no record");
+                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all BrickCategory ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RBrickCategory.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
                     _logger.LogInformation("Success: Get BrickCategory with id " + id);
-                    var obj = _mapper.Map<BrickCategoryVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<BrickCategoryVM>(obj);
+                    return Ok(result);
                 }
 
                 _logger.LogInformation("NULL: Get BrickCategory with id " + id);
@@ -73,15 +74,20 @@ namespace MembershipPortal.api.Controllers.V2
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get BrickCategory with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // POST api/<BenefitBrickCategoryController>
         [HttpPost(ApiRoutes.RBrickCategory.Create)]
-        public async Task<IActionResult> Post([FromBody] BrickCategoryVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] BrickCategoryVM_CRU req)
         {
+            ServiceResponse<BrickCategoryVM> result = new ServiceResponse<BrickCategoryVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
@@ -90,67 +96,22 @@ namespace MembershipPortal.api.Controllers.V2
                     _logger.LogInformation("Failed: Create BrickCategory ", errors);
                     return BadRequest(errors);
                 }
-                else
+
+                BrickCategory model = _mapper.Map<BrickCategory>(req);
+                var obj = await _service.Save(model);
+                result = _mapper.Map<ServiceResponse<BrickCategoryVM>>(obj);
+                if (result.IsSuccess)
                 {
-                    BrickCategory data = _mapper.Map<BrickCategory>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create BrickCategory ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RBrickCategory.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create BrickCategory ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, result);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, result);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create BrickCategory " + ex);
-                return null;
+                result.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, result);
             }
 
-        }
-
-        // PUT api/<BenefitBrickCategoryController>/5
-        [HttpPut(ApiRoutes.RBrickCategory.Update)]
-        public async Task<IActionResult> Put([FromBody] BrickCategoryVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update BrickCategory ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<BrickCategory>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update BrickCategory ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update BrickCategory ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update BrickCategory " + ex);
-                return null;
-            }
         }
     }
 }

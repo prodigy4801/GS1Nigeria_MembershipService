@@ -17,16 +17,32 @@ namespace MembershipPortal.viewmodels
         public DateTime modifieddate { get; set; }
     }
 
-    public class BrandInformationVM_CRU
+    public class BrandInformationVM_Create
     {
-        [Key]
-        [Required]
-        public int id { get; set; }
         [Required]
         [StringLength(100)]
         public string brandname { get; set; }
         [Required]
         [StringLength(100)]
         public string registrationid { get; set; }
+        [Required]
+        public bool isActive { get; set; }
+    }
+
+    public class BrandInformationVM_Update
+    {
+        [Required]
+        public int id { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string brandname { get; set; }
+    }
+
+    public class BrandInformationVM_ActivationStatus
+    {
+        [Required]
+        public int id { get; set; }
+        [Required]
+        public bool isActive { get; set; }
     }
 }

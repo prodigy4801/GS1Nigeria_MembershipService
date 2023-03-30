@@ -9,5 +9,8 @@ namespace MembershipPortal.service
 {
     public interface IExternalUnifiedModelSvc : IService<ExternalUnifiedModel>
     {
+        Task<GenericResponseList<ExternalUnifiedModel>> GetAll(int? skip, int? take);
+        Task<GenericResponse<ExternalUnifiedModel>> GetByProductID(int productId);
+        Task<GenericResponse<bool>> IsExist(ExternalUnifiedModel profile);
     }
 }

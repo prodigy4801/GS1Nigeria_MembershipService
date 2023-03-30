@@ -38,7 +38,7 @@ namespace MembershipPortal.core.Repository
             IEnumerable<Product> response = null;
             try
             {
-                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.TargetMarket).ToListAsync();
+                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.ProductTargetMarket).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace MembershipPortal.core.Repository
             Product response = null;
             try
             {
-                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.TargetMarket).FirstOrDefaultAsync<Product>(m => m.id == id);
+                response = await ApplicationDBContext.Products.Include(x => x.BrickCategory).Include(x => x.BrandInformation).Include(x => x.NetContent).Include(x => x.PackagingType).Include(x => x.PackageLevel).Include(x => x.ProductTargetMarket).FirstOrDefaultAsync<Product>(m => m.id == id);
             }
             catch (Exception ex)
             {

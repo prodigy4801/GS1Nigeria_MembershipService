@@ -11,61 +11,86 @@ namespace MembershipPortal.service.Concrete
     public class BrickCategorySvc : IBrickCategorySvc
     {
         private readonly IUnitOfWork _uow;
+        private string[] _includes = { };
 
         public BrickCategorySvc(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task<IEnumerable<BrickCategory>> GetAll()
+        public async Task<GenericResponseList<BrickCategory>> GetAll()
         {
-            return await _uow.BrickCategoryRP.GetAllAsync();
+            try
+            {
+                var records = await _uow.BrickCategoryRP.GetAll();
+                return new GenericResponseList<BrickCategory> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+        public async Task<GenericResponseList<BrickCategory>> GetAll(int? skip, int? take)
+        {
+            try
+            {
+                var records = await _uow.BrickCategoryRP.GetBy(null, x => x.OrderByDescending(y => y.id), skip, take, _includes);
+                return new GenericResponseList<BrickCategory> { ReturnedObject = records, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponseList<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<BrickCategory> GetByID(int id)
+        public async Task<GenericResponse<BrickCategory>> GetByID(int id)
         {
-            return await _uow.BrickCategoryRP.GetByIdAsync(id);
+            try
+            {
+                var record = await _uow.BrickCategoryRP.GetByFirstOrDefault(x => x.id == id, _includes);
+                return new GenericResponse<BrickCategory> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
-        public async Task<BrickCategory> GetByBrickName(string category)
+        public async Task<GenericResponse<BrickCategory>> GetByBrickName(string brickname)
         {
-            return await _uow.BrickCategoryRP.GetByIdAsync(category);
+            try
+            {
+                var record = await _uow.BrickCategoryRP.GetByFirstOrDefault(x => x.brick == brickname, _includes);
+                return new GenericResponse<BrickCategory> { ReturnedObject = record, IsSuccess = true, Message = null };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
 
         public async Task<GenericResponse<BrickCategory>> Remove(BrickCategory obj)
         {
-            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 _uow.BrickCategoryRP.Delete(obj);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<BrickCategory>> Remove(int id)
         {
-            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
+
             try
             {
                 var obj = _uow.BrickCategoryRP.GetById(id);
@@ -73,100 +98,63 @@ namespace MembershipPortal.service.Concrete
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully deleted record";
+                    return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = true, Message = "Successfully deleted record." };
                 }
+                return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = false, Message = "Failed to delete record." };
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
-
-            return response;
         }
 
         public async Task<GenericResponse<BrickCategory>> Save(BrickCategory profile)
         {
             if (profile.id == 0)
             {
-                //profile.createddate = DateTime.Now;
-
                 return await Add(profile);
             }
             else
             {
-                //profile.modifieddate = DateTime.Now;
                 return await Update(profile.id, profile);
             }
         }
 
         private async Task<GenericResponse<BrickCategory>> Add(BrickCategory profile)
         {
-            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
             try
             {
-                if (!await _uow.BrickCategoryRP.IsExists(profile))
-                {
-                    _uow.BrickCategoryRP.Add(profile);
-                    int result = await _uow.Complete();
-                    if (result > 0)
-                    {
-                        response.IsSuccess = true;
-                        response.Message = "Successfully added record.";
-                        response.ReturnedObject = profile;
-                    }
-                }
-                else
-                {
-                    response.IsSuccess = false;
-                    response.Message = "User Information exist.";
-                }
-
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
-            }
-
-            return response;
-        }
-        private async Task<GenericResponse<BrickCategory>> Update(int id, BrickCategory obj)
-        {
-            GenericResponse<BrickCategory> response = new GenericResponse<BrickCategory>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
-            try
-            {
-                var objEx = _uow.BrickCategoryRP.GetById(id);
-                objEx.brick = obj.brick != string.Empty || obj.brick != null ? obj.brick : objEx.brick;
-                objEx.brick_id = obj.brick_id != string.Empty || obj.brick_id != null ? obj.brick_id : objEx.brick_id;
-
-                //objEx.ID = Id;
-                _uow.BrickCategoryRP.Update(objEx);
+                _uow.BrickCategoryRP.Add(profile);
                 int result = await _uow.Complete();
                 if (result > 0)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Successfully updated record";
-                    response.ReturnedObject = objEx;
+                    return new GenericResponse<BrickCategory> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                 }
+                return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
+
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
+        }
+        private async Task<GenericResponse<BrickCategory>> Update(int id, BrickCategory obj)
+        {
 
-            return response;
+            try
+            {
+                _uow.BrickCategoryRP.Update(obj);
+                int result = await _uow.Complete();
+                if (result > 0)
+                {
+                    return new GenericResponse<BrickCategory> { ReturnedObject = obj, IsSuccess = true, Message = "Successfully updated record." };
+                }
+                return new GenericResponse<BrickCategory> { ReturnedObject = null, IsSuccess = false, Message = "Failed updating record." };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<BrickCategory> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
         }
     }
 }

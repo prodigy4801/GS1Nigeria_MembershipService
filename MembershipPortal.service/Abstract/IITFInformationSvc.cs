@@ -9,5 +9,7 @@ namespace MembershipPortal.service
 {
     public interface IITFInformationSvc : IService<ITFInformation>
     {
+        Task<GenericResponseList<ITFInformation>> GetAll(int? skip, int? take);
+        Task<GenericResponse<ITFInformation>> GetByRegistrationID(string regId);
     }
 }

@@ -9,6 +9,6 @@ namespace MembershipPortal.service
 {
     public interface IPackageLevelSvc : IService<PackageLevel>
     {
-        Task<PackageLevel> GetByPackageLevelName(string name);
+        Task<GenericResponse<PackageLevel>> GetByLevelName(string levelname);
     }
 }

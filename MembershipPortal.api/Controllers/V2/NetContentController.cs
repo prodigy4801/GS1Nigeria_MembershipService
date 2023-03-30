@@ -11,10 +11,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Controllers.V2
 {
-    // [Authorize]
+    [Authorize]
     [Route("")]
     [ApiController]
     public class NetContentController : ControllerBase
@@ -30,126 +31,83 @@ namespace MembershipPortal.api.Controllers.V2
             this._logger = logger;
         }
         // GET: api/<BenefitNetContentController>
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RNetContent.GetAll)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllPagination()
         {
             try
             {
                 var obj = await _service.GetAll();
-                if (obj != null && obj.Count() >= 0)
+                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
                 {
-                    _logger.LogInformation("Success: Get All GLN records");
-                    var result = _mapper.Map<IEnumerable<NetContentVM>>(obj);
+                    var result = _mapper.Map<IEnumerable<NetContentVM>>(obj.ReturnedObject);
                     return Ok(result);
                 }
 
-                _logger.LogInformation("Empty: Get All GLN no record");
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get all GLN ", ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
         // GET api/<BenefitController>/5
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RNetContent.GetByID)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
             try
             {
-                var data = await _service.GetByID(id);
+                var obj = await _service.GetByID(id);
 
-                if (data != null)
+                if (obj.IsSuccess && obj.ReturnedObject != null)
                 {
-                    _logger.LogInformation("Success: Get NetContent with id " + id);
-                    var obj = _mapper.Map<NetContentVM>(data);
-                    return Ok(obj);
+                    var result = _mapper.Map<NetContentVM>(obj.ReturnedObject);
+                    return Ok(result);
                 }
 
-                _logger.LogInformation("NULL: Get NetContent with id " + id);
                 return NotFound();
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Get NetContent with id with error " + ex);
-                return null;
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
 
-        // POST api/<BenefitNetContentController>
         [HttpPost(ApiRoutes.RNetContent.Create)]
-        public async Task<IActionResult> Post([FromBody] NetContentVM_CRU obj)
+        public async Task<IActionResult> Post([FromBody] NetContentVM_CRU req)
         {
+            ServiceResponse<NetContentVM> response = new ServiceResponse<NetContentVM>
+            {
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Create NetContent ", errors);
-                    return BadRequest(errors);
+                    var errors = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                    response.Message = errors;
+                    return StatusCode(StatusCodes.Status400BadRequest, response);
                 }
-                else
+
+                NetContent model = _mapper.Map<NetContent>(req);
+                var obj = await _service.Save(model);
+                response = _mapper.Map<ServiceResponse<NetContentVM>>(obj);
+                if (response.IsSuccess)
                 {
-                    NetContent data = _mapper.Map<NetContent>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Create NetContent ", result);
-                        var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-                        var locationUrl = baseUrl + "/" + ApiRoutes.RNetContent.GetByID.Replace("{id}", data.id.ToString());
-                        return Created(locationUrl, result);
-                    }
-                    else
-                    {
-                        _logger.LogError("Failed: Create NetContent ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
+                    return StatusCode(StatusCodes.Status201Created, response);
                 }
+                return StatusCode(StatusCodes.Status400BadRequest, response);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed: Create NetContent " + ex);
-                return null;
-            }
-
-        }
-
-        // PUT api/<BenefitNetContentController>/5
-        [HttpPut(ApiRoutes.RNetContent.Update)]
-        public async Task<IActionResult> Put([FromBody] NetContentVM_CRU obj)
-        {
-            try
-            {
-                if (!ModelState.IsValid && obj.id == 0)
-                {
-                    var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-                    _logger.LogInformation("Failed: Update NetContent ", errors);
-                    return BadRequest();
-                }
-                else
-                {
-                    var data = _mapper.Map<NetContent>(obj);
-                    var result = await _service.Save(data);
-                    if (result.IsSuccess)
-                    {
-                        _logger.LogInformation("Success: Update NetContent ", result);
-                        return Ok(result);
-                    }
-
-                    else
-                    {
-                        _logger.LogError("Failed: Update NetContent ", result);
-                        return StatusCode(StatusCodes.Status500InternalServerError, result);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Update NetContent " + ex);
-                return null;
+                response.Message = ex.Message;
+                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }
