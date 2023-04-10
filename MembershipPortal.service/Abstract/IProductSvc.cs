@@ -15,7 +15,7 @@ namespace MembershipPortal.service
         Task<GenericResponse<bool>> ProductExist(string gtin, string brandName);
         Task<GenericResponse<Product>> SaveProductWithImage(Product profile, ImageUploadModel uploads);
         Task<GenericServiceResponseList<Product>> SaveProductListWithoutGTIN(IEnumerable<Product> products, string registrationid);
-        Task<GenericResponse<Product>> SaveUpdateWithImage(Product profile, ImageUploadModel uploads);
+        Task<GenericResponse<Product>> SaveUpdateWithImage(Product profile, List<string> targetmktListIDs, ImageUploadModel imageFile, PharmaceuticalInformation pharmaProduct);
         Task<GenericResponseList<Product>> SaveProductList(IEnumerable<Product> products, string registrationID);
         Task<GenericResponseList<Product>> GetAll(int? skip, int? take);
     }

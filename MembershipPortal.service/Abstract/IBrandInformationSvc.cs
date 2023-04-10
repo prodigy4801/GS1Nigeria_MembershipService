@@ -13,7 +13,7 @@ namespace MembershipPortal.service
         Task<GenericResponseList<BrandInformation>> GetAllActive(int? skip, int? take);
         Task<GenericResponse<BrandInformation>> GetByBrandName(string brandname);
         Task<GenericResponseList<BrandInformation>> GetByRegistrationID(string regId);
-        Task<GenericResponse<bool>> IsExist(BrandInformation profile);
+        Task<GenericResponse<bool>> IsExist(BrandInformation profile, string registrationID);
         //Task<bool> RecordExist(BrandInformation record);
     }
 }

@@ -32,6 +32,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
         //[AllowAnonymous]
         [HttpGet(ApiRoutes.RGCPInformation.GetAll)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
             try
@@ -55,6 +56,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         //[AllowAnonymous]
         [HttpGet(ApiRoutes.RGCPInformation.GetByID)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetByID(int id)
         {
             try
@@ -79,26 +81,21 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RGCPInformation.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {
-            try
+            ServiceResponseList<GCPInformationVM> response = new ServiceResponseList<GCPInformationVM>
             {
-                var obj = await _service.GetListByRegistrationID(registrationid);
+                ReturnedObject = null,
+                IsSuccess = false,
+                Message = string.Empty
+            };
 
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<IEnumerable<GCPInformationVM>>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+            var obj = await _service.GetListByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponseList<GCPInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         //[AllowAnonymous]
         [HttpPost(ApiRoutes.RGCPInformation.Create)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> Post([FromBody] GCPInformationVM_Create req)
         {
             ServiceResponse<GCPInformationVM> response = new ServiceResponse<GCPInformationVM>
@@ -136,6 +133,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         //[AllowAnonymous]
         [HttpPost(ApiRoutes.RGCPInformation.ChangeActiveStatus)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> ChangeActivation([FromQuery] GCPInformationVM_ChangeStatus req)
         {
             ServiceResponse<GCPInformationVM> response = new ServiceResponse<GCPInformationVM>

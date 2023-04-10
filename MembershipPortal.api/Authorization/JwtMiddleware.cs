@@ -39,9 +39,7 @@ namespace MembershipPortal.api.Authorization
                 var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
                 if (token != null)
                 {
-                    var mainToken = token.Split(":").First();
-                    var refreshToken = token.Split(":").Last();
-                    var regid = jwtUtils.ValidateToken(mainToken, this._settings.Key);
+                    var regid = jwtUtils.ValidateToken(token, this._settings.Key);
                     //get userregistrationid
                     var baseURL = this._regApiSettings.BaseUrl;
                     var endpoint = "api/v2/user/getbyregid";
@@ -51,26 +49,26 @@ namespace MembershipPortal.api.Authorization
                         endpoint = endpoint,
                         Token = token
                     };
-                    if (regid.istokenexpired && !regid.istokenvalid)
-                    {
-                        var principal = jwtUtils.GetPrincipalFromExpiredToken(mainToken);
-                        var userregid = principal.Identity?.Name;
+                    //if (regid.istokenexpired && !regid.istokenvalid)
+                    //{
+                    //    var principal = jwtUtils.GetPrincipalFromExpiredToken(mainToken);
+                    //    var userregid = principal.Identity?.Name;
 
-                        var userRecord = await service.GetByRegistrationID(userregid, servicerequest);
+                    //    var userRecord = await service.GetByRegistrationID(userregid, servicerequest);
 
-                        if (userRecord.ReturnedObject != null && userRecord.IsSuccess)
-                        {
-                            var savedrefreshtoken = await uservalidationtokenservice.GetByRefreshToken(userRecord.ReturnedObject.id, refreshToken, servicerequest);
-                            if (savedrefreshtoken != null)
-                            {
-                                var generateToken = jwtUtils.GenerateJWTToken(userregid);
-                            }
-                            context.Items["AuthenticatedUser"] = mapper.Map<AuthenticatedPayload>(userRecord.ReturnedObject);
-                        }
-                    }
-                    else if (regid.istokenvalid && !regid.istokenexpired && regid != null)
+                    //    if (userRecord.ReturnedObject != null && userRecord.IsSuccess)
+                    //    {
+                    //        var savedrefreshtoken = await uservalidationtokenservice.GetByRefreshToken(userRecord.ReturnedObject.id, refreshToken, servicerequest);
+                    //        if (savedrefreshtoken != null)
+                    //        {
+                    //            var generateToken = jwtUtils.GenerateJWTToken(userregid);
+                    //        }
+                    //        context.Items["AuthenticatedUser"] = mapper.Map<AuthenticatedPayload>(userRecord.ReturnedObject);
+                    //    }
+                    //}
+                    if (regid != null && regid.IsSuccess && regid.ReturnedObject.istokenvalid && !regid.ReturnedObject.istokenexpired)
                     {
-                        var userRecord = await service.GetByRegistrationID(regid.tokenkey, servicerequest);
+                        var userRecord = await service.GetByRegistrationID(regid.ReturnedObject.tokenkey, servicerequest);
                         if (userRecord.ReturnedObject != null)
                         {
                             context.Items["AuthenticatedUser"] = mapper.Map<AuthenticatedPayload>(userRecord.ReturnedObject);

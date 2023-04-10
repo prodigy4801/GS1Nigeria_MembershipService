@@ -20,7 +20,6 @@ using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace MembershipPortal.api.Controllers.V2
 {
-    [Authorize]
     [Route("")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -31,12 +30,13 @@ namespace MembershipPortal.api.Controllers.V2
         private readonly IImageBankSvc _imagebankSvc;
         private readonly IGTINInformationSvc _gtininformationSvc;
         private readonly IGCPInformationSvc _gcpinformationSvc;
+        private readonly IJwtUtils _jwtUtils;
         //private IJwtUtils _jwtUtils;
         //private readonly AppSettings _appSettings;
         //private readonly ILogger<AuthenticationController> _logger;
 
         //public AuthenticationController(IJwtUtils jwtUtils, IAPICredentialsSvc service, IMapper mapper, ILogger<AuthenticationController> logger)
-        public AccountController(IAuthenticationSvc service, IImageBankSvc imagebankSvc, IGTINInformationSvc gtininformationSvc, IGCPInformationSvc gcpinformationSvc, IMapper mapper, IOptions<RegistrationAPI_Settings> registrationAPI)
+        public AccountController(IAuthenticationSvc service, IImageBankSvc imagebankSvc, IGTINInformationSvc gtininformationSvc, IGCPInformationSvc gcpinformationSvc, IMapper mapper, IOptions<RegistrationAPI_Settings> registrationAPI, IJwtUtils jwtUtils)
         {
             this._service = service;
             this._mapper = mapper;
@@ -44,9 +44,9 @@ namespace MembershipPortal.api.Controllers.V2
             this._gtininformationSvc = gtininformationSvc;
             this._gcpinformationSvc = gcpinformationSvc;
             this._imagebankSvc = imagebankSvc;
+            this._jwtUtils = jwtUtils;
         }
 
-        [AllowAnonymous]
         [HttpPost(ApiRoutes.RAPIAuthentication.MemberLogin)]
         public async Task<IActionResult> MembershipLogin([FromBody] LoginVM model)
         {
@@ -56,20 +56,32 @@ namespace MembershipPortal.api.Controllers.V2
                 ReturnedObject = null,
                 Message = string.Empty
             };
-            try
-            {
-                var baseURL = this._registrationAPI.BaseUrl;
-                var loginendpoint = this._registrationAPI.LoginEndPoint;
 
-                var obj = await _service.Login(model, baseURL, loginendpoint);
-                response = _mapper.Map<ServiceResponse<AuthenticatedPayload>>(obj);
-                return StatusCode(StatusCodes.Status200OK, response);
+            var baseURL = this._registrationAPI.BaseUrl;
+            var loginendpoint = this._registrationAPI.LoginEndPoint;
 
-            }
-            catch (Exception e)
+            var obj = await _service.Login(model, baseURL, loginendpoint);
+            response = _mapper.Map<ServiceResponse<AuthenticatedPayload>>(obj);
+            if (response.IsSuccess && response.ReturnedObject != null)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, response);
+                //Generate Token for User management
+                JWTTokenValueModel jwtToken = new JWTTokenValueModel
+                {
+                    companyname = response.ReturnedObject.Companies.companyname,
+                    email = response.ReturnedObject.email,
+                    registrationID = obj.ReturnedObject.registrationid
+                };
+                var tokenObj = _jwtUtils.GenerateJWTToken(jwtToken);
+                if (tokenObj != null && tokenObj.IsSuccess && tokenObj.ReturnedObject != null)
+                {
+                    response.ReturnedObject.tokenValidation = tokenObj.ReturnedObject;
+                }
+                else
+                {
+                    response.Message = tokenObj.Message;
+                }
             }
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

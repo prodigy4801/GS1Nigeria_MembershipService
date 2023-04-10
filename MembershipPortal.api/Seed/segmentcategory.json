@@ -1,0 +1,248 @@
+﻿[
+  {
+    "ID": 1,
+    "SegmentCode": "70000000",
+    "SegmentTitle": "Arts/Crafts/Needlework",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 2,
+    "SegmentCode": "68000000",
+    "SegmentTitle": "Audio Visual/Photography",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 3,
+    "SegmentCode": "53000000",
+    "SegmentTitle": "Beauty/Personal Care/Hygiene",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 4,
+    "SegmentCode": "83000000",
+    "SegmentTitle": "Building Products",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 5,
+    "SegmentCode": "74000000",
+    "SegmentTitle": "Camping",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 6,
+    "SegmentCode": "47000000",
+    "SegmentTitle": "Cleaning/Hygiene Products",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 7,
+    "SegmentCode": "67000000",
+    "SegmentTitle": "Clothing",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 8,
+    "SegmentCode": "66000000",
+    "SegmentTitle": "Communications",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 9,
+    "SegmentCode": "65000000",
+    "SegmentTitle": "Computing",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 10,
+    "SegmentCode": "94000000",
+    "SegmentTitle": "Crops",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 11,
+    "SegmentCode": "58000000",
+    "SegmentTitle": "Cross Segment",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 12,
+    "SegmentCode": "78000000",
+    "SegmentTitle": "Electrical Supplies",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 13,
+    "SegmentCode": "50000000",
+    "SegmentTitle": "Food/Beverage/Tobacco",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 14,
+    "SegmentCode": "63000000",
+    "SegmentTitle": "Footwear",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 15,
+    "SegmentCode": "87000000",
+    "SegmentTitle": "Fuels/Gases",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 16,
+    "SegmentCode": "51000000",
+    "SegmentTitle": "Healthcare",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 17,
+    "SegmentCode": "72000000",
+    "SegmentTitle": "Home Appliances",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 18,
+    "SegmentCode": "93000000",
+    "SegmentTitle": "Horticulture Plants",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 19,
+    "SegmentCode": "75000000",
+    "SegmentTitle": "Household/Office Furniture/Furnishings",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 20,
+    "SegmentCode": "73000000",
+    "SegmentTitle": "Kitchenware and Tableware",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 21,
+    "SegmentCode": "81000000",
+    "SegmentTitle": "Lawn/Garden Supplies",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 22,
+    "SegmentCode": "89000000",
+    "SegmentTitle": "Live Animals",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 23,
+    "SegmentCode": "88000000",
+    "SegmentTitle": "Lubricants",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 24,
+    "SegmentCode": "96000000",
+    "SegmentTitle": "Monetary Assets",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 25,
+    "SegmentCode": "61000000",
+    "SegmentTitle": "Music",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 26,
+    "SegmentCode": "64000000",
+    "SegmentTitle": "Personal Accessories",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 27,
+    "SegmentCode": "10000000",
+    "SegmentTitle": "Pet Care/Food",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 28,
+    "SegmentCode": "79000000",
+    "SegmentTitle": "Plumbing/Heating/Ventilation/Air Conditioning",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 29,
+    "SegmentCode": "98000000",
+    "SegmentTitle": "Raw Materials (Non Food)",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 30,
+    "SegmentCode": "85000000",
+    "SegmentTitle": "Safety/Protection - DIY",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 31,
+    "SegmentCode": "91000000",
+    "SegmentTitle": "Safety/Security/Surveillance",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 32,
+    "SegmentCode": "95000000",
+    "SegmentTitle": "Services/Vending Machines",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 33,
+    "SegmentCode": "71000000",
+    "SegmentTitle": "Sports Equipment",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 34,
+    "SegmentCode": "62000000",
+    "SegmentTitle": "Stationery/Office Machinery/Occasion Supplies",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 35,
+    "SegmentCode": "92000000",
+    "SegmentTitle": "Storage/Haulage Containers",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 36,
+    "SegmentCode": "60000000",
+    "SegmentTitle": "Textual/Printed/Reference Materials",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 37,
+    "SegmentCode": "84000000",
+    "SegmentTitle": "Tool Storage/Workshop Aids",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 38,
+    "SegmentCode": "80000000",
+    "SegmentTitle": "Tools/Equipment - Hand",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 39,
+    "SegmentCode": "82000000",
+    "SegmentTitle": "Tools/Equipment - Power",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 40,
+    "SegmentCode": "86000000",
+    "SegmentTitle": "Toys/Games",
+    "SegmentDefinition": ""
+  },
+  {
+    "ID": 41,
+    "SegmentCode": "77000000",
+    "SegmentTitle": "Vehicle",
+    "SegmentDefinition": ""
+  }
+]

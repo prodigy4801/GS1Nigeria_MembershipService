@@ -262,7 +262,7 @@ namespace MembershipPortal.service.Concrete
                 {
                     response.Message.Add("Company Prefix has not been generated. Contact GS1 Nigeria Admin.");
                     return response;
-                } 
+                }
 
                 IEnumerable<GTINInformation> gtinInformationList = new List<GTINInformation>();
                 GCPInformation gcpInformationObj = new GCPInformation();
@@ -604,39 +604,91 @@ namespace MembershipPortal.service.Concrete
             throw new NotImplementedException();
         }
 
-        public async Task<GenericResponse<Product>> SaveUpdateWithImage(Product profile, ImageUploadModel uploads)
-        {
-            profile.modifieddate = DateTime.UtcNow;
-            return await AddUpdate(profile, uploads);
-        }
+        //public async Task<GenericResponse<Product>> SaveUpdateWithImage(Product profile, ImageUploadModel uploads, PharmaceuticalInformation pharmaProduct)
+        //{
 
-        private async Task<GenericResponse<Product>> AddUpdate(Product profile, ImageUploadModel imageFile)
+        //    return await ProductUpdate(profile, uploads, pharmaProduct);
+        //}
+
+        public async Task<GenericResponse<Product>> SaveUpdateWithImage(Product profile, List<string> targetmktListIDs, ImageUploadModel imageFile, PharmaceuticalInformation pharmaProduct)
         {
-            try
+            List<ProductTargetMarket> productTargetMarketList = new List<ProductTargetMarket>();
+            profile.modifieddate = DateTime.UtcNow;
+            if (imageFile != null)
             {
-                if (imageFile != null)
+                var ImagePath = await StoreImageTODirectory(imageFile, profile.registrationid, profile.gtin);
+                profile.hasimage = (ImagePath.Front != null || ImagePath.Back != null || ImagePath.Left != null || ImagePath.Right != null || ImagePath.Other != null) ? true : false;
+                if (ImagePath.Front != null) profile.frontimage = ImagePath.Front;
+                if (ImagePath.Back != null) profile.backimage = ImagePath.Back;
+                if (ImagePath.Left != null) profile.leftimage = ImagePath.Left;
+                if (ImagePath.Right != null) profile.rightimage = ImagePath.Right;
+                if (ImagePath.Other != null) profile.otherimage = ImagePath.Other;
+            }
+            profile.iscompleted = ProductCompleteStatus(profile);
+
+            //delete previous producttargetmarket information if there was an edit done
+            if (targetmktListIDs.Count() > 0)
+            {
+                //Create a ProductTargetMarketModel for storage
+
+                foreach (var targetID in targetmktListIDs)
                 {
-                    var ImagePath = await StoreImageTODirectory(imageFile, profile.registrationid, profile.gtin);
-                    profile.hasimage = (ImagePath.Front != null || ImagePath.Back != null || ImagePath.Left != null || ImagePath.Right != null || ImagePath.Other != null) ? true : false;
-                    if (ImagePath.Front != null) profile.frontimage = ImagePath.Front;
-                    if (ImagePath.Back != null) profile.backimage = ImagePath.Back;
-                    if (ImagePath.Left != null) profile.leftimage = ImagePath.Left;
-                    if (ImagePath.Right != null) profile.rightimage = ImagePath.Right;
-                    if (ImagePath.Other != null) profile.otherimage = ImagePath.Other;
+                    var prodTargetMkt = new ProductTargetMarket
+                    {
+                        datecreated = DateTime.UtcNow,
+                        product_id = profile.id,
+                        registrationid = profile.registrationid,
+                        targetmarket_id = Convert.ToInt16(targetID),
+                        id = 0
+                    };
+                    productTargetMarketList.Add(prodTargetMkt);
                 }
-                profile.iscompleted = ProductCompleteStatus(profile);
-                _uow.ProductRP.Update(profile);
-                int result = await _uow.Complete();
-                if (result > 0)
+            }
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
                 {
+                    _context.Entry(profile).State = EntityState.Modified;
+                    _context.Products.Update(profile);
+
+                    if(productTargetMarketList.Count() > 0)
+                    {
+                        //get all the previous product target market
+                        var getProductTargetMarket = await _uow.ProductTargetMarketRP.GetBy(x => x.product_id == profile.id && x.registrationid == profile.registrationid);
+                        if (getProductTargetMarket.Count() > 0)
+                        {
+                            _context.ProductTargetMarkets.RemoveRange(getProductTargetMarket);
+                        }
+
+                        _context.ProductTargetMarkets.AddRange(productTargetMarketList);
+                    }
+
+                    if (pharmaProduct != null)
+                    {
+                        _context.Entry(pharmaProduct).State = EntityState.Modified;
+                        _context.PharmaceuticalInformations.Update(pharmaProduct);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
                     return new GenericResponse<Product> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully Updated Product Information." };
                 }
-                return new GenericResponse<Product> { ReturnedObject = null, IsSuccess = false, Message = "Failed Listing Product Information." };
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    return new GenericResponse<Product> { ReturnedObject = null, IsSuccess = true, Message = ex.Message };
+                }
             }
-            catch (Exception ex)
-            {
-                return new GenericResponse<Product> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
-            }
+            //_uow.ProductRP.Update(profile);
+            //int result = await _uow.Complete();
+            //if (result > 0)
+            //{
+            //    return new GenericResponse<Product> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully Updated Product Information." };
+            //}
+            //return new GenericResponse<Product> { ReturnedObject = null, IsSuccess = false, Message = "Failed Listing Product Information." };
+
+
         }
     }
 

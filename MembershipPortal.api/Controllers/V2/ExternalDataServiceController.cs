@@ -18,6 +18,7 @@ namespace MembershipPortal.api.Controllers.V2
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ExternalDataServiceController : ControllerBase
     {
         private readonly ILogger<ExternalDataServiceController> _logger;

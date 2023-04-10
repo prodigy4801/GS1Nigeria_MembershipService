@@ -86,6 +86,7 @@ namespace MembershipPortal.api.Contract.V2
             public const string GetByRegistrationID = Base + "/imagebank/getbyregistrationid/{registrationid}";
             public const string Create = Base + "/imagebank/create";
             public const string Update = Base + "/imagebank/update";
+            public const string GenerateBarcode = Base + "/imagebank/generatebarcode";
         }
 
         public static class RITFInformation
@@ -166,7 +167,7 @@ namespace MembershipPortal.api.Contract.V2
 
         public static class RCompany
         {
-            public const string GetByRegistrationID = Base + "/company/getbyregid/{regid}";
+            public const string GetByRegistrationID = Base + "/company/getbyregid/{registrationid}";
         }
 
         public static class RGTINRequest

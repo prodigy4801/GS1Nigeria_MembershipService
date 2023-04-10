@@ -147,12 +147,12 @@ namespace MembershipPortal.viewmodels
         public int productID { get; set; }
 
         [Required]
-        public string registrationid { get; set; }
-        public ProductVM_Update Product { get; set; }
+        public string registrationid { get; set; } = string.Empty;
+        public ProductVM_Update Product { get; set; } = new ProductVM_Update();
         [Required]
         public List<string> TargetMarketList { get; set; }
-        public ProductImageUpload ProductImageUpload { get; set; }
-        public PharmaceuticalInformationVM PharmaProduct { get; set; }
+        public ProductImageUpload ProductImageUpload { get; set; } = new ProductImageUpload();
+        public PharmaceuticalInformationVM_Update PharmaProduct { get; set; } = new PharmaceuticalInformationVM_Update();
     }
 
     public class BulkProductWithGTIN_CR

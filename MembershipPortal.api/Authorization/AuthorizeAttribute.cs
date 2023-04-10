@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.data.ExternalEntries.Models;
 using MembershipPortal.viewmodels;
+using MembershipPortal.api.Models;
 
 namespace MembershipPortal.api.Authorization
 {
@@ -23,7 +24,7 @@ namespace MembershipPortal.api.Authorization
             // authorization
             var user = (AuthenticatedPayload)context.HttpContext.Items["AuthenticatedUser"];
             if (user == null)
-                context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+                context.Result = new JsonResult(new CustomErrorHandler { IsSuccess = false, StatusCode = 0, Message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
         }
     }
 }

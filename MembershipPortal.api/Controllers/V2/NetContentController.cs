@@ -33,7 +33,7 @@ namespace MembershipPortal.api.Controllers.V2
         // GET: api/<BenefitNetContentController>
         [AllowAnonymous]
         [HttpGet(ApiRoutes.RNetContent.GetAll)]
-        public async Task<IActionResult> GetAllPagination()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
@@ -53,7 +53,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         // GET api/<BenefitController>/5
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RNetContent.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
@@ -72,42 +72,6 @@ namespace MembershipPortal.api.Controllers.V2
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
-        }
-
-        [HttpPost(ApiRoutes.RNetContent.Create)]
-        public async Task<IActionResult> Post([FromBody] NetContentVM_CRU req)
-        {
-            ServiceResponse<NetContentVM> response = new ServiceResponse<NetContentVM>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-
-                NetContent model = _mapper.Map<NetContent>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<NetContentVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

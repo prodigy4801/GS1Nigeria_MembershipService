@@ -8,7 +8,7 @@ namespace MembershipPortal.viewmodels.ExternalDataViewModel.RegistrationBackend
 {
     public class CountryVM
     {
-        public int id { get; set; }
+        //public int id { get; set; }
         public string name { get; set; }
     }
 

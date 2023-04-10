@@ -41,7 +41,7 @@ namespace MembershipPortal.api.Controllers.V2
             this._registrationAPI = registrationAPI.Value;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ExternalApiRoutes.RGTINRequest.AdditionalRequest)]
         public async Task<IActionResult> AdditionalRequest([FromBody] GTINRequestVM_Create req)
         {

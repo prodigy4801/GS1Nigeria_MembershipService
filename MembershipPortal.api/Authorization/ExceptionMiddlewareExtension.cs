@@ -26,8 +26,9 @@ namespace MembershipPortal.api.Authorization
                     {
                         await context.Response.WriteAsync(new CustomErrorHandler()
                         {
-                             message = contextFeature.Error.Message,
-                             statuscode = context.Response.StatusCode
+                             Message = contextFeature.Error.Message,
+                             StatusCode = context.Response.StatusCode,
+                             IsSuccess = false
                         }.ToString());
                     }
                 });

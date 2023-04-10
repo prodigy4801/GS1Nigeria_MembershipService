@@ -9,7 +9,7 @@ namespace MembershipPortal.viewmodels.ExternalDataViewModel.RegistrationBackend
 {
     public class LocalGovtVM
     {
-        public int id { get; set; }
+        //public int id { get; set; }
         public string name { get; set; }
         public int state_id { get; set; }
         public StateVM States { get; set; }

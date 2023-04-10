@@ -8,8 +8,9 @@ namespace MembershipPortal.api.Models
 {
     public class CustomErrorHandler
     {
-        public int statuscode { get; set; }
-        public string message { get; set; }
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
+        public int StatusCode { get; set; }
         public override string ToString()
         {
             return JsonSerializer.Serialize(this);

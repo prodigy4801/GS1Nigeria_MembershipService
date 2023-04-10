@@ -19,8 +19,9 @@ using MembershipPortal.service.Concrete.ExternalEntries;
 namespace MembershipPortal.api.Controllers.V2
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class CompanyController : ControllerBase
     {
         private readonly ICompanySvc _service;
@@ -36,7 +37,7 @@ namespace MembershipPortal.api.Controllers.V2
             this._registrationAPI = registrationAPI.Value;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ExternalApiRoutes.RCompany.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {

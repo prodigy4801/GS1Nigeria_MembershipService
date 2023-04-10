@@ -33,7 +33,7 @@ namespace MembershipPortal.api.Controllers.V2
         // GET: api/<BenefitPackageLevelController>
         [AllowAnonymous]
         [HttpGet(ApiRoutes.RPackageLevel.GetAll)]
-        public async Task<IActionResult> GetAllPagination()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
@@ -72,43 +72,6 @@ namespace MembershipPortal.api.Controllers.V2
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
-        }
-
-        // POST api/<BenefitPackageLevelController>
-        [HttpPost(ApiRoutes.RPackageLevel.Create)]
-        public async Task<IActionResult> Post([FromBody] PackageLevelVM_CRU req)
-        {
-            ServiceResponse<PackageLevelVM> response = new ServiceResponse<PackageLevelVM>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-
-                PackageLevel model = _mapper.Map<PackageLevel>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<PackageLevelVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
             }
         }
     }

@@ -62,6 +62,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet(ApiRoutes.RProduct.GetAllDataTable)]
         public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
@@ -96,6 +97,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitProductController>
         [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet(ApiRoutes.RProduct.GetAll)]
         public async Task<IActionResult> Get()
         {
@@ -117,7 +119,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         // GET api/<BenefitController>/5
-        [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet(ApiRoutes.RProduct.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
@@ -139,7 +141,6 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         // GET api/<BenefitController>/5
-        [AllowAnonymous]
         [HttpGet(ApiRoutes.RProduct.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegistrationID(string registrationid)
         {
@@ -177,44 +178,6 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        // POST api/<BenefitProductController>
-        //[HttpPost(ApiRoutes.RProduct.Create)]
-        //public async Task<IActionResult> Post([FromBody] ProductVM_Create obj)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
-        //            _logger.LogInformation("Failed: Create Product ", errors);
-        //            return BadRequest(errors);
-        //        }
-        //        else
-        //        {
-        //            Product data = _mapper.Map<Product>(obj);
-        //            var result = await _service.Save(data);
-        //            if (result.IsSuccess)
-        //            {
-        //                _logger.LogInformation("Success: Create Product ", result);
-        //                var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-        //                var locationUrl = baseUrl + "/" + ApiRoutes.RProduct.GetByID.Replace("{id}", data.id.ToString());
-        //                return Created(locationUrl, result);
-        //            }
-        //            else
-        //            {
-        //                _logger.LogError("Failed: Create Product ", result);
-        //                return StatusCode(StatusCodes.Status500InternalServerError, result);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError("Failed: Create Product " + ex);
-        //        return null;
-        //    }
-
-        //}
-        [AllowAnonymous]
         [HttpPost(ApiRoutes.RProduct.Create), DisableRequestSizeLimit]
         public async Task<IActionResult> Post([FromForm] ProductVM_CreateWithUploads req)
         {
@@ -319,136 +282,8 @@ namespace MembershipPortal.api.Controllers.V2
 
         }
 
-        //[AllowAnonymous]
-        //[HttpPost(ApiRoutes.RProduct.Update), DisableRequestSizeLimit]
-        //public async Task<IActionResult> UpdateProduct([FromBody] ProductVM_UpdateWithUploads req)
-        //{
-        //    ServiceResponse<ProductVM> response = new ServiceResponse<ProductVM>
-        //    {
-        //        ReturnedObject = null,
-        //        IsSuccess = false,
-        //        Message = string.Empty
-        //    };
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            var errors = string.Join("; ", ModelState.Values
-        //                                .SelectMany(x => x.Errors)
-        //                                .Select(x => x.ErrorMessage));
-        //            response.Message = errors;
-        //            return StatusCode(StatusCodes.Status400BadRequest, response);
-        //        }
-        //        var newObj = await _service.GetByProdRegID(req.Product.id, req.Product.registrationid);
-        //        if (newObj.IsSuccess && newObj.ReturnedObject != null)
-        //        {
-        //            newObj.ReturnedObject.allergeninfo = req.Product.allergeninfo;
-        //            newObj.ReturnedObject.brickcategory_id = req.Product.brickcategory_id;
-        //            newObj.ReturnedObject.consumerfirstavailabilitydate = req.Product.consumerfirstavailabilitydate;
-        //            newObj.ReturnedObject.directionofuse = req.Product.directionofuse;
-        //            newObj.ReturnedObject.ingredients = req.Product.ingredients;
-        //            newObj.ReturnedObject.lifespan = req.Product.lifespan;
-        //            newObj.ReturnedObject.lifespanunit = req.Product.lifespanunit;
-        //            newObj.ReturnedObject.marketingmessage = req.Product.marketingmessage;
-        //            newObj.ReturnedObject.nafdacnumber = req.Product.nafdacnumber;
-        //            newObj.ReturnedObject.netcontent_id = req.Product.netcontent_id;
-        //            newObj.ReturnedObject.netweight = req.Product.netweight;
-        //            newObj.ReturnedObject.packaginglevel_id = req.Product.packaginglevel_id;
-        //            newObj.ReturnedObject.packagingtype_id = req.Product.packagingtype_id;
-        //            newObj.ReturnedObject.productdescription = req.Product.productdescription;
-        //            newObj.ReturnedObject.storageinstruction = req.Product.storageinstruction;
-        //            newObj.ReturnedObject.targetmarket_id = req.TargetMarketList.Count() < 1 ? newObj.ReturnedObject.targetmarket_id : String.Join(",", req.TargetMarketList);
-
-        //            var obj = await _service.Save(newObj.ReturnedObject);
-        //            response = _mapper.Map<ServiceResponse<ProductVM>>(obj);
-        //            if (response.IsSuccess)
-        //            {
-        //                if (response.ReturnedObject != null)
-        //                {
-        //                    var targetMarkets = obj.ReturnedObject.targetmarket_id.Split(",").ToList();
-        //                    foreach (string t_martket in targetMarkets)
-        //                    {
-        //                        if (!await _productTargetMarket_service.IsExist(req.Product.id, req.Product.registrationid, Convert.ToInt32(t_martket)))
-        //                        {
-        //                            ProductTargetMarket proTgtMkt = new ProductTargetMarket
-        //                            {
-        //                                product_id = obj.ReturnedObject.id,
-        //                                registrationid = obj.ReturnedObject.registrationid,
-        //                                targetmarket_id = Convert.ToInt32(t_martket),
-        //                            };
-        //                            var producttargetmarketobj = await _productTargetMarket_service.Save(proTgtMkt);
-        //                        }
-        //                    }
-
-        //                    if (req.ProductImageUpload != null)
-        //                    {
-        //                        var uploadFrontImage = req.ProductImageUpload.FrontImage != null ? await FileUploadHandler(req.ProductImageUpload.FrontImage, $"brand_{brandInfoObj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_frontimg") : null;
-        //                        var uploadBackImage = req.ProductImageUpload.BackImage != null ? await FileUploadHandler(req.ProductImageUpload.BackImage, $"brand_{brandInfoObj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_backimg") : null;
-        //                        var uploadLeftImage = req.ProductImageUpload.LeftImage != null ? await FileUploadHandler(req.ProductImageUpload.LeftImage, $"brand_{brandInfoObj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_leftimg") : null;
-        //                        var uploadRightImage = req.ProductImageUpload.RightImage != null ? await FileUploadHandler(req.ProductImageUpload.RightImage, $"brand_{brandInfoObj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_rightimg") : null;
-        //                        var uploadOtherImage = req.ProductImageUpload.OtherImage != null ? await FileUploadHandler(req.ProductImageUpload.OtherImage, $"brand_{brandInfoObj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_otherimg") : null;
-
-        //                        response.ReturnedObject.frontimage = uploadFrontImage;
-        //                        response.ReturnedObject.backimage = uploadBackImage;
-        //                        response.ReturnedObject.leftimage = uploadLeftImage;
-        //                        response.ReturnedObject.rightimage = uploadRightImage;
-        //                        response.ReturnedObject.otherimage = uploadOtherImage;
-        //                        response.ReturnedObject.hasimage = (uploadFrontImage != null || uploadBackImage != null || uploadLeftImage != null || uploadRightImage != null || uploadOtherImage != null) ? true : false;
-        //                        response.ReturnedObject.iscompleted = ProductCompleteStatus(response.ReturnedObject) && response.ReturnedObject.hasimage;
-
-        //                        var updateProductModel = _mapper.Map<Product>(response.ReturnedObject);
-        //                        var updateCurrentProduct = await _service.Save(updateProductModel);
-        //                        if (!updateCurrentProduct.IsSuccess)
-        //                        {
-        //                            response.Message = " Product Image Storage Failed.";
-        //                        }
-        //                    }
-
-        //                    //if (req.ProductImageUpload != null)
-        //                    //{
-        //                    //    var uploadFrontImage = req.ProductImageUpload.FrontImage != null ? await FileUploadHandler(req.ProductImageUpload.FrontImage, $"brand_{obj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_frontimg") : null;
-        //                    //    var uploadBackImage = req.ProductImageUpload.BackImage != null ? await FileUploadHandler(req.ProductImageUpload.BackImage, $"brand_{obj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_backimg") : null;
-        //                    //    var uploadLeftImage = req.ProductImageUpload.LeftImage != null ? await FileUploadHandler(req.ProductImageUpload.LeftImage, $"brand_{obj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_leftimg") : null;
-        //                    //    var uploadRightImage = req.ProductImageUpload.RightImage != null ? await FileUploadHandler(req.ProductImageUpload.RightImage, $"brand_{obj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_rightimg") : null;
-        //                    //    var uploadOtherImage = req.ProductImageUpload.OtherImage != null ? await FileUploadHandler(req.ProductImageUpload.OtherImage, $"brand_{obj.ReturnedObject.registrationid}", $"{response.ReturnedObject.gtin}_otherimg") : null;
-
-        //                    //    var currentProduct = await _service.GetByID(obj.ReturnedObject.id);
-        //                    //    if (currentProduct.IsSuccess && currentProduct.ReturnedObject != null)
-        //                    //    {
-        //                    //        currentProduct.ReturnedObject.frontimage = uploadFrontImage;
-        //                    //        currentProduct.ReturnedObject.backimage = uploadBackImage;
-        //                    //        currentProduct.ReturnedObject.leftimage = uploadLeftImage;
-        //                    //        currentProduct.ReturnedObject.rightimage = uploadRightImage;
-        //                    //        currentProduct.ReturnedObject.otherimage = uploadOtherImage;
-        //                    //        currentProduct.ReturnedObject.hasimage = (uploadFrontImage != null || uploadBackImage != null || uploadLeftImage != null || uploadRightImage != null || uploadOtherImage != null) ? true : false;
-        //                    //        currentProduct.ReturnedObject.iscompleted = ProductCompleteStatus(currentProduct.ReturnedObject) && currentProduct.ReturnedObject.hasimage;
-
-        //                    //        var updateCurrentProduct = await _service.Save(currentProduct.ReturnedObject);
-        //                    //        if (updateCurrentProduct.IsSuccess && updateCurrentProduct.ReturnedObject != null)
-        //                    //        {
-        //                    //            updateCurrentProduct.Message = "Successfully Saved Product Information to storage.";
-        //                    //            response = _mapper.Map<ServiceResponse<ProductVM>>(obj);
-        //                    //            return StatusCode(StatusCodes.Status201Created, _mapper.Map<ServiceResponse<ProductVM>>(updateCurrentProduct));
-        //                    //        }
-        //                    //    }
-        //                    //}
-        //                }
-        //                return StatusCode(StatusCodes.Status200OK, response);
-        //            }
-        //            return StatusCode(StatusCodes.Status304NotModified, response);
-        //        }
-        //        response.Message = "Brand Information cannot be found.";
-        //        return StatusCode(StatusCodes.Status404NotFound, response);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Message = ex.Message;
-        //        return StatusCode(StatusCodes.Status400BadRequest, response);
-        //    }
-        //}
-
         // POST api/<BenefitProductController>
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ApiRoutes.RProduct.UploadWithGTIN)]
         public async Task<IActionResult> UploadWithGTIN([FromBody] BulkProductWithGTIN_CR obj)
         {
@@ -639,7 +474,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ApiRoutes.RProduct.UploadWithoutGTIN)]
         public async Task<IActionResult> UploadWithoutGTIN([FromBody] BulkProductWithoutGTIN_CR obj)
         {
@@ -786,8 +621,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         }
 
-        // PUT api/<ProductController>/5
-        //[HttpPost(ApiRoutes.RProduct.Update)]
+        //[AllowAnonymous]
         [HttpPost(ApiRoutes.RProduct.Update), DisableRequestSizeLimit]
         public async Task<IActionResult> ProductUpdate([FromForm] ProductVM_UpdateWithUploads request)
         {
@@ -797,7 +631,7 @@ namespace MembershipPortal.api.Controllers.V2
                 Message = string.Empty,
                 ReturnedObject = null
             };
-            PharmaceuticalInformationVM pharmaProduct = null;
+            GenericResponse<PharmaceuticalInformation> pharmaProductObj = new GenericResponse<PharmaceuticalInformation>();
 
             if (!ModelState.IsValid)
             {
@@ -840,71 +674,36 @@ namespace MembershipPortal.api.Controllers.V2
                 if (request.PharmaProduct != null)
                 {
 
-                    var pharmaProductObj = await _pharmaceutical_service.GetByProductID(request.productID);
+                    pharmaProductObj = await _pharmaceutical_service.GetByProductID(request.productID);
                     if (pharmaProductObj.IsSuccess & pharmaProductObj.ReturnedObject != null)
                     {
-                        pharmaProduct = new PharmaceuticalInformationVM()
-                        {
-                            ActiveIngredient = !string.IsNullOrEmpty(request.PharmaProduct.ActiveIngredient) ? request.PharmaProduct.ActiveIngredient : pharmaProductObj.ReturnedObject.ActiveIngredient,
-                            ATCCode = !string.IsNullOrEmpty(request.PharmaProduct.ATCCode) ? request.PharmaProduct.ATCCode : pharmaProductObj.ReturnedObject.ATCCode,
-                            DirectionOfUse = !string.IsNullOrEmpty(request.PharmaProduct.DirectionOfUse) ? request.PharmaProduct.DirectionOfUse : pharmaProductObj.ReturnedObject.DirectionOfUse,
-                            FunctionalName = !string.IsNullOrEmpty(request.PharmaProduct.FunctionalName) ? request.PharmaProduct.FunctionalName : pharmaProductObj.ReturnedObject.FunctionalName,
-                            GenericName = !string.IsNullOrEmpty(request.PharmaProduct.GenericName) ? request.PharmaProduct.GenericName : pharmaProductObj.ReturnedObject.GenericName,
-                            Manufacturer = !string.IsNullOrEmpty(request.PharmaProduct.Manufacturer) ? request.PharmaProduct.Manufacturer : pharmaProductObj.ReturnedObject.Manufacturer,
-                            ManufacturerAddress = !string.IsNullOrEmpty(request.PharmaProduct.ManufacturerAddress) ? request.PharmaProduct.ManufacturerAddress : pharmaProductObj.ReturnedObject.ManufacturerAddress,
-                            PackSize = !string.IsNullOrEmpty(request.PharmaProduct.PackSize) ? request.PharmaProduct.PackSize : pharmaProductObj.ReturnedObject.PackSize,
-                            PrimaryPackagingMaterial = !string.IsNullOrEmpty(request.PharmaProduct.PrimaryPackagingMaterial) ? request.PharmaProduct.PrimaryPackagingMaterial : pharmaProductObj.ReturnedObject.PrimaryPackagingMaterial,
-                            ProductForm = !string.IsNullOrEmpty(request.PharmaProduct.ProductForm) ? request.PharmaProduct.ProductForm : pharmaProductObj.ReturnedObject.ProductForm,
-                            Quantity = !string.IsNullOrEmpty(request.PharmaProduct.Quantity) ? request.PharmaProduct.Quantity : pharmaProductObj.ReturnedObject.Quantity,
-                            RouteOfAdministration = !string.IsNullOrEmpty(request.PharmaProduct.RouteOfAdministration) ? request.PharmaProduct.RouteOfAdministration : pharmaProductObj.ReturnedObject.RouteOfAdministration,
-                            ShelfLife = !string.IsNullOrEmpty(request.PharmaProduct.ShelfLife) ? request.PharmaProduct.ShelfLife : pharmaProductObj.ReturnedObject.ShelfLife,
-                            Strength = !string.IsNullOrEmpty(request.PharmaProduct.Strength) ? request.PharmaProduct.Strength : pharmaProductObj.ReturnedObject.Strength,
-                            TradeItemDescription = !string.IsNullOrEmpty(request.PharmaProduct.TradeItemDescription) ? request.PharmaProduct.TradeItemDescription : pharmaProductObj.ReturnedObject.TradeItemDescription,
-                            ID = pharmaProduct.ID,
-                            ProductID = pharmaProduct.ProductID
-                        };
-                        //pharmaProduct.ReturnedObject.ActiveIngredient = !string.IsNullOrEmpty(request.PharmaProduct.ActiveIngredient) ? request.PharmaProduct.ActiveIngredient : pharmaProduct.ReturnedObject.ActiveIngredient;
-                        //pharmaProduct.ReturnedObject.ATCCode = !string.IsNullOrEmpty(request.PharmaProduct.ATCCode) ? request.PharmaProduct.ATCCode : pharmaProduct.ReturnedObject.ATCCode;
-                        //pharmaProduct.ReturnedObject.DirectionOfUse = !string.IsNullOrEmpty(request.PharmaProduct.DirectionOfUse) ? request.PharmaProduct.DirectionOfUse : pharmaProduct.ReturnedObject.DirectionOfUse;
-                        //pharmaProduct.ReturnedObject.FunctionalName = !string.IsNullOrEmpty(request.PharmaProduct.FunctionalName) ? request.PharmaProduct.FunctionalName : pharmaProduct.ReturnedObject.FunctionalName;
-                        //pharmaProduct.ReturnedObject.GenericName = !string.IsNullOrEmpty(request.PharmaProduct.GenericName) ? request.PharmaProduct.GenericName : pharmaProduct.ReturnedObject.GenericName;
-                        //pharmaProduct.ReturnedObject.Manufacturer = !string.IsNullOrEmpty(request.PharmaProduct.Manufacturer) ? request.PharmaProduct.Manufacturer : pharmaProduct.ReturnedObject.Manufacturer;
-                        //pharmaProduct.ReturnedObject.ManufacturerAddress = !string.IsNullOrEmpty(request.PharmaProduct.ManufacturerAddress) ? request.PharmaProduct.ManufacturerAddress : pharmaProduct.ReturnedObject.ManufacturerAddress;
-                        //pharmaProduct.ReturnedObject.PackSize = !string.IsNullOrEmpty(request.PharmaProduct.PackSize) ? request.PharmaProduct.PackSize : pharmaProduct.ReturnedObject.PackSize;
-                        //pharmaProduct.ReturnedObject.PrimaryPackagingMaterial = !string.IsNullOrEmpty(request.PharmaProduct.PrimaryPackagingMaterial) ? request.PharmaProduct.PrimaryPackagingMaterial : pharmaProduct.ReturnedObject.PrimaryPackagingMaterial;
-                        //pharmaProduct.ReturnedObject.ProductForm = !string.IsNullOrEmpty(request.PharmaProduct.ProductForm) ? request.PharmaProduct.ProductForm : pharmaProduct.ReturnedObject.ProductForm;
-                        //pharmaProduct.ReturnedObject.Quantity = !string.IsNullOrEmpty(request.PharmaProduct.Quantity) ? request.PharmaProduct.Quantity : pharmaProduct.ReturnedObject.Quantity;
-                        //pharmaProduct.ReturnedObject.RouteOfAdministration = !string.IsNullOrEmpty(request.PharmaProduct.RouteOfAdministration) ? request.PharmaProduct.RouteOfAdministration : pharmaProduct.ReturnedObject.RouteOfAdministration;
-                        //pharmaProduct.ReturnedObject.ShelfLife = !string.IsNullOrEmpty(request.PharmaProduct.ShelfLife) ? request.PharmaProduct.ShelfLife : pharmaProduct.ReturnedObject.ShelfLife;
-                        //pharmaProduct.ReturnedObject.Strength = !string.IsNullOrEmpty(request.PharmaProduct.Strength) ? request.PharmaProduct.Strength : pharmaProduct.ReturnedObject.Strength;
-                        //pharmaProduct.ReturnedObject.TradeItemDescription = !string.IsNullOrEmpty(request.PharmaProduct.TradeItemDescription) ? request.PharmaProduct.TradeItemDescription : pharmaProduct.ReturnedObject.TradeItemDescription;
-                    }
-                }
-            }
-
-            if (request.TargetMarketList.Count() > 0)
-            {
-                newObj.ReturnedObject.targetmarket_id = String.Join(",", request.TargetMarketList);
-                var currentTargetMarketList = newObj.ReturnedObject.targetmarket_id.Split(",").ToList();
-                foreach (var target_id in request.TargetMarketList)
-                {
-                    if (!await _productTargetMarket_service.IsExist(request.productID, request.registrationid, Convert.ToInt32(target_id)))
-                    {
-                        ProductTargetMarketVM_Create proTgtMktVM = new ProductTargetMarketVM_Create
-                        {
-                            product_id = response.ReturnedObject.id,
-                            registrationid = response.ReturnedObject.registrationid,
-                            targetmarket_id = Convert.ToInt32(target_id),
-                        };
-                        var proTgtMktModel = _mapper.Map<ProductTargetMarket>(proTgtMktVM);
-                        var producttargetmarketObj = await _productTargetMarket_service.Save(proTgtMktModel);
+                        pharmaProductObj.ReturnedObject.ActiveIngredient = !string.IsNullOrEmpty(request.PharmaProduct.ActiveIngredient) ? request.PharmaProduct.ActiveIngredient : pharmaProductObj.ReturnedObject.ActiveIngredient;
+                        pharmaProductObj.ReturnedObject.ATCCode = !string.IsNullOrEmpty(request.PharmaProduct.ATCCode) ? request.PharmaProduct.ATCCode : pharmaProductObj.ReturnedObject.ATCCode;
+                        pharmaProductObj.ReturnedObject.DirectionOfUse = !string.IsNullOrEmpty(request.PharmaProduct.DirectionOfUse) ? request.PharmaProduct.DirectionOfUse : pharmaProductObj.ReturnedObject.DirectionOfUse;
+                        pharmaProductObj.ReturnedObject.FunctionalName = !string.IsNullOrEmpty(request.PharmaProduct.FunctionalName) ? request.PharmaProduct.FunctionalName : pharmaProductObj.ReturnedObject.FunctionalName;
+                        pharmaProductObj.ReturnedObject.GenericName = !string.IsNullOrEmpty(request.PharmaProduct.GenericName) ? request.PharmaProduct.GenericName : pharmaProductObj.ReturnedObject.GenericName;
+                        pharmaProductObj.ReturnedObject.Manufacturer = !string.IsNullOrEmpty(request.PharmaProduct.Manufacturer) ? request.PharmaProduct.Manufacturer : pharmaProductObj.ReturnedObject.Manufacturer;
+                        pharmaProductObj.ReturnedObject.ManufacturerAddress = !string.IsNullOrEmpty(request.PharmaProduct.ManufacturerAddress) ? request.PharmaProduct.ManufacturerAddress : pharmaProductObj.ReturnedObject.ManufacturerAddress;
+                        pharmaProductObj.ReturnedObject.PackSize = !string.IsNullOrEmpty(request.PharmaProduct.PackSize) ? request.PharmaProduct.PackSize : pharmaProductObj.ReturnedObject.PackSize;
+                        pharmaProductObj.ReturnedObject.PrimaryPackagingMaterial = !string.IsNullOrEmpty(request.PharmaProduct.PrimaryPackagingMaterial) ? request.PharmaProduct.PrimaryPackagingMaterial : pharmaProductObj.ReturnedObject.PrimaryPackagingMaterial;
+                        pharmaProductObj.ReturnedObject.ProductForm = !string.IsNullOrEmpty(request.PharmaProduct.ProductForm) ? request.PharmaProduct.ProductForm : pharmaProductObj.ReturnedObject.ProductForm;
+                        pharmaProductObj.ReturnedObject.Quantity = !string.IsNullOrEmpty(request.PharmaProduct.Quantity) ? request.PharmaProduct.Quantity : pharmaProductObj.ReturnedObject.Quantity;
+                        pharmaProductObj.ReturnedObject.RouteOfAdministration = !string.IsNullOrEmpty(request.PharmaProduct.RouteOfAdministration) ? request.PharmaProduct.RouteOfAdministration : pharmaProductObj.ReturnedObject.RouteOfAdministration;
+                        pharmaProductObj.ReturnedObject.ShelfLife = !string.IsNullOrEmpty(request.PharmaProduct.ShelfLife) ? request.PharmaProduct.ShelfLife : pharmaProductObj.ReturnedObject.ShelfLife;
+                        pharmaProductObj.ReturnedObject.Strength = !string.IsNullOrEmpty(request.PharmaProduct.Strength) ? request.PharmaProduct.Strength : pharmaProductObj.ReturnedObject.Strength;
+                        pharmaProductObj.ReturnedObject.TradeItemDescription = !string.IsNullOrEmpty(request.PharmaProduct.TradeItemDescription) ? request.PharmaProduct.TradeItemDescription : pharmaProductObj.ReturnedObject.TradeItemDescription;
                     }
                 }
             }
 
             var uploadedImage = _mapper.Map<ImageUploadModel>(request.ProductImageUpload);
-            var result = await _service.SaveUpdateWithImage(newObj.ReturnedObject, uploadedImage);
+            var result = await _service.SaveUpdateWithImage(newObj.ReturnedObject, request.TargetMarketList, uploadedImage, pharmaProductObj.ReturnedObject);
             response = _mapper.Map<ServiceResponse<ProductVM>>(result);
+            if (response.ReturnedObject.IsPharma)
+            {
+                var pharmaProduct = await _pharmaceutical_service.GetByProductID(response.ReturnedObject.id);
+                response.ReturnedObject.PharmaceuticalInformation = pharmaProduct.IsSuccess && pharmaProduct.ReturnedObject != null ? _mapper.Map<PharmaceuticalInformationVM>(pharmaProduct.ReturnedObject) : null;
+            }
             return StatusCode(StatusCodes.Status200OK, response);
         }
 

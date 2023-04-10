@@ -18,6 +18,7 @@ namespace MembershipPortal.configurations
         {
             CreateMap<BrandInformationVM, BrandInformation>().ReverseMap();
             CreateMap<BrandInformationVM_Create, BrandInformation>().ReverseMap();
+            CreateMap<BrandInformationVM_Update, BrandInformation>().ReverseMap();
 
             CreateMap<BrickCategoryVM, BrickCategory>().ReverseMap();
             CreateMap<BrickCategoryVM_CRU, BrickCategory>().ReverseMap();
@@ -69,6 +70,7 @@ namespace MembershipPortal.configurations
 
             CreateMap<AuthenticatedPayload, UserModel>().ReverseMap();
             CreateMap<CompanyVM, CompanyModel>().ReverseMap();
+            CreateMap<CompanyVM_auth, CompanyModel>().ReverseMap();
             CreateMap<GTINFeeVM, GTINFee>().ReverseMap();
             CreateMap<ImageRequestVM, ImageRequestModel>().ReverseMap();
             CreateMap<RoleVM, RoleModel>().ReverseMap();

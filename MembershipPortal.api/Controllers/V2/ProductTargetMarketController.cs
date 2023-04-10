@@ -32,6 +32,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitProductTargetMarketController>
         [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet(ApiRoutes.RProductTargetMarket.GetAll)]
         public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
@@ -55,6 +56,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet(ApiRoutes.RProductTargetMarket.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
@@ -98,7 +100,7 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RProductTargetMarket.GetByKey)]
         public async Task<IActionResult> GetByKey(ProductTargetMarketVM_Key key)
         {
@@ -120,7 +122,7 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ApiRoutes.RProductTargetMarket.Create)]
         public async Task<IActionResult> Post([FromBody] ProductTargetMarketVM_Create req)
         {

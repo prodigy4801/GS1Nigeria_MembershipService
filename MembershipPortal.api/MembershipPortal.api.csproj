@@ -55,7 +55,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="barcodeImages\" />
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GS1NGBarcodeLib">
+      <HintPath>Libraries\GS1NGBarcodeLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

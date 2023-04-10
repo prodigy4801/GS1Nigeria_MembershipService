@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MembershipPortal.api.Authorization;
 using MembershipPortal.api.Models;
+using GS1NGBarcodeLib;
+using System.IO;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -31,8 +33,9 @@ namespace MembershipPortal.api.Controllers.V2
             this._logger = logger;
         }
         // GET: api/<BenefitImageBankController>
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RImageBank.GetAll)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -54,8 +57,9 @@ namespace MembershipPortal.api.Controllers.V2
         }
 
         // GET api/<BenefitController>/5
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RImageBank.GetByID)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetByID(int id)
         {
             try
@@ -77,7 +81,7 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RImageBank.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegistrationID(string registrationid)
         {
@@ -99,8 +103,70 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
+        //[AllowAnonymous]
+        [HttpPost(ApiRoutes.RImageBank.GenerateBarcode)]
+        public async Task<IActionResult> GenerateBarcode(BarcodeGeneratorModel image)
+        {
+            ServiceResponse<BarcodeResponseModel> result = new ServiceResponse<BarcodeResponseModel>
+            {
+                ReturnedObject = new BarcodeResponseModel(),
+                IsSuccess = true,
+                Message = "Successfully Generated Image"
+            };
+            try
+            {
+                BarcodeResponseModel response = new BarcodeResponseModel();
+                DirectoryInfo di = new DirectoryInfo("barcodeImages");
+                FileInfo[] mainFile = di.GetFiles($"{image.gtin}.{GetImageExtension(image.format)}");
+                FileInfo[] displayFile = di.GetFiles($"{image.gtin}.{GetImageExtension(BarcodeUtil.BarcodeFormat.PNG)}");
+                if (mainFile.Length == 0) BarcodeUtil.GenerateBarcode(image.gtin, image.format);
+                if (image.format != 0)
+                {
+                    if (displayFile.Length == 0) BarcodeUtil.GenerateBarcode(image.gtin, 0);
+                }
+
+                var baseUri = $"{Request.Scheme}://{Request.Host}";
+                var pathFile = "barcodeImages";
+                var fileNameDisplay = $"{pathFile}/{image.gtin}.{GetImageExtension(BarcodeUtil.BarcodeFormat.PNG)}";
+                var fileNameMain = $"{pathFile}/{image.gtin}.{GetImageExtension(image.format)}";
+                response.DisplayImageLink = $"{baseUri}/{fileNameDisplay}";
+                response.MainImageLink = $"{baseUri}/{fileNameMain}";
+
+                result.ReturnedObject = response;
+
+                return StatusCode(StatusCodes.Status200OK, result);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+        }
+
+        private string GetImageExtension(BarcodeUtil.BarcodeFormat extensionValue)
+        {
+            string extension = string.Empty;
+            switch (extensionValue)
+            {
+                case BarcodeUtil.BarcodeFormat.EMF:
+                    extension = "emf";
+                    break;
+                case BarcodeUtil.BarcodeFormat.PDF:
+                    extension = "pdf";
+                    break;
+                case BarcodeUtil.BarcodeFormat.WMF:
+                    extension = "wmf";
+                    break;
+                default:
+                    extension = "png";
+                    break;
+            }
+
+            return extension;
+        }
+
         // POST api/<BenefitImageBankController>
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ApiRoutes.RImageBank.Create)]
         public async Task<IActionResult> Post([FromBody] ImageBankVM_create req)
         {
@@ -135,7 +201,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut(ApiRoutes.RImageBank.Update)]
         public async Task<IActionResult> UpdateImageBank([FromBody] ImageBankVM_update req)
         {

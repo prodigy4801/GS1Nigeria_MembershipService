@@ -1,0 +1,890 @@
+[
+  {
+    "ID": 1,
+    "FamilyCode": 70010000,
+    "SegmentCode": 70000000,
+    "FamilyTitle": "Arts/Crafts/Needlework Supplies"
+  },
+  {
+    "ID": 2,
+    "FamilyCode": 68020000,
+    "SegmentCode": 68000000,
+    "FamilyTitle": "Photography/Optics"
+  },
+  {
+    "ID": 3,
+    "FamilyCode": 68010000,
+    "SegmentCode": 68000000,
+    "FamilyTitle": "Audio Visual Equipment"
+  },
+  {
+    "ID": 4,
+    "FamilyCode": 68040000,
+    "SegmentCode": 68000000,
+    "FamilyTitle": "Audio Visual Media"
+  },
+  {
+    "ID": 5,
+    "FamilyCode": 68050000,
+    "SegmentCode": 68000000,
+    "FamilyTitle": "Audio Visual/Photography Variety Packs"
+  },
+  {
+    "ID": 6,
+    "FamilyCode": 68030000,
+    "SegmentCode": 68000000,
+    "FamilyTitle": "In-car Electronics"
+  },
+  {
+    "ID": 7,
+    "FamilyCode": 53220000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Beauty/Personal Care/Hygiene Variety Packs"
+  },
+  {
+    "ID": 8,
+    "FamilyCode": 53200000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Body Products"
+  },
+  {
+    "ID": 9,
+    "FamilyCode": 53160000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Cosmetics/Fragrances"
+  },
+  {
+    "ID": 10,
+    "FamilyCode": 53140000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Hair Products"
+  },
+  {
+    "ID": 11,
+    "FamilyCode": 53240000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Maternity Products"
+  },
+  {
+    "ID": 12,
+    "FamilyCode": 53180000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Personal Hygiene Products"
+  },
+  {
+    "ID": 13,
+    "FamilyCode": 53230000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Personal Intimacy"
+  },
+  {
+    "ID": 14,
+    "FamilyCode": 53130000,
+    "SegmentCode": 53000000,
+    "FamilyTitle": "Skin Products"
+  },
+  {
+    "ID": 15,
+    "FamilyCode": 83010000,
+    "SegmentCode": 83000000,
+    "FamilyTitle": "Building Products"
+  },
+  {
+    "ID": 16,
+    "FamilyCode": 74010000,
+    "SegmentCode": 74000000,
+    "FamilyTitle": "Camping"
+  },
+  {
+    "ID": 17,
+    "FamilyCode": 47100000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Cleaning Products"
+  },
+  {
+    "ID": 18,
+    "FamilyCode": 47190000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Cleaning/Hygiene Products Variety Packs"
+  },
+  {
+    "ID": 19,
+    "FamilyCode": 47200000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Cleaning/Hygiene Supplies"
+  },
+  {
+    "ID": 20,
+    "FamilyCode": 47220000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Industrial Cleaning"
+  },
+  {
+    "ID": 21,
+    "FamilyCode": 47120000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Insect/Pest/Allergen Control"
+  },
+  {
+    "ID": 22,
+    "FamilyCode": 47210000,
+    "SegmentCode": 47000000,
+    "FamilyTitle": "Waste Management Products"
+  },
+  {
+    "ID": 23,
+    "FamilyCode": 67030000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Activewear"
+  },
+  {
+    "ID": 24,
+    "FamilyCode": 67010000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Clothing"
+  },
+  {
+    "ID": 25,
+    "FamilyCode": 67050000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Protective Wear"
+  },
+  {
+    "ID": 26,
+    "FamilyCode": 67020000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Sleepwear"
+  },
+  {
+    "ID": 27,
+    "FamilyCode": 67060000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Swimwear"
+  },
+  {
+    "ID": 28,
+    "FamilyCode": 67040000,
+    "SegmentCode": 67000000,
+    "FamilyTitle": "Underwear"
+  },
+  {
+    "ID": 29,
+    "FamilyCode": 66010000,
+    "SegmentCode": 66000000,
+    "FamilyTitle": "Communications"
+  },
+  {
+    "ID": 30,
+    "FamilyCode": 65010000,
+    "SegmentCode": 65000000,
+    "FamilyTitle": "Computers/Video Games"
+  },
+  {
+    "ID": 31,
+    "FamilyCode": 94020000,
+    "SegmentCode": 94000000,
+    "FamilyTitle": "Crops for Food Production"
+  },
+  {
+    "ID": 32,
+    "FamilyCode": 94010000,
+    "SegmentCode": 94000000,
+    "FamilyTitle": "Crops not for food or feed (animal and fish)"
+  },
+  {
+    "ID": 33,
+    "FamilyCode": 94030000,
+    "SegmentCode": 94000000,
+    "FamilyTitle": "Grass and Other Crops for Animal Feed or for Soil Improvement"
+  },
+  {
+    "ID": 34,
+    "FamilyCode": 58010000,
+    "SegmentCode": 58000000,
+    "FamilyTitle": "Cross Segment"
+  },
+  {
+    "ID": 35,
+    "FamilyCode": 78040000,
+    "SegmentCode": 78000000,
+    "FamilyTitle": "Electrical Cabling/Wiring"
+  },
+  {
+    "ID": 36,
+    "FamilyCode": 78020000,
+    "SegmentCode": 78000000,
+    "FamilyTitle": "Electrical Connection/Distribution"
+  },
+  {
+    "ID": 37,
+    "FamilyCode": 78030000,
+    "SegmentCode": 78000000,
+    "FamilyTitle": "Electrical Lighting"
+  },
+  {
+    "ID": 38,
+    "FamilyCode": 78050000,
+    "SegmentCode": 78000000,
+    "FamilyTitle": "Electronic Communication Components"
+  },
+  {
+    "ID": 39,
+    "FamilyCode": 78060000,
+    "SegmentCode": 78000000,
+    "FamilyTitle": "General Electrical Hardware"
+  },
+  {
+    "ID": 40,
+    "FamilyCode": 50200000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Beverages"
+  },
+  {
+    "ID": 41,
+    "FamilyCode": 50180000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Bread/Bakery Products"
+  },
+  {
+    "ID": 42,
+    "FamilyCode": 50220000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Cereal/Grain/Pulse Products"
+  },
+  {
+    "ID": 43,
+    "FamilyCode": 50160000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Confectionery/Sugar Sweetening Products"
+  },
+  {
+    "ID": 44,
+    "FamilyCode": 50120000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fish and Seafood"
+  },
+  {
+    "ID": 45,
+    "FamilyCode": 50230000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Food/Beverage/Tobacco Variety Packs"
+  },
+  {
+    "ID": 46,
+    "FamilyCode": 50360000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fresh Garnish (Food)"
+  },
+  {
+    "ID": 47,
+    "FamilyCode": 50250000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits - Unprepared/Unprocessed (Fresh)"
+  },
+  {
+    "ID": 48,
+    "FamilyCode": 50270000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits - Unprepared/Unprocessed (Frozen)"
+  },
+  {
+    "ID": 49,
+    "FamilyCode": 50310000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits - Unprepared/Unprocessed (Shelf Stable)"
+  },
+  {
+    "ID": 50,
+    "FamilyCode": 50370000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits/Vegetables Fresh & Fresh Cut"
+  },
+  {
+    "ID": 51,
+    "FamilyCode": 50380000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits/Vegetables Fresh Cut"
+  },
+  {
+    "ID": 52,
+    "FamilyCode": 50100000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Fruits/Vegetables/Nuts/Seeds Prepared/Processed"
+  },
+  {
+    "ID": 53,
+    "FamilyCode": 50350000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Leaf Vegetables - Unprepared/Unprocessed (Fresh)"
+  },
+  {
+    "ID": 54,
+    "FamilyCode": 50390000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Meat/Fish/Seafood Substitutes"
+  },
+  {
+    "ID": 55,
+    "FamilyCode": 50240000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Meat/Poultry/Other Animals"
+  },
+  {
+    "ID": 56,
+    "FamilyCode": 50130000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Milk/Butter/Cream/Yogurts/Cheese/Eggs/Substitutes"
+  },
+  {
+    "ID": 57,
+    "FamilyCode": 50340000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Nuts/Seeds - Unprepared/Unprocessed (In Shell)"
+  },
+  {
+    "ID": 58,
+    "FamilyCode": 50330000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Nuts/Seeds - Unprepared/Unprocessed (Perishable)"
+  },
+  {
+    "ID": 59,
+    "FamilyCode": 50150000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Oils/Fats Edible"
+  },
+  {
+    "ID": 60,
+    "FamilyCode": 50190000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Prepared/Preserved Foods"
+  },
+  {
+    "ID": 61,
+    "FamilyCode": 50170000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Seasonings/Preservatives/Extracts"
+  },
+  {
+    "ID": 62,
+    "FamilyCode": 50210000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Tobacco/Cannabis/Smoking Accessories"
+  },
+  {
+    "ID": 63,
+    "FamilyCode": 50290000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Vegetables - Unprepared/Unprocessed (Frozen)"
+  },
+  {
+    "ID": 64,
+    "FamilyCode": 50320000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Vegetables - Unprepared/Unprocessed (Shelf Stable)"
+  },
+  {
+    "ID": 65,
+    "FamilyCode": 50260000,
+    "SegmentCode": 50000000,
+    "FamilyTitle": "Vegetables (Non Leaf) - Unprepared/Unprocessed (Fresh)"
+  },
+  {
+    "ID": 66,
+    "FamilyCode": 63010000,
+    "SegmentCode": 63000000,
+    "FamilyTitle": "Footwear"
+  },
+  {
+    "ID": 67,
+    "FamilyCode": 87020000,
+    "SegmentCode": 87000000,
+    "FamilyTitle": "Fuel Storage/Transfer"
+  },
+  {
+    "ID": 68,
+    "FamilyCode": 87010000,
+    "SegmentCode": 87000000,
+    "FamilyTitle": "Fuels/Fuel Additives"
+  },
+  {
+    "ID": 69,
+    "FamilyCode": 51110000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Family Planning"
+  },
+  {
+    "ID": 70,
+    "FamilyCode": 51120000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Health Enhancement"
+  },
+  {
+    "ID": 71,
+    "FamilyCode": 51100000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Health Treatments/Aids"
+  },
+  {
+    "ID": 72,
+    "FamilyCode": 51140000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Healthcare Variety Packs"
+  },
+  {
+    "ID": 73,
+    "FamilyCode": 51130000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Home Diagnostics"
+  },
+  {
+    "ID": 74,
+    "FamilyCode": 51150000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Medical Devices"
+  },
+  {
+    "ID": 75,
+    "FamilyCode": 51160000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Pharmaceutical Drugs"
+  },
+  {
+    "ID": 76,
+    "FamilyCode": 51170000,
+    "SegmentCode": 51000000,
+    "FamilyTitle": "Veterinary Healthcare"
+  },
+  {
+    "ID": 77,
+    "FamilyCode": 72010000,
+    "SegmentCode": 72000000,
+    "FamilyTitle": "Major Domestic Appliances"
+  },
+  {
+    "ID": 78,
+    "FamilyCode": 72020000,
+    "SegmentCode": 72000000,
+    "FamilyTitle": "Small Domestic Appliances"
+  },
+  {
+    "ID": 79,
+    "FamilyCode": 93100000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Bouquets"
+  },
+  {
+    "ID": 80,
+    "FamilyCode": 93050000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Bulbs/Corms/Rhizomes/Tubers"
+  },
+  {
+    "ID": 81,
+    "FamilyCode": 93010000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Cut Flowers"
+  },
+  {
+    "ID": 82,
+    "FamilyCode": 93020000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Cut Greens"
+  },
+  {
+    "ID": 83,
+    "FamilyCode": 93030000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Live Plants (Genus A thru G)"
+  },
+  {
+    "ID": 84,
+    "FamilyCode": 93040000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Live Plants (Genus H thru Z)"
+  },
+  {
+    "ID": 85,
+    "FamilyCode": 93060000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Plants Variety Packs"
+  },
+  {
+    "ID": 86,
+    "FamilyCode": 93110000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Seedlings - Ready to Grow"
+  },
+  {
+    "ID": 87,
+    "FamilyCode": 93070000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Seeds/Spores"
+  },
+  {
+    "ID": 88,
+    "FamilyCode": 93080000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Shrubs/Trees"
+  },
+  {
+    "ID": 89,
+    "FamilyCode": 93090000,
+    "SegmentCode": 93000000,
+    "FamilyTitle": "Vegetables/Fungi Plants"
+  },
+  {
+    "ID": 90,
+    "FamilyCode": 75050000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Baby Furnishings"
+  },
+  {
+    "ID": 91,
+    "FamilyCode": 75020000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Fabric/Textile Furnishings"
+  },
+  {
+    "ID": 92,
+    "FamilyCode": 75010000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Household/Office Furniture"
+  },
+  {
+    "ID": 93,
+    "FamilyCode": 75030000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Ornamental Furnishings"
+  },
+  {
+    "ID": 94,
+    "FamilyCode": 73040000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Kitchenware"
+  },
+  {
+    "ID": 95,
+    "FamilyCode": 73050000,
+    "SegmentCode": 75000000,
+    "FamilyTitle": "Tableware"
+  },
+  {
+    "ID": 96,
+    "FamilyCode": 81010000,
+    "SegmentCode": 81000000,
+    "FamilyTitle": "Lawn/Garden Supplies"
+  },
+  {
+    "ID": 97,
+    "FamilyCode": 89020000,
+    "SegmentCode": 89000000,
+    "FamilyTitle": "Live Animals"
+  },
+  {
+    "ID": 98,
+    "FamilyCode": 88030000,
+    "SegmentCode": 88000000,
+    "FamilyTitle": "Lubricants Variety Packs"
+  },
+  {
+    "ID": 99,
+    "FamilyCode": 88010000,
+    "SegmentCode": 88000000,
+    "FamilyTitle": "Lubricants/Protective Compounds"
+  },
+  {
+    "ID": 100,
+    "FamilyCode": 88020000,
+    "SegmentCode": 88000000,
+    "FamilyTitle": "Lubricants/Protective Compounds Storage/Transfer"
+  },
+  {
+    "ID": 101,
+    "FamilyCode": 96010000,
+    "SegmentCode": 96000000,
+    "FamilyTitle": "Currency/Postage/Certificates"
+  },
+  {
+    "ID": 102,
+    "FamilyCode": 61010000,
+    "SegmentCode": 61000000,
+    "FamilyTitle": "Musical Instruments/Accessories"
+  },
+  {
+    "ID": 103,
+    "FamilyCode": 64010000,
+    "SegmentCode": 64000000,
+    "FamilyTitle": "Personal Accessories"
+  },
+  {
+    "ID": 104,
+    "FamilyCode": 10100000,
+    "SegmentCode": 10000000,
+    "FamilyTitle": "Pet Care"
+  },
+  {
+    "ID": 105,
+    "FamilyCode": 10120000,
+    "SegmentCode": 10000000,
+    "FamilyTitle": "Pet Care/Food Variety Packs"
+  },
+  {
+    "ID": 106,
+    "FamilyCode": 10110000,
+    "SegmentCode": 10000000,
+    "FamilyTitle": "Pet Food/Drinks"
+  },
+  {
+    "ID": 107,
+    "FamilyCode": 79010000,
+    "SegmentCode": 79000000,
+    "FamilyTitle": "Plumbing/Heating/Ventilation/Air Conditioning"
+  },
+  {
+    "ID": 108,
+    "FamilyCode": 99010000,
+    "SegmentCode": 99000000,
+    "FamilyTitle": "Postmortem Products"
+  },
+  {
+    "ID": 109,
+    "FamilyCode": 98020000,
+    "SegmentCode": 98000000,
+    "FamilyTitle": "Formed Raw Material"
+  },
+  {
+    "ID": 110,
+    "FamilyCode": 98010000,
+    "SegmentCode": 98000000,
+    "FamilyTitle": "Unformed Raw Material"
+  },
+  {
+    "ID": 111,
+    "FamilyCode": 85010000,
+    "SegmentCode": 85000000,
+    "FamilyTitle": "Safety/Protection - DIY"
+  },
+  {
+    "ID": 112,
+    "FamilyCode": 91050000,
+    "SegmentCode": 91000000,
+    "FamilyTitle": "Baby Safety/Security/Surveillance"
+  },
+  {
+    "ID": 113,
+    "FamilyCode": 91020000,
+    "SegmentCode": 91000000,
+    "FamilyTitle": "Environmental Safety/Security"
+  },
+  {
+    "ID": 114,
+    "FamilyCode": 91030000,
+    "SegmentCode": 91000000,
+    "FamilyTitle": "Home/Business Safety/Security/Surveillance"
+  },
+  {
+    "ID": 115,
+    "FamilyCode": 91010000,
+    "SegmentCode": 91000000,
+    "FamilyTitle": "Personal Safety/Security"
+  },
+  {
+    "ID": 116,
+    "FamilyCode": 95030000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Cleaning Services"
+  },
+  {
+    "ID": 117,
+    "FamilyCode": 95040000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Communication Services"
+  },
+  {
+    "ID": 118,
+    "FamilyCode": 95160000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Dispensing/Vending Machines"
+  },
+  {
+    "ID": 119,
+    "FamilyCode": 95050000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Educational & Entertainment Services"
+  },
+  {
+    "ID": 120,
+    "FamilyCode": 95060000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Energy and Environmental Services"
+  },
+  {
+    "ID": 121,
+    "FamilyCode": 95070000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Financial Services"
+  },
+  {
+    "ID": 122,
+    "FamilyCode": 95110000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Food/Drink and Accommodation Services"
+  },
+  {
+    "ID": 123,
+    "FamilyCode": 95120000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Maintenance/Repair and Installation Services"
+  },
+  {
+    "ID": 124,
+    "FamilyCode": 95130000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Medical and Beauty Care Services"
+  },
+  {
+    "ID": 125,
+    "FamilyCode": 95080000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Packaging/Storage Services"
+  },
+  {
+    "ID": 126,
+    "FamilyCode": 95090000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Postal Services"
+  },
+  {
+    "ID": 127,
+    "FamilyCode": 95100000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Scientific and Technological Services"
+  },
+  {
+    "ID": 128,
+    "FamilyCode": 95140000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Transportation Services"
+  },
+  {
+    "ID": 129,
+    "FamilyCode": 95150000,
+    "SegmentCode": 95000000,
+    "FamilyTitle": "Travel Services"
+  },
+  {
+    "ID": 130,
+    "FamilyCode": 71020000,
+    "SegmentCode": 71000000,
+    "FamilyTitle": "Baby Exercisers/Transportation"
+  },
+  {
+    "ID": 131,
+    "FamilyCode": 71010000,
+    "SegmentCode": 71000000,
+    "FamilyTitle": "Sports Equipment"
+  },
+  {
+    "ID": 132,
+    "FamilyCode": 62050000,
+    "SegmentCode": 62000000,
+    "FamilyTitle": "Greeting Cards/Gift Wrap/Occasion Supplies"
+  },
+  {
+    "ID": 133,
+    "FamilyCode": 62060000,
+    "SegmentCode": 62000000,
+    "FamilyTitle": "Stationery/Office Machinery"
+  },
+  {
+    "ID": 134,
+    "FamilyCode": 62070000,
+    "SegmentCode": 62000000,
+    "FamilyTitle": "Stationery/Office Machinery/Occasion Supplies Variety Packs"
+  },
+  {
+    "ID": 135,
+    "FamilyCode": 92010000,
+    "SegmentCode": 92000000,
+    "FamilyTitle": "Storage Bottles/Cylinders/Barrels (Empty)"
+  },
+  {
+    "ID": 136,
+    "FamilyCode": 92040000,
+    "SegmentCode": 92000000,
+    "FamilyTitle": "Storage/Haulage Aids"
+  },
+  {
+    "ID": 137,
+    "FamilyCode": 92020000,
+    "SegmentCode": 92000000,
+    "FamilyTitle": "Storage/Haulage Boxes/Crates/Trays (Empty)"
+  },
+  {
+    "ID": 138,
+    "FamilyCode": 92030000,
+    "SegmentCode": 92000000,
+    "FamilyTitle": "Storage/Haulage Freight Containers (Empty)"
+  },
+  {
+    "ID": 139,
+    "FamilyCode": 60010000,
+    "SegmentCode": 60000000,
+    "FamilyTitle": "Textual/Printed/Reference Materials"
+  },
+  {
+    "ID": 140,
+    "FamilyCode": 84010000,
+    "SegmentCode": 84000000,
+    "FamilyTitle": "Tool Storage/Workshop Aids"
+  },
+  {
+    "ID": 141,
+    "FamilyCode": 80010000,
+    "SegmentCode": 80000000,
+    "FamilyTitle": "Tools/Equipment - Hand"
+  },
+  {
+    "ID": 142,
+    "FamilyCode": 82010000,
+    "SegmentCode": 82000000,
+    "FamilyTitle": "Tools/Equipment - Power"
+  },
+  {
+    "ID": 143,
+    "FamilyCode": 86020000,
+    "SegmentCode": 86000000,
+    "FamilyTitle": "Service Provided Gambling Products"
+  },
+  {
+    "ID": 144,
+    "FamilyCode": 86010000,
+    "SegmentCode": 86000000,
+    "FamilyTitle": "Toys/Games"
+  },
+  {
+    "ID": 145,
+    "FamilyCode": 77040000,
+    "SegmentCode": 77000000,
+    "FamilyTitle": "Aircraft"
+  },
+  {
+    "ID": 146,
+    "FamilyCode": 77010000,
+    "SegmentCode": 77000000,
+    "FamilyTitle": "Automotive Accessories and Maintenance"
+  },
+  {
+    "ID": 147,
+    "FamilyCode": 77030000,
+    "SegmentCode": 77000000,
+    "FamilyTitle": "Cars and Motorcycles"
+  },
+  {
+    "ID": 148,
+    "FamilyCode": 77050000,
+    "SegmentCode": 77000000,
+    "FamilyTitle": "Specialty Vehicles"
+  }
+]

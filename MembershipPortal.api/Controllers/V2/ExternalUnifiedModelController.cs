@@ -18,6 +18,7 @@ namespace MembershipPortal.api.Controllers.V2
     [Authorize]
     [Route("")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ExternalUnifiedModelController : ControllerBase
     {
         private readonly IExternalUnifiedModelSvc _service;

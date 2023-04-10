@@ -32,6 +32,7 @@ namespace MembershipPortal.api.Controllers.V2
         }
         // GET: api/<BenefitITFInformationController>
         [HttpGet(ApiRoutes.RITFInformation.GetAll)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetAllPagination([FromQuery] RecordPaginationModel pagination)
         {
             try
@@ -55,6 +56,7 @@ namespace MembershipPortal.api.Controllers.V2
 
         // GET api/<BenefitController>/5
         [HttpGet(ApiRoutes.RITFInformation.GetByID)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetByID(int id)
         {
             try

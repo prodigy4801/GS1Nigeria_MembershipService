@@ -16,24 +16,17 @@ namespace MembershipPortal.viewmodels
 
     public class AuthenticatedPayload
     {
-        public int id { get; set; }
-        public int company_id { get; set; }
+        //public int id { get; set; }
+        //public int company_id { get; set; }
         public string email { get; set; }
-        public int role_id { get; set; }
+        //public int role_id { get; set; }
         public string registrationid { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
+        //public string firstname { get; set; }
+        //public string lastname { get; set; }
         public bool active { get; set; }
-        public string RefreshToken { get; set; }
         public string tokenValidation { get; set; }
-        //public int gtinRequested { get; set; }
-        //public int gtinListed { get; set; }
-        //public int ImagesRequested { get; set; }
-        //public int ImagesUsed { get; set; }
-        public DateTimeOffset createdon { get; set; }
-        public DateTimeOffset modifiedon { get; set; }
 
-        public CompanyVM Companies { get; set; } = null;
+        public CompanyVM_auth Companies { get; set; } = null;
         public RoleVM Roles { get; set; } = null;
 
     }

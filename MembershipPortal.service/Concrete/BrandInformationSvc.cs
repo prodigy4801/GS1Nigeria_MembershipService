@@ -96,11 +96,11 @@ namespace MembershipPortal.service.Concrete
             }
         }
 
-        public async Task<GenericResponse<bool>> IsExist(BrandInformation profile)
+        public async Task<GenericResponse<bool>> IsExist(BrandInformation profile, string registrationID)
         {
             try
             {
-                var record = await _uow.BrandInformationRP.AnyAsync(x => x.brandname == profile.brandname);
+                var record = await _uow.BrandInformationRP.AnyAsync(x => x.brandname == profile.brandname && x.registrationid == registrationID);
                 return new GenericResponse<bool> { ReturnedObject = record, IsSuccess = true, Message = null };
             }
             catch (Exception ex)
@@ -166,19 +166,19 @@ namespace MembershipPortal.service.Concrete
         {
             try
             {
-                if (!await _uow.BrandInformationRP.AnyAsync(y => y.brandname == profile.brandname))
+                if (!await _uow.BrandInformationRP.AnyAsync(x => x.brandname == profile.brandname && x.registrationid == profile.registrationid))
                 {
                     _uow.BrandInformationRP.Add(profile);
                     int result = await _uow.Complete();
                     if (result > 0)
                     {
-                        return new GenericResponse<BrandInformation> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
+                        return new GenericResponse<BrandInformation> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully Created Record." };
                     }
-                    return new GenericResponse<BrandInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
+                    return new GenericResponse<BrandInformation> { ReturnedObject = null, IsSuccess = false, Message = "Failed Creating Record." };
                 }
                 else
                 {
-                    return new GenericResponse<BrandInformation> { ReturnedObject = null, IsSuccess = false, Message = "User Information exist." };
+                    return new GenericResponse<BrandInformation> { ReturnedObject = null, IsSuccess = false, Message = "Record already exist." };
                 }
 
             }

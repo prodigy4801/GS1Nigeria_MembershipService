@@ -74,42 +74,5 @@ namespace MembershipPortal.api.Controllers.V2
                 return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
-
-        // POST api/<BenefitTargetMarketController>
-        [HttpPost(ApiRoutes.RTargetMarket.Create)]
-        public async Task<IActionResult> Post([FromBody] TargetMarketVM_CRU req)
-        {
-            ServiceResponse<TargetMarketVM> response = new ServiceResponse<TargetMarketVM>
-            {
-                ReturnedObject = null,
-                IsSuccess = false,
-                Message = string.Empty
-            };
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-
-                TargetMarket model = _mapper.Map<TargetMarket>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<TargetMarketVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
-            }
-        }
     }
 }

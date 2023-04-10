@@ -29,4 +29,19 @@ namespace MembershipPortal.viewmodels
         public int id { get; set; }
         public int imageReserve { get; set; }
     }
+
+    public class BarcodeGenerateVM
+    {
+        public BarcodeFormat formatType { get; set; } // From the BarcodeFormat
+        public string gtin { get; set; }
+    }
+
+    public enum BarcodeFormat
+    {
+        PNG,
+        EMF,
+        WMF,
+        PDF
+
+    }
 }

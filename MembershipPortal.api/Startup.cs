@@ -175,6 +175,12 @@ namespace MembershipPortal.api
                 RequestPath = new PathString("/Resources")
             });
 
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"barcodeImages")),
+                RequestPath = new PathString("/barcodeImages")
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
