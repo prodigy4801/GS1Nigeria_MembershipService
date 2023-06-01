@@ -38,7 +38,7 @@ namespace MembershipPortal.data
         public DateTime? updatedon { get; set; }
 
         [ForeignKey(nameof(company_id))]
-        public CompanyModel Companies { get; set; }
+        public Company Companies { get; set; }
         [ForeignKey(nameof(gtinfee_id))]
         public GTINFee GTINFee { get; set; }
     }

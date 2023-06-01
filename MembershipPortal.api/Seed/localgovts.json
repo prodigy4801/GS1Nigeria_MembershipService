@@ -1,0 +1,5490 @@
+﻿[
+  {
+    "id": "739",
+    "state_id": "303",
+    "name": "Aba North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "740",
+    "state_id": "303",
+    "name": "Ngwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "1",
+    "state_id": "303",
+    "name": "Aba South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "2",
+    "state_id": "303",
+    "name": "Arochukwu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "3",
+    "state_id": "303",
+    "name": "Bende",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "4",
+    "state_id": "303",
+    "name": "Ikwuano",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "5",
+    "state_id": "303",
+    "name": "Isiala-Ngwa North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "6",
+    "state_id": "303",
+    "name": "Isiala-Ngwa South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "7",
+    "state_id": "303",
+    "name": "Isikwuato",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "8",
+    "state_id": "303",
+    "name": "Obi Nwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "9",
+    "state_id": "303",
+    "name": "OhaOfia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "10",
+    "state_id": "303",
+    "name": "Osisioma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "11",
+    "state_id": "303",
+    "name": "Ugwunagbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "12",
+    "state_id": "303",
+    "name": "Ukwa East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "13",
+    "state_id": "303",
+    "name": "Ukwa West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "14",
+    "state_id": "303",
+    "name": "Umuahia North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "15",
+    "state_id": "303",
+    "name": "Umuahia South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "16",
+    "state_id": "303",
+    "name": "Umu-neochi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "17",
+    "state_id": "320",
+    "name": "Fufore",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "18",
+    "state_id": "320",
+    "name": "Ganaye",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "19",
+    "state_id": "320",
+    "name": "Guyuk",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "20",
+    "state_id": "320",
+    "name": "Gombi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "21",
+    "state_id": "320",
+    "name": "Gireri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "742",
+    "state_id": "320",
+    "name": "Demsa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "22",
+    "state_id": "320",
+    "name": "Hong",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "23",
+    "state_id": "320",
+    "name": "Jada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "24",
+    "state_id": "320",
+    "name": "Lamurde",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "25",
+    "state_id": "320",
+    "name": "Madagali",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "26",
+    "state_id": "320",
+    "name": "Maiha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "27",
+    "state_id": "320",
+    "name": "Mayo-Belwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "28",
+    "state_id": "320",
+    "name": "Michika",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "29",
+    "state_id": "320",
+    "name": "Mubi North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "30",
+    "state_id": "320",
+    "name": "Mubi South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "31",
+    "state_id": "320",
+    "name": "Numan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "32",
+    "state_id": "320",
+    "name": "Shelleng",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "33",
+    "state_id": "320",
+    "name": "Song",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "34",
+    "state_id": "320",
+    "name": "Toungo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "35",
+    "state_id": "320",
+    "name": "Yola North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "36",
+    "state_id": "320",
+    "name": "Yola South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "37",
+    "state_id": "304",
+    "name": "Eastern Obolo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "38",
+    "state_id": "304",
+    "name": "Eket",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "39",
+    "state_id": "304",
+    "name": "Esit Eket",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "40",
+    "state_id": "304",
+    "name": "Essien Udim",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "41",
+    "state_id": "304",
+    "name": "Etim Ekpo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "42",
+    "state_id": "304",
+    "name": "Etinan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "743",
+    "state_id": "304",
+    "name": "Abak",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "43",
+    "state_id": "304",
+    "name": "Ibeno",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "44",
+    "state_id": "304",
+    "name": "Ibesikpo Asutan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "45",
+    "state_id": "304",
+    "name": "Nsit Ubium",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "46",
+    "state_id": "304",
+    "name": "Ika",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "47",
+    "state_id": "304",
+    "name": "Ikono",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "48",
+    "state_id": "304",
+    "name": "Ikot Abasi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "49",
+    "state_id": "304",
+    "name": "Ikot Ekpene",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "50",
+    "state_id": "304",
+    "name": "Ini",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "51",
+    "state_id": "304",
+    "name": "Itu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "52",
+    "state_id": "304",
+    "name": "Mbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "53",
+    "state_id": "304",
+    "name": "Mkpat Enin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "54",
+    "state_id": "304",
+    "name": "Nsit Atai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "55",
+    "state_id": "304",
+    "name": "Nsit-Ibom",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "56",
+    "state_id": "304",
+    "name": "Nsit-Ubium",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "57",
+    "state_id": "304",
+    "name": "Obot Akara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "58",
+    "state_id": "304",
+    "name": "Okobo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "59",
+    "state_id": "304",
+    "name": "Onna",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "60",
+    "state_id": "304",
+    "name": "Oron",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "61",
+    "state_id": "304",
+    "name": "Oruk Anam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "62",
+    "state_id": "304",
+    "name": "Udung Uko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "63",
+    "state_id": "304",
+    "name": "Ukanafun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "64",
+    "state_id": "304",
+    "name": "Uruan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "65",
+    "state_id": "304",
+    "name": "Urue-Offong\/Oruko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "66",
+    "state_id": "304",
+    "name": "Uyo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "67",
+    "state_id": "315",
+    "name": "Anambra East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "68",
+    "state_id": "315",
+    "name": "Anambra West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "69",
+    "state_id": "315",
+    "name": "Anaocha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "744",
+    "state_id": "315",
+    "name": "Aguata",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "70",
+    "state_id": "315",
+    "name": "Awka North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "71",
+    "state_id": "315",
+    "name": "Awka South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "72",
+    "state_id": "315",
+    "name": "Ayamelum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "73",
+    "state_id": "315",
+    "name": "Dunukofia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "74",
+    "state_id": "315",
+    "name": "Ekwusigo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "75",
+    "state_id": "315",
+    "name": "Idemili North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "76",
+    "state_id": "315",
+    "name": "Idemili South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "77",
+    "state_id": "315",
+    "name": "Ihiala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "78",
+    "state_id": "315",
+    "name": "Njikoka",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "79",
+    "state_id": "315",
+    "name": "Nnewi North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "80",
+    "state_id": "315",
+    "name": "Nnewi South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "81",
+    "state_id": "315",
+    "name": "Ogbaru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "82",
+    "state_id": "315",
+    "name": "Onitsha North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "83",
+    "state_id": "315",
+    "name": "Onitsha South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "84",
+    "state_id": "315",
+    "name": "Orumba North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "85",
+    "state_id": "315",
+    "name": "Orumba South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "86",
+    "state_id": "315",
+    "name": "Oyi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "87",
+    "state_id": "312",
+    "name": "Bauchi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "88",
+    "state_id": "312",
+    "name": "Bogoro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "89",
+    "state_id": "312",
+    "name": "Damban",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "90",
+    "state_id": "312",
+    "name": "Darazo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "91",
+    "state_id": "312",
+    "name": "Dass",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "92",
+    "state_id": "312",
+    "name": "Gamawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "93",
+    "state_id": "312",
+    "name": "Ganjuwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "94",
+    "state_id": "312",
+    "name": "Giade",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "95",
+    "state_id": "312",
+    "name": "Itas\/Gadau",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "96",
+    "state_id": "312",
+    "name": "Jama'are",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "97",
+    "state_id": "312",
+    "name": "Katagum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "98",
+    "state_id": "312",
+    "name": "Kirfi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "99",
+    "state_id": "312",
+    "name": "Misua",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "100",
+    "state_id": "312",
+    "name": "Ningi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "101",
+    "state_id": "312",
+    "name": "Shira",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "102",
+    "state_id": "312",
+    "name": "Tafawa-Balewa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "103",
+    "state_id": "312",
+    "name": "Toro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "104",
+    "state_id": "312",
+    "name": "Warji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "105",
+    "state_id": "312",
+    "name": "Zaki",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "106",
+    "state_id": "305",
+    "name": "Ekeremor",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "107",
+    "state_id": "305",
+    "name": "Kolokuma\/Opokuma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "108",
+    "state_id": "305",
+    "name": "Nembe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "109",
+    "state_id": "305",
+    "name": "Ogbia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "110",
+    "state_id": "305",
+    "name": "Sagbama",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "111",
+    "state_id": "305",
+    "name": "Southern Ijaw",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "112",
+    "state_id": "305",
+    "name": "Yenegoa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "745",
+    "state_id": "305",
+    "name": "Brass",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "113",
+    "state_id": "291",
+    "name": "Apa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "114",
+    "state_id": "291",
+    "name": "Ado",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "115",
+    "state_id": "291",
+    "name": "Buruku",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "116",
+    "state_id": "291",
+    "name": "Gboko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "117",
+    "state_id": "291",
+    "name": "Guma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "118",
+    "state_id": "291",
+    "name": "Gwer East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "119",
+    "state_id": "291",
+    "name": "Gwer West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "120",
+    "state_id": "291",
+    "name": "Kastina-Ala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "121",
+    "state_id": "291",
+    "name": "Konshisha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "122",
+    "state_id": "291",
+    "name": "Kwande",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "123",
+    "state_id": "291",
+    "name": "Logo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "124",
+    "state_id": "291",
+    "name": "Markudi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "746",
+    "state_id": "291",
+    "name": "Agatu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "125",
+    "state_id": "291",
+    "name": "Obi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "126",
+    "state_id": "291",
+    "name": "Ogbadibo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "127",
+    "state_id": "291",
+    "name": "Ohimini",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "128",
+    "state_id": "291",
+    "name": "Oju",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "129",
+    "state_id": "291",
+    "name": "Okpokwu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "130",
+    "state_id": "291",
+    "name": "Oturkpo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "131",
+    "state_id": "291",
+    "name": "Tarka",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "132",
+    "state_id": "291",
+    "name": "Ukum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "133",
+    "state_id": "291",
+    "name": "Ushongo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "134",
+    "state_id": "291",
+    "name": "Vandeikya",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "135",
+    "state_id": "307",
+    "name": "Askira\/Uba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "136",
+    "state_id": "307",
+    "name": "Bama",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "747",
+    "state_id": "307",
+    "name": "Abadam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "137",
+    "state_id": "307",
+    "name": "Bayo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "138",
+    "state_id": "307",
+    "name": "Biu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "139",
+    "state_id": "307",
+    "name": "Chibok",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "140",
+    "state_id": "307",
+    "name": "Damboa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "141",
+    "state_id": "307",
+    "name": "Dikwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "142",
+    "state_id": "307",
+    "name": "Gubio",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "143",
+    "state_id": "307",
+    "name": "Guzamala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "144",
+    "state_id": "307",
+    "name": "Gwoza",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "145",
+    "state_id": "307",
+    "name": "Hawul",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "146",
+    "state_id": "307",
+    "name": "Jere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "147",
+    "state_id": "307",
+    "name": "Kaga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "148",
+    "state_id": "307",
+    "name": "Kala\/Balge",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "149",
+    "state_id": "307",
+    "name": "Konduga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "150",
+    "state_id": "307",
+    "name": "Kukawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "151",
+    "state_id": "307",
+    "name": "Kwaya Kusar",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "152",
+    "state_id": "307",
+    "name": "Mafa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "153",
+    "state_id": "307",
+    "name": "Magumeri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "154",
+    "state_id": "307",
+    "name": "Maiduguri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "155",
+    "state_id": "307",
+    "name": "Marte",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "156",
+    "state_id": "307",
+    "name": "Mobbar",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "157",
+    "state_id": "307",
+    "name": "Monguno",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "158",
+    "state_id": "307",
+    "name": "Ngala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "159",
+    "state_id": "307",
+    "name": "Nganzai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "160",
+    "state_id": "307",
+    "name": "Shani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "161",
+    "state_id": "314",
+    "name": "Akamkpa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "162",
+    "state_id": "314",
+    "name": "Akpabuyo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "163",
+    "state_id": "314",
+    "name": "Bakassi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "164",
+    "state_id": "314",
+    "name": "Bekwara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "165",
+    "state_id": "314",
+    "name": "Biase",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "166",
+    "state_id": "314",
+    "name": "Boki",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "167",
+    "state_id": "314",
+    "name": "Calabar Municipality",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "168",
+    "state_id": "314",
+    "name": "Calabar South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "169",
+    "state_id": "314",
+    "name": "Etung",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "170",
+    "state_id": "314",
+    "name": "Ikom",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "171",
+    "state_id": "314",
+    "name": "Obanliku",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "172",
+    "state_id": "314",
+    "name": "Odubra",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "173",
+    "state_id": "314",
+    "name": "Obudu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "174",
+    "state_id": "314",
+    "name": "Odukpani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "175",
+    "state_id": "314",
+    "name": "Ogoja",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "176",
+    "state_id": "314",
+    "name": "Yarkur",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "748",
+    "state_id": "314",
+    "name": "Abi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "177",
+    "state_id": "314",
+    "name": "Yala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "178",
+    "state_id": "316",
+    "name": "Aniocha South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "179",
+    "state_id": "316",
+    "name": "Bomadi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "180",
+    "state_id": "316",
+    "name": "Burutu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "181",
+    "state_id": "316",
+    "name": "Ethiope East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "182",
+    "state_id": "316",
+    "name": "Ethiope West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "183",
+    "state_id": "316",
+    "name": "Ika North-East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "749",
+    "state_id": "316",
+    "name": "Aniocha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "750",
+    "state_id": "316",
+    "name": "Oshimili",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "751",
+    "state_id": "316",
+    "name": "Warri Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "184",
+    "state_id": "316",
+    "name": "Ika South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "185",
+    "state_id": "316",
+    "name": "Isoko North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "186",
+    "state_id": "316",
+    "name": "Isoko South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "187",
+    "state_id": "316",
+    "name": "Ndokwa East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "188",
+    "state_id": "316",
+    "name": "Ndokwa West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "189",
+    "state_id": "316",
+    "name": "Okpe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "190",
+    "state_id": "316",
+    "name": "Oshimili North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "191",
+    "state_id": "316",
+    "name": "Oshimili South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "192",
+    "state_id": "316",
+    "name": "Patani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "193",
+    "state_id": "316",
+    "name": "Sapele",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "194",
+    "state_id": "316",
+    "name": "Udu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "195",
+    "state_id": "316",
+    "name": "Ughelli North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "196",
+    "state_id": "316",
+    "name": "Ughelli South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "197",
+    "state_id": "316",
+    "name": "Ukwuani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "198",
+    "state_id": "316",
+    "name": "Uvwie",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "199",
+    "state_id": "316",
+    "name": "Warri North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "200",
+    "state_id": "316",
+    "name": "Warri South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "201",
+    "state_id": "316",
+    "name": "Warri South West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "202",
+    "state_id": "311",
+    "name": "Afikpo North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "203",
+    "state_id": "311",
+    "name": "Afikpo South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "204",
+    "state_id": "311",
+    "name": "Ebonyi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "752",
+    "state_id": "311",
+    "name": "Abakaliki",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "753",
+    "state_id": "311",
+    "name": "Ezza",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "205",
+    "state_id": "311",
+    "name": "Ezza North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "206",
+    "state_id": "311",
+    "name": "Ezza South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "207",
+    "state_id": "311",
+    "name": "Ikwo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "208",
+    "state_id": "311",
+    "name": "Ishielu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "209",
+    "state_id": "311",
+    "name": "Ivo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "210",
+    "state_id": "311",
+    "name": "Izzi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "211",
+    "state_id": "311",
+    "name": "Ohaozara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "212",
+    "state_id": "311",
+    "name": "Ohaukwu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "213",
+    "state_id": "311",
+    "name": "Onicha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "214",
+    "state_id": "318",
+    "name": "Egor",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "754",
+    "state_id": "318",
+    "name": "Akoko-Edo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "215",
+    "state_id": "318",
+    "name": "Esan Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "216",
+    "state_id": "318",
+    "name": "Esan North-East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "217",
+    "state_id": "318",
+    "name": "Esan South-East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "218",
+    "state_id": "318",
+    "name": "Esan West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "219",
+    "state_id": "318",
+    "name": "Etsako Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "220",
+    "state_id": "318",
+    "name": "Etsako East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "221",
+    "state_id": "318",
+    "name": "Etsako West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "222",
+    "state_id": "318",
+    "name": "Igueben",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "223",
+    "state_id": "318",
+    "name": "Ikpoba-Okha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "224",
+    "state_id": "318",
+    "name": "Orhionwon",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "225",
+    "state_id": "318",
+    "name": "Oredo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "226",
+    "state_id": "318",
+    "name": "Ovia North-East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "227",
+    "state_id": "318",
+    "name": "Ovia South West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "755",
+    "state_id": "318",
+    "name": "Ovia South-East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "228",
+    "state_id": "318",
+    "name": "Owan East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "229",
+    "state_id": "318",
+    "name": "Owan West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "230",
+    "state_id": "318",
+    "name": "Uhunwwonde",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "231",
+    "state_id": "309",
+    "name": "Efon",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "232",
+    "state_id": "309",
+    "name": "Ekiti East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "233",
+    "state_id": "309",
+    "name": "Ekiti South-West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "234",
+    "state_id": "309",
+    "name": "Ekiti West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "235",
+    "state_id": "309",
+    "name": "Emure",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "236",
+    "state_id": "309",
+    "name": "Gboyin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "237",
+    "state_id": "309",
+    "name": "Ido\/Osi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "756",
+    "state_id": "309",
+    "name": "Ikare",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "757",
+    "state_id": "309",
+    "name": "Ise\/Orun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "238",
+    "state_id": "309",
+    "name": "Ijero",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "239",
+    "state_id": "309",
+    "name": "Ikere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "240",
+    "state_id": "309",
+    "name": "Ikole",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "241",
+    "state_id": "309",
+    "name": "Ilejemeje",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "242",
+    "state_id": "309",
+    "name": "Irepodun\/Ifelodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "243",
+    "state_id": "309",
+    "name": "Emure\/Ise\/Orun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "244",
+    "state_id": "309",
+    "name": "Moba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "245",
+    "state_id": "309",
+    "name": "Oye",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "246",
+    "state_id": "289",
+    "name": "Awgu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "247",
+    "state_id": "289",
+    "name": "Enugu East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "248",
+    "state_id": "289",
+    "name": "Enugu North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "249",
+    "state_id": "289",
+    "name": "Enugu South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "250",
+    "state_id": "289",
+    "name": "Ezeagu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "251",
+    "state_id": "289",
+    "name": "Igbo-Ekiti",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "252",
+    "state_id": "289",
+    "name": "IgboEze North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "253",
+    "state_id": "289",
+    "name": "Igbo-Eze South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "760",
+    "state_id": "289",
+    "name": "Aninri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "759",
+    "state_id": "289",
+    "name": "Nkanu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "254",
+    "state_id": "289",
+    "name": "Isi-Uzo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "255",
+    "state_id": "289",
+    "name": "Nkanu East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "256",
+    "state_id": "289",
+    "name": "Nkanu West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "257",
+    "state_id": "289",
+    "name": "Nsukka",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "258",
+    "state_id": "289",
+    "name": "Oji River",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "259",
+    "state_id": "289",
+    "name": "Udenu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "260",
+    "state_id": "289",
+    "name": "Udi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "261",
+    "state_id": "289",
+    "name": "Uzo-Uwani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "262",
+    "state_id": "293",
+    "name": "Bwari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "758",
+    "state_id": "293",
+    "name": "Udi Agwu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "263",
+    "state_id": "293",
+    "name": "Gwagwalada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "264",
+    "state_id": "293",
+    "name": "Kuje",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "265",
+    "state_id": "293",
+    "name": "Kwali",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "266",
+    "state_id": "293",
+    "name": "Abuja Municipal",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "741",
+    "state_id": "293",
+    "name": "Abaji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "267",
+    "state_id": "310",
+    "name": "Balanga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "268",
+    "state_id": "310",
+    "name": "Billiri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "761",
+    "state_id": "310",
+    "name": "Akko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "269",
+    "state_id": "310",
+    "name": "Dukku",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "270",
+    "state_id": "310",
+    "name": "Funakaye",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "271",
+    "state_id": "310",
+    "name": "Gombe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "272",
+    "state_id": "310",
+    "name": "Kaltungo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "273",
+    "state_id": "310",
+    "name": "Kwami",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "274",
+    "state_id": "310",
+    "name": "Nafada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "275",
+    "state_id": "310",
+    "name": "Shomgom",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "276",
+    "state_id": "310",
+    "name": "Yamaltu\/Delta",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "762",
+    "state_id": "310",
+    "name": "Nafada\/Bajoga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "277",
+    "state_id": "308",
+    "name": "Ahiazu-Mbaise",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "278",
+    "state_id": "308",
+    "name": "Ehime-Mbano",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "279",
+    "state_id": "308",
+    "name": "Ezinihitte",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "280",
+    "state_id": "308",
+    "name": "Ideato North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "281",
+    "state_id": "308",
+    "name": "Ideato South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "282",
+    "state_id": "308",
+    "name": "Ihitte\/Uboma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "283",
+    "state_id": "308",
+    "name": "Ikeaduru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "284",
+    "state_id": "308",
+    "name": "Isiala Mbano",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "285",
+    "state_id": "308",
+    "name": "Isu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "286",
+    "state_id": "308",
+    "name": "Mbaitolu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "287",
+    "state_id": "308",
+    "name": "Ngor-Okpala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "288",
+    "state_id": "308",
+    "name": "Njaba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "289",
+    "state_id": "308",
+    "name": "Nkwerre",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "290",
+    "state_id": "308",
+    "name": "Nwangele",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "291",
+    "state_id": "308",
+    "name": "Obowo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "292",
+    "state_id": "308",
+    "name": "Oguta",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "293",
+    "state_id": "308",
+    "name": "Ohaji\/Egbema",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "294",
+    "state_id": "308",
+    "name": "Okigwe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "295",
+    "state_id": "308",
+    "name": "Orlu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "296",
+    "state_id": "308",
+    "name": "Orsu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "297",
+    "state_id": "308",
+    "name": "Oru East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "298",
+    "state_id": "308",
+    "name": "Oru West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "299",
+    "state_id": "308",
+    "name": "Owerri-Municipal",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "300",
+    "state_id": "308",
+    "name": "Owerri North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "763",
+    "state_id": "308",
+    "name": "Aboh-Mbaise",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "301",
+    "state_id": "308",
+    "name": "Owerri West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "302",
+    "state_id": "308",
+    "name": "Unuimo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "303",
+    "state_id": "288",
+    "name": "Babura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "764",
+    "state_id": "288",
+    "name": "Auyo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "304",
+    "state_id": "288",
+    "name": "Biriniwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "305",
+    "state_id": "288",
+    "name": "Birni Kudu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "306",
+    "state_id": "288",
+    "name": "Buji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "307",
+    "state_id": "288",
+    "name": "Dutse",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "308",
+    "state_id": "288",
+    "name": "Gagarawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "309",
+    "state_id": "288",
+    "name": "Garki",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "310",
+    "state_id": "288",
+    "name": "Gumel",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "311",
+    "state_id": "288",
+    "name": "Guri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "312",
+    "state_id": "288",
+    "name": "Gwaram",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "313",
+    "state_id": "288",
+    "name": "Gwiwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "314",
+    "state_id": "288",
+    "name": "Hadejia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "315",
+    "state_id": "288",
+    "name": "Jahun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "316",
+    "state_id": "288",
+    "name": "Kafin Hausa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "317",
+    "state_id": "288",
+    "name": "Kazaure",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "318",
+    "state_id": "288",
+    "name": "Kiri Kasamma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "765",
+    "state_id": "288",
+    "name": "Kaugama Kazaure",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "319",
+    "state_id": "288",
+    "name": "Kiyawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "320",
+    "state_id": "288",
+    "name": "Kaugama",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "321",
+    "state_id": "288",
+    "name": "Maigatari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "322",
+    "state_id": "288",
+    "name": "Malam Madori",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "323",
+    "state_id": "288",
+    "name": "Miga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "324",
+    "state_id": "288",
+    "name": "Ringim",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "325",
+    "state_id": "288",
+    "name": "Roni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "326",
+    "state_id": "288",
+    "name": "Sule-Tankarkar",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "327",
+    "state_id": "288",
+    "name": "Taura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "328",
+    "state_id": "288",
+    "name": "Yankwashi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "329",
+    "state_id": "294",
+    "name": "Chikun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "330",
+    "state_id": "294",
+    "name": "Giwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "766",
+    "state_id": "294",
+    "name": "Birni-Gwari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "331",
+    "state_id": "294",
+    "name": "Igabi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "332",
+    "state_id": "294",
+    "name": "Ikara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "333",
+    "state_id": "294",
+    "name": "Jaba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "334",
+    "state_id": "294",
+    "name": "Jema'a",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "335",
+    "state_id": "294",
+    "name": "Kachia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "336",
+    "state_id": "294",
+    "name": "Kaduna North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "337",
+    "state_id": "294",
+    "name": "Kaduna South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "338",
+    "state_id": "294",
+    "name": "Kagarko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "339",
+    "state_id": "294",
+    "name": "Kajuru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "340",
+    "state_id": "294",
+    "name": "Kaura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "341",
+    "state_id": "294",
+    "name": "Kauru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "342",
+    "state_id": "294",
+    "name": "Kudau",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "343",
+    "state_id": "294",
+    "name": "Kudan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "344",
+    "state_id": "294",
+    "name": "Lere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "345",
+    "state_id": "294",
+    "name": "Makarfi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "346",
+    "state_id": "294",
+    "name": "Sabon-Gari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "347",
+    "state_id": "294",
+    "name": "Sanga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "348",
+    "state_id": "294",
+    "name": "Soba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "349",
+    "state_id": "294",
+    "name": "Zango-Kataf",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "350",
+    "state_id": "294",
+    "name": "Zaria",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "351",
+    "state_id": "300",
+    "name": "Albasu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "767",
+    "state_id": "300",
+    "name": "Ajingi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "352",
+    "state_id": "300",
+    "name": "Bagwai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "353",
+    "state_id": "300",
+    "name": "Bebeji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "354",
+    "state_id": "300",
+    "name": "Bichi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "355",
+    "state_id": "300",
+    "name": "Bunkure",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "356",
+    "state_id": "300",
+    "name": "Dala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "357",
+    "state_id": "300",
+    "name": "Dambatta",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "358",
+    "state_id": "300",
+    "name": "Dawakin Kudu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "359",
+    "state_id": "300",
+    "name": "Dawakin Tofa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "360",
+    "state_id": "300",
+    "name": "Doguwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "361",
+    "state_id": "300",
+    "name": "Fagga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "768",
+    "state_id": "300",
+    "name": "Garum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "769",
+    "state_id": "300",
+    "name": "Mallam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "362",
+    "state_id": "300",
+    "name": "Gabasawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "363",
+    "state_id": "300",
+    "name": "Garko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "364",
+    "state_id": "300",
+    "name": "Garun Mallam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "365",
+    "state_id": "300",
+    "name": "Gaya",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "366",
+    "state_id": "300",
+    "name": "Gezawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "367",
+    "state_id": "300",
+    "name": "Gwale",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "368",
+    "state_id": "300",
+    "name": "Gwarzo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "369",
+    "state_id": "300",
+    "name": "Kabo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "370",
+    "state_id": "300",
+    "name": "Kano Municipal",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "371",
+    "state_id": "300",
+    "name": "Karaye",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "372",
+    "state_id": "300",
+    "name": "Kibiya",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "373",
+    "state_id": "300",
+    "name": "Kiru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "374",
+    "state_id": "300",
+    "name": "Kumbotso",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "375",
+    "state_id": "300",
+    "name": "Kunchi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "376",
+    "state_id": "300",
+    "name": "Kura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "377",
+    "state_id": "300",
+    "name": "Madobi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "378",
+    "state_id": "300",
+    "name": "Makoda",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "379",
+    "state_id": "300",
+    "name": "Minjibir",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "380",
+    "state_id": "300",
+    "name": "Nasarawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "381",
+    "state_id": "300",
+    "name": "Rano",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "382",
+    "state_id": "300",
+    "name": "Rimin Gado",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "383",
+    "state_id": "300",
+    "name": "Rogo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "384",
+    "state_id": "300",
+    "name": "Shanono",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "385",
+    "state_id": "300",
+    "name": "Sumaila",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "386",
+    "state_id": "300",
+    "name": "Takali",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "387",
+    "state_id": "300",
+    "name": "Tarauni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "388",
+    "state_id": "300",
+    "name": "Tofa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "389",
+    "state_id": "300",
+    "name": "Tsanyawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "390",
+    "state_id": "300",
+    "name": "Tundun Wada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "391",
+    "state_id": "300",
+    "name": "Ungogo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "392",
+    "state_id": "300",
+    "name": "Warawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "393",
+    "state_id": "300",
+    "name": "Wudil",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "394",
+    "state_id": "313",
+    "name": "Batagarawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "395",
+    "state_id": "313",
+    "name": "Batsari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "770",
+    "state_id": "313",
+    "name": "Bakori",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "396",
+    "state_id": "313",
+    "name": "Baure",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "397",
+    "state_id": "313",
+    "name": "Bindawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "398",
+    "state_id": "313",
+    "name": "Charanchi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "399",
+    "state_id": "313",
+    "name": "Dandume",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "400",
+    "state_id": "313",
+    "name": "Danja",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "401",
+    "state_id": "313",
+    "name": "Dan Musa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "402",
+    "state_id": "313",
+    "name": "Daura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "403",
+    "state_id": "313",
+    "name": "Dutsi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "404",
+    "state_id": "313",
+    "name": "Dutsin-Ma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "405",
+    "state_id": "313",
+    "name": "Faskari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "406",
+    "state_id": "313",
+    "name": "Funtua",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "407",
+    "state_id": "313",
+    "name": "Ingawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "408",
+    "state_id": "313",
+    "name": "Jibia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "409",
+    "state_id": "313",
+    "name": "Kafur",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "410",
+    "state_id": "313",
+    "name": "Kaita",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "411",
+    "state_id": "313",
+    "name": "Kankara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "412",
+    "state_id": "313",
+    "name": "Kankia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "413",
+    "state_id": "313",
+    "name": "Katsina",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "414",
+    "state_id": "313",
+    "name": "Kurfi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "415",
+    "state_id": "313",
+    "name": "Kusada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "416",
+    "state_id": "313",
+    "name": "Mai Adua",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "417",
+    "state_id": "313",
+    "name": "Malumfashi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "418",
+    "state_id": "313",
+    "name": "Mani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "419",
+    "state_id": "313",
+    "name": "Mashi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "420",
+    "state_id": "313",
+    "name": "Matazuu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "421",
+    "state_id": "313",
+    "name": "Musawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "422",
+    "state_id": "313",
+    "name": "Rimi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "423",
+    "state_id": "313",
+    "name": "Sabuwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "424",
+    "state_id": "313",
+    "name": "Safana",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "425",
+    "state_id": "313",
+    "name": "Sandamu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "426",
+    "state_id": "313",
+    "name": "Zango",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "427",
+    "state_id": "290",
+    "name": "Arewa-Dandi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "428",
+    "state_id": "290",
+    "name": "Argungu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "429",
+    "state_id": "290",
+    "name": "Augie",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "430",
+    "state_id": "290",
+    "name": "Bagudo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "431",
+    "state_id": "290",
+    "name": "Birin Kebbi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "432",
+    "state_id": "290",
+    "name": "Bunza",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "433",
+    "state_id": "290",
+    "name": "Dandi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "434",
+    "state_id": "290",
+    "name": "Fakai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "435",
+    "state_id": "290",
+    "name": "Gwandu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "436",
+    "state_id": "290",
+    "name": "Jega",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "437",
+    "state_id": "290",
+    "name": "Kalgo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "438",
+    "state_id": "290",
+    "name": "Koko\/Besse",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "439",
+    "state_id": "290",
+    "name": "Maiyawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "771",
+    "state_id": "290",
+    "name": "Aleiro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "440",
+    "state_id": "290",
+    "name": "Ngaski",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "441",
+    "state_id": "290",
+    "name": "Sakaba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "442",
+    "state_id": "290",
+    "name": "Shanga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "443",
+    "state_id": "290",
+    "name": "Suru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "444",
+    "state_id": "290",
+    "name": "Wasagu\/Danko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "445",
+    "state_id": "290",
+    "name": "Yauri",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "446",
+    "state_id": "290",
+    "name": "Zuru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "447",
+    "state_id": "298",
+    "name": "Ajaokuta",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "448",
+    "state_id": "298",
+    "name": "Ankpa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "449",
+    "state_id": "298",
+    "name": "Bassa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "450",
+    "state_id": "298",
+    "name": "Dekina",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "451",
+    "state_id": "298",
+    "name": "Ibaji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "452",
+    "state_id": "298",
+    "name": "Idah",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "453",
+    "state_id": "298",
+    "name": "Igalamela-Odolu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "772",
+    "state_id": "298",
+    "name": "Adavi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "454",
+    "state_id": "298",
+    "name": "Ijumu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "455",
+    "state_id": "298",
+    "name": "Kabba\/Bunu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "456",
+    "state_id": "298",
+    "name": "Kogi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "457",
+    "state_id": "298",
+    "name": "Lokoja",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "458",
+    "state_id": "298",
+    "name": "Mopa-Muro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "459",
+    "state_id": "298",
+    "name": "Ofu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "460",
+    "state_id": "298",
+    "name": "Ogori\/Mangogo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "461",
+    "state_id": "298",
+    "name": "Okehi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "462",
+    "state_id": "298",
+    "name": "Okene",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "463",
+    "state_id": "298",
+    "name": "Olamabolo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "464",
+    "state_id": "298",
+    "name": "Omala",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "465",
+    "state_id": "298",
+    "name": "Yagba East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "466",
+    "state_id": "298",
+    "name": "Yagba West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "467",
+    "state_id": "295",
+    "name": "Baruten",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "468",
+    "state_id": "295",
+    "name": "Edu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "469",
+    "state_id": "295",
+    "name": "Ekiti",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "470",
+    "state_id": "295",
+    "name": "Ifelodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "471",
+    "state_id": "295",
+    "name": "Ilorin East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "472",
+    "state_id": "295",
+    "name": "Ilorin South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "473",
+    "state_id": "295",
+    "name": "Ilorin West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "474",
+    "state_id": "295",
+    "name": "Irepodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "475",
+    "state_id": "295",
+    "name": "Isin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "476",
+    "state_id": "295",
+    "name": "Kaiama",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "477",
+    "state_id": "295",
+    "name": "Moro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "478",
+    "state_id": "295",
+    "name": "Offa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "479",
+    "state_id": "295",
+    "name": "Oke-Ero",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "773",
+    "state_id": "295",
+    "name": "Asa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "480",
+    "state_id": "295",
+    "name": "Oyun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "481",
+    "state_id": "295",
+    "name": "Pategi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "482",
+    "state_id": "306",
+    "name": "Ajeromi-Ifelodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "483",
+    "state_id": "306",
+    "name": "Alimosho",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "484",
+    "state_id": "306",
+    "name": "Amuwo-Odofin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "485",
+    "state_id": "306",
+    "name": "Apapa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "486",
+    "state_id": "306",
+    "name": "Badagry",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "487",
+    "state_id": "306",
+    "name": "Epe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "488",
+    "state_id": "306",
+    "name": "Eti-Osa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "774",
+    "state_id": "306",
+    "name": "Agege",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "489",
+    "state_id": "306",
+    "name": "Ibeju\/Lekki",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "490",
+    "state_id": "306",
+    "name": "Ifako-Ijaye",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "491",
+    "state_id": "306",
+    "name": "Ikeja",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "492",
+    "state_id": "306",
+    "name": "Ikorodu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "493",
+    "state_id": "306",
+    "name": "Kosofe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "494",
+    "state_id": "306",
+    "name": "Lagos Island",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "495",
+    "state_id": "306",
+    "name": "Lagos Mainland",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "496",
+    "state_id": "306",
+    "name": "Mushin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "497",
+    "state_id": "306",
+    "name": "Ojo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "498",
+    "state_id": "306",
+    "name": "Oshodi-Isolo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "499",
+    "state_id": "306",
+    "name": "Shomolu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "500",
+    "state_id": "306",
+    "name": "Surulere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "501",
+    "state_id": "301",
+    "name": "Awe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "502",
+    "state_id": "301",
+    "name": "Doma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "503",
+    "state_id": "301",
+    "name": "Karu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "504",
+    "state_id": "301",
+    "name": "Keana",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "505",
+    "state_id": "301",
+    "name": "Keffi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "506",
+    "state_id": "301",
+    "name": "Kokona",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "507",
+    "state_id": "301",
+    "name": "Lafia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "508",
+    "state_id": "301",
+    "name": "Nasarawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "509",
+    "state_id": "301",
+    "name": "Nasarawa-Eggon",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "780",
+    "state_id": "301",
+    "name": "Akwanga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "510",
+    "state_id": "301",
+    "name": "Obi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "511",
+    "state_id": "301",
+    "name": "Toto",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "512",
+    "state_id": "301",
+    "name": "Wamba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "513",
+    "state_id": "317",
+    "name": "Agwara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "514",
+    "state_id": "317",
+    "name": "Bida",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "515",
+    "state_id": "317",
+    "name": "Borgu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "516",
+    "state_id": "317",
+    "name": "Bosso",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "517",
+    "state_id": "317",
+    "name": "Chanchaga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "518",
+    "state_id": "317",
+    "name": "Edati",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "519",
+    "state_id": "317",
+    "name": "Gbako",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "520",
+    "state_id": "317",
+    "name": "Gurara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "521",
+    "state_id": "317",
+    "name": "Katcha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "522",
+    "state_id": "317",
+    "name": "Kontagora",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "523",
+    "state_id": "317",
+    "name": "Lapai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "524",
+    "state_id": "317",
+    "name": "Lavun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "525",
+    "state_id": "317",
+    "name": "Magama",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "526",
+    "state_id": "317",
+    "name": "Mariga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "527",
+    "state_id": "317",
+    "name": "Mashegu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "528",
+    "state_id": "317",
+    "name": "Mokwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "529",
+    "state_id": "317",
+    "name": "Muya",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "782",
+    "state_id": "317",
+    "name": "Abeokuta North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "781",
+    "state_id": "317",
+    "name": "Agaie",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "530",
+    "state_id": "317",
+    "name": "Pailoro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "531",
+    "state_id": "317",
+    "name": "Rafi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "532",
+    "state_id": "317",
+    "name": "Rijau",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "533",
+    "state_id": "317",
+    "name": "Shiroro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "534",
+    "state_id": "317",
+    "name": "Suleja",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "535",
+    "state_id": "317",
+    "name": "Tafa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "536",
+    "state_id": "317",
+    "name": "Wushishi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "537",
+    "state_id": "323",
+    "name": "Abeokuta South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "538",
+    "state_id": "323",
+    "name": "Ado-Odo\/Ota",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "539",
+    "state_id": "323",
+    "name": "Egbado North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "540",
+    "state_id": "323",
+    "name": "Egbado South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "541",
+    "state_id": "323",
+    "name": "Ewekoro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "542",
+    "state_id": "323",
+    "name": "Ifo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "543",
+    "state_id": "323",
+    "name": "Ijebu East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "544",
+    "state_id": "323",
+    "name": "Ijebu North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "545",
+    "state_id": "323",
+    "name": "Ijebu North East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "546",
+    "state_id": "323",
+    "name": "Ijebu Ode",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "547",
+    "state_id": "323",
+    "name": "Ikenne",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "548",
+    "state_id": "323",
+    "name": "Imeko-Afon",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "549",
+    "state_id": "323",
+    "name": "Ikpokia",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "550",
+    "state_id": "323",
+    "name": "Obafemi-Owode",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "551",
+    "state_id": "323",
+    "name": "Odeda",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "552",
+    "state_id": "323",
+    "name": "Odogbolu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "553",
+    "state_id": "323",
+    "name": "Ogun Waterside",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "554",
+    "state_id": "323",
+    "name": "Remo North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "555",
+    "state_id": "323",
+    "name": "Shagamu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "556",
+    "state_id": "321",
+    "name": "Akoko North West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "783",
+    "state_id": "321",
+    "name": "Akoko North East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "557",
+    "state_id": "321",
+    "name": "Akoko South West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "558",
+    "state_id": "321",
+    "name": "Akoko South East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "559",
+    "state_id": "321",
+    "name": "Akure North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "560",
+    "state_id": "321",
+    "name": "Akure South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "561",
+    "state_id": "321",
+    "name": "Ese- Odo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "784",
+    "state_id": "321",
+    "name": "Ile-Oluji",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "785",
+    "state_id": "321",
+    "name": "Okeigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "562",
+    "state_id": "321",
+    "name": "Idanre",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "563",
+    "state_id": "321",
+    "name": "Ifedore",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "564",
+    "state_id": "321",
+    "name": "Ilaje",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "565",
+    "state_id": "321",
+    "name": "Ile Oluji\/Okeigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "566",
+    "state_id": "321",
+    "name": "Irele",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "567",
+    "state_id": "321",
+    "name": "Odigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "568",
+    "state_id": "321",
+    "name": "Okitipupa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "569",
+    "state_id": "321",
+    "name": "Ondo East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "570",
+    "state_id": "321",
+    "name": "Ondo West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "571",
+    "state_id": "321",
+    "name": "Ose",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "572",
+    "state_id": "321",
+    "name": "Owo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "573",
+    "state_id": "322",
+    "name": "Atakumosa West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "574",
+    "state_id": "322",
+    "name": "Aiyedade",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "575",
+    "state_id": "322",
+    "name": "Aiyedire",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "576",
+    "state_id": "322",
+    "name": "Boluwaduro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "577",
+    "state_id": "322",
+    "name": "Boripe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "578",
+    "state_id": "322",
+    "name": "Ede North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "579",
+    "state_id": "322",
+    "name": "Ede South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "580",
+    "state_id": "322",
+    "name": "Ife Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "581",
+    "state_id": "322",
+    "name": "Ife East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "582",
+    "state_id": "322",
+    "name": "Ife North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "583",
+    "state_id": "322",
+    "name": "Ife South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "584",
+    "state_id": "322",
+    "name": "Egbedore",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "585",
+    "state_id": "322",
+    "name": "Ejigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "586",
+    "state_id": "322",
+    "name": "Ifedayo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "587",
+    "state_id": "322",
+    "name": "Ifelodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "588",
+    "state_id": "322",
+    "name": "Ila",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "589",
+    "state_id": "322",
+    "name": "Ilesha East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "590",
+    "state_id": "322",
+    "name": "Ilesha West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "591",
+    "state_id": "322",
+    "name": "Irepodun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "592",
+    "state_id": "322",
+    "name": "Irewole",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "593",
+    "state_id": "322",
+    "name": "Isokan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "594",
+    "state_id": "322",
+    "name": "Iwo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "595",
+    "state_id": "322",
+    "name": "Obokun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "596",
+    "state_id": "322",
+    "name": "Odo-Otin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "597",
+    "state_id": "322",
+    "name": "Ola-Oluwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "598",
+    "state_id": "322",
+    "name": "Olorunda",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "599",
+    "state_id": "322",
+    "name": "Oriade",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "600",
+    "state_id": "322",
+    "name": "Orolu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "601",
+    "state_id": "322",
+    "name": "Osogbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "602",
+    "state_id": "296",
+    "name": "Akinyele",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "603",
+    "state_id": "296",
+    "name": "Atiba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "604",
+    "state_id": "296",
+    "name": "Atisbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "605",
+    "state_id": "296",
+    "name": "Egbeda",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "606",
+    "state_id": "296",
+    "name": "Ibadan North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "607",
+    "state_id": "296",
+    "name": "Ibadan North East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "608",
+    "state_id": "296",
+    "name": "Ibadan North-West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "609",
+    "state_id": "296",
+    "name": "Ibadan South East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "778",
+    "state_id": "296",
+    "name": "Afijio",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "777",
+    "state_id": "296",
+    "name": "Atigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "610",
+    "state_id": "296",
+    "name": "Ibadan South West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "611",
+    "state_id": "296",
+    "name": "Ibarapa Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "612",
+    "state_id": "296",
+    "name": "Ibarapa East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "613",
+    "state_id": "296",
+    "name": "Ibarapa North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "614",
+    "state_id": "296",
+    "name": "Ido",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "615",
+    "state_id": "296",
+    "name": "Irepo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "616",
+    "state_id": "296",
+    "name": "Iseyin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "617",
+    "state_id": "296",
+    "name": "Itesiwaju",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "618",
+    "state_id": "296",
+    "name": "Iwajowa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "619",
+    "state_id": "296",
+    "name": "Kajola",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "620",
+    "state_id": "296",
+    "name": "Lagelu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "621",
+    "state_id": "296",
+    "name": "Ogbomosho North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "622",
+    "state_id": "296",
+    "name": "Ogbomosho South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "623",
+    "state_id": "296",
+    "name": "Ogo Oluwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "624",
+    "state_id": "296",
+    "name": "Olorunsogo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "625",
+    "state_id": "296",
+    "name": "Oluyole",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "626",
+    "state_id": "296",
+    "name": "Ona-Ara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "775",
+    "state_id": "296",
+    "name": "Oyo West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "776",
+    "state_id": "296",
+    "name": "Ibadan Central",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "627",
+    "state_id": "296",
+    "name": "Orelope",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "628",
+    "state_id": "296",
+    "name": "Ori Ire",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "629",
+    "state_id": "296",
+    "name": "Oyo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "630",
+    "state_id": "296",
+    "name": "Oyo East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "631",
+    "state_id": "296",
+    "name": "Saki East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "632",
+    "state_id": "296",
+    "name": "Saki West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "633",
+    "state_id": "296",
+    "name": "Surulere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "634",
+    "state_id": "302",
+    "name": "Birinkin Ladi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "635",
+    "state_id": "302",
+    "name": "Bassa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "786",
+    "state_id": "302",
+    "name": "Bokkos",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "636",
+    "state_id": "302",
+    "name": "Jos East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "637",
+    "state_id": "302",
+    "name": "Jos North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "638",
+    "state_id": "302",
+    "name": "Jos South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "639",
+    "state_id": "302",
+    "name": "Kanam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "640",
+    "state_id": "302",
+    "name": "Kanke",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "641",
+    "state_id": "302",
+    "name": "Langtang South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "642",
+    "state_id": "302",
+    "name": "Langtang North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "643",
+    "state_id": "302",
+    "name": "Mangu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "644",
+    "state_id": "302",
+    "name": "Mikang",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "645",
+    "state_id": "302",
+    "name": "Pankshin",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "646",
+    "state_id": "302",
+    "name": "Quan'an Pan",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "647",
+    "state_id": "302",
+    "name": "Riyom",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "648",
+    "state_id": "302",
+    "name": "Shendam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "649",
+    "state_id": "302",
+    "name": "Wase",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "650",
+    "state_id": "292",
+    "name": "Ahoada East",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "651",
+    "state_id": "292",
+    "name": "Ahoada West",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "652",
+    "state_id": "292",
+    "name": "Akuku-Toru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "653",
+    "state_id": "292",
+    "name": "Andoni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "654",
+    "state_id": "292",
+    "name": "Asari-Toru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "655",
+    "state_id": "292",
+    "name": "Bonny",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "656",
+    "state_id": "292",
+    "name": "Degema",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "657",
+    "state_id": "292",
+    "name": "Eleme",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "658",
+    "state_id": "292",
+    "name": "Emuoha",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "659",
+    "state_id": "292",
+    "name": "Etche",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "660",
+    "state_id": "292",
+    "name": "Gokana",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "661",
+    "state_id": "292",
+    "name": "Ikwerre",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "662",
+    "state_id": "292",
+    "name": "Khana",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "663",
+    "state_id": "292",
+    "name": "Obio\/Akpor",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "664",
+    "state_id": "292",
+    "name": "Ogba\/Egbema\/Ndoni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "665",
+    "state_id": "292",
+    "name": "Ogu\/Bolo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "666",
+    "state_id": "292",
+    "name": "Okrika",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "667",
+    "state_id": "292",
+    "name": "Omuma",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "668",
+    "state_id": "292",
+    "name": "Opobo\/Nkoro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "669",
+    "state_id": "292",
+    "name": "Oyigbo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "670",
+    "state_id": "292",
+    "name": "Port Harcourt",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "671",
+    "state_id": "292",
+    "name": "Tai",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "672",
+    "state_id": "319",
+    "name": "Bodinga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "673",
+    "state_id": "319",
+    "name": "Dange Shuni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "674",
+    "state_id": "319",
+    "name": "Gada",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "675",
+    "state_id": "319",
+    "name": "Goronyo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "676",
+    "state_id": "319",
+    "name": "Gudu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "677",
+    "state_id": "319",
+    "name": "Gwadabawa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "678",
+    "state_id": "319",
+    "name": "Illela",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "679",
+    "state_id": "319",
+    "name": "Isa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "680",
+    "state_id": "319",
+    "name": "Kebbe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "681",
+    "state_id": "319",
+    "name": "Kware",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "682",
+    "state_id": "319",
+    "name": "Rabah",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "683",
+    "state_id": "319",
+    "name": "Sabon Birni",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "684",
+    "state_id": "319",
+    "name": "Shagari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "685",
+    "state_id": "319",
+    "name": "Silame",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "686",
+    "state_id": "319",
+    "name": "Sokoto North",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "687",
+    "state_id": "319",
+    "name": "Sokoto South",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "688",
+    "state_id": "319",
+    "name": "Tambuwal",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "689",
+    "state_id": "319",
+    "name": "Tangaza",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "690",
+    "state_id": "319",
+    "name": "Tureta",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "691",
+    "state_id": "319",
+    "name": "Wamako",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "692",
+    "state_id": "319",
+    "name": "Wurno",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "693",
+    "state_id": "319",
+    "name": "Yabo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "694",
+    "state_id": "297",
+    "name": "Bali",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "695",
+    "state_id": "297",
+    "name": "Donga",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "696",
+    "state_id": "297",
+    "name": "Gashaka",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "697",
+    "state_id": "297",
+    "name": "Gassol",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "698",
+    "state_id": "297",
+    "name": "Ibi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "699",
+    "state_id": "297",
+    "name": "Jalingo",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "700",
+    "state_id": "297",
+    "name": "Karim Lamido",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "701",
+    "state_id": "297",
+    "name": "Kumi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "702",
+    "state_id": "297",
+    "name": "Lau",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "703",
+    "state_id": "297",
+    "name": "Sardauna",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "704",
+    "state_id": "297",
+    "name": "Takum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "705",
+    "state_id": "297",
+    "name": "Ussa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "706",
+    "state_id": "297",
+    "name": "Wukari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "707",
+    "state_id": "297",
+    "name": "Yorro",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "708",
+    "state_id": "297",
+    "name": "Zing",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "709",
+    "state_id": "299",
+    "name": "Bursari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "710",
+    "state_id": "299",
+    "name": "Damaturu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "711",
+    "state_id": "299",
+    "name": "Fika",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "712",
+    "state_id": "299",
+    "name": "Fune",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "713",
+    "state_id": "299",
+    "name": "Geidam",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "714",
+    "state_id": "299",
+    "name": "Gujba",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "715",
+    "state_id": "299",
+    "name": "Gulani",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "716",
+    "state_id": "299",
+    "name": "Jakusko",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "717",
+    "state_id": "299",
+    "name": "Karasuwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "718",
+    "state_id": "299",
+    "name": "Machina",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "719",
+    "state_id": "299",
+    "name": "Nangere",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "720",
+    "state_id": "299",
+    "name": "Nguru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "721",
+    "state_id": "299",
+    "name": "Potiskum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "722",
+    "state_id": "299",
+    "name": "Tarmuwa",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "723",
+    "state_id": "299",
+    "name": "Yunusari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "724",
+    "state_id": "299",
+    "name": "Yusufari",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "725",
+    "state_id": "37",
+    "name": "Bakura",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "726",
+    "state_id": "37",
+    "name": "Birnin Magaji\/Kiyaw",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "727",
+    "state_id": "37",
+    "name": "Bukkuyum",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "728",
+    "state_id": "37",
+    "name": "Bungudu",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "729",
+    "state_id": "37",
+    "name": "Gummi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "730",
+    "state_id": "37",
+    "name": "Gusau",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "731",
+    "state_id": "37",
+    "name": "Kaura Namoda",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "732",
+    "state_id": "37",
+    "name": "Maradun",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "733",
+    "state_id": "37",
+    "name": "Maru",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "734",
+    "state_id": "37",
+    "name": "Shinkafi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "735",
+    "state_id": "37",
+    "name": "Talata Mafara",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "736",
+    "state_id": "37",
+    "name": "Chafe",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": "737",
+    "state_id": "37",
+    "name": "Zurmi",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  }
+]

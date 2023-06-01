@@ -56,16 +56,16 @@ namespace MembershipPortal.service.Concrete
             }
         }
 
-        public async Task<GenericResponse<GLNInformation>> GetByRegistrationID(string regId)
+        public async Task<GenericResponseList<GLNInformation>> GetByRegistrationID(string regId)
         {
             try
             {
-                var record = await _uow.GLNInformationRP.GetByFirstOrDefault(x => x.registrationid == regId, _includes); ;
-                return new GenericResponse<GLNInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
+                var record = await _uow.GLNInformationRP.GetBy(x => x.registrationid == regId, null, null, null, _includes); ;
+                return new GenericResponseList<GLNInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
             }
             catch (Exception ex)
             {
-                return new GenericResponse<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+                return new GenericResponseList<GLNInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
         }
 

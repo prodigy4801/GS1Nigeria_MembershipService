@@ -144,38 +144,35 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RProduct.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegistrationID(string registrationid)
         {
-            try
+            ServiceResponseList<ProductVM> response = new ServiceResponseList<ProductVM>
             {
-                var obj = await _service.GetByRegistrationID(registrationid);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
+                ReturnedObject = new List<ProductVM>(),
+                IsSuccess = false,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponseList<ProductVM>>(obj);
+            if (obj.IsSuccess && obj.ReturnedObject != null)
+            {
+                //Load the target market and also pharmaceutical information information to the list
+                if (response.ReturnedObject.Count() > 0)
                 {
-                    var result = _mapper.Map<IEnumerable<ProductVM>>(obj.ReturnedObject);
-                    //Load the target market and also pharmaceutical information information to the list
-                    if (result.Count() > 0)
+                    foreach (var product in response.ReturnedObject)
                     {
-                        foreach (var product in result)
+                        var productTargetMarket = await _productTargetMarket_service.GetByProductRegistrationID(product.id, product.registrationid);
+                        if (productTargetMarket.ReturnedObject.Count() > 0)
                         {
-                            var productTargetMarket = await _productTargetMarket_service.GetByProductRegistrationID(product.id, product.registrationid);
-                            if (productTargetMarket.ReturnedObject.Count() > 0)
-                            {
-                                product.TargetMarketList = productTargetMarket.ReturnedObject.Select(x => x.TargetMarket.name).ToList();
-                            }
-                            if (product.IsPharma)
-                            {
-                                var pharmaProduct = await _pharmaceutical_service.GetByProductID(product.id);
-                                product.PharmaceuticalInformation = pharmaProduct.IsSuccess && pharmaProduct.ReturnedObject != null ? _mapper.Map<PharmaceuticalInformationVM>(pharmaProduct.ReturnedObject) : null;
-                            }
+                            product.TargetMarketList = productTargetMarket.ReturnedObject.Select(x => x.TargetMarket.name).ToList();
+                        }
+                        if (product.IsPharma)
+                        {
+                            var pharmaProduct = await _pharmaceutical_service.GetByProductID(product.id);
+                            product.PharmaceuticalInformation = pharmaProduct.IsSuccess && pharmaProduct.ReturnedObject != null ? _mapper.Map<PharmaceuticalInformationVM>(pharmaProduct.ReturnedObject) : null;
                         }
                     }
-                    return Ok(result);
                 }
-                return NotFound(obj.Message);
             }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+            return Ok(response);
         }
 
         [HttpPost(ApiRoutes.RProduct.Create), DisableRequestSizeLimit]
@@ -187,99 +184,90 @@ namespace MembershipPortal.api.Controllers.V2
                 IsSuccess = false,
                 Message = string.Empty
             };
-            try
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-                if (req.Product.IsPharma && req.PharmaceuticalInformation == null)
-                {
-                    response.Message = "Healthcare properties cannot be empty. Complete your registration.";
-                    return StatusCode(StatusCodes.Status406NotAcceptable, response);
-                }
-                var productModel = _mapper.Map<Product>(req.Product);
-                productModel.targetmarket_id = String.Join(",", req.TargetMarketList);
+                var errors = string.Join("; ", ModelState.Values
+                                    .SelectMany(x => x.Errors)
+                                    .Select(x => x.ErrorMessage));
+                response.Message = errors;
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
+            if (req.Product.IsPharma && req.PharmaceuticalInformation == null)
+            {
+                response.Message = "Healthcare properties cannot be empty. Complete your registration.";
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
+            var productModel = _mapper.Map<Product>(req.Product);
+            productModel.targetmarket_id = String.Join(",", req.TargetMarketList);
 
-                //getbrand by ID
-                var brandInfoObj = await _brandinformation_service.GetByID(Convert.ToInt32(productModel.brandinformation_id));
-                if (brandInfoObj.ReturnedObject == null)
-                {
-                    response.Message = !string.IsNullOrEmpty(brandInfoObj.Message) ? brandInfoObj.Message : "Brand Information cannot be pulled from storage. Contact Technical team.";
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-                if (string.IsNullOrEmpty(brandInfoObj.ReturnedObject.registrationid) && string.IsNullOrEmpty(brandInfoObj.ReturnedObject.brandname))
-                {
-                    response.Message = "Brand Information cannot be verified. Contact Technical Team.";
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-                productModel.brandname = brandInfoObj.ReturnedObject.brandname;
-                productModel.registrationid = brandInfoObj.ReturnedObject.registrationid;
+            //getbrand by ID
+            var brandInfoObj = await _brandinformation_service.GetByID(Convert.ToInt32(productModel.brandinformation_id));
+            if (brandInfoObj.ReturnedObject == null)
+            {
+                response.Message = !string.IsNullOrEmpty(brandInfoObj.Message) ? brandInfoObj.Message : "Brand Information cannot be pulled from storage. Contact Technical team.";
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
+            if (string.IsNullOrEmpty(brandInfoObj.ReturnedObject.registrationid) && string.IsNullOrEmpty(brandInfoObj.ReturnedObject.brandname))
+            {
+                response.Message = "Brand Information cannot be verified. Contact Technical Team.";
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
+            productModel.brandname = brandInfoObj.ReturnedObject.brandname;
+            productModel.registrationid = brandInfoObj.ReturnedObject.registrationid;
 
-                var uploadedImage = _mapper.Map<ImageUploadModel>(req.ProductImageUpload);
-                var obj = await _service.SaveProductWithImage(productModel, uploadedImage);
-                response = _mapper.Map<ServiceResponse<ProductVM>>(obj);
-                if (response.IsSuccess && response.ReturnedObject != null)
+            var uploadedImage = _mapper.Map<ImageUploadModel>(req.ProductImageUpload);
+            var obj = await _service.SaveProductWithImage(productModel, uploadedImage);
+            response = _mapper.Map<ServiceResponse<ProductVM>>(obj);
+            if (response.IsSuccess && response.ReturnedObject != null)
+            {
+                //Work on the Pharmaceutical Information
+                if (req.Product.IsPharma)
                 {
-                    //Work on the Pharmaceutical Information
-                    if (req.Product.IsPharma)
+                    if (req.PharmaceuticalInformation != null)
                     {
-                        if (req.PharmaceuticalInformation != null)
+                        var pharmaceuticalModel = _mapper.Map<PharmaceuticalInformation>(req.PharmaceuticalInformation);
+                        pharmaceuticalModel.ProductID = response.ReturnedObject.id;
+                        var pharmaceuticalObj = await _pharmaceutical_service.Save(pharmaceuticalModel);
+                        if (!pharmaceuticalObj.IsSuccess)
                         {
-                            var pharmaceuticalModel = _mapper.Map<PharmaceuticalInformation>(req.PharmaceuticalInformation);
-                            pharmaceuticalModel.ProductID = response.ReturnedObject.id;
-                            var pharmaceuticalObj = await _pharmaceutical_service.Save(pharmaceuticalModel);
-                            if (!pharmaceuticalObj.IsSuccess)
-                            {
-                                response.Message += " Failed Listing Healthcare Information.";
-                            }
+                            response.Message += " Failed Listing Healthcare Information.";
                         }
                     }
-                    //Load Target market table
-                    int targetmarketFailed = 0;
-                    var targetMarkets = obj.ReturnedObject.targetmarket_id.Split(",").ToList();
-                    foreach (string t_martket in targetMarkets)
-                    {
-                        ProductTargetMarketVM_Create proTgtMktVM = new ProductTargetMarketVM_Create
-                        {
-                            product_id = response.ReturnedObject.id,
-                            registrationid = response.ReturnedObject.registrationid,
-                            targetmarket_id = Convert.ToInt32(t_martket),
-                        };
-                        var proTgtMktModel = _mapper.Map<ProductTargetMarket>(proTgtMktVM);
-                        var producttargetmarketObj = await _productTargetMarket_service.Save(proTgtMktModel);
-                        if (!producttargetmarketObj.IsSuccess) targetmarketFailed = targetmarketFailed + 1;
-                    }
-                    if (targetmarketFailed > 0) response.Message += " Target Market Information Failed Listing to storage.";
-
-                    var newObj = await _service.GetByID(response.ReturnedObject.id);
-
-                    if (newObj.IsSuccess && newObj.ReturnedObject != null)
-                    {
-                        response.ReturnedObject = _mapper.Map<ProductVM>(newObj.ReturnedObject);
-                        if (targetmarketFailed < 1)
-                        {
-                            foreach (var tgtmktID in targetMarkets)
-                            {
-                                var targetMarketObj = await _targetmarket_service.GetByID(Convert.ToInt32(tgtmktID));
-                                response.ReturnedObject.TargetMarketList.Add(targetMarketObj.ReturnedObject.name);
-                            }
-                        }
-                        return StatusCode(StatusCodes.Status201Created, response);
-                    }
                 }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
-            }
+                //Load Target market table
+                int targetmarketFailed = 0;
+                var targetMarkets = obj.ReturnedObject.targetmarket_id.Split(",").ToList();
+                foreach (string t_martket in targetMarkets)
+                {
+                    ProductTargetMarketVM_Create proTgtMktVM = new ProductTargetMarketVM_Create
+                    {
+                        product_id = response.ReturnedObject.id,
+                        registrationid = response.ReturnedObject.registrationid,
+                        targetmarket_id = Convert.ToInt32(t_martket),
+                    };
+                    var proTgtMktModel = _mapper.Map<ProductTargetMarket>(proTgtMktVM);
+                    var producttargetmarketObj = await _productTargetMarket_service.Save(proTgtMktModel);
+                    if (!producttargetmarketObj.IsSuccess) targetmarketFailed = targetmarketFailed + 1;
+                }
+                if (targetmarketFailed > 0) response.Message += " Target Market Information Failed Listing to storage.";
 
+                var newObj = await _service.GetByID(response.ReturnedObject.id);
+
+                if (newObj.IsSuccess && newObj.ReturnedObject != null)
+                {
+                    response.ReturnedObject = _mapper.Map<ProductVM>(newObj.ReturnedObject);
+                    if (targetmarketFailed < 1)
+                    {
+                        foreach (var tgtmktID in targetMarkets)
+                        {
+                            var targetMarketObj = await _targetmarket_service.GetByID(Convert.ToInt32(tgtmktID));
+                            response.ReturnedObject.TargetMarketList.Add(targetMarketObj.ReturnedObject.name);
+                        }
+                    }
+                    return StatusCode(StatusCodes.Status200OK, response);
+                }
+            }
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         // POST api/<BenefitProductController>

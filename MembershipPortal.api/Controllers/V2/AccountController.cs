@@ -20,6 +20,7 @@ using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace MembershipPortal.api.Controllers.V2
 {
+    [Authorize]
     [Route("")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -47,6 +48,7 @@ namespace MembershipPortal.api.Controllers.V2
             this._jwtUtils = jwtUtils;
         }
 
+        [AllowAnonymous]
         [HttpPost(ApiRoutes.RAPIAuthentication.MemberLogin)]
         public async Task<IActionResult> MembershipLogin([FromBody] LoginVM model)
         {
@@ -81,6 +83,46 @@ namespace MembershipPortal.api.Controllers.V2
                     response.Message = tokenObj.Message;
                 }
             }
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost(ApiRoutes.RAPIAuthentication.MemberForgotPassword)]
+        public async Task<IActionResult> ForgotPassword([FromBody] Authentication_ForgotPassword model)
+        {
+            ServiceResponse<PasswordReset_Response> response = new ServiceResponse<PasswordReset_Response>
+            {
+                IsSuccess = false,
+                ReturnedObject = new PasswordReset_Response(),
+                Message = string.Empty
+            };
+
+            var baseURL = this._registrationAPI.BaseUrl;
+            var forgotpasswordendpoint = this._registrationAPI.ForgotPassword;
+
+            var obj = await _service.ForgotPassword(model, baseURL, forgotpasswordendpoint);
+            response = _mapper.Map<ServiceResponse<PasswordReset_Response>>(obj);
+
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        //[AllowAnonymous]
+        [HttpPost(ApiRoutes.RAPIAuthentication.MemberPasswordChange)]
+        public async Task<IActionResult> PasswordChange([FromBody] Authenticate_PasswordReset request)
+        {
+            ServiceResponse<PasswordReset_Response> response = new ServiceResponse<PasswordReset_Response>
+            {
+                IsSuccess = false,
+                ReturnedObject = new PasswordReset_Response(),
+                Message = string.Empty
+            };
+
+            var obj = await _service.PasswordChange(request.email, request.currentpassword, request.newpassword);
+            response.IsSuccess = obj.IsSuccess;
+            response.Message = obj.Message;
+            response.ReturnedObject.email = request.email;
+            response.ReturnedObject.resetstatus = obj.IsSuccess && obj.ReturnedObject != null ? true : false;
+
             return StatusCode(StatusCodes.Status200OK, response);
         }
     }

@@ -56,24 +56,11 @@ namespace MembershipPortal.service.Concrete
             }
         }
 
-        public async Task<GenericResponse<GTINInformation>> GetByRegistrationID(string regId)
-        {
-            try
-            {
-                var record = await _uow.GTINInformationRP.GetByFirstOrDefault(x => x.registrationid == regId, _includes); ;
-                return new GenericResponse<GTINInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
-            }
-            catch (Exception ex)
-            {
-                return new GenericResponse<GTINInformation> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
-            }
-        }
-
         public async Task<GenericResponseList<GTINInformation>> GetListByRegistrationID(string regId)
         {
             try
             {
-                var record = await _uow.GTINInformationRP.GetBy(x => x.registrationid == regId, x => x.OrderByDescending(y => y.id), null, null, _includes); ;
+                var record = await _uow.GTINInformationRP.GetBy(x => x.registrationid == regId, null, null, null, _includes); ;
                 return new GenericResponseList<GTINInformation> { ReturnedObject = record, IsSuccess = true, Message = null };
             }
             catch (Exception ex)

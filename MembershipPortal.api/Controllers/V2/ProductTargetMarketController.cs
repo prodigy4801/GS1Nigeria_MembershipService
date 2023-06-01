@@ -78,48 +78,35 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet(ApiRoutes.RProductTargetMarket.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {
-            try
+            ServiceResponseList<ProductTargetMarketVM> response = new ServiceResponseList<ProductTargetMarketVM>
             {
-                var obj = await _service.GetByRegistrationID(registrationid);
+                ReturnedObject = new List<ProductTargetMarketVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponseList<ProductTargetMarketVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
 
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<IEnumerable<ProductTargetMarketVM>>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound(obj.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
         }
 
         //[AllowAnonymous]
         [HttpGet(ApiRoutes.RProductTargetMarket.GetByKey)]
-        public async Task<IActionResult> GetByKey(ProductTargetMarketVM_Key key)
+        public async Task<IActionResult> GetByKey(int product_id, string registrationid)
         {
-            try
+            ServiceResponseList<ProductTargetMarketVM> response = new ServiceResponseList<ProductTargetMarketVM>
             {
-                var obj = await _service.GetByProductRegistrationID(key.product_id, key.registrationid);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<IEnumerable<ProductTargetMarketVM>>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound(obj.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new List<ProductTargetMarketVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByProductRegistrationID(product_id, registrationid);
+            response = _mapper.Map<ServiceResponseList<ProductTargetMarketVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         //[AllowAnonymous]
@@ -132,32 +119,19 @@ namespace MembershipPortal.api.Controllers.V2
                 IsSuccess = false,
                 Message = string.Empty
             };
-            try
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
-
-                ProductTargetMarket model = _mapper.Map<ProductTargetMarket>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<ProductTargetMarketVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
+                var errors = string.Join("; ", ModelState.Values
+                                    .SelectMany(x => x.Errors)
+                                    .Select(x => x.ErrorMessage));
+                response.Message = errors;
+                return StatusCode(StatusCodes.Status200OK, response);
             }
 
+            ProductTargetMarket model = _mapper.Map<ProductTargetMarket>(req);
+            var obj = await _service.Save(model);
+            response = _mapper.Map<ServiceResponse<ProductTargetMarketVM>>(obj);
+            return StatusCode(StatusCodes.Status201Created, response);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace MembershipPortal.configurations
             services.AddScoped<IGTINInformationSvc, GTINInformationSvc>();
             services.AddScoped<IGTINRequestSvc, GTINRequestSvc>();
             services.AddScoped<IImageBankSvc, ImageBankSvc>();
+            services.AddScoped<IImageBankUsageSvc, ImageBankUsageSvc>();
             services.AddScoped<IITFInformationSvc, ITFInformationSvc>();
             services.AddScoped<INetContentSvc, NetContentSvc>();
             services.AddScoped<IPackageLevelSvc, PackageLevelSvc>();

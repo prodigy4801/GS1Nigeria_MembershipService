@@ -81,22 +81,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RGLNInformation.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {
-            try
+            ServiceResponseList<GLNInformationVM> response = new ServiceResponseList<GLNInformationVM>
             {
-                var obj = await _service.GetByRegistrationID(registrationid);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<GLNInformationVM>(obj);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new List<GLNInformationVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponseList<GLNInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         // POST api/<BenefitGLNInformationController>
@@ -109,31 +102,19 @@ namespace MembershipPortal.api.Controllers.V2
                 IsSuccess = false,
                 Message = string.Empty
             };
-            try
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
+                var errors = string.Join("; ", ModelState.Values
+                                    .SelectMany(x => x.Errors)
+                                    .Select(x => x.ErrorMessage));
+                response.Message = errors;
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
 
-                GLNInformation model = _mapper.Map<GLNInformation>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<GLNInformationVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
-            }
+            GLNInformation model = _mapper.Map<GLNInformation>(req);
+            var obj = await _service.Save(model);
+            response = _mapper.Map<ServiceResponse<GLNInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

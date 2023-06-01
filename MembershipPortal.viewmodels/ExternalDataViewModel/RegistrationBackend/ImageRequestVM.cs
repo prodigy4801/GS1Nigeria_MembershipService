@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,14 @@ namespace MembershipPortal.viewmodels.ExternalDataViewModel.RegistrationBackend
         public int imagecount { get; set; }
         public Boolean isapproved { get; set; }
         public string approvedby { get; set; }
-        public DateTime createdon { get; set; }
-        public DateTime updatedon { get; set; }
+        public DateTime requestedate { get; set; }
+    }
 
-        public CompanyVM Company { get; set; }
+    public class ImageRequestVM_request
+    {
+        [Required]
+        public string registrationid { get; set; }
+        [Required]
+        public int imagecount { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace MembershipPortal.service
     public interface IImageBankSvc : IService<ImageBank>
     {
         Task<GenericResponse<ImageBank>> GetByRegistrationID(string registrationid);
+        Task<GenericResponse<ImageBankUsage>> ProcessGenerationOfBarcodeImage(string gtin, string registrationid);
     }
 }

@@ -43,6 +43,10 @@ namespace MembershipPortal.configurations
             CreateMap<ImageBankVM_create, ImageBank>().ReverseMap();
             CreateMap<ImageBankVM_update, ImageBank>().ReverseMap();
 
+            CreateMap<ImageRequestVM, ImageRequest>().ReverseMap();
+
+            CreateMap<ImageBankUsageVM, ImageBankUsage>().ReverseMap();
+
             CreateMap<ITFInformationVM, ITFInformation>().ReverseMap();
             CreateMap<ITFInformationVM_Create, ITFInformation>().ReverseMap();
 
@@ -69,8 +73,8 @@ namespace MembershipPortal.configurations
 
 
             CreateMap<AuthenticatedPayload, UserModel>().ReverseMap();
-            CreateMap<CompanyVM, CompanyModel>().ReverseMap();
-            CreateMap<CompanyVM_auth, CompanyModel>().ReverseMap();
+            CreateMap<CompanyVM, Company>().ReverseMap();
+            CreateMap<CompanyVM_auth, Company>().ReverseMap();
             CreateMap<GTINFeeVM, GTINFee>().ReverseMap();
             CreateMap<ImageRequestVM, ImageRequestModel>().ReverseMap();
             CreateMap<RoleVM, RoleModel>().ReverseMap();

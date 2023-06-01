@@ -109,16 +109,56 @@ namespace MembershipPortal.service.Concrete
             }
         }
 
+        public async Task<GenericResponse<ImageRequest>> SaveImage(string registrationid, int imageCount, string imageType)
+        {
+            try
+            {
+                //Validation of Request for imag
+                var gtinRequestObj = await _uow.GTINRequestRP.GetBy(x => x.registrationid == registrationid, null, null, null, _includes);
+                if(gtinRequestObj == null) return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "No GTIN available. Cannot process this request." };
+                var gtinCount = gtinRequestObj.Select(x => x.gtincount).Sum();
+                var imageRequestObj = await _uow.ImageRequestRP.GetBy(x => x.registrationid == registrationid, null, null, null, _includes);
+                if (imageRequestObj.Select(x => !x.isapproved).Any()) return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "Pending Image request not approved exist in your repository. Contact GS1 Nigeria Admin for more information." };
+                var totalImageRequestCount = imageRequestObj.Count() > 0 ? (imageCount + imageRequestObj.Select(x => x.imagecount).Sum()) : imageCount;
+                if(totalImageRequestCount > gtinCount) return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "Total Images requested has exceeded the total number of GTINs available." };
+
+                ImageRequest profile = new ImageRequest
+                {
+                    approvedby = null,
+                    createdon = DateTime.UtcNow,
+                    id = 0,
+                    imagecount = imageCount,
+                    imagetype = imageType,
+                    isapproved = false,
+                    registrationid = registrationid,
+                    requestedate = DateTime.UtcNow,
+                    updatedon = DateTime.UtcNow
+                };
+                _uow.ImageRequestRP.Add(profile);
+                int result = await _uow.Complete();
+                if (result > 0)
+                {
+                    return new GenericResponse<ImageRequest> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully sent image request to GS1 Nigeria. Check back for activation." };
+                }
+                return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "Failed to initiate image request to GS1 Nigeria. Contact GS1 Nigeria Technical Team." };
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<ImageRequest> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+
+        }
+
         public async Task<GenericResponse<ImageRequest>> Save(ImageRequest profile)
         {
             if (profile.id == 0)
             {
-                profile.createdon = DateTime.Now;
+                profile.createdon = DateTime.UtcNow;
                 return await Add(profile);
             }
             else
             {
-                profile.updatedon = DateTime.Now;
+                profile.updatedon = DateTime.UtcNow;
                 return await Update(profile.id, profile);
             }
         }
@@ -127,17 +167,20 @@ namespace MembershipPortal.service.Concrete
         {
             try
             {
-                if (!await _uow.ImageRequestRP.AnyAsync(y => y.registrationid == profile.registrationid))
+                profile.requestedate = DateTime.UtcNow;
+                profile.updatedon = DateTime.UtcNow;
+                _uow.ImageRequestRP.Add(profile);
+                int result = await _uow.Complete();
+                if (result > 0)
                 {
-                    _uow.ImageRequestRP.Add(profile);
-                    int result = await _uow.Complete();
-                    if (result > 0)
-                    {
-                        return new GenericResponse<ImageRequest> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
-                    }
-                    return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
+                    return new GenericResponse<ImageRequest> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                 }
-                return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "User Profile already exist in storage." };
+                return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
+                //if (!await _uow.ImageRequestRP.AnyAsync(y => y.registrationid == profile.registrationid))
+                //{
+
+                //}
+                //return new GenericResponse<ImageRequest> { ReturnedObject = null, IsSuccess = false, Message = "User Profile already exist in storage." };
             }
             catch (Exception ex)
             {

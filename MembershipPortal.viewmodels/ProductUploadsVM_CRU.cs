@@ -42,8 +42,7 @@ namespace MembershipPortal.viewmodels
         public string nafdacnumber { get; set; }
         public string storageinformation { get; set; }
         public string directionofuse { get; set; }
-        [Required]
-        public int lifespan { get; set; }
+        public int? lifespan { get; set; }
         [Required]
         public string lifespanunit { get; set; }
         [Required]

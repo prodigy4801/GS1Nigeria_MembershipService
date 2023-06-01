@@ -80,27 +80,19 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        //[AllowAnonymous]
-        [ApiExplorerSettings(IgnoreApi = true)]
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RBrandInformation.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
-            try
+            ServiceResponse<BrandInformationVM> response = new ServiceResponse<BrandInformationVM>
             {
-                var obj = await _service.GetByID(id);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<BrandInformationVM>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new BrandInformationVM(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByID(id);
+            response = _mapper.Map<ServiceResponse<BrandInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         //[AllowAnonymous]

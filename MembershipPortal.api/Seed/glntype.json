@@ -1,0 +1,22 @@
+﻿[
+  {
+    "id": "1",
+    "glntype": "LEGAL ENTITIES",
+    "description": "whole companies; subsidiaries or divisions within a company; health system\ncorporation"
+  },
+  {
+    "id": "2",
+    "glntype": "FUNCTIONAL ENTITIES",
+    "description": "specific department within a legal entity, such as an accounting\ndepartment, purchasing department, hospital pharmacy"
+  },
+  {
+    "id": "3",
+    "glntype": "PHYSICAL LOCATIONS",
+    "description": "manufacturing facility, distribution center, warehouse, dock door, hospital\nwing, bin location, retail store, etc."
+  },
+  {
+    "id": "4",
+    "glntype": "DIGITAL LOCATIONS",
+    "description": "an electronic or non-physical address such as an EDI gateway or ERP\nsystem"
+  }
+]

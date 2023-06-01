@@ -6,17 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using MembershipPortal.core;
 using MembershipPortal.data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MembershipPortal.service.Concrete
 {
     public class ImageBankSvc : IImageBankSvc
     {
         private readonly IUnitOfWork _uow;
+        private readonly ApplicationDBContext _context;
+        private readonly IImageBankUsageSvc _imagebankusageSvc;
         private string[] _includes = { };
 
-        public ImageBankSvc(IUnitOfWork uow)
+        public ImageBankSvc(IUnitOfWork uow, ApplicationDBContext context, IImageBankUsageSvc imagebankusageSvc)
         {
+            _context = context;
             _uow = uow;
+            _imagebankusageSvc = imagebankusageSvc;
         }
 
         public async Task<GenericResponseList<ImageBank>> GetAll()
@@ -73,7 +78,7 @@ namespace MembershipPortal.service.Concrete
         public string GenerateImage1(string gtin, bool approved, int width = 300, int height = 150)
         {
             byte[] imageBytes;
-            using(var ms = new System.IO.MemoryStream())
+            using (var ms = new System.IO.MemoryStream())
             {
                 imageBytes = ms.ToArray();
             }
@@ -206,7 +211,7 @@ namespace MembershipPortal.service.Concrete
                         return new GenericResponse<ImageBank> { ReturnedObject = profile, IsSuccess = true, Message = "Successfully added record." };
                     }
                     return new GenericResponse<ImageBank> { ReturnedObject = null, IsSuccess = false, Message = "Failed adding record." };
-                }  
+                }
                 return new GenericResponse<ImageBank> { ReturnedObject = null, IsSuccess = false, Message = "User Profile already exist in storage." };
             }
             catch (Exception ex)
@@ -231,6 +236,68 @@ namespace MembershipPortal.service.Concrete
             catch (Exception ex)
             {
                 return new GenericResponse<ImageBank> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
+            }
+        }
+
+        public async Task<GenericResponse<ImageBankUsage>> ProcessGenerationOfBarcodeImage(string gtin, string registrationid)
+        {
+            try
+            {
+                //Verify if user product image has been previously generated
+                var getImageBankUsage = await _imagebankusageSvc.GetByRegID_Gtin(gtin, registrationid);
+                if (getImageBankUsage.IsSuccess && getImageBankUsage.ReturnedObject != null)
+                {
+                    getImageBankUsage.ReturnedObject.downloadCount += 1;
+                    var updateImageBankUsage = _uow.ImageBankUsageRP.Update(getImageBankUsage.ReturnedObject);
+                    int result = await _uow.Complete();
+                    if (result > 0)
+                    {
+                        return new GenericResponse<ImageBankUsage> { ReturnedObject = updateImageBankUsage, IsSuccess = true, Message = "Barcode previously generated." };
+                    }
+                    return new GenericResponse<ImageBankUsage> { ReturnedObject = null, IsSuccess = false, Message = "Cannot Generate Barcode Image as record verification failed." };
+                }
+
+                //Verify if Image has been previously requested by the user
+                var getImageBank = await _uow.ImageBankRP.GetBySingleOrDefault(x => x.registrationid == registrationid, _includes);
+                if (getImageBank == null) return new GenericResponse<ImageBankUsage> { ReturnedObject = null, IsSuccess = false, Message = "You have no Barcode Image, request for your Barcode Image." };
+
+                if (getImageBank.imageReserve < 1) return new GenericResponse<ImageBankUsage> { ReturnedObject = null, IsSuccess = false, Message = "Barcode Image has been exhausted, request for additional Barcode Image." };
+
+                using (var transaction = await _context.Database.BeginTransactionAsync())
+                {
+                    try
+                    {
+                        getImageBank.imageReserve = getImageBank.imageReserve - 1;
+                        getImageBank.lastModified = DateTime.UtcNow;
+                        _context.Entry(getImageBank).State = EntityState.Modified;
+                        _context.ImageBanks.Update(getImageBank);
+
+                        //create an ImageBankUsage record
+                        var imageBankUsageModel = new ImageBankUsage
+                        {
+                            CreatedOn = DateTime.UtcNow,
+                            downloadCount = 1,
+                            gtin = gtin,
+                            id = 0,
+                            ModifiedOn = DateTime.UtcNow,
+                            registrationid = registrationid
+                        };
+                        _context.ImageBankUsages.Add(imageBankUsageModel);
+
+                        await _context.SaveChangesAsync();
+                        await transaction.CommitAsync();
+                        return new GenericResponse<ImageBankUsage> { ReturnedObject = imageBankUsageModel, IsSuccess = true, Message = "Successfully Generated Barcode Image." };
+                    }
+                    catch(Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                        return new GenericResponse<ImageBankUsage> { ReturnedObject = null, IsSuccess = false, Message = ex.Message };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new GenericResponse<ImageBankUsage> { Message = ex.Message, ReturnedObject = null, IsSuccess = false };
             }
         }
     }

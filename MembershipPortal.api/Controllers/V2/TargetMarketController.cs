@@ -35,21 +35,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RTargetMarket.GetAll)]
         public async Task<IActionResult> GetAllPagination()
         {
-            try
+            ServiceResponseList<TargetMarketVM> response = new ServiceResponseList<TargetMarketVM>
             {
-                var obj = await _service.GetAll();
-                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
-                {
-                    var result = _mapper.Map<IEnumerable<TargetMarketVM>>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new List<TargetMarketVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetAll();
+            response = _mapper.Map<ServiceResponseList<TargetMarketVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         // GET api/<BenefitController>/5
@@ -57,22 +51,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RTargetMarket.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
-            try
+            ServiceResponse<TargetMarketVM> response = new ServiceResponse<TargetMarketVM>
             {
-                var obj = await _service.GetByID(id);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<TargetMarketVM>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new TargetMarketVM(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByID(id);
+            response = _mapper.Map<ServiceResponse<TargetMarketVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

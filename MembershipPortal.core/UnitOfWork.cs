@@ -24,6 +24,7 @@ namespace MembershipPortal.core
             GTINInformationRP = new GTINInformationRepo(_context);
             GTINRequestRP = new GTINRequestRepo(_context);
             ImageBankRP = new ImageBankRepo(_context);
+            ImageBankUsageRP = new ImageBankUsageRepo(_context);
             ImageRequestRP = new ImageRequestRepo(_context);
             ITFInformationRP = new ITFInformationRepo(_context);
             NetContentRP = new NetContentRepo(_context);
@@ -33,6 +34,7 @@ namespace MembershipPortal.core
             ProductRP = new ProductRepo(_context);
             ProductTargetMarketRP = new ProductTargetMarketRepo(_context);
             TargetMarketRP = new TargetMarketRepo(_context);
+            UserRP = new UserRepo(_context);
         }
 
         public IBrickCategoryRepo BrickCategoryRP { get; private set; }
@@ -50,9 +52,12 @@ namespace MembershipPortal.core
         public IGTINFeeRepo GTINFeeRP { get; private set; }
 
         public IGTINInformationRepo GTINInformationRP { get; private set; }
+
         public IGTINRequestRepo GTINRequestRP { get; private set; }
 
         public IImageBankRepo ImageBankRP { get; private set; }
+
+        public IImageBankUsageRepo ImageBankUsageRP { get; private set; }
 
         public IImageRequestRepo ImageRequestRP { get; private set; }
 
@@ -71,6 +76,8 @@ namespace MembershipPortal.core
         public IProductTargetMarketRepo ProductTargetMarketRP { get; private set; }
 
         public ITargetMarketRepo TargetMarketRP { get; private set; }
+
+        public IUserRepo UserRP { get; private set; }
 
         public async Task<int> Complete()
         {

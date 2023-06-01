@@ -25,6 +25,7 @@ namespace MembershipPortal.api.Controllers.V2
     {
         private readonly IMapper _mapper;
         private readonly RegistrationAPI_Settings _registrationAPI;
+        private readonly IGTINFeeSvc _gtinFeeSvc;
         private readonly IGTINRequestSvc _gtinRequestSvc;
         private readonly IGTINInformationSvc _gtinInformationSvc;
         private readonly IImageBankSvc _imagebankSvc;
@@ -32,7 +33,8 @@ namespace MembershipPortal.api.Controllers.V2
         private readonly IStatisticsService _statisticsSvc;
 
         public DashboardController(IGTINRequestSvc gtinRequestSvc, IGTINInformationSvc gtinInformationSvc, IImageBankSvc imagebankSvc, 
-            IImageRequestSvc imageRequestSvc, IStatisticsService statisticsSvc, IMapper mapper, IOptions<RegistrationAPI_Settings> registrationAPI)
+            IImageRequestSvc imageRequestSvc, IStatisticsService statisticsSvc, IMapper mapper, IOptions<RegistrationAPI_Settings> registrationAPI,
+            IGTINFeeSvc gtinFeeSvc)
         {
             this._mapper = mapper;
             this._registrationAPI = registrationAPI.Value;
@@ -41,6 +43,7 @@ namespace MembershipPortal.api.Controllers.V2
             this._imagebankSvc = imagebankSvc;
             this._imageRequestSvc = imageRequestSvc;
             this._statisticsSvc = statisticsSvc;
+            this._gtinFeeSvc = gtinFeeSvc;
         }
         // GET: api/<BenefitDashboardController>
         //[AllowAnonymous]
@@ -100,5 +103,7 @@ namespace MembershipPortal.api.Controllers.V2
                 return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
         }
+
+        
     }
 }

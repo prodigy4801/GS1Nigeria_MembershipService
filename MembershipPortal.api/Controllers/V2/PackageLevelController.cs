@@ -35,21 +35,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RPackageLevel.GetAll)]
         public async Task<IActionResult> GetAll()
         {
-            try
+            ServiceResponseList<PackageLevelVM> response = new ServiceResponseList<PackageLevelVM>
             {
-                var obj = await _service.GetAll();
-                if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
-                {
-                    var result = _mapper.Map<IEnumerable<PackageLevelVM>>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new List<PackageLevelVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetAll();
+            response = _mapper.Map<ServiceResponseList<PackageLevelVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         // GET api/<BenefitController>/5
@@ -57,22 +51,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RPackageLevel.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
-            try
+            ServiceResponse<PackageLevelVM> response = new ServiceResponse<PackageLevelVM>
             {
-                var obj = await _service.GetByID(id);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<PackageLevelVM>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new PackageLevelVM(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByID(id);
+            response = _mapper.Map<ServiceResponse<PackageLevelVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

@@ -41,41 +41,32 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RGTINFee.GetAll)]
         public async Task<IActionResult> GetAll()
         {
+            ServiceResponseList<GTINFeeVM> response = new ServiceResponseList<GTINFeeVM>
+            {
+                ReturnedObject = new List<GTINFeeVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
             int skip = 0;
             int take = 16;
             var obj = await _service.GetAll(skip, take);
-            if (obj.IsSuccess && obj.ReturnedObject.Count() >= 0)
-            {
-                var result = _mapper.Map<IEnumerable<GTINFeeVM>>(obj.ReturnedObject);
-                return Ok(result);
-            }
-
-            return NotFound();
+            response = _mapper.Map<ServiceResponseList<GTINFeeVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         [AllowAnonymous]
         [HttpGet(ApiRoutes.RGTINFee.GetByID)]
         public async Task<IActionResult> GetByID(int id)
         {
-            try
+            ServiceResponse<GTINFeeVM> response = new ServiceResponse<GTINFeeVM>
             {
-                var obj = await _service.GetByID(id);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    _logger.LogInformation("Success: Get GTINFee with id " + id);
-                    var result = _mapper.Map<GTINFeeVM>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                _logger.LogInformation("NULL: Get GTINFee with id " + id);
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed: Get GTINFee with id with error " + ex);
-                return null;
-            }
+                ReturnedObject = new GTINFeeVM(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByID(id);
+            response = _mapper.Map<ServiceResponse<GTINFeeVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

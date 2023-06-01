@@ -25,6 +25,8 @@ namespace MembershipPortal.configurations
             services.AddScoped<IGTINInformationRepo, GTINInformationRepo>();
             services.AddScoped<IGTINRequestRepo, GTINRequestRepo>();
             services.AddScoped<IImageBankRepo, ImageBankRepo>();
+            services.AddScoped<IImageBankUsageRepo, ImageBankUsageRepo>();
+            services.AddScoped<IImageRequestRepo, ImageRequestRepo>();
             services.AddScoped<IITFInformationRepo, ITFInformationRepo>();
             services.AddScoped<INetContentRepo, NetContentRepo>();
             services.AddScoped<IPackageLevelRepo, PackageLevelRepo>();
@@ -33,6 +35,7 @@ namespace MembershipPortal.configurations
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProductTargetMarketRepo, ProductTargetMarketRepo>();
             services.AddScoped<ITargetMarketRepo, TargetMarketRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
         }
     }
 }

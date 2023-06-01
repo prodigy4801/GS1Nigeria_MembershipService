@@ -1,0 +1,242 @@
+﻿[
+  {
+    "ID": 1,
+    "Description": "1-5",
+    "Price": 33000.00,
+    "RenewalFee": 10000.00,
+    "AdditionalFee": 15000.00,
+    "NumberofGtins": 5
+  },
+  {
+    "ID": 2,
+    "Description": "6-10",
+    "Price": 39000.00,
+    "RenewalFee": 10000.00,
+    "AdditionalFee": 24000.00,
+    "NumberofGtins": 10
+  },
+  {
+    "ID": 3,
+    "Description": "11-20",
+    "Price": 45000.00,
+    "RenewalFee": 15000.00,
+    "AdditionalFee": 30000.00,
+    "NumberofGtins": 20
+  },
+  {
+    "ID": 4,
+    "Description": "21-30",
+    "Price": 57000.00,
+    "RenewalFee": 25000.00,
+    "AdditionalFee": 42000.00,
+    "NumberofGtins": 30
+  },
+  {
+    "ID": 5,
+    "Description": "31-40",
+    "Price": 69000.00,
+    "RenewalFee": 42000.00,
+    "AdditionalFee": 54000.00,
+    "NumberofGtins": 40
+  },
+  {
+    "ID": 6,
+    "Description": "41-50",
+    "Price": 81000.00,
+    "RenewalFee": 54000.00,
+    "AdditionalFee": 66000.00,
+    "NumberofGtins": 50
+  },
+  {
+    "ID": 7,
+    "Description": "51-60",
+    "Price": 93000.00,
+    "RenewalFee": 66000.00,
+    "AdditionalFee": 78000.00,
+    "NumberofGtins": 60
+  },
+  {
+    "ID": 8,
+    "Description": "61-70",
+    "Price": 117000.00,
+    "RenewalFee": 90000.00,
+    "AdditionalFee": 102000.00,
+    "NumberofGtins": 70
+  },
+  {
+    "ID": 9,
+    "Description": "71-80",
+    "Price": 147000.00,
+    "RenewalFee": 120000.00,
+    "AdditionalFee": 13200.00,
+    "NumberofGtins": 80
+  },
+  {
+    "ID": 10,
+    "Description": "81-100",
+    "Price": 177000.00,
+    "RenewalFee": 150000.00,
+    "AdditionalFee": 162000.00,
+    "NumberofGtins": 100
+  },
+  {
+    "ID": 11,
+    "Description": "101-150",
+    "Price": 207000.00,
+    "RenewalFee": 180000.00,
+    "AdditionalFee": 192000.00,
+    "NumberofGtins": 150
+  },
+  {
+    "ID": 12,
+    "Description": "151-200",
+    "Price": 237000.00,
+    "RenewalFee": 210000.00,
+    "AdditionalFee": 222000.00,
+    "NumberofGtins": 200
+  },
+  {
+    "ID": 13,
+    "Description": "201-300",
+    "Price": 267000.00,
+    "RenewalFee": 240000.00,
+    "AdditionalFee": 252000.00,
+    "NumberofGtins": 300
+  },
+  {
+    "ID": 14,
+    "Description": "301-400",
+    "Price": 297000.00,
+    "RenewalFee": 270000.00,
+    "AdditionalFee": 282000.00,
+    "NumberofGtins": 400
+  },
+  {
+    "ID": 15,
+    "Description": "401-1000",
+    "Price": 375000.00,
+    "RenewalFee": 300000.00,
+    "AdditionalFee": 312000.00,
+    "NumberofGtins": 1000
+  },
+  {
+    "ID": 16,
+    "Description": "2000 plus",
+    "Price": 0.00,
+    "RenewalFee": 400000.00,
+    "AdditionalFee": 0.00,
+    "NumberofGtins": 2000
+  },
+  {
+    "ID": 19,
+    "Description": "01-10",
+    "RenewalFee": 10000.00,
+    "Price": 32500.00,
+    "NumberOfGtins": 10,
+    "AdditionalFee": 20000.00
+  },
+  {
+    "ID": 20,
+    "Description": "11-20",
+    "RenewalFee": 15000.00,
+    "Price": 37500.00,
+    "NumberOfGtins": 20,
+    "AdditionalFee": 25000.00
+  },
+  {
+    "ID": 21,
+    "Description": "21-30",
+    "RenewalFee": 25000.00,
+    "Price": 47500.00,
+    "NumberOfGtins": 30,
+    "AdditionalFee": 35000.00
+  },
+  {
+    "ID": 22,
+    "Description": "31-40",
+    "RenewalFee": 35000.00,
+    "Price": 57500.00,
+    "NumberOfGtins": 40,
+    "AdditionalFee": 45000.00
+  },
+  {
+    "ID": 23,
+    "Description": "41-50",
+    "RenewalFee": 45000.00,
+    "Price": 67500.00,
+    "NumberOfGtins": 50,
+    "AdditionalFee": 55000.00
+  },
+  {
+    "ID": 24,
+    "Description": "51-60",
+    "RenewalFee": 55000.00,
+    "Price": 77500.00,
+    "NumberOfGtins": 60,
+    "AdditionalFee": 65000.00
+  },
+  {
+    "ID": 25,
+    "Description": "61-70",
+    "RenewalFee": 75000.00,
+    "Price": 97500.00,
+    "NumberOfGtins": 70,
+    "AdditionalFee": 85000.00
+  },
+  {
+    "ID": 26,
+    "Description": "71-80",
+    "RenewalFee": 100000.00,
+    "Price": 122500.00,
+    "NumberOfGtins": 80,
+    "AdditionalFee": 110000.00
+  },
+  {
+    "ID": 27,
+    "Description": "81-100",
+    "RenewalFee": 125000.00,
+    "Price": 147500.00,
+    "NumberOfGtins": 100,
+    "AdditionalFee": 135000.00
+  },
+  {
+    "ID": 28,
+    "Description": "101-150",
+    "RenewalFee": 150000.00,
+    "Price": 172500.00,
+    "NumberOfGtins": 150,
+    "AdditionalFee": 160000.00
+  },
+  {
+    "ID": 29,
+    "Description": "151-200",
+    "RenewalFee": 175000.00,
+    "Price": 197500.00,
+    "NumberOfGtins": 200,
+    "AdditionalFee": 185000.00
+  },
+  {
+    "ID": 30,
+    "Description": "201-300",
+    "RenewalFee": 200000.00,
+    "Price": 222500.00,
+    "NumberOfGtins": 300,
+    "AdditionalFee": 210000.00
+  },
+  {
+    "ID": 31,
+    "Description": "301-400",
+    "RenewalFee": 225000.00,
+    "Price": 247500.00,
+    "NumberOfGtins": 400,
+    "AdditionalFee": 235000.00
+  },
+  {
+    "ID": 32,
+    "Description": "401-1000",
+    "RenewalFee": 250000.00,
+    "Price": 312500.00,
+    "NumberOfGtins": 1000,
+    "AdditionalFee": 260000.00
+  }
+]

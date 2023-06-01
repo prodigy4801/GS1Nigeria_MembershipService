@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="ExternalEntries\Models\CompanyModel.cs" />
     <Compile Remove="ExternalEntries\Models\GTINRequestModel.cs" />
   </ItemGroup>
 

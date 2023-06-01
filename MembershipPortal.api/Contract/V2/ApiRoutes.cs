@@ -87,6 +87,16 @@ namespace MembershipPortal.api.Contract.V2
             public const string Create = Base + "/imagebank/create";
             public const string Update = Base + "/imagebank/update";
             public const string GenerateBarcode = Base + "/imagebank/generatebarcode";
+            public const string DownloadBarcode = Base + "/imagebank/downloadbarcode";
+        }
+
+        public static class RImageRequest
+        {
+            public const string GetAll = Base + "/imagerequest";
+            public const string GetByID = Base + "/imagerequest/getbyid/{id}";
+            public const string GetByRegistrationID = Base + "/imagerequest/getbyregistrationid/{registrationid}";
+            public const string CreateImageGTIN = Base + "/imagerequest/gtin/create";
+            public const string Update = Base + "/imagerequest/update";
         }
 
         public static class RITFInformation
@@ -153,7 +163,8 @@ namespace MembershipPortal.api.Contract.V2
             public const string AuthenticateCredentials = Base + "/authentication/generate-token";
             public const string MemberLogin = Base + "/authentication/memberlogin";
             public const string MemberRegistration = Base + "/authentication/memberregistration";
-            //public const string GetByID = Base + "/authentication/{id}";
+            public const string MemberPasswordChange = Base + "/authentication/passwordchange";
+            public const string MemberForgotPassword = Base + "/authentication/forgotpassword";
             //public const string Delete = Base + "/authentication";
             //public const string Update = Base + "/authentication/{id}";
         }

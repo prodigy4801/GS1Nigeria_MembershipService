@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MembershipPortal.core.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220927090403_Product_AddMoreImageFields")]
-    partial class Product_AddMoreImageFields
+    [Migration("20230410132139_First_Time_Migration")]
+    partial class First_Time_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20742,6 +20742,473 @@ namespace MembershipPortal.core.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.ClassCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClassCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClassDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClassTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("FamilyCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClassCode")
+                        .IsUnique();
+
+                    b.HasIndex("FamilyCode");
+
+                    b.ToTable("ClassCategories");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Company", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfApproval")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("approvalstatus")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("cacnumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("companyaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("companyname")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<int>("country_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("dateofincorporation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("email")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("facebookaccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("factoryaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("instagramaccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool>("isregistrationcompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("localgovt_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("modifiedon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("numberofstaff")
+                        .HasColumnType("int");
+
+                    b.Property<string>("phonenumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("registrationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int?>("sectorcategory_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("sectortype_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("state_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("twitteraccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("websiteaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("country_id");
+
+                    b.HasIndex("localgovt_id");
+
+                    b.HasIndex("registrationid")
+                        .IsUnique();
+
+                    b.HasIndex("sectorcategory_id");
+
+                    b.HasIndex("sectortype_id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.CompanySectorCategory", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("sectorcategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sectorcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CompanySectorCategories");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.CompanySectorType", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("sectortype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CompanySectorTypes");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ContactInformation", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("billingdesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingname")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingphonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceodesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceoemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceoname")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceophonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("contactemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("contactperson")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("contactphonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("heardaboutus_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("modifiedon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("reasonforapplying")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("registrationId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("saleemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salename")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salephonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salesdesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("heardaboutus_id");
+
+                    b.HasIndex("registrationId")
+                        .IsUnique()
+                        .HasFilter("[registrationId] IS NOT NULL");
+
+                    b.ToTable("ContactInformations");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Country", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.CompanyModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfApproval")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("approvalstatus")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("cacnumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("companyaddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("companyname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("dateofincorporation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("factoryaddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isregistrationcompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("modifiedon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("phonenumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("registrationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CompanyModel");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.RoleModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "Member"
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "Admin"
+                        },
+                        new
+                        {
+                            id = 3,
+                            name = "SuperAdmin"
+                        });
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Companiesid")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rolesid")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("active")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("firstname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("registrationid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("role_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Companiesid");
+
+                    b.HasIndex("Rolesid");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserValidationTokenModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Userid")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("datecreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("datemodified")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("expirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ipaddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("subvalidationtoken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Userid");
+
+                    b.ToTable("UserValidationTokens");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
                 {
                     b.Property<int>("id")
@@ -20824,6 +21291,1075 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("ExternalUnifiedModels");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.FamilyCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FamilyCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FamilyDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FamilyTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("SegmentCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("FamilyCode")
+                        .IsUnique();
+
+                    b.HasIndex("SegmentCode");
+
+                    b.ToTable("FamilyCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            FamilyCode = 70010000,
+                            FamilyTitle = "Arts/Crafts/Needlework Supplies",
+                            SegmentCode = 70000000
+                        },
+                        new
+                        {
+                            ID = 2,
+                            FamilyCode = 68020000,
+                            FamilyTitle = "Photography/Optics",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 3,
+                            FamilyCode = 68010000,
+                            FamilyTitle = "Audio Visual Equipment",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 4,
+                            FamilyCode = 68040000,
+                            FamilyTitle = "Audio Visual Media",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 5,
+                            FamilyCode = 68050000,
+                            FamilyTitle = "Audio Visual/Photography Variety Packs",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 6,
+                            FamilyCode = 68030000,
+                            FamilyTitle = "In-car Electronics",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 7,
+                            FamilyCode = 53220000,
+                            FamilyTitle = "Beauty/Personal Care/Hygiene Variety Packs",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 8,
+                            FamilyCode = 53200000,
+                            FamilyTitle = "Body Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 9,
+                            FamilyCode = 53160000,
+                            FamilyTitle = "Cosmetics/Fragrances",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 10,
+                            FamilyCode = 53140000,
+                            FamilyTitle = "Hair Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 11,
+                            FamilyCode = 53240000,
+                            FamilyTitle = "Maternity Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 12,
+                            FamilyCode = 53180000,
+                            FamilyTitle = "Personal Hygiene Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 13,
+                            FamilyCode = 53230000,
+                            FamilyTitle = "Personal Intimacy",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 14,
+                            FamilyCode = 53130000,
+                            FamilyTitle = "Skin Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 15,
+                            FamilyCode = 83010000,
+                            FamilyTitle = "Building Products",
+                            SegmentCode = 83000000
+                        },
+                        new
+                        {
+                            ID = 16,
+                            FamilyCode = 74010000,
+                            FamilyTitle = "Camping",
+                            SegmentCode = 74000000
+                        },
+                        new
+                        {
+                            ID = 17,
+                            FamilyCode = 47100000,
+                            FamilyTitle = "Cleaning Products",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 18,
+                            FamilyCode = 47190000,
+                            FamilyTitle = "Cleaning/Hygiene Products Variety Packs",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 19,
+                            FamilyCode = 47200000,
+                            FamilyTitle = "Cleaning/Hygiene Supplies",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 20,
+                            FamilyCode = 47220000,
+                            FamilyTitle = "Industrial Cleaning",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 21,
+                            FamilyCode = 47120000,
+                            FamilyTitle = "Insect/Pest/Allergen Control",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 22,
+                            FamilyCode = 47210000,
+                            FamilyTitle = "Waste Management Products",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 23,
+                            FamilyCode = 67030000,
+                            FamilyTitle = "Activewear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 24,
+                            FamilyCode = 67010000,
+                            FamilyTitle = "Clothing",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 25,
+                            FamilyCode = 67050000,
+                            FamilyTitle = "Protective Wear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 26,
+                            FamilyCode = 67020000,
+                            FamilyTitle = "Sleepwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 27,
+                            FamilyCode = 67060000,
+                            FamilyTitle = "Swimwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 28,
+                            FamilyCode = 67040000,
+                            FamilyTitle = "Underwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 29,
+                            FamilyCode = 66010000,
+                            FamilyTitle = "Communications",
+                            SegmentCode = 66000000
+                        },
+                        new
+                        {
+                            ID = 30,
+                            FamilyCode = 65010000,
+                            FamilyTitle = "Computers/Video Games",
+                            SegmentCode = 65000000
+                        },
+                        new
+                        {
+                            ID = 31,
+                            FamilyCode = 94020000,
+                            FamilyTitle = "Crops for Food Production",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 32,
+                            FamilyCode = 94010000,
+                            FamilyTitle = "Crops not for food or feed (animal and fish)",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 33,
+                            FamilyCode = 94030000,
+                            FamilyTitle = "Grass and Other Crops for Animal Feed or for Soil Improvement",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 34,
+                            FamilyCode = 58010000,
+                            FamilyTitle = "Cross Segment",
+                            SegmentCode = 58000000
+                        },
+                        new
+                        {
+                            ID = 35,
+                            FamilyCode = 78040000,
+                            FamilyTitle = "Electrical Cabling/Wiring",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 36,
+                            FamilyCode = 78020000,
+                            FamilyTitle = "Electrical Connection/Distribution",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 37,
+                            FamilyCode = 78030000,
+                            FamilyTitle = "Electrical Lighting",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 38,
+                            FamilyCode = 78050000,
+                            FamilyTitle = "Electronic Communication Components",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 39,
+                            FamilyCode = 78060000,
+                            FamilyTitle = "General Electrical Hardware",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 40,
+                            FamilyCode = 50200000,
+                            FamilyTitle = "Beverages",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 41,
+                            FamilyCode = 50180000,
+                            FamilyTitle = "Bread/Bakery Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 42,
+                            FamilyCode = 50220000,
+                            FamilyTitle = "Cereal/Grain/Pulse Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 43,
+                            FamilyCode = 50160000,
+                            FamilyTitle = "Confectionery/Sugar Sweetening Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 44,
+                            FamilyCode = 50120000,
+                            FamilyTitle = "Fish and Seafood",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 45,
+                            FamilyCode = 50230000,
+                            FamilyTitle = "Food/Beverage/Tobacco Variety Packs",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 46,
+                            FamilyCode = 50360000,
+                            FamilyTitle = "Fresh Garnish (Food)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 47,
+                            FamilyCode = 50250000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 48,
+                            FamilyCode = 50270000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Frozen)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 49,
+                            FamilyCode = 50310000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Shelf Stable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 50,
+                            FamilyCode = 50370000,
+                            FamilyTitle = "Fruits/Vegetables Fresh & Fresh Cut",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 51,
+                            FamilyCode = 50380000,
+                            FamilyTitle = "Fruits/Vegetables Fresh Cut",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 52,
+                            FamilyCode = 50100000,
+                            FamilyTitle = "Fruits/Vegetables/Nuts/Seeds Prepared/Processed",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 53,
+                            FamilyCode = 50350000,
+                            FamilyTitle = "Leaf Vegetables - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 54,
+                            FamilyCode = 50390000,
+                            FamilyTitle = "Meat/Fish/Seafood Substitutes",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 55,
+                            FamilyCode = 50240000,
+                            FamilyTitle = "Meat/Poultry/Other Animals",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 56,
+                            FamilyCode = 50130000,
+                            FamilyTitle = "Milk/Butter/Cream/Yogurts/Cheese/Eggs/Substitutes",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 57,
+                            FamilyCode = 50340000,
+                            FamilyTitle = "Nuts/Seeds - Unprepared/Unprocessed (In Shell)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 58,
+                            FamilyCode = 50330000,
+                            FamilyTitle = "Nuts/Seeds - Unprepared/Unprocessed (Perishable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 59,
+                            FamilyCode = 50150000,
+                            FamilyTitle = "Oils/Fats Edible",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 60,
+                            FamilyCode = 50190000,
+                            FamilyTitle = "Prepared/Preserved Foods",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 61,
+                            FamilyCode = 50170000,
+                            FamilyTitle = "Seasonings/Preservatives/Extracts",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 62,
+                            FamilyCode = 50210000,
+                            FamilyTitle = "Tobacco/Cannabis/Smoking Accessories",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 63,
+                            FamilyCode = 50290000,
+                            FamilyTitle = "Vegetables - Unprepared/Unprocessed (Frozen)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 64,
+                            FamilyCode = 50320000,
+                            FamilyTitle = "Vegetables - Unprepared/Unprocessed (Shelf Stable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 65,
+                            FamilyCode = 50260000,
+                            FamilyTitle = "Vegetables (Non Leaf) - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 66,
+                            FamilyCode = 63010000,
+                            FamilyTitle = "Footwear",
+                            SegmentCode = 63000000
+                        },
+                        new
+                        {
+                            ID = 67,
+                            FamilyCode = 87020000,
+                            FamilyTitle = "Fuel Storage/Transfer",
+                            SegmentCode = 87000000
+                        },
+                        new
+                        {
+                            ID = 68,
+                            FamilyCode = 87010000,
+                            FamilyTitle = "Fuels/Fuel Additives",
+                            SegmentCode = 87000000
+                        },
+                        new
+                        {
+                            ID = 69,
+                            FamilyCode = 51110000,
+                            FamilyTitle = "Family Planning",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 70,
+                            FamilyCode = 51120000,
+                            FamilyTitle = "Health Enhancement",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 71,
+                            FamilyCode = 51100000,
+                            FamilyTitle = "Health Treatments/Aids",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 72,
+                            FamilyCode = 51140000,
+                            FamilyTitle = "Healthcare Variety Packs",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 73,
+                            FamilyCode = 51130000,
+                            FamilyTitle = "Home Diagnostics",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 74,
+                            FamilyCode = 51150000,
+                            FamilyTitle = "Medical Devices",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 75,
+                            FamilyCode = 51160000,
+                            FamilyTitle = "Pharmaceutical Drugs",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 76,
+                            FamilyCode = 51170000,
+                            FamilyTitle = "Veterinary Healthcare",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 77,
+                            FamilyCode = 72010000,
+                            FamilyTitle = "Major Domestic Appliances",
+                            SegmentCode = 72000000
+                        },
+                        new
+                        {
+                            ID = 78,
+                            FamilyCode = 72020000,
+                            FamilyTitle = "Small Domestic Appliances",
+                            SegmentCode = 72000000
+                        },
+                        new
+                        {
+                            ID = 79,
+                            FamilyCode = 93100000,
+                            FamilyTitle = "Bouquets",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 80,
+                            FamilyCode = 93050000,
+                            FamilyTitle = "Bulbs/Corms/Rhizomes/Tubers",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 81,
+                            FamilyCode = 93010000,
+                            FamilyTitle = "Cut Flowers",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 82,
+                            FamilyCode = 93020000,
+                            FamilyTitle = "Cut Greens",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 83,
+                            FamilyCode = 93030000,
+                            FamilyTitle = "Live Plants (Genus A thru G)",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 84,
+                            FamilyCode = 93040000,
+                            FamilyTitle = "Live Plants (Genus H thru Z)",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 85,
+                            FamilyCode = 93060000,
+                            FamilyTitle = "Plants Variety Packs",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 86,
+                            FamilyCode = 93110000,
+                            FamilyTitle = "Seedlings - Ready to Grow",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 87,
+                            FamilyCode = 93070000,
+                            FamilyTitle = "Seeds/Spores",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 88,
+                            FamilyCode = 93080000,
+                            FamilyTitle = "Shrubs/Trees",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 89,
+                            FamilyCode = 93090000,
+                            FamilyTitle = "Vegetables/Fungi Plants",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 90,
+                            FamilyCode = 75050000,
+                            FamilyTitle = "Baby Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 91,
+                            FamilyCode = 75020000,
+                            FamilyTitle = "Fabric/Textile Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 92,
+                            FamilyCode = 75010000,
+                            FamilyTitle = "Household/Office Furniture",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 93,
+                            FamilyCode = 75030000,
+                            FamilyTitle = "Ornamental Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 94,
+                            FamilyCode = 73040000,
+                            FamilyTitle = "Kitchenware",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 95,
+                            FamilyCode = 73050000,
+                            FamilyTitle = "Tableware",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 96,
+                            FamilyCode = 81010000,
+                            FamilyTitle = "Lawn/Garden Supplies",
+                            SegmentCode = 81000000
+                        },
+                        new
+                        {
+                            ID = 97,
+                            FamilyCode = 89020000,
+                            FamilyTitle = "Live Animals",
+                            SegmentCode = 89000000
+                        },
+                        new
+                        {
+                            ID = 98,
+                            FamilyCode = 88030000,
+                            FamilyTitle = "Lubricants Variety Packs",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 99,
+                            FamilyCode = 88010000,
+                            FamilyTitle = "Lubricants/Protective Compounds",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 100,
+                            FamilyCode = 88020000,
+                            FamilyTitle = "Lubricants/Protective Compounds Storage/Transfer",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 101,
+                            FamilyCode = 96010000,
+                            FamilyTitle = "Currency/Postage/Certificates",
+                            SegmentCode = 96000000
+                        },
+                        new
+                        {
+                            ID = 102,
+                            FamilyCode = 61010000,
+                            FamilyTitle = "Musical Instruments/Accessories",
+                            SegmentCode = 61000000
+                        },
+                        new
+                        {
+                            ID = 103,
+                            FamilyCode = 64010000,
+                            FamilyTitle = "Personal Accessories",
+                            SegmentCode = 64000000
+                        },
+                        new
+                        {
+                            ID = 104,
+                            FamilyCode = 10100000,
+                            FamilyTitle = "Pet Care",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 105,
+                            FamilyCode = 10120000,
+                            FamilyTitle = "Pet Care/Food Variety Packs",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 106,
+                            FamilyCode = 10110000,
+                            FamilyTitle = "Pet Food/Drinks",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 107,
+                            FamilyCode = 79010000,
+                            FamilyTitle = "Plumbing/Heating/Ventilation/Air Conditioning",
+                            SegmentCode = 79000000
+                        },
+                        new
+                        {
+                            ID = 108,
+                            FamilyCode = 99010000,
+                            FamilyTitle = "Postmortem Products",
+                            SegmentCode = 99000000
+                        },
+                        new
+                        {
+                            ID = 109,
+                            FamilyCode = 98020000,
+                            FamilyTitle = "Formed Raw Material",
+                            SegmentCode = 98000000
+                        },
+                        new
+                        {
+                            ID = 110,
+                            FamilyCode = 98010000,
+                            FamilyTitle = "Unformed Raw Material",
+                            SegmentCode = 98000000
+                        },
+                        new
+                        {
+                            ID = 111,
+                            FamilyCode = 85010000,
+                            FamilyTitle = "Safety/Protection - DIY",
+                            SegmentCode = 85000000
+                        },
+                        new
+                        {
+                            ID = 112,
+                            FamilyCode = 91050000,
+                            FamilyTitle = "Baby Safety/Security/Surveillance",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 113,
+                            FamilyCode = 91020000,
+                            FamilyTitle = "Environmental Safety/Security",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 114,
+                            FamilyCode = 91030000,
+                            FamilyTitle = "Home/Business Safety/Security/Surveillance",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 115,
+                            FamilyCode = 91010000,
+                            FamilyTitle = "Personal Safety/Security",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 116,
+                            FamilyCode = 95030000,
+                            FamilyTitle = "Cleaning Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 117,
+                            FamilyCode = 95040000,
+                            FamilyTitle = "Communication Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 118,
+                            FamilyCode = 95160000,
+                            FamilyTitle = "Dispensing/Vending Machines",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 119,
+                            FamilyCode = 95050000,
+                            FamilyTitle = "Educational & Entertainment Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 120,
+                            FamilyCode = 95060000,
+                            FamilyTitle = "Energy and Environmental Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 121,
+                            FamilyCode = 95070000,
+                            FamilyTitle = "Financial Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 122,
+                            FamilyCode = 95110000,
+                            FamilyTitle = "Food/Drink and Accommodation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 123,
+                            FamilyCode = 95120000,
+                            FamilyTitle = "Maintenance/Repair and Installation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 124,
+                            FamilyCode = 95130000,
+                            FamilyTitle = "Medical and Beauty Care Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 125,
+                            FamilyCode = 95080000,
+                            FamilyTitle = "Packaging/Storage Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 126,
+                            FamilyCode = 95090000,
+                            FamilyTitle = "Postal Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 127,
+                            FamilyCode = 95100000,
+                            FamilyTitle = "Scientific and Technological Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 128,
+                            FamilyCode = 95140000,
+                            FamilyTitle = "Transportation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 129,
+                            FamilyCode = 95150000,
+                            FamilyTitle = "Travel Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 130,
+                            FamilyCode = 71020000,
+                            FamilyTitle = "Baby Exercisers/Transportation",
+                            SegmentCode = 71000000
+                        },
+                        new
+                        {
+                            ID = 131,
+                            FamilyCode = 71010000,
+                            FamilyTitle = "Sports Equipment",
+                            SegmentCode = 71000000
+                        },
+                        new
+                        {
+                            ID = 132,
+                            FamilyCode = 62050000,
+                            FamilyTitle = "Greeting Cards/Gift Wrap/Occasion Supplies",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 133,
+                            FamilyCode = 62060000,
+                            FamilyTitle = "Stationery/Office Machinery",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 134,
+                            FamilyCode = 62070000,
+                            FamilyTitle = "Stationery/Office Machinery/Occasion Supplies Variety Packs",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 135,
+                            FamilyCode = 92010000,
+                            FamilyTitle = "Storage Bottles/Cylinders/Barrels (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 136,
+                            FamilyCode = 92040000,
+                            FamilyTitle = "Storage/Haulage Aids",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 137,
+                            FamilyCode = 92020000,
+                            FamilyTitle = "Storage/Haulage Boxes/Crates/Trays (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 138,
+                            FamilyCode = 92030000,
+                            FamilyTitle = "Storage/Haulage Freight Containers (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 139,
+                            FamilyCode = 60010000,
+                            FamilyTitle = "Textual/Printed/Reference Materials",
+                            SegmentCode = 60000000
+                        },
+                        new
+                        {
+                            ID = 140,
+                            FamilyCode = 84010000,
+                            FamilyTitle = "Tool Storage/Workshop Aids",
+                            SegmentCode = 84000000
+                        },
+                        new
+                        {
+                            ID = 141,
+                            FamilyCode = 80010000,
+                            FamilyTitle = "Tools/Equipment - Hand",
+                            SegmentCode = 80000000
+                        },
+                        new
+                        {
+                            ID = 142,
+                            FamilyCode = 82010000,
+                            FamilyTitle = "Tools/Equipment - Power",
+                            SegmentCode = 82000000
+                        },
+                        new
+                        {
+                            ID = 143,
+                            FamilyCode = 86020000,
+                            FamilyTitle = "Service Provided Gambling Products",
+                            SegmentCode = 86000000
+                        },
+                        new
+                        {
+                            ID = 144,
+                            FamilyCode = 86010000,
+                            FamilyTitle = "Toys/Games",
+                            SegmentCode = 86000000
+                        },
+                        new
+                        {
+                            ID = 145,
+                            FamilyCode = 77040000,
+                            FamilyTitle = "Aircraft",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 146,
+                            FamilyCode = 77010000,
+                            FamilyTitle = "Automotive Accessories and Maintenance",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 147,
+                            FamilyCode = 77030000,
+                            FamilyTitle = "Cars and Motorcycles",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 148,
+                            FamilyCode = 77050000,
+                            FamilyTitle = "Specialty Vehicles",
+                            SegmentCode = 77000000
+                        });
+                });
+
             modelBuilder.Entity("MembershipPortal.data.GCPInformation", b =>
                 {
                     b.Property<int>("ID")
@@ -20904,6 +22440,35 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("GLNInformations");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.GTINFee", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("AdditionalFee")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("NumberOfGtins")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RenewalFee")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("GTINFees");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.GTINInformation", b =>
                 {
                     b.Property<int>("id")
@@ -20943,6 +22508,91 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("GTINInformations");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.GTINRequest", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("approvaldate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("approvedby")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("assignedby")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("assigneddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dateofrequest")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("gtincount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("gtinfee_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("imagerequest_id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isapproved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isgcpassigned")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("requesttype")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("totalcost")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("company_id");
+
+                    b.HasIndex("gtinfee_id");
+
+                    b.ToTable("GTINRequests");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.HeardAboutUs", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("method")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("HeardAboutUs");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.ITFInformation", b =>
                 {
                     b.Property<int>("id")
@@ -20973,6 +22623,96 @@ namespace MembershipPortal.core.Migrations
                     b.HasKey("id");
 
                     b.ToTable("ITFInformations");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ImageBank", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("createdOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("imageReserve")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("lastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("registrationid")
+                        .IsUnique();
+
+                    b.ToTable("ImageBanks");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ImageRequest", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("approvedby")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("imagecount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("imagetype")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("isapproved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("requestedate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ImageRequests");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.LocalGovt", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("state_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("state_id");
+
+                    b.ToTable("LocalGovts");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.NetContent", b =>
@@ -22326,6 +24066,15 @@ namespace MembershipPortal.core.Migrations
                     b.Property<string>("ATCCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ActiveIngredient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DirectionOfUse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FunctionalName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GenericName")
                         .HasColumnType("nvarchar(max)");
 
@@ -22351,6 +24100,9 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RouteOfAdministration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShelfLife")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Strength")
@@ -22509,7 +24261,7 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("product_id")
+                    b.Property<int?>("product_id")
                         .HasColumnType("int");
 
                     b.Property<int>("targetmarket_id")
@@ -22528,6 +24280,341 @@ namespace MembershipPortal.core.Migrations
                     b.HasIndex("targetmarket_id");
 
                     b.ToTable("ProductTargetMarkets");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.SegmentCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SegmentCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SegmentDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SegmentTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SegmentCode")
+                        .IsUnique();
+
+                    b.ToTable("SegmentCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            SegmentCode = 70000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Arts/Crafts/Needlework"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            SegmentCode = 68000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Audio Visual/Photography"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            SegmentCode = 53000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Beauty/Personal Care/Hygiene"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            SegmentCode = 83000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Building Products"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            SegmentCode = 74000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Camping"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            SegmentCode = 47000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Cleaning/Hygiene Products"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            SegmentCode = 67000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Clothing"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            SegmentCode = 66000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Communications"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            SegmentCode = 65000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Computing"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            SegmentCode = 94000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Crops"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            SegmentCode = 58000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Cross Segment"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            SegmentCode = 78000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Electrical Supplies"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            SegmentCode = 50000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Food/Beverage/Tobacco"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            SegmentCode = 63000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Footwear"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            SegmentCode = 87000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Fuels/Gases"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            SegmentCode = 51000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Healthcare"
+                        },
+                        new
+                        {
+                            ID = 17,
+                            SegmentCode = 72000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Home Appliances"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            SegmentCode = 93000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Horticulture Plants"
+                        },
+                        new
+                        {
+                            ID = 19,
+                            SegmentCode = 75000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Household/Office Furniture/Furnishings"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            SegmentCode = 73000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Kitchenware and Tableware"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            SegmentCode = 81000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Lawn/Garden Supplies"
+                        },
+                        new
+                        {
+                            ID = 22,
+                            SegmentCode = 89000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Live Animals"
+                        },
+                        new
+                        {
+                            ID = 23,
+                            SegmentCode = 88000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Lubricants"
+                        },
+                        new
+                        {
+                            ID = 24,
+                            SegmentCode = 96000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Monetary Assets"
+                        },
+                        new
+                        {
+                            ID = 25,
+                            SegmentCode = 61000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Music"
+                        },
+                        new
+                        {
+                            ID = 26,
+                            SegmentCode = 64000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Personal Accessories"
+                        },
+                        new
+                        {
+                            ID = 27,
+                            SegmentCode = 10000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Pet Care/Food"
+                        },
+                        new
+                        {
+                            ID = 28,
+                            SegmentCode = 79000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Plumbing/Heating/Ventilation/Air Conditioning"
+                        },
+                        new
+                        {
+                            ID = 29,
+                            SegmentCode = 98000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Raw Materials (Non Food)"
+                        },
+                        new
+                        {
+                            ID = 30,
+                            SegmentCode = 85000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Safety/Protection - DIY"
+                        },
+                        new
+                        {
+                            ID = 31,
+                            SegmentCode = 91000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Safety/Security/Surveillance"
+                        },
+                        new
+                        {
+                            ID = 32,
+                            SegmentCode = 95000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Services/Vending Machines"
+                        },
+                        new
+                        {
+                            ID = 33,
+                            SegmentCode = 71000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Sports Equipment"
+                        },
+                        new
+                        {
+                            ID = 34,
+                            SegmentCode = 62000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Stationery/Office Machinery/Occasion Supplies"
+                        },
+                        new
+                        {
+                            ID = 35,
+                            SegmentCode = 92000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Storage/Haulage Containers"
+                        },
+                        new
+                        {
+                            ID = 36,
+                            SegmentCode = 60000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Textual/Printed/Reference Materials"
+                        },
+                        new
+                        {
+                            ID = 37,
+                            SegmentCode = 84000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tool Storage/Workshop Aids"
+                        },
+                        new
+                        {
+                            ID = 38,
+                            SegmentCode = 80000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tools/Equipment - Hand"
+                        },
+                        new
+                        {
+                            ID = 39,
+                            SegmentCode = 82000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tools/Equipment - Power"
+                        },
+                        new
+                        {
+                            ID = 40,
+                            SegmentCode = 86000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Toys/Games"
+                        },
+                        new
+                        {
+                            ID = 41,
+                            SegmentCode = 77000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Vehicle"
+                        });
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.State", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("country_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("country_id");
+
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.TargetMarket", b =>
@@ -23804,6 +25891,79 @@ namespace MembershipPortal.core.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.ClassCategory", b =>
+                {
+                    b.HasOne("MembershipPortal.data.FamilyCategory", "FamilyCategory")
+                        .WithMany()
+                        .HasForeignKey("FamilyCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FamilyCategory");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Company", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Country", "Countries")
+                        .WithMany()
+                        .HasForeignKey("country_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MembershipPortal.data.LocalGovt", "LocalGovts")
+                        .WithMany()
+                        .HasForeignKey("localgovt_id");
+
+                    b.HasOne("MembershipPortal.data.CompanySectorCategory", "CompanySectorCategories")
+                        .WithMany()
+                        .HasForeignKey("sectorcategory_id");
+
+                    b.HasOne("MembershipPortal.data.CompanySectorType", "CompanySectorTypes")
+                        .WithMany()
+                        .HasForeignKey("sectortype_id");
+
+                    b.Navigation("CompanySectorCategories");
+
+                    b.Navigation("CompanySectorTypes");
+
+                    b.Navigation("Countries");
+
+                    b.Navigation("LocalGovts");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ContactInformation", b =>
+                {
+                    b.HasOne("MembershipPortal.data.HeardAboutUs", "HeardAboutUs")
+                        .WithMany()
+                        .HasForeignKey("heardaboutus_id");
+
+                    b.Navigation("HeardAboutUs");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserModel", b =>
+                {
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.CompanyModel", "Companies")
+                        .WithMany()
+                        .HasForeignKey("Companiesid");
+
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.RoleModel", "Roles")
+                        .WithMany()
+                        .HasForeignKey("Rolesid");
+
+                    b.Navigation("Companies");
+
+                    b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserValidationTokenModel", b =>
+                {
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.UserModel", "User")
+                        .WithMany()
+                        .HasForeignKey("Userid");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
                 {
                     b.HasOne("MembershipPortal.data.Product", "Product")
@@ -23813,6 +25973,47 @@ namespace MembershipPortal.core.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.FamilyCategory", b =>
+                {
+                    b.HasOne("MembershipPortal.data.SegmentCategory", "SegmentCategory")
+                        .WithMany()
+                        .HasForeignKey("SegmentCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SegmentCategory");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.GTINRequest", b =>
+                {
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.CompanyModel", "Companies")
+                        .WithMany()
+                        .HasForeignKey("company_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MembershipPortal.data.GTINFee", "GTINFee")
+                        .WithMany()
+                        .HasForeignKey("gtinfee_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Companies");
+
+                    b.Navigation("GTINFee");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.LocalGovt", b =>
+                {
+                    b.HasOne("MembershipPortal.data.State", "States")
+                        .WithMany()
+                        .HasForeignKey("state_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("States");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.PharmaceuticalInformation", b =>
@@ -23876,6 +26077,17 @@ namespace MembershipPortal.core.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("TargetMarket");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.State", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("country_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.BrandInformation", b =>

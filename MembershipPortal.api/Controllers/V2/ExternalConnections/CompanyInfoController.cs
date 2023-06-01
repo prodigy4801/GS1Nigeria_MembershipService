@@ -15,6 +15,8 @@ using Microsoft.Extensions.Options;
 using MembershipPortal.api.Models;
 using MembershipPortal.data.ExternalEntries.Models;
 using MembershipPortal.service.Concrete.ExternalEntries;
+using MembershipPortal.data;
+using MembershipPortal.viewmodels.ExternalDataViewModel.RegistrationBackend;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -41,44 +43,34 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ExternalApiRoutes.RCompany.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {
-            GenericResponse<CompanyModel> response = new GenericResponse<CompanyModel>
+            ServiceResponse<CompanyVM> response = new ServiceResponse<CompanyVM>
             {
                 IsSuccess = false,
                 ReturnedObject = null,
                 Message = string.Empty
             };
-            try
+            var tokenValidation = Request.Headers["Authorization"].SingleOrDefault();
+            if (tokenValidation == null)
             {
-                var tokenValidation = Request.Headers["Authorization"].SingleOrDefault();
-                if (tokenValidation == null)
-                {
-                    response.Message = "Please pass your token to get Access to service";
-                    return BadRequest(response);
-                }
-                var token = tokenValidation.Split(" ").Last();
-                var baseURL = this._registrationAPI.BaseUrl;
-                var endpoint = "api/v2/company/getbyregid";
-
-                ExternalCallModels servicerequest = new ExternalCallModels()
-                {
-                    baseURL = baseURL,
-                    endpoint = endpoint,
-                    Token = token
-                };
-
-                response = await _service.GetByRegistrationID(registrationid,servicerequest);
-                if (response.ReturnedObject == null)
-                {
-                    return StatusCode(StatusCodes.Status404NotFound, response);
-                }
-
+                response.Message = "Please pass your token to get Access to service";
                 return StatusCode(StatusCodes.Status200OK, response);
+                //return BadRequest(response);
+            }
+            var token = tokenValidation.Split(" ").Last();
+            var baseURL = this._registrationAPI.BaseUrl;
+            var endpoint = "api/v2/company/getbyregid";
 
-            }
-            catch (Exception e)
+            ExternalCallModels servicerequest = new ExternalCallModels()
             {
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
+                baseURL = baseURL,
+                endpoint = endpoint,
+                Token = token
+            };
+
+            var obj = await _service.GetByRegistrationID(registrationid, servicerequest);
+            response = _mapper.Map<ServiceResponse<CompanyVM>>(obj);
+
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

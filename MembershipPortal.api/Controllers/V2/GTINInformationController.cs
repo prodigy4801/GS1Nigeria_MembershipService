@@ -81,22 +81,15 @@ namespace MembershipPortal.api.Controllers.V2
         [HttpGet(ApiRoutes.RGTINInformation.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegID(string registrationid)
         {
-            try
+            ServiceResponseList<GTINInformationVM> response = new ServiceResponseList<GTINInformationVM>
             {
-                var obj = await _service.GetByRegistrationID(registrationid);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<GTINInformationVM>(obj);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new List<GTINInformationVM>(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetListByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponseList<GTINInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         // POST api/<BenefitGTINInformationController>
@@ -109,31 +102,19 @@ namespace MembershipPortal.api.Controllers.V2
                 IsSuccess = false,
                 Message = string.Empty
             };
-            try
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    var errors = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                    response.Message = errors;
-                    return StatusCode(StatusCodes.Status400BadRequest, response);
-                }
+                var errors = string.Join("; ", ModelState.Values
+                                    .SelectMany(x => x.Errors)
+                                    .Select(x => x.ErrorMessage));
+                response.Message = errors;
+                return StatusCode(StatusCodes.Status200OK, response);
+            }
 
-                GTINInformation model = _mapper.Map<GTINInformation>(req);
-                var obj = await _service.Save(model);
-                response = _mapper.Map<ServiceResponse<GTINInformationVM>>(obj);
-                if (response.IsSuccess)
-                {
-                    return StatusCode(StatusCodes.Status201Created, response);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest, response);
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                return StatusCode(StatusCodes.Status403Forbidden, response);
-            }
+            GTINInformation model = _mapper.Map<GTINInformation>(req);
+            var obj = await _service.Save(model);
+            response = _mapper.Map<ServiceResponse<GTINInformationVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }

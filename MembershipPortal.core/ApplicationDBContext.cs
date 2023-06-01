@@ -35,6 +35,7 @@ namespace MembershipPortal.core
         public virtual DbSet<GTINInformation> GTINInformations { get; set; }
         public virtual DbSet<HeardAboutUs> HeardAboutUs { get; set; }
         public virtual DbSet<ImageBank> ImageBanks { get; set; }
+        public virtual DbSet<ImageBankUsage> ImageBankUsages { get; set; }
         public virtual DbSet<ImageRequest> ImageRequests { get; set; }
         public virtual DbSet<ITFInformation> ITFInformations { get; set; }
         public virtual DbSet<LocalGovt> LocalGovts { get; set; }
@@ -50,6 +51,9 @@ namespace MembershipPortal.core
         public virtual DbSet<SegmentCategory> SegmentCategories { get; set; }
         public virtual DbSet<FamilyCategory> FamilyCategories { get; set; }
         public virtual DbSet<ClassCategory> ClassCategories { get; set; }
+        public virtual DbSet<RoleModel> Roles { get; set; }
+        public virtual DbSet<UserModel> Users { get; set; }
+        public virtual DbSet<UserValidationTokenModel> UserValidationTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -121,6 +125,12 @@ namespace MembershipPortal.core
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedOnAdd();
                 entity.HasIndex(u => u.registrationid).IsUnique();
+            });
+            modelBuilder.Entity<ImageBankUsage>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id).ValueGeneratedOnAdd();
+                entity.HasIndex(u => u.gtin).IsUnique();
             });
             modelBuilder.Entity<ImageRequest>(entity =>
             {
@@ -201,20 +211,25 @@ namespace MembershipPortal.core
             //    .IsRequired(false);
 
 
-            //modelBuilder.Entity<Role>()
-            //    .HasData(
-            //        new Role { id = 1, name = "Member" },
-            //        new Role { id = 2, name = "Admin" },
-            //        new Role { id = 3, name = "SuperAdmin" }
-            //    );
+            modelBuilder.Entity<RoleModel>()
+                .HasData(
+                    new RoleModel { id = 1, name = "Member" },
+                    new RoleModel { id = 2, name = "Admin" },
+                    new RoleModel { id = 3, name = "SuperAdmin" }
+                );
             //RegistrationBackend.core.Seed.EntitySeeder.Seed<ApplicationDBContext>();
-            //modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
-            //modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
-            //modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
-            //modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
-            //modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
-            //modelBuilder.Entity<SegmentCategory>().HasData(SeedSegmentCategoryData());
-            //modelBuilder.Entity<FamilyCategory>().HasData(SeedFamilyCategoryData());
+            modelBuilder.Entity<BrickCategory>().HasData(SeedBrickCategoryData());
+            modelBuilder.Entity<NetContent>().HasData(SeedNetContentData());
+            modelBuilder.Entity<PackageLevel>().HasData(SeedPackagingLevelData());
+            modelBuilder.Entity<PackagingType>().HasData(SeedPackagingTypeData());
+            modelBuilder.Entity<TargetMarket>().HasData(SeedTargetMarketData());
+            modelBuilder.Entity<SegmentCategory>().HasData(SeedSegmentCategoryData());
+            modelBuilder.Entity<FamilyCategory>().HasData(SeedFamilyCategoryData());
+
+            modelBuilder.Entity<Country>().HasData(SeedCountriesData());
+            modelBuilder.Entity<State>().HasData(SeedStatesData());
+            modelBuilder.Entity<LocalGovt>().HasData(SeedLocalGovtData());
+            modelBuilder.Entity<GTINFee>().HasData(SeedGTINFeeData());
         }
 
         public List<NetContent> SeedNetContentData()
@@ -288,6 +303,50 @@ namespace MembershipPortal.core
                 familycategories = JsonConvert.DeserializeObject<List<FamilyCategory>>(json);
             }
             return familycategories;
+        }
+
+        public List<Country> SeedCountriesData()
+        {
+            var countrycategories = new List<Country>();
+            using (StreamReader r = new StreamReader(@"Seed/countries.json"))
+            {
+                string json = r.ReadToEnd();
+                countrycategories = JsonConvert.DeserializeObject<List<Country>>(json);
+            }
+            return countrycategories;
+        }
+
+        public List<State> SeedStatesData()
+        {
+            var states = new List<State>();
+            using (StreamReader r = new StreamReader(@"Seed/countries.json"))
+            {
+                string json = r.ReadToEnd();
+                states = JsonConvert.DeserializeObject<List<State>>(json);
+            }
+            return states;
+        }
+
+        public List<LocalGovt> SeedLocalGovtData()
+        {
+            var localgovts = new List<LocalGovt>();
+            using (StreamReader r = new StreamReader(@"Seed/countries.json"))
+            {
+                string json = r.ReadToEnd();
+                localgovts = JsonConvert.DeserializeObject<List<LocalGovt>>(json);
+            }
+            return localgovts;
+        }
+
+        public List<GTINFee> SeedGTINFeeData()
+        {
+            var gtinfees = new List<GTINFee>();
+            using (StreamReader r = new StreamReader(@"Seed/gtinfee.json"))
+            {
+                string json = r.ReadToEnd();
+                gtinfees = JsonConvert.DeserializeObject<List<GTINFee>>(json);
+            }
+            return gtinfees;
         }
     }
 }

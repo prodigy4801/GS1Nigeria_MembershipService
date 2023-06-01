@@ -18,6 +18,7 @@ namespace MembershipPortal.api.Controllers.V2
     [Authorize]
     [Route("")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ITFInformationController : ControllerBase
     {
         private readonly IITFInformationSvc _service;

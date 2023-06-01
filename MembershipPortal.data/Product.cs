@@ -57,7 +57,7 @@ namespace MembershipPortal.data
         public string storageinstruction { get; set; }
         // [StringLength(500)]
         public string directionofuse { get; set; }
-        public int lifespan { get; set; }
+        public int? lifespan { get; set; }
         [StringLength(500)]
         public string lifespanunit { get; set; }
         public int? packaginglevel_id { get; set; }

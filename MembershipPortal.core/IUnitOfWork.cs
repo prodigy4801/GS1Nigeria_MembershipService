@@ -19,6 +19,7 @@ namespace MembershipPortal.core
         IGTINInformationRepo GTINInformationRP { get; }
         IGTINRequestRepo GTINRequestRP { get; }
         IImageBankRepo ImageBankRP { get; }
+        IImageBankUsageRepo ImageBankUsageRP { get; }
         IImageRequestRepo ImageRequestRP { get; }
         IITFInformationRepo ITFInformationRP { get; }
         INetContentRepo NetContentRP { get; }
@@ -28,6 +29,7 @@ namespace MembershipPortal.core
         IProductRepo ProductRP { get; }
         IProductTargetMarketRepo ProductTargetMarketRP { get; }
         ITargetMarketRepo TargetMarketRP { get; }
+        IUserRepo UserRP { get; }
 
         Task<int> Complete();
     }

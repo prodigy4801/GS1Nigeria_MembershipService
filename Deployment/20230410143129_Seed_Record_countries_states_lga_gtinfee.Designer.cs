@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MembershipPortal.core.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220726095211_ApplicationContext_SeedData")]
-    partial class ApplicationContext_SeedData
+    [Migration("20230410143129_Seed_Record_countries_states_lga_gtinfee")]
+    partial class Seed_Record_countries_states_lga_gtinfee
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20742,6 +20742,1668 @@ namespace MembershipPortal.core.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.ClassCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClassCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClassDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClassTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("FamilyCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClassCode")
+                        .IsUnique();
+
+                    b.HasIndex("FamilyCode");
+
+                    b.ToTable("ClassCategories");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Company", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfApproval")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("approvalstatus")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("cacnumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("companyaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("companyname")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<int>("country_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("dateofincorporation")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("email")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("facebookaccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("factoryaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("instagramaccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool>("isregistrationcompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("localgovt_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("modifiedon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("numberofstaff")
+                        .HasColumnType("int");
+
+                    b.Property<string>("phonenumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("registrationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int?>("sectorcategory_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("sectortype_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("state_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("twitteraccount")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("websiteaddress")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("country_id");
+
+                    b.HasIndex("localgovt_id");
+
+                    b.HasIndex("registrationid")
+                        .IsUnique();
+
+                    b.HasIndex("sectorcategory_id");
+
+                    b.HasIndex("sectortype_id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.CompanySectorCategory", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("sectorcategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sectorcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CompanySectorCategories");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.CompanySectorType", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("sectortype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("CompanySectorTypes");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ContactInformation", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("billingdesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingname")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("billingphonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceodesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceoemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceoname")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ceophonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("contactemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("contactperson")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("contactphonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("heardaboutus_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("modifiedon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("reasonforapplying")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("registrationId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("saleemail")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salename")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salephonenumber")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("salesdesignation")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("heardaboutus_id");
+
+                    b.HasIndex("registrationId")
+                        .IsUnique()
+                        .HasFilter("[registrationId] IS NOT NULL");
+
+                    b.ToTable("ContactInformations");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Country", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "Afghanistan"
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "Aland Islands"
+                        },
+                        new
+                        {
+                            id = 3,
+                            name = "Albania"
+                        },
+                        new
+                        {
+                            id = 4,
+                            name = "Algeria"
+                        },
+                        new
+                        {
+                            id = 5,
+                            name = "American Samoa"
+                        },
+                        new
+                        {
+                            id = 6,
+                            name = "Andorra"
+                        },
+                        new
+                        {
+                            id = 7,
+                            name = "Angola"
+                        },
+                        new
+                        {
+                            id = 8,
+                            name = "Anguilla"
+                        },
+                        new
+                        {
+                            id = 9,
+                            name = "Antarctica"
+                        },
+                        new
+                        {
+                            id = 10,
+                            name = "Antigua And Barbuda"
+                        },
+                        new
+                        {
+                            id = 11,
+                            name = "Argentina"
+                        },
+                        new
+                        {
+                            id = 12,
+                            name = "Armenia"
+                        },
+                        new
+                        {
+                            id = 13,
+                            name = "Aruba"
+                        },
+                        new
+                        {
+                            id = 14,
+                            name = "Australia"
+                        },
+                        new
+                        {
+                            id = 15,
+                            name = "Austria"
+                        },
+                        new
+                        {
+                            id = 16,
+                            name = "Azerbaijan"
+                        },
+                        new
+                        {
+                            id = 17,
+                            name = "Bahamas The"
+                        },
+                        new
+                        {
+                            id = 18,
+                            name = "Bahrain"
+                        },
+                        new
+                        {
+                            id = 19,
+                            name = "Bangladesh"
+                        },
+                        new
+                        {
+                            id = 20,
+                            name = "Barbados"
+                        },
+                        new
+                        {
+                            id = 21,
+                            name = "Belarus"
+                        },
+                        new
+                        {
+                            id = 22,
+                            name = "Belgium"
+                        },
+                        new
+                        {
+                            id = 23,
+                            name = "Belize"
+                        },
+                        new
+                        {
+                            id = 24,
+                            name = "Benin"
+                        },
+                        new
+                        {
+                            id = 25,
+                            name = "Bermuda"
+                        },
+                        new
+                        {
+                            id = 26,
+                            name = "Bhutan"
+                        },
+                        new
+                        {
+                            id = 27,
+                            name = "Bolivia"
+                        },
+                        new
+                        {
+                            id = 28,
+                            name = "Bosnia and Herzegovina"
+                        },
+                        new
+                        {
+                            id = 29,
+                            name = "Botswana"
+                        },
+                        new
+                        {
+                            id = 30,
+                            name = "Bouvet Island"
+                        },
+                        new
+                        {
+                            id = 31,
+                            name = "Brazil"
+                        },
+                        new
+                        {
+                            id = 32,
+                            name = "British Indian Ocean Territory"
+                        },
+                        new
+                        {
+                            id = 33,
+                            name = "Brunei"
+                        },
+                        new
+                        {
+                            id = 34,
+                            name = "Bulgaria"
+                        },
+                        new
+                        {
+                            id = 35,
+                            name = "Burkina Faso"
+                        },
+                        new
+                        {
+                            id = 36,
+                            name = "Burundi"
+                        },
+                        new
+                        {
+                            id = 37,
+                            name = "Cambodia"
+                        },
+                        new
+                        {
+                            id = 38,
+                            name = "Cameroon"
+                        },
+                        new
+                        {
+                            id = 39,
+                            name = "Canada"
+                        },
+                        new
+                        {
+                            id = 40,
+                            name = "Cape Verde"
+                        },
+                        new
+                        {
+                            id = 41,
+                            name = "Cayman Islands"
+                        },
+                        new
+                        {
+                            id = 42,
+                            name = "Central African Republic"
+                        },
+                        new
+                        {
+                            id = 43,
+                            name = "Chad"
+                        },
+                        new
+                        {
+                            id = 44,
+                            name = "Chile"
+                        },
+                        new
+                        {
+                            id = 45,
+                            name = "China"
+                        },
+                        new
+                        {
+                            id = 46,
+                            name = "Christmas Island"
+                        },
+                        new
+                        {
+                            id = 47,
+                            name = "Cocos (Keeling) Islands"
+                        },
+                        new
+                        {
+                            id = 48,
+                            name = "Colombia"
+                        },
+                        new
+                        {
+                            id = 49,
+                            name = "Comoros"
+                        },
+                        new
+                        {
+                            id = 50,
+                            name = "Congo"
+                        },
+                        new
+                        {
+                            id = 51,
+                            name = "Congo The Democratic Republic Of The"
+                        },
+                        new
+                        {
+                            id = 52,
+                            name = "Cook Islands"
+                        },
+                        new
+                        {
+                            id = 53,
+                            name = "Costa Rica"
+                        },
+                        new
+                        {
+                            id = 54,
+                            name = "Cote D'Ivoire (Ivory Coast)"
+                        },
+                        new
+                        {
+                            id = 55,
+                            name = "Croatia (Hrvatska)"
+                        },
+                        new
+                        {
+                            id = 56,
+                            name = "Cuba"
+                        },
+                        new
+                        {
+                            id = 57,
+                            name = "Cyprus"
+                        },
+                        new
+                        {
+                            id = 58,
+                            name = "Czech Republic"
+                        },
+                        new
+                        {
+                            id = 59,
+                            name = "Denmark"
+                        },
+                        new
+                        {
+                            id = 60,
+                            name = "Djibouti"
+                        },
+                        new
+                        {
+                            id = 61,
+                            name = "Dominica"
+                        },
+                        new
+                        {
+                            id = 62,
+                            name = "Dominican Republic"
+                        },
+                        new
+                        {
+                            id = 63,
+                            name = "East Timor"
+                        },
+                        new
+                        {
+                            id = 64,
+                            name = "Ecuador"
+                        },
+                        new
+                        {
+                            id = 65,
+                            name = "Egypt"
+                        },
+                        new
+                        {
+                            id = 66,
+                            name = "El Salvador"
+                        },
+                        new
+                        {
+                            id = 67,
+                            name = "Equatorial Guinea"
+                        },
+                        new
+                        {
+                            id = 68,
+                            name = "Eritrea"
+                        },
+                        new
+                        {
+                            id = 69,
+                            name = "Estonia"
+                        },
+                        new
+                        {
+                            id = 70,
+                            name = "Ethiopia"
+                        },
+                        new
+                        {
+                            id = 71,
+                            name = "Falkland Islands"
+                        },
+                        new
+                        {
+                            id = 72,
+                            name = "Faroe Islands"
+                        },
+                        new
+                        {
+                            id = 73,
+                            name = "Fiji Islands"
+                        },
+                        new
+                        {
+                            id = 74,
+                            name = "Finland"
+                        },
+                        new
+                        {
+                            id = 75,
+                            name = "France"
+                        },
+                        new
+                        {
+                            id = 76,
+                            name = "French Guiana"
+                        },
+                        new
+                        {
+                            id = 77,
+                            name = "French Polynesia"
+                        },
+                        new
+                        {
+                            id = 78,
+                            name = "French Southern Territories"
+                        },
+                        new
+                        {
+                            id = 79,
+                            name = "Gabon"
+                        },
+                        new
+                        {
+                            id = 80,
+                            name = "Gambia The"
+                        },
+                        new
+                        {
+                            id = 81,
+                            name = "Georgia"
+                        },
+                        new
+                        {
+                            id = 82,
+                            name = "Germany"
+                        },
+                        new
+                        {
+                            id = 83,
+                            name = "Ghana"
+                        },
+                        new
+                        {
+                            id = 84,
+                            name = "Gibraltar"
+                        },
+                        new
+                        {
+                            id = 85,
+                            name = "Greece"
+                        },
+                        new
+                        {
+                            id = 86,
+                            name = "Greenland"
+                        },
+                        new
+                        {
+                            id = 87,
+                            name = "Grenada"
+                        },
+                        new
+                        {
+                            id = 88,
+                            name = "Guadeloupe"
+                        },
+                        new
+                        {
+                            id = 89,
+                            name = "Guam"
+                        },
+                        new
+                        {
+                            id = 90,
+                            name = "Guatemala"
+                        },
+                        new
+                        {
+                            id = 91,
+                            name = "Guernsey and Alderney"
+                        },
+                        new
+                        {
+                            id = 92,
+                            name = "Guinea"
+                        },
+                        new
+                        {
+                            id = 93,
+                            name = "Guinea-Bissau"
+                        },
+                        new
+                        {
+                            id = 94,
+                            name = "Guyana"
+                        },
+                        new
+                        {
+                            id = 95,
+                            name = "Haiti"
+                        },
+                        new
+                        {
+                            id = 96,
+                            name = "Heard Island and McDonald Islands"
+                        },
+                        new
+                        {
+                            id = 97,
+                            name = "Honduras"
+                        },
+                        new
+                        {
+                            id = 98,
+                            name = "Hong Kong S.A.R."
+                        },
+                        new
+                        {
+                            id = 99,
+                            name = "Hungary"
+                        },
+                        new
+                        {
+                            id = 100,
+                            name = "Iceland"
+                        },
+                        new
+                        {
+                            id = 101,
+                            name = "India"
+                        },
+                        new
+                        {
+                            id = 102,
+                            name = "Indonesia"
+                        },
+                        new
+                        {
+                            id = 103,
+                            name = "Iran"
+                        },
+                        new
+                        {
+                            id = 104,
+                            name = "Iraq"
+                        },
+                        new
+                        {
+                            id = 105,
+                            name = "Ireland"
+                        },
+                        new
+                        {
+                            id = 106,
+                            name = "Israel"
+                        },
+                        new
+                        {
+                            id = 107,
+                            name = "Italy"
+                        },
+                        new
+                        {
+                            id = 108,
+                            name = "Jamaica"
+                        },
+                        new
+                        {
+                            id = 109,
+                            name = "Japan"
+                        },
+                        new
+                        {
+                            id = 110,
+                            name = "Jersey"
+                        },
+                        new
+                        {
+                            id = 111,
+                            name = "Jordan"
+                        },
+                        new
+                        {
+                            id = 112,
+                            name = "Kazakhstan"
+                        },
+                        new
+                        {
+                            id = 113,
+                            name = "Kenya"
+                        },
+                        new
+                        {
+                            id = 114,
+                            name = "Kiribati"
+                        },
+                        new
+                        {
+                            id = 115,
+                            name = "Korea North"
+                        },
+                        new
+                        {
+                            id = 116,
+                            name = "Korea South"
+                        },
+                        new
+                        {
+                            id = 117,
+                            name = "Kuwait"
+                        },
+                        new
+                        {
+                            id = 118,
+                            name = "Kyrgyzstan"
+                        },
+                        new
+                        {
+                            id = 119,
+                            name = "Laos"
+                        },
+                        new
+                        {
+                            id = 120,
+                            name = "Latvia"
+                        },
+                        new
+                        {
+                            id = 121,
+                            name = "Lebanon"
+                        },
+                        new
+                        {
+                            id = 122,
+                            name = "Lesotho"
+                        },
+                        new
+                        {
+                            id = 123,
+                            name = "Liberia"
+                        },
+                        new
+                        {
+                            id = 124,
+                            name = "Libya"
+                        },
+                        new
+                        {
+                            id = 125,
+                            name = "Liechtenstein"
+                        },
+                        new
+                        {
+                            id = 126,
+                            name = "Lithuania"
+                        },
+                        new
+                        {
+                            id = 127,
+                            name = "Luxembourg"
+                        },
+                        new
+                        {
+                            id = 128,
+                            name = "Macau S.A.R."
+                        },
+                        new
+                        {
+                            id = 129,
+                            name = "Macedonia"
+                        },
+                        new
+                        {
+                            id = 130,
+                            name = "Madagascar"
+                        },
+                        new
+                        {
+                            id = 131,
+                            name = "Malawi"
+                        },
+                        new
+                        {
+                            id = 132,
+                            name = "Malaysia"
+                        },
+                        new
+                        {
+                            id = 133,
+                            name = "Maldives"
+                        },
+                        new
+                        {
+                            id = 134,
+                            name = "Mali"
+                        },
+                        new
+                        {
+                            id = 135,
+                            name = "Malta"
+                        },
+                        new
+                        {
+                            id = 136,
+                            name = "Man (Isle of)"
+                        },
+                        new
+                        {
+                            id = 137,
+                            name = "Marshall Islands"
+                        },
+                        new
+                        {
+                            id = 138,
+                            name = "Martinique"
+                        },
+                        new
+                        {
+                            id = 139,
+                            name = "Mauritania"
+                        },
+                        new
+                        {
+                            id = 140,
+                            name = "Mauritius"
+                        },
+                        new
+                        {
+                            id = 141,
+                            name = "Mayotte"
+                        },
+                        new
+                        {
+                            id = 142,
+                            name = "Mexico"
+                        },
+                        new
+                        {
+                            id = 143,
+                            name = "Micronesia"
+                        },
+                        new
+                        {
+                            id = 144,
+                            name = "Moldova"
+                        },
+                        new
+                        {
+                            id = 145,
+                            name = "Monaco"
+                        },
+                        new
+                        {
+                            id = 146,
+                            name = "Mongolia"
+                        },
+                        new
+                        {
+                            id = 147,
+                            name = "Montenegro"
+                        },
+                        new
+                        {
+                            id = 148,
+                            name = "Montserrat"
+                        },
+                        new
+                        {
+                            id = 149,
+                            name = "Morocco"
+                        },
+                        new
+                        {
+                            id = 150,
+                            name = "Mozambique"
+                        },
+                        new
+                        {
+                            id = 151,
+                            name = "Myanmar"
+                        },
+                        new
+                        {
+                            id = 152,
+                            name = "Namibia"
+                        },
+                        new
+                        {
+                            id = 153,
+                            name = "Nauru"
+                        },
+                        new
+                        {
+                            id = 154,
+                            name = "Nepal"
+                        },
+                        new
+                        {
+                            id = 155,
+                            name = "Bonaire, Sint Eustatius and Saba"
+                        },
+                        new
+                        {
+                            id = 156,
+                            name = "Netherlands The"
+                        },
+                        new
+                        {
+                            id = 157,
+                            name = "New Caledonia"
+                        },
+                        new
+                        {
+                            id = 158,
+                            name = "New Zealand"
+                        },
+                        new
+                        {
+                            id = 159,
+                            name = "Nicaragua"
+                        },
+                        new
+                        {
+                            id = 160,
+                            name = "Niger"
+                        },
+                        new
+                        {
+                            id = 161,
+                            name = "Nigeria"
+                        },
+                        new
+                        {
+                            id = 162,
+                            name = "Niue"
+                        },
+                        new
+                        {
+                            id = 163,
+                            name = "Norfolk Island"
+                        },
+                        new
+                        {
+                            id = 164,
+                            name = "Northern Mariana Islands"
+                        },
+                        new
+                        {
+                            id = 165,
+                            name = "Norway"
+                        },
+                        new
+                        {
+                            id = 166,
+                            name = "Oman"
+                        },
+                        new
+                        {
+                            id = 167,
+                            name = "Pakistan"
+                        },
+                        new
+                        {
+                            id = 168,
+                            name = "Palau"
+                        },
+                        new
+                        {
+                            id = 169,
+                            name = "Palestinian Territory Occupied"
+                        },
+                        new
+                        {
+                            id = 170,
+                            name = "Panama"
+                        },
+                        new
+                        {
+                            id = 171,
+                            name = "Papua new Guinea"
+                        },
+                        new
+                        {
+                            id = 172,
+                            name = "Paraguay"
+                        },
+                        new
+                        {
+                            id = 173,
+                            name = "Peru"
+                        },
+                        new
+                        {
+                            id = 174,
+                            name = "Philippines"
+                        },
+                        new
+                        {
+                            id = 175,
+                            name = "Pitcairn Island"
+                        },
+                        new
+                        {
+                            id = 176,
+                            name = "Poland"
+                        },
+                        new
+                        {
+                            id = 177,
+                            name = "Portugal"
+                        },
+                        new
+                        {
+                            id = 178,
+                            name = "Puerto Rico"
+                        },
+                        new
+                        {
+                            id = 179,
+                            name = "Qatar"
+                        },
+                        new
+                        {
+                            id = 180,
+                            name = "Reunion"
+                        },
+                        new
+                        {
+                            id = 181,
+                            name = "Romania"
+                        },
+                        new
+                        {
+                            id = 182,
+                            name = "Russia"
+                        },
+                        new
+                        {
+                            id = 183,
+                            name = "Rwanda"
+                        },
+                        new
+                        {
+                            id = 184,
+                            name = "Saint Helena"
+                        },
+                        new
+                        {
+                            id = 185,
+                            name = "Saint Kitts And Nevis"
+                        },
+                        new
+                        {
+                            id = 186,
+                            name = "Saint Lucia"
+                        },
+                        new
+                        {
+                            id = 187,
+                            name = "Saint Pierre and Miquelon"
+                        },
+                        new
+                        {
+                            id = 188,
+                            name = "Saint Vincent And The Grenadines"
+                        },
+                        new
+                        {
+                            id = 189,
+                            name = "Saint-Barthelemy"
+                        },
+                        new
+                        {
+                            id = 190,
+                            name = "Saint-Martin (French part)"
+                        },
+                        new
+                        {
+                            id = 191,
+                            name = "Samoa"
+                        },
+                        new
+                        {
+                            id = 192,
+                            name = "San Marino"
+                        },
+                        new
+                        {
+                            id = 193,
+                            name = "Sao Tome and Principe"
+                        },
+                        new
+                        {
+                            id = 194,
+                            name = "Saudi Arabia"
+                        },
+                        new
+                        {
+                            id = 195,
+                            name = "Senegal"
+                        },
+                        new
+                        {
+                            id = 196,
+                            name = "Serbia"
+                        },
+                        new
+                        {
+                            id = 197,
+                            name = "Seychelles"
+                        },
+                        new
+                        {
+                            id = 198,
+                            name = "Sierra Leone"
+                        },
+                        new
+                        {
+                            id = 199,
+                            name = "Singapore"
+                        },
+                        new
+                        {
+                            id = 200,
+                            name = "Slovakia"
+                        },
+                        new
+                        {
+                            id = 201,
+                            name = "Slovenia"
+                        },
+                        new
+                        {
+                            id = 202,
+                            name = "Solomon Islands"
+                        },
+                        new
+                        {
+                            id = 203,
+                            name = "Somalia"
+                        },
+                        new
+                        {
+                            id = 204,
+                            name = "South Africa"
+                        },
+                        new
+                        {
+                            id = 205,
+                            name = "South Georgia"
+                        },
+                        new
+                        {
+                            id = 206,
+                            name = "South Sudan"
+                        },
+                        new
+                        {
+                            id = 207,
+                            name = "Spain"
+                        },
+                        new
+                        {
+                            id = 208,
+                            name = "Sri Lanka"
+                        },
+                        new
+                        {
+                            id = 209,
+                            name = "Sudan"
+                        },
+                        new
+                        {
+                            id = 210,
+                            name = "Suriname"
+                        },
+                        new
+                        {
+                            id = 211,
+                            name = "Svalbard And Jan Mayen Islands"
+                        },
+                        new
+                        {
+                            id = 212,
+                            name = "Swaziland"
+                        },
+                        new
+                        {
+                            id = 213,
+                            name = "Sweden"
+                        },
+                        new
+                        {
+                            id = 214,
+                            name = "Switzerland"
+                        },
+                        new
+                        {
+                            id = 215,
+                            name = "Syria"
+                        },
+                        new
+                        {
+                            id = 216,
+                            name = "Taiwan"
+                        },
+                        new
+                        {
+                            id = 217,
+                            name = "Tajikistan"
+                        },
+                        new
+                        {
+                            id = 218,
+                            name = "Tanzania"
+                        },
+                        new
+                        {
+                            id = 219,
+                            name = "Thailand"
+                        },
+                        new
+                        {
+                            id = 220,
+                            name = "Togo"
+                        },
+                        new
+                        {
+                            id = 221,
+                            name = "Tokelau"
+                        },
+                        new
+                        {
+                            id = 222,
+                            name = "Tonga"
+                        },
+                        new
+                        {
+                            id = 223,
+                            name = "Trinidad And Tobago"
+                        },
+                        new
+                        {
+                            id = 224,
+                            name = "Tunisia"
+                        },
+                        new
+                        {
+                            id = 225,
+                            name = "Turkey"
+                        },
+                        new
+                        {
+                            id = 226,
+                            name = "Turkmenistan"
+                        },
+                        new
+                        {
+                            id = 227,
+                            name = "Turks And Caicos Islands"
+                        },
+                        new
+                        {
+                            id = 228,
+                            name = "Tuvalu"
+                        },
+                        new
+                        {
+                            id = 229,
+                            name = "Uganda"
+                        },
+                        new
+                        {
+                            id = 230,
+                            name = "Ukraine"
+                        },
+                        new
+                        {
+                            id = 231,
+                            name = "United Arab Emirates"
+                        },
+                        new
+                        {
+                            id = 232,
+                            name = "United Kingdom"
+                        },
+                        new
+                        {
+                            id = 233,
+                            name = "United States"
+                        },
+                        new
+                        {
+                            id = 234,
+                            name = "United States Minor Outlying Islands"
+                        },
+                        new
+                        {
+                            id = 235,
+                            name = "Uruguay"
+                        },
+                        new
+                        {
+                            id = 236,
+                            name = "Uzbekistan"
+                        },
+                        new
+                        {
+                            id = 237,
+                            name = "Vanuatu"
+                        },
+                        new
+                        {
+                            id = 238,
+                            name = "Vatican City State (Holy See)"
+                        },
+                        new
+                        {
+                            id = 239,
+                            name = "Venezuela"
+                        },
+                        new
+                        {
+                            id = 240,
+                            name = "Vietnam"
+                        },
+                        new
+                        {
+                            id = 241,
+                            name = "Virgin Islands (British)"
+                        },
+                        new
+                        {
+                            id = 242,
+                            name = "Virgin Islands (US)"
+                        },
+                        new
+                        {
+                            id = 243,
+                            name = "Wallis And Futuna Islands"
+                        },
+                        new
+                        {
+                            id = 244,
+                            name = "Western Sahara"
+                        },
+                        new
+                        {
+                            id = 245,
+                            name = "Yemen"
+                        },
+                        new
+                        {
+                            id = 246,
+                            name = "Zambia"
+                        },
+                        new
+                        {
+                            id = 247,
+                            name = "Zimbabwe"
+                        },
+                        new
+                        {
+                            id = 248,
+                            name = "Kosovo"
+                        },
+                        new
+                        {
+                            id = 249,
+                            name = "Curaçao"
+                        },
+                        new
+                        {
+                            id = 250,
+                            name = "Sint Maarten (Dutch part)"
+                        });
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.RoleModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "Member"
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "Admin"
+                        },
+                        new
+                        {
+                            id = 3,
+                            name = "SuperAdmin"
+                        });
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Companiesid")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rolesid")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("active")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("firstname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("registrationid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("role_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Companiesid");
+
+                    b.HasIndex("Rolesid");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserValidationTokenModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Userid")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("datecreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("datemodified")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("expirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ipaddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("subvalidationtoken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Userid");
+
+                    b.ToTable("UserValidationTokens");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
                 {
                     b.Property<int>("id")
@@ -20824,6 +22486,1075 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("ExternalUnifiedModels");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.FamilyCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FamilyCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FamilyDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FamilyTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("SegmentCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("FamilyCode")
+                        .IsUnique();
+
+                    b.HasIndex("SegmentCode");
+
+                    b.ToTable("FamilyCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            FamilyCode = 70010000,
+                            FamilyTitle = "Arts/Crafts/Needlework Supplies",
+                            SegmentCode = 70000000
+                        },
+                        new
+                        {
+                            ID = 2,
+                            FamilyCode = 68020000,
+                            FamilyTitle = "Photography/Optics",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 3,
+                            FamilyCode = 68010000,
+                            FamilyTitle = "Audio Visual Equipment",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 4,
+                            FamilyCode = 68040000,
+                            FamilyTitle = "Audio Visual Media",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 5,
+                            FamilyCode = 68050000,
+                            FamilyTitle = "Audio Visual/Photography Variety Packs",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 6,
+                            FamilyCode = 68030000,
+                            FamilyTitle = "In-car Electronics",
+                            SegmentCode = 68000000
+                        },
+                        new
+                        {
+                            ID = 7,
+                            FamilyCode = 53220000,
+                            FamilyTitle = "Beauty/Personal Care/Hygiene Variety Packs",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 8,
+                            FamilyCode = 53200000,
+                            FamilyTitle = "Body Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 9,
+                            FamilyCode = 53160000,
+                            FamilyTitle = "Cosmetics/Fragrances",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 10,
+                            FamilyCode = 53140000,
+                            FamilyTitle = "Hair Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 11,
+                            FamilyCode = 53240000,
+                            FamilyTitle = "Maternity Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 12,
+                            FamilyCode = 53180000,
+                            FamilyTitle = "Personal Hygiene Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 13,
+                            FamilyCode = 53230000,
+                            FamilyTitle = "Personal Intimacy",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 14,
+                            FamilyCode = 53130000,
+                            FamilyTitle = "Skin Products",
+                            SegmentCode = 53000000
+                        },
+                        new
+                        {
+                            ID = 15,
+                            FamilyCode = 83010000,
+                            FamilyTitle = "Building Products",
+                            SegmentCode = 83000000
+                        },
+                        new
+                        {
+                            ID = 16,
+                            FamilyCode = 74010000,
+                            FamilyTitle = "Camping",
+                            SegmentCode = 74000000
+                        },
+                        new
+                        {
+                            ID = 17,
+                            FamilyCode = 47100000,
+                            FamilyTitle = "Cleaning Products",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 18,
+                            FamilyCode = 47190000,
+                            FamilyTitle = "Cleaning/Hygiene Products Variety Packs",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 19,
+                            FamilyCode = 47200000,
+                            FamilyTitle = "Cleaning/Hygiene Supplies",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 20,
+                            FamilyCode = 47220000,
+                            FamilyTitle = "Industrial Cleaning",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 21,
+                            FamilyCode = 47120000,
+                            FamilyTitle = "Insect/Pest/Allergen Control",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 22,
+                            FamilyCode = 47210000,
+                            FamilyTitle = "Waste Management Products",
+                            SegmentCode = 47000000
+                        },
+                        new
+                        {
+                            ID = 23,
+                            FamilyCode = 67030000,
+                            FamilyTitle = "Activewear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 24,
+                            FamilyCode = 67010000,
+                            FamilyTitle = "Clothing",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 25,
+                            FamilyCode = 67050000,
+                            FamilyTitle = "Protective Wear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 26,
+                            FamilyCode = 67020000,
+                            FamilyTitle = "Sleepwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 27,
+                            FamilyCode = 67060000,
+                            FamilyTitle = "Swimwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 28,
+                            FamilyCode = 67040000,
+                            FamilyTitle = "Underwear",
+                            SegmentCode = 67000000
+                        },
+                        new
+                        {
+                            ID = 29,
+                            FamilyCode = 66010000,
+                            FamilyTitle = "Communications",
+                            SegmentCode = 66000000
+                        },
+                        new
+                        {
+                            ID = 30,
+                            FamilyCode = 65010000,
+                            FamilyTitle = "Computers/Video Games",
+                            SegmentCode = 65000000
+                        },
+                        new
+                        {
+                            ID = 31,
+                            FamilyCode = 94020000,
+                            FamilyTitle = "Crops for Food Production",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 32,
+                            FamilyCode = 94010000,
+                            FamilyTitle = "Crops not for food or feed (animal and fish)",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 33,
+                            FamilyCode = 94030000,
+                            FamilyTitle = "Grass and Other Crops for Animal Feed or for Soil Improvement",
+                            SegmentCode = 94000000
+                        },
+                        new
+                        {
+                            ID = 34,
+                            FamilyCode = 58010000,
+                            FamilyTitle = "Cross Segment",
+                            SegmentCode = 58000000
+                        },
+                        new
+                        {
+                            ID = 35,
+                            FamilyCode = 78040000,
+                            FamilyTitle = "Electrical Cabling/Wiring",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 36,
+                            FamilyCode = 78020000,
+                            FamilyTitle = "Electrical Connection/Distribution",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 37,
+                            FamilyCode = 78030000,
+                            FamilyTitle = "Electrical Lighting",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 38,
+                            FamilyCode = 78050000,
+                            FamilyTitle = "Electronic Communication Components",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 39,
+                            FamilyCode = 78060000,
+                            FamilyTitle = "General Electrical Hardware",
+                            SegmentCode = 78000000
+                        },
+                        new
+                        {
+                            ID = 40,
+                            FamilyCode = 50200000,
+                            FamilyTitle = "Beverages",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 41,
+                            FamilyCode = 50180000,
+                            FamilyTitle = "Bread/Bakery Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 42,
+                            FamilyCode = 50220000,
+                            FamilyTitle = "Cereal/Grain/Pulse Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 43,
+                            FamilyCode = 50160000,
+                            FamilyTitle = "Confectionery/Sugar Sweetening Products",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 44,
+                            FamilyCode = 50120000,
+                            FamilyTitle = "Fish and Seafood",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 45,
+                            FamilyCode = 50230000,
+                            FamilyTitle = "Food/Beverage/Tobacco Variety Packs",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 46,
+                            FamilyCode = 50360000,
+                            FamilyTitle = "Fresh Garnish (Food)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 47,
+                            FamilyCode = 50250000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 48,
+                            FamilyCode = 50270000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Frozen)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 49,
+                            FamilyCode = 50310000,
+                            FamilyTitle = "Fruits - Unprepared/Unprocessed (Shelf Stable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 50,
+                            FamilyCode = 50370000,
+                            FamilyTitle = "Fruits/Vegetables Fresh & Fresh Cut",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 51,
+                            FamilyCode = 50380000,
+                            FamilyTitle = "Fruits/Vegetables Fresh Cut",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 52,
+                            FamilyCode = 50100000,
+                            FamilyTitle = "Fruits/Vegetables/Nuts/Seeds Prepared/Processed",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 53,
+                            FamilyCode = 50350000,
+                            FamilyTitle = "Leaf Vegetables - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 54,
+                            FamilyCode = 50390000,
+                            FamilyTitle = "Meat/Fish/Seafood Substitutes",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 55,
+                            FamilyCode = 50240000,
+                            FamilyTitle = "Meat/Poultry/Other Animals",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 56,
+                            FamilyCode = 50130000,
+                            FamilyTitle = "Milk/Butter/Cream/Yogurts/Cheese/Eggs/Substitutes",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 57,
+                            FamilyCode = 50340000,
+                            FamilyTitle = "Nuts/Seeds - Unprepared/Unprocessed (In Shell)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 58,
+                            FamilyCode = 50330000,
+                            FamilyTitle = "Nuts/Seeds - Unprepared/Unprocessed (Perishable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 59,
+                            FamilyCode = 50150000,
+                            FamilyTitle = "Oils/Fats Edible",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 60,
+                            FamilyCode = 50190000,
+                            FamilyTitle = "Prepared/Preserved Foods",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 61,
+                            FamilyCode = 50170000,
+                            FamilyTitle = "Seasonings/Preservatives/Extracts",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 62,
+                            FamilyCode = 50210000,
+                            FamilyTitle = "Tobacco/Cannabis/Smoking Accessories",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 63,
+                            FamilyCode = 50290000,
+                            FamilyTitle = "Vegetables - Unprepared/Unprocessed (Frozen)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 64,
+                            FamilyCode = 50320000,
+                            FamilyTitle = "Vegetables - Unprepared/Unprocessed (Shelf Stable)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 65,
+                            FamilyCode = 50260000,
+                            FamilyTitle = "Vegetables (Non Leaf) - Unprepared/Unprocessed (Fresh)",
+                            SegmentCode = 50000000
+                        },
+                        new
+                        {
+                            ID = 66,
+                            FamilyCode = 63010000,
+                            FamilyTitle = "Footwear",
+                            SegmentCode = 63000000
+                        },
+                        new
+                        {
+                            ID = 67,
+                            FamilyCode = 87020000,
+                            FamilyTitle = "Fuel Storage/Transfer",
+                            SegmentCode = 87000000
+                        },
+                        new
+                        {
+                            ID = 68,
+                            FamilyCode = 87010000,
+                            FamilyTitle = "Fuels/Fuel Additives",
+                            SegmentCode = 87000000
+                        },
+                        new
+                        {
+                            ID = 69,
+                            FamilyCode = 51110000,
+                            FamilyTitle = "Family Planning",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 70,
+                            FamilyCode = 51120000,
+                            FamilyTitle = "Health Enhancement",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 71,
+                            FamilyCode = 51100000,
+                            FamilyTitle = "Health Treatments/Aids",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 72,
+                            FamilyCode = 51140000,
+                            FamilyTitle = "Healthcare Variety Packs",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 73,
+                            FamilyCode = 51130000,
+                            FamilyTitle = "Home Diagnostics",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 74,
+                            FamilyCode = 51150000,
+                            FamilyTitle = "Medical Devices",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 75,
+                            FamilyCode = 51160000,
+                            FamilyTitle = "Pharmaceutical Drugs",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 76,
+                            FamilyCode = 51170000,
+                            FamilyTitle = "Veterinary Healthcare",
+                            SegmentCode = 51000000
+                        },
+                        new
+                        {
+                            ID = 77,
+                            FamilyCode = 72010000,
+                            FamilyTitle = "Major Domestic Appliances",
+                            SegmentCode = 72000000
+                        },
+                        new
+                        {
+                            ID = 78,
+                            FamilyCode = 72020000,
+                            FamilyTitle = "Small Domestic Appliances",
+                            SegmentCode = 72000000
+                        },
+                        new
+                        {
+                            ID = 79,
+                            FamilyCode = 93100000,
+                            FamilyTitle = "Bouquets",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 80,
+                            FamilyCode = 93050000,
+                            FamilyTitle = "Bulbs/Corms/Rhizomes/Tubers",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 81,
+                            FamilyCode = 93010000,
+                            FamilyTitle = "Cut Flowers",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 82,
+                            FamilyCode = 93020000,
+                            FamilyTitle = "Cut Greens",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 83,
+                            FamilyCode = 93030000,
+                            FamilyTitle = "Live Plants (Genus A thru G)",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 84,
+                            FamilyCode = 93040000,
+                            FamilyTitle = "Live Plants (Genus H thru Z)",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 85,
+                            FamilyCode = 93060000,
+                            FamilyTitle = "Plants Variety Packs",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 86,
+                            FamilyCode = 93110000,
+                            FamilyTitle = "Seedlings - Ready to Grow",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 87,
+                            FamilyCode = 93070000,
+                            FamilyTitle = "Seeds/Spores",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 88,
+                            FamilyCode = 93080000,
+                            FamilyTitle = "Shrubs/Trees",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 89,
+                            FamilyCode = 93090000,
+                            FamilyTitle = "Vegetables/Fungi Plants",
+                            SegmentCode = 93000000
+                        },
+                        new
+                        {
+                            ID = 90,
+                            FamilyCode = 75050000,
+                            FamilyTitle = "Baby Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 91,
+                            FamilyCode = 75020000,
+                            FamilyTitle = "Fabric/Textile Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 92,
+                            FamilyCode = 75010000,
+                            FamilyTitle = "Household/Office Furniture",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 93,
+                            FamilyCode = 75030000,
+                            FamilyTitle = "Ornamental Furnishings",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 94,
+                            FamilyCode = 73040000,
+                            FamilyTitle = "Kitchenware",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 95,
+                            FamilyCode = 73050000,
+                            FamilyTitle = "Tableware",
+                            SegmentCode = 75000000
+                        },
+                        new
+                        {
+                            ID = 96,
+                            FamilyCode = 81010000,
+                            FamilyTitle = "Lawn/Garden Supplies",
+                            SegmentCode = 81000000
+                        },
+                        new
+                        {
+                            ID = 97,
+                            FamilyCode = 89020000,
+                            FamilyTitle = "Live Animals",
+                            SegmentCode = 89000000
+                        },
+                        new
+                        {
+                            ID = 98,
+                            FamilyCode = 88030000,
+                            FamilyTitle = "Lubricants Variety Packs",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 99,
+                            FamilyCode = 88010000,
+                            FamilyTitle = "Lubricants/Protective Compounds",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 100,
+                            FamilyCode = 88020000,
+                            FamilyTitle = "Lubricants/Protective Compounds Storage/Transfer",
+                            SegmentCode = 88000000
+                        },
+                        new
+                        {
+                            ID = 101,
+                            FamilyCode = 96010000,
+                            FamilyTitle = "Currency/Postage/Certificates",
+                            SegmentCode = 96000000
+                        },
+                        new
+                        {
+                            ID = 102,
+                            FamilyCode = 61010000,
+                            FamilyTitle = "Musical Instruments/Accessories",
+                            SegmentCode = 61000000
+                        },
+                        new
+                        {
+                            ID = 103,
+                            FamilyCode = 64010000,
+                            FamilyTitle = "Personal Accessories",
+                            SegmentCode = 64000000
+                        },
+                        new
+                        {
+                            ID = 104,
+                            FamilyCode = 10100000,
+                            FamilyTitle = "Pet Care",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 105,
+                            FamilyCode = 10120000,
+                            FamilyTitle = "Pet Care/Food Variety Packs",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 106,
+                            FamilyCode = 10110000,
+                            FamilyTitle = "Pet Food/Drinks",
+                            SegmentCode = 10000000
+                        },
+                        new
+                        {
+                            ID = 107,
+                            FamilyCode = 79010000,
+                            FamilyTitle = "Plumbing/Heating/Ventilation/Air Conditioning",
+                            SegmentCode = 79000000
+                        },
+                        new
+                        {
+                            ID = 108,
+                            FamilyCode = 99010000,
+                            FamilyTitle = "Postmortem Products",
+                            SegmentCode = 99000000
+                        },
+                        new
+                        {
+                            ID = 109,
+                            FamilyCode = 98020000,
+                            FamilyTitle = "Formed Raw Material",
+                            SegmentCode = 98000000
+                        },
+                        new
+                        {
+                            ID = 110,
+                            FamilyCode = 98010000,
+                            FamilyTitle = "Unformed Raw Material",
+                            SegmentCode = 98000000
+                        },
+                        new
+                        {
+                            ID = 111,
+                            FamilyCode = 85010000,
+                            FamilyTitle = "Safety/Protection - DIY",
+                            SegmentCode = 85000000
+                        },
+                        new
+                        {
+                            ID = 112,
+                            FamilyCode = 91050000,
+                            FamilyTitle = "Baby Safety/Security/Surveillance",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 113,
+                            FamilyCode = 91020000,
+                            FamilyTitle = "Environmental Safety/Security",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 114,
+                            FamilyCode = 91030000,
+                            FamilyTitle = "Home/Business Safety/Security/Surveillance",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 115,
+                            FamilyCode = 91010000,
+                            FamilyTitle = "Personal Safety/Security",
+                            SegmentCode = 91000000
+                        },
+                        new
+                        {
+                            ID = 116,
+                            FamilyCode = 95030000,
+                            FamilyTitle = "Cleaning Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 117,
+                            FamilyCode = 95040000,
+                            FamilyTitle = "Communication Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 118,
+                            FamilyCode = 95160000,
+                            FamilyTitle = "Dispensing/Vending Machines",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 119,
+                            FamilyCode = 95050000,
+                            FamilyTitle = "Educational & Entertainment Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 120,
+                            FamilyCode = 95060000,
+                            FamilyTitle = "Energy and Environmental Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 121,
+                            FamilyCode = 95070000,
+                            FamilyTitle = "Financial Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 122,
+                            FamilyCode = 95110000,
+                            FamilyTitle = "Food/Drink and Accommodation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 123,
+                            FamilyCode = 95120000,
+                            FamilyTitle = "Maintenance/Repair and Installation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 124,
+                            FamilyCode = 95130000,
+                            FamilyTitle = "Medical and Beauty Care Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 125,
+                            FamilyCode = 95080000,
+                            FamilyTitle = "Packaging/Storage Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 126,
+                            FamilyCode = 95090000,
+                            FamilyTitle = "Postal Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 127,
+                            FamilyCode = 95100000,
+                            FamilyTitle = "Scientific and Technological Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 128,
+                            FamilyCode = 95140000,
+                            FamilyTitle = "Transportation Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 129,
+                            FamilyCode = 95150000,
+                            FamilyTitle = "Travel Services",
+                            SegmentCode = 95000000
+                        },
+                        new
+                        {
+                            ID = 130,
+                            FamilyCode = 71020000,
+                            FamilyTitle = "Baby Exercisers/Transportation",
+                            SegmentCode = 71000000
+                        },
+                        new
+                        {
+                            ID = 131,
+                            FamilyCode = 71010000,
+                            FamilyTitle = "Sports Equipment",
+                            SegmentCode = 71000000
+                        },
+                        new
+                        {
+                            ID = 132,
+                            FamilyCode = 62050000,
+                            FamilyTitle = "Greeting Cards/Gift Wrap/Occasion Supplies",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 133,
+                            FamilyCode = 62060000,
+                            FamilyTitle = "Stationery/Office Machinery",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 134,
+                            FamilyCode = 62070000,
+                            FamilyTitle = "Stationery/Office Machinery/Occasion Supplies Variety Packs",
+                            SegmentCode = 62000000
+                        },
+                        new
+                        {
+                            ID = 135,
+                            FamilyCode = 92010000,
+                            FamilyTitle = "Storage Bottles/Cylinders/Barrels (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 136,
+                            FamilyCode = 92040000,
+                            FamilyTitle = "Storage/Haulage Aids",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 137,
+                            FamilyCode = 92020000,
+                            FamilyTitle = "Storage/Haulage Boxes/Crates/Trays (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 138,
+                            FamilyCode = 92030000,
+                            FamilyTitle = "Storage/Haulage Freight Containers (Empty)",
+                            SegmentCode = 92000000
+                        },
+                        new
+                        {
+                            ID = 139,
+                            FamilyCode = 60010000,
+                            FamilyTitle = "Textual/Printed/Reference Materials",
+                            SegmentCode = 60000000
+                        },
+                        new
+                        {
+                            ID = 140,
+                            FamilyCode = 84010000,
+                            FamilyTitle = "Tool Storage/Workshop Aids",
+                            SegmentCode = 84000000
+                        },
+                        new
+                        {
+                            ID = 141,
+                            FamilyCode = 80010000,
+                            FamilyTitle = "Tools/Equipment - Hand",
+                            SegmentCode = 80000000
+                        },
+                        new
+                        {
+                            ID = 142,
+                            FamilyCode = 82010000,
+                            FamilyTitle = "Tools/Equipment - Power",
+                            SegmentCode = 82000000
+                        },
+                        new
+                        {
+                            ID = 143,
+                            FamilyCode = 86020000,
+                            FamilyTitle = "Service Provided Gambling Products",
+                            SegmentCode = 86000000
+                        },
+                        new
+                        {
+                            ID = 144,
+                            FamilyCode = 86010000,
+                            FamilyTitle = "Toys/Games",
+                            SegmentCode = 86000000
+                        },
+                        new
+                        {
+                            ID = 145,
+                            FamilyCode = 77040000,
+                            FamilyTitle = "Aircraft",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 146,
+                            FamilyCode = 77010000,
+                            FamilyTitle = "Automotive Accessories and Maintenance",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 147,
+                            FamilyCode = 77030000,
+                            FamilyTitle = "Cars and Motorcycles",
+                            SegmentCode = 77000000
+                        },
+                        new
+                        {
+                            ID = 148,
+                            FamilyCode = 77050000,
+                            FamilyTitle = "Specialty Vehicles",
+                            SegmentCode = 77000000
+                        });
+                });
+
             modelBuilder.Entity("MembershipPortal.data.GCPInformation", b =>
                 {
                     b.Property<int>("ID")
@@ -20904,6 +23635,307 @@ namespace MembershipPortal.core.Migrations
                     b.ToTable("GLNInformations");
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.GTINFee", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("AdditionalFee")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("NumberOfGtins")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RenewalFee")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("GTINFees");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            AdditionalFee = 15000.0,
+                            Description = "1-5",
+                            NumberOfGtins = 5,
+                            Price = 33000.0,
+                            RenewalFee = 10000.0
+                        },
+                        new
+                        {
+                            ID = 2,
+                            AdditionalFee = 24000.0,
+                            Description = "6-10",
+                            NumberOfGtins = 10,
+                            Price = 39000.0,
+                            RenewalFee = 10000.0
+                        },
+                        new
+                        {
+                            ID = 3,
+                            AdditionalFee = 30000.0,
+                            Description = "11-20",
+                            NumberOfGtins = 20,
+                            Price = 45000.0,
+                            RenewalFee = 15000.0
+                        },
+                        new
+                        {
+                            ID = 4,
+                            AdditionalFee = 42000.0,
+                            Description = "21-30",
+                            NumberOfGtins = 30,
+                            Price = 57000.0,
+                            RenewalFee = 25000.0
+                        },
+                        new
+                        {
+                            ID = 5,
+                            AdditionalFee = 54000.0,
+                            Description = "31-40",
+                            NumberOfGtins = 40,
+                            Price = 69000.0,
+                            RenewalFee = 42000.0
+                        },
+                        new
+                        {
+                            ID = 6,
+                            AdditionalFee = 66000.0,
+                            Description = "41-50",
+                            NumberOfGtins = 50,
+                            Price = 81000.0,
+                            RenewalFee = 54000.0
+                        },
+                        new
+                        {
+                            ID = 7,
+                            AdditionalFee = 78000.0,
+                            Description = "51-60",
+                            NumberOfGtins = 60,
+                            Price = 93000.0,
+                            RenewalFee = 66000.0
+                        },
+                        new
+                        {
+                            ID = 8,
+                            AdditionalFee = 102000.0,
+                            Description = "61-70",
+                            NumberOfGtins = 70,
+                            Price = 117000.0,
+                            RenewalFee = 90000.0
+                        },
+                        new
+                        {
+                            ID = 9,
+                            AdditionalFee = 13200.0,
+                            Description = "71-80",
+                            NumberOfGtins = 80,
+                            Price = 147000.0,
+                            RenewalFee = 120000.0
+                        },
+                        new
+                        {
+                            ID = 10,
+                            AdditionalFee = 162000.0,
+                            Description = "81-100",
+                            NumberOfGtins = 100,
+                            Price = 177000.0,
+                            RenewalFee = 150000.0
+                        },
+                        new
+                        {
+                            ID = 11,
+                            AdditionalFee = 192000.0,
+                            Description = "101-150",
+                            NumberOfGtins = 150,
+                            Price = 207000.0,
+                            RenewalFee = 180000.0
+                        },
+                        new
+                        {
+                            ID = 12,
+                            AdditionalFee = 222000.0,
+                            Description = "151-200",
+                            NumberOfGtins = 200,
+                            Price = 237000.0,
+                            RenewalFee = 210000.0
+                        },
+                        new
+                        {
+                            ID = 13,
+                            AdditionalFee = 252000.0,
+                            Description = "201-300",
+                            NumberOfGtins = 300,
+                            Price = 267000.0,
+                            RenewalFee = 240000.0
+                        },
+                        new
+                        {
+                            ID = 14,
+                            AdditionalFee = 282000.0,
+                            Description = "301-400",
+                            NumberOfGtins = 400,
+                            Price = 297000.0,
+                            RenewalFee = 270000.0
+                        },
+                        new
+                        {
+                            ID = 15,
+                            AdditionalFee = 312000.0,
+                            Description = "401-1000",
+                            NumberOfGtins = 1000,
+                            Price = 375000.0,
+                            RenewalFee = 300000.0
+                        },
+                        new
+                        {
+                            ID = 16,
+                            AdditionalFee = 0.0,
+                            Description = "2000 plus",
+                            NumberOfGtins = 2000,
+                            Price = 0.0,
+                            RenewalFee = 400000.0
+                        },
+                        new
+                        {
+                            ID = 19,
+                            AdditionalFee = 20000.0,
+                            Description = "01-10",
+                            NumberOfGtins = 10,
+                            Price = 32500.0,
+                            RenewalFee = 10000.0
+                        },
+                        new
+                        {
+                            ID = 20,
+                            AdditionalFee = 25000.0,
+                            Description = "11-20",
+                            NumberOfGtins = 20,
+                            Price = 37500.0,
+                            RenewalFee = 15000.0
+                        },
+                        new
+                        {
+                            ID = 21,
+                            AdditionalFee = 35000.0,
+                            Description = "21-30",
+                            NumberOfGtins = 30,
+                            Price = 47500.0,
+                            RenewalFee = 25000.0
+                        },
+                        new
+                        {
+                            ID = 22,
+                            AdditionalFee = 45000.0,
+                            Description = "31-40",
+                            NumberOfGtins = 40,
+                            Price = 57500.0,
+                            RenewalFee = 35000.0
+                        },
+                        new
+                        {
+                            ID = 23,
+                            AdditionalFee = 55000.0,
+                            Description = "41-50",
+                            NumberOfGtins = 50,
+                            Price = 67500.0,
+                            RenewalFee = 45000.0
+                        },
+                        new
+                        {
+                            ID = 24,
+                            AdditionalFee = 65000.0,
+                            Description = "51-60",
+                            NumberOfGtins = 60,
+                            Price = 77500.0,
+                            RenewalFee = 55000.0
+                        },
+                        new
+                        {
+                            ID = 25,
+                            AdditionalFee = 85000.0,
+                            Description = "61-70",
+                            NumberOfGtins = 70,
+                            Price = 97500.0,
+                            RenewalFee = 75000.0
+                        },
+                        new
+                        {
+                            ID = 26,
+                            AdditionalFee = 110000.0,
+                            Description = "71-80",
+                            NumberOfGtins = 80,
+                            Price = 122500.0,
+                            RenewalFee = 100000.0
+                        },
+                        new
+                        {
+                            ID = 27,
+                            AdditionalFee = 135000.0,
+                            Description = "81-100",
+                            NumberOfGtins = 100,
+                            Price = 147500.0,
+                            RenewalFee = 125000.0
+                        },
+                        new
+                        {
+                            ID = 28,
+                            AdditionalFee = 160000.0,
+                            Description = "101-150",
+                            NumberOfGtins = 150,
+                            Price = 172500.0,
+                            RenewalFee = 150000.0
+                        },
+                        new
+                        {
+                            ID = 29,
+                            AdditionalFee = 185000.0,
+                            Description = "151-200",
+                            NumberOfGtins = 200,
+                            Price = 197500.0,
+                            RenewalFee = 175000.0
+                        },
+                        new
+                        {
+                            ID = 30,
+                            AdditionalFee = 210000.0,
+                            Description = "201-300",
+                            NumberOfGtins = 300,
+                            Price = 222500.0,
+                            RenewalFee = 200000.0
+                        },
+                        new
+                        {
+                            ID = 31,
+                            AdditionalFee = 235000.0,
+                            Description = "301-400",
+                            NumberOfGtins = 400,
+                            Price = 247500.0,
+                            RenewalFee = 225000.0
+                        },
+                        new
+                        {
+                            ID = 32,
+                            AdditionalFee = 260000.0,
+                            Description = "401-1000",
+                            NumberOfGtins = 1000,
+                            Price = 312500.0,
+                            RenewalFee = 250000.0
+                        });
+                });
+
             modelBuilder.Entity("MembershipPortal.data.GTINInformation", b =>
                 {
                     b.Property<int>("id")
@@ -20911,8 +23943,8 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("checksum")
-                        .HasColumnType("int");
+                    b.Property<string>("checksum")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("companyprefix")
                         .HasMaxLength(50)
@@ -20941,6 +23973,91 @@ namespace MembershipPortal.core.Migrations
                     b.HasKey("id");
 
                     b.ToTable("GTINInformations");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.GTINRequest", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("approvaldate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("approvedby")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("assignedby")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("assigneddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dateofrequest")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("gtincount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("gtinfee_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("imagerequest_id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isapproved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isgcpassigned")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("requesttype")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("totalcost")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("company_id");
+
+                    b.HasIndex("gtinfee_id");
+
+                    b.ToTable("GTINRequests");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.HeardAboutUs", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("method")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("HeardAboutUs");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.ITFInformation", b =>
@@ -20973,6 +24090,1598 @@ namespace MembershipPortal.core.Migrations
                     b.HasKey("id");
 
                     b.ToTable("ITFInformations");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ImageBank", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("createdOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("imageReserve")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("lastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("registrationid")
+                        .IsUnique();
+
+                    b.ToTable("ImageBanks");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ImageRequest", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("approvedby")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("createdon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("imagecount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("imagetype")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("isapproved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationid")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("requestedate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("updatedon")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ImageRequests");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.LocalGovt", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("state_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("state_id");
+
+                    b.ToTable("LocalGovts");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "Afghanistan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "Aland Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 3,
+                            name = "Albania",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 4,
+                            name = "Algeria",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 5,
+                            name = "American Samoa",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 6,
+                            name = "Andorra",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 7,
+                            name = "Angola",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 8,
+                            name = "Anguilla",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 9,
+                            name = "Antarctica",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 10,
+                            name = "Antigua And Barbuda",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 11,
+                            name = "Argentina",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 12,
+                            name = "Armenia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 13,
+                            name = "Aruba",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 14,
+                            name = "Australia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 15,
+                            name = "Austria",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 16,
+                            name = "Azerbaijan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 17,
+                            name = "Bahamas The",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 18,
+                            name = "Bahrain",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 19,
+                            name = "Bangladesh",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 20,
+                            name = "Barbados",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 21,
+                            name = "Belarus",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 22,
+                            name = "Belgium",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 23,
+                            name = "Belize",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 24,
+                            name = "Benin",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 25,
+                            name = "Bermuda",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 26,
+                            name = "Bhutan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 27,
+                            name = "Bolivia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 28,
+                            name = "Bosnia and Herzegovina",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 29,
+                            name = "Botswana",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 30,
+                            name = "Bouvet Island",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 31,
+                            name = "Brazil",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 32,
+                            name = "British Indian Ocean Territory",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 33,
+                            name = "Brunei",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 34,
+                            name = "Bulgaria",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 35,
+                            name = "Burkina Faso",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 36,
+                            name = "Burundi",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 37,
+                            name = "Cambodia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 38,
+                            name = "Cameroon",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 39,
+                            name = "Canada",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 40,
+                            name = "Cape Verde",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 41,
+                            name = "Cayman Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 42,
+                            name = "Central African Republic",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 43,
+                            name = "Chad",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 44,
+                            name = "Chile",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 45,
+                            name = "China",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 46,
+                            name = "Christmas Island",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 47,
+                            name = "Cocos (Keeling) Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 48,
+                            name = "Colombia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 49,
+                            name = "Comoros",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 50,
+                            name = "Congo",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 51,
+                            name = "Congo The Democratic Republic Of The",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 52,
+                            name = "Cook Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 53,
+                            name = "Costa Rica",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 54,
+                            name = "Cote D'Ivoire (Ivory Coast)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 55,
+                            name = "Croatia (Hrvatska)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 56,
+                            name = "Cuba",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 57,
+                            name = "Cyprus",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 58,
+                            name = "Czech Republic",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 59,
+                            name = "Denmark",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 60,
+                            name = "Djibouti",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 61,
+                            name = "Dominica",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 62,
+                            name = "Dominican Republic",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 63,
+                            name = "East Timor",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 64,
+                            name = "Ecuador",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 65,
+                            name = "Egypt",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 66,
+                            name = "El Salvador",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 67,
+                            name = "Equatorial Guinea",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 68,
+                            name = "Eritrea",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 69,
+                            name = "Estonia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 70,
+                            name = "Ethiopia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 71,
+                            name = "Falkland Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 72,
+                            name = "Faroe Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 73,
+                            name = "Fiji Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 74,
+                            name = "Finland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 75,
+                            name = "France",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 76,
+                            name = "French Guiana",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 77,
+                            name = "French Polynesia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 78,
+                            name = "French Southern Territories",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 79,
+                            name = "Gabon",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 80,
+                            name = "Gambia The",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 81,
+                            name = "Georgia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 82,
+                            name = "Germany",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 83,
+                            name = "Ghana",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 84,
+                            name = "Gibraltar",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 85,
+                            name = "Greece",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 86,
+                            name = "Greenland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 87,
+                            name = "Grenada",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 88,
+                            name = "Guadeloupe",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 89,
+                            name = "Guam",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 90,
+                            name = "Guatemala",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 91,
+                            name = "Guernsey and Alderney",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 92,
+                            name = "Guinea",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 93,
+                            name = "Guinea-Bissau",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 94,
+                            name = "Guyana",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 95,
+                            name = "Haiti",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 96,
+                            name = "Heard Island and McDonald Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 97,
+                            name = "Honduras",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 98,
+                            name = "Hong Kong S.A.R.",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 99,
+                            name = "Hungary",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 100,
+                            name = "Iceland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 101,
+                            name = "India",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 102,
+                            name = "Indonesia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 103,
+                            name = "Iran",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 104,
+                            name = "Iraq",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 105,
+                            name = "Ireland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 106,
+                            name = "Israel",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 107,
+                            name = "Italy",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 108,
+                            name = "Jamaica",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 109,
+                            name = "Japan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 110,
+                            name = "Jersey",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 111,
+                            name = "Jordan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 112,
+                            name = "Kazakhstan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 113,
+                            name = "Kenya",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 114,
+                            name = "Kiribati",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 115,
+                            name = "Korea North",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 116,
+                            name = "Korea South",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 117,
+                            name = "Kuwait",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 118,
+                            name = "Kyrgyzstan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 119,
+                            name = "Laos",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 120,
+                            name = "Latvia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 121,
+                            name = "Lebanon",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 122,
+                            name = "Lesotho",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 123,
+                            name = "Liberia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 124,
+                            name = "Libya",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 125,
+                            name = "Liechtenstein",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 126,
+                            name = "Lithuania",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 127,
+                            name = "Luxembourg",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 128,
+                            name = "Macau S.A.R.",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 129,
+                            name = "Macedonia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 130,
+                            name = "Madagascar",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 131,
+                            name = "Malawi",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 132,
+                            name = "Malaysia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 133,
+                            name = "Maldives",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 134,
+                            name = "Mali",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 135,
+                            name = "Malta",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 136,
+                            name = "Man (Isle of)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 137,
+                            name = "Marshall Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 138,
+                            name = "Martinique",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 139,
+                            name = "Mauritania",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 140,
+                            name = "Mauritius",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 141,
+                            name = "Mayotte",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 142,
+                            name = "Mexico",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 143,
+                            name = "Micronesia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 144,
+                            name = "Moldova",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 145,
+                            name = "Monaco",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 146,
+                            name = "Mongolia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 147,
+                            name = "Montenegro",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 148,
+                            name = "Montserrat",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 149,
+                            name = "Morocco",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 150,
+                            name = "Mozambique",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 151,
+                            name = "Myanmar",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 152,
+                            name = "Namibia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 153,
+                            name = "Nauru",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 154,
+                            name = "Nepal",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 155,
+                            name = "Bonaire, Sint Eustatius and Saba",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 156,
+                            name = "Netherlands The",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 157,
+                            name = "New Caledonia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 158,
+                            name = "New Zealand",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 159,
+                            name = "Nicaragua",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 160,
+                            name = "Niger",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 161,
+                            name = "Nigeria",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 162,
+                            name = "Niue",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 163,
+                            name = "Norfolk Island",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 164,
+                            name = "Northern Mariana Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 165,
+                            name = "Norway",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 166,
+                            name = "Oman",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 167,
+                            name = "Pakistan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 168,
+                            name = "Palau",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 169,
+                            name = "Palestinian Territory Occupied",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 170,
+                            name = "Panama",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 171,
+                            name = "Papua new Guinea",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 172,
+                            name = "Paraguay",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 173,
+                            name = "Peru",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 174,
+                            name = "Philippines",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 175,
+                            name = "Pitcairn Island",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 176,
+                            name = "Poland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 177,
+                            name = "Portugal",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 178,
+                            name = "Puerto Rico",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 179,
+                            name = "Qatar",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 180,
+                            name = "Reunion",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 181,
+                            name = "Romania",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 182,
+                            name = "Russia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 183,
+                            name = "Rwanda",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 184,
+                            name = "Saint Helena",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 185,
+                            name = "Saint Kitts And Nevis",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 186,
+                            name = "Saint Lucia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 187,
+                            name = "Saint Pierre and Miquelon",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 188,
+                            name = "Saint Vincent And The Grenadines",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 189,
+                            name = "Saint-Barthelemy",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 190,
+                            name = "Saint-Martin (French part)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 191,
+                            name = "Samoa",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 192,
+                            name = "San Marino",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 193,
+                            name = "Sao Tome and Principe",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 194,
+                            name = "Saudi Arabia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 195,
+                            name = "Senegal",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 196,
+                            name = "Serbia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 197,
+                            name = "Seychelles",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 198,
+                            name = "Sierra Leone",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 199,
+                            name = "Singapore",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 200,
+                            name = "Slovakia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 201,
+                            name = "Slovenia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 202,
+                            name = "Solomon Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 203,
+                            name = "Somalia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 204,
+                            name = "South Africa",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 205,
+                            name = "South Georgia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 206,
+                            name = "South Sudan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 207,
+                            name = "Spain",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 208,
+                            name = "Sri Lanka",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 209,
+                            name = "Sudan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 210,
+                            name = "Suriname",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 211,
+                            name = "Svalbard And Jan Mayen Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 212,
+                            name = "Swaziland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 213,
+                            name = "Sweden",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 214,
+                            name = "Switzerland",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 215,
+                            name = "Syria",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 216,
+                            name = "Taiwan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 217,
+                            name = "Tajikistan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 218,
+                            name = "Tanzania",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 219,
+                            name = "Thailand",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 220,
+                            name = "Togo",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 221,
+                            name = "Tokelau",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 222,
+                            name = "Tonga",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 223,
+                            name = "Trinidad And Tobago",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 224,
+                            name = "Tunisia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 225,
+                            name = "Turkey",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 226,
+                            name = "Turkmenistan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 227,
+                            name = "Turks And Caicos Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 228,
+                            name = "Tuvalu",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 229,
+                            name = "Uganda",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 230,
+                            name = "Ukraine",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 231,
+                            name = "United Arab Emirates",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 232,
+                            name = "United Kingdom",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 233,
+                            name = "United States",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 234,
+                            name = "United States Minor Outlying Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 235,
+                            name = "Uruguay",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 236,
+                            name = "Uzbekistan",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 237,
+                            name = "Vanuatu",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 238,
+                            name = "Vatican City State (Holy See)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 239,
+                            name = "Venezuela",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 240,
+                            name = "Vietnam",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 241,
+                            name = "Virgin Islands (British)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 242,
+                            name = "Virgin Islands (US)",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 243,
+                            name = "Wallis And Futuna Islands",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 244,
+                            name = "Western Sahara",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 245,
+                            name = "Yemen",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 246,
+                            name = "Zambia",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 247,
+                            name = "Zimbabwe",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 248,
+                            name = "Kosovo",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 249,
+                            name = "Curaçao",
+                            state_id = 0
+                        },
+                        new
+                        {
+                            id = 250,
+                            name = "Sint Maarten (Dutch part)",
+                            state_id = 0
+                        });
                 });
 
             modelBuilder.Entity("MembershipPortal.data.NetContent", b =>
@@ -22326,6 +27035,15 @@ namespace MembershipPortal.core.Migrations
                     b.Property<string>("ATCCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ActiveIngredient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DirectionOfUse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FunctionalName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GenericName")
                         .HasColumnType("nvarchar(max)");
 
@@ -22351,6 +27069,9 @@ namespace MembershipPortal.core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RouteOfAdministration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShelfLife")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Strength")
@@ -22429,6 +27150,10 @@ namespace MembershipPortal.core.Migrations
                     b.Property<bool>("iscompleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("leftimage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<int>("lifespan")
                         .HasColumnType("int");
 
@@ -22452,6 +27177,10 @@ namespace MembershipPortal.core.Migrations
                     b.Property<double>("netweight")
                         .HasColumnType("float");
 
+                    b.Property<string>("otherimage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<int?>("packaginglevel_id")
                         .HasColumnType("int");
 
@@ -22466,11 +27195,15 @@ namespace MembershipPortal.core.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("rightimage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("storageinstruction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("targetmarket_id")
-                        .HasColumnType("int");
+                    b.Property<string>("targetmarket_id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -22487,9 +27220,1872 @@ namespace MembershipPortal.core.Migrations
 
                     b.HasIndex("packagingtype_id");
 
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ProductTargetMarket", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("product_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("targetmarket_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("datecreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("registrationid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id", "product_id", "targetmarket_id");
+
+                    b.HasIndex("product_id");
+
                     b.HasIndex("targetmarket_id");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProductTargetMarkets");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.SegmentCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("SegmentCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SegmentDefinition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SegmentTitle")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SegmentCode")
+                        .IsUnique();
+
+                    b.ToTable("SegmentCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            SegmentCode = 70000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Arts/Crafts/Needlework"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            SegmentCode = 68000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Audio Visual/Photography"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            SegmentCode = 53000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Beauty/Personal Care/Hygiene"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            SegmentCode = 83000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Building Products"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            SegmentCode = 74000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Camping"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            SegmentCode = 47000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Cleaning/Hygiene Products"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            SegmentCode = 67000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Clothing"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            SegmentCode = 66000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Communications"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            SegmentCode = 65000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Computing"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            SegmentCode = 94000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Crops"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            SegmentCode = 58000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Cross Segment"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            SegmentCode = 78000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Electrical Supplies"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            SegmentCode = 50000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Food/Beverage/Tobacco"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            SegmentCode = 63000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Footwear"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            SegmentCode = 87000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Fuels/Gases"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            SegmentCode = 51000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Healthcare"
+                        },
+                        new
+                        {
+                            ID = 17,
+                            SegmentCode = 72000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Home Appliances"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            SegmentCode = 93000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Horticulture Plants"
+                        },
+                        new
+                        {
+                            ID = 19,
+                            SegmentCode = 75000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Household/Office Furniture/Furnishings"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            SegmentCode = 73000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Kitchenware and Tableware"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            SegmentCode = 81000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Lawn/Garden Supplies"
+                        },
+                        new
+                        {
+                            ID = 22,
+                            SegmentCode = 89000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Live Animals"
+                        },
+                        new
+                        {
+                            ID = 23,
+                            SegmentCode = 88000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Lubricants"
+                        },
+                        new
+                        {
+                            ID = 24,
+                            SegmentCode = 96000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Monetary Assets"
+                        },
+                        new
+                        {
+                            ID = 25,
+                            SegmentCode = 61000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Music"
+                        },
+                        new
+                        {
+                            ID = 26,
+                            SegmentCode = 64000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Personal Accessories"
+                        },
+                        new
+                        {
+                            ID = 27,
+                            SegmentCode = 10000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Pet Care/Food"
+                        },
+                        new
+                        {
+                            ID = 28,
+                            SegmentCode = 79000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Plumbing/Heating/Ventilation/Air Conditioning"
+                        },
+                        new
+                        {
+                            ID = 29,
+                            SegmentCode = 98000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Raw Materials (Non Food)"
+                        },
+                        new
+                        {
+                            ID = 30,
+                            SegmentCode = 85000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Safety/Protection - DIY"
+                        },
+                        new
+                        {
+                            ID = 31,
+                            SegmentCode = 91000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Safety/Security/Surveillance"
+                        },
+                        new
+                        {
+                            ID = 32,
+                            SegmentCode = 95000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Services/Vending Machines"
+                        },
+                        new
+                        {
+                            ID = 33,
+                            SegmentCode = 71000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Sports Equipment"
+                        },
+                        new
+                        {
+                            ID = 34,
+                            SegmentCode = 62000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Stationery/Office Machinery/Occasion Supplies"
+                        },
+                        new
+                        {
+                            ID = 35,
+                            SegmentCode = 92000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Storage/Haulage Containers"
+                        },
+                        new
+                        {
+                            ID = 36,
+                            SegmentCode = 60000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Textual/Printed/Reference Materials"
+                        },
+                        new
+                        {
+                            ID = 37,
+                            SegmentCode = 84000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tool Storage/Workshop Aids"
+                        },
+                        new
+                        {
+                            ID = 38,
+                            SegmentCode = 80000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tools/Equipment - Hand"
+                        },
+                        new
+                        {
+                            ID = 39,
+                            SegmentCode = 82000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Tools/Equipment - Power"
+                        },
+                        new
+                        {
+                            ID = 40,
+                            SegmentCode = 86000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Toys/Games"
+                        },
+                        new
+                        {
+                            ID = 41,
+                            SegmentCode = 77000000,
+                            SegmentDefinition = "",
+                            SegmentTitle = "Vehicle"
+                        });
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.State", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("country_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("country_id");
+
+                    b.ToTable("States");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            country_id = 0,
+                            name = "Afghanistan"
+                        },
+                        new
+                        {
+                            id = 2,
+                            country_id = 0,
+                            name = "Aland Islands"
+                        },
+                        new
+                        {
+                            id = 3,
+                            country_id = 0,
+                            name = "Albania"
+                        },
+                        new
+                        {
+                            id = 4,
+                            country_id = 0,
+                            name = "Algeria"
+                        },
+                        new
+                        {
+                            id = 5,
+                            country_id = 0,
+                            name = "American Samoa"
+                        },
+                        new
+                        {
+                            id = 6,
+                            country_id = 0,
+                            name = "Andorra"
+                        },
+                        new
+                        {
+                            id = 7,
+                            country_id = 0,
+                            name = "Angola"
+                        },
+                        new
+                        {
+                            id = 8,
+                            country_id = 0,
+                            name = "Anguilla"
+                        },
+                        new
+                        {
+                            id = 9,
+                            country_id = 0,
+                            name = "Antarctica"
+                        },
+                        new
+                        {
+                            id = 10,
+                            country_id = 0,
+                            name = "Antigua And Barbuda"
+                        },
+                        new
+                        {
+                            id = 11,
+                            country_id = 0,
+                            name = "Argentina"
+                        },
+                        new
+                        {
+                            id = 12,
+                            country_id = 0,
+                            name = "Armenia"
+                        },
+                        new
+                        {
+                            id = 13,
+                            country_id = 0,
+                            name = "Aruba"
+                        },
+                        new
+                        {
+                            id = 14,
+                            country_id = 0,
+                            name = "Australia"
+                        },
+                        new
+                        {
+                            id = 15,
+                            country_id = 0,
+                            name = "Austria"
+                        },
+                        new
+                        {
+                            id = 16,
+                            country_id = 0,
+                            name = "Azerbaijan"
+                        },
+                        new
+                        {
+                            id = 17,
+                            country_id = 0,
+                            name = "Bahamas The"
+                        },
+                        new
+                        {
+                            id = 18,
+                            country_id = 0,
+                            name = "Bahrain"
+                        },
+                        new
+                        {
+                            id = 19,
+                            country_id = 0,
+                            name = "Bangladesh"
+                        },
+                        new
+                        {
+                            id = 20,
+                            country_id = 0,
+                            name = "Barbados"
+                        },
+                        new
+                        {
+                            id = 21,
+                            country_id = 0,
+                            name = "Belarus"
+                        },
+                        new
+                        {
+                            id = 22,
+                            country_id = 0,
+                            name = "Belgium"
+                        },
+                        new
+                        {
+                            id = 23,
+                            country_id = 0,
+                            name = "Belize"
+                        },
+                        new
+                        {
+                            id = 24,
+                            country_id = 0,
+                            name = "Benin"
+                        },
+                        new
+                        {
+                            id = 25,
+                            country_id = 0,
+                            name = "Bermuda"
+                        },
+                        new
+                        {
+                            id = 26,
+                            country_id = 0,
+                            name = "Bhutan"
+                        },
+                        new
+                        {
+                            id = 27,
+                            country_id = 0,
+                            name = "Bolivia"
+                        },
+                        new
+                        {
+                            id = 28,
+                            country_id = 0,
+                            name = "Bosnia and Herzegovina"
+                        },
+                        new
+                        {
+                            id = 29,
+                            country_id = 0,
+                            name = "Botswana"
+                        },
+                        new
+                        {
+                            id = 30,
+                            country_id = 0,
+                            name = "Bouvet Island"
+                        },
+                        new
+                        {
+                            id = 31,
+                            country_id = 0,
+                            name = "Brazil"
+                        },
+                        new
+                        {
+                            id = 32,
+                            country_id = 0,
+                            name = "British Indian Ocean Territory"
+                        },
+                        new
+                        {
+                            id = 33,
+                            country_id = 0,
+                            name = "Brunei"
+                        },
+                        new
+                        {
+                            id = 34,
+                            country_id = 0,
+                            name = "Bulgaria"
+                        },
+                        new
+                        {
+                            id = 35,
+                            country_id = 0,
+                            name = "Burkina Faso"
+                        },
+                        new
+                        {
+                            id = 36,
+                            country_id = 0,
+                            name = "Burundi"
+                        },
+                        new
+                        {
+                            id = 37,
+                            country_id = 0,
+                            name = "Cambodia"
+                        },
+                        new
+                        {
+                            id = 38,
+                            country_id = 0,
+                            name = "Cameroon"
+                        },
+                        new
+                        {
+                            id = 39,
+                            country_id = 0,
+                            name = "Canada"
+                        },
+                        new
+                        {
+                            id = 40,
+                            country_id = 0,
+                            name = "Cape Verde"
+                        },
+                        new
+                        {
+                            id = 41,
+                            country_id = 0,
+                            name = "Cayman Islands"
+                        },
+                        new
+                        {
+                            id = 42,
+                            country_id = 0,
+                            name = "Central African Republic"
+                        },
+                        new
+                        {
+                            id = 43,
+                            country_id = 0,
+                            name = "Chad"
+                        },
+                        new
+                        {
+                            id = 44,
+                            country_id = 0,
+                            name = "Chile"
+                        },
+                        new
+                        {
+                            id = 45,
+                            country_id = 0,
+                            name = "China"
+                        },
+                        new
+                        {
+                            id = 46,
+                            country_id = 0,
+                            name = "Christmas Island"
+                        },
+                        new
+                        {
+                            id = 47,
+                            country_id = 0,
+                            name = "Cocos (Keeling) Islands"
+                        },
+                        new
+                        {
+                            id = 48,
+                            country_id = 0,
+                            name = "Colombia"
+                        },
+                        new
+                        {
+                            id = 49,
+                            country_id = 0,
+                            name = "Comoros"
+                        },
+                        new
+                        {
+                            id = 50,
+                            country_id = 0,
+                            name = "Congo"
+                        },
+                        new
+                        {
+                            id = 51,
+                            country_id = 0,
+                            name = "Congo The Democratic Republic Of The"
+                        },
+                        new
+                        {
+                            id = 52,
+                            country_id = 0,
+                            name = "Cook Islands"
+                        },
+                        new
+                        {
+                            id = 53,
+                            country_id = 0,
+                            name = "Costa Rica"
+                        },
+                        new
+                        {
+                            id = 54,
+                            country_id = 0,
+                            name = "Cote D'Ivoire (Ivory Coast)"
+                        },
+                        new
+                        {
+                            id = 55,
+                            country_id = 0,
+                            name = "Croatia (Hrvatska)"
+                        },
+                        new
+                        {
+                            id = 56,
+                            country_id = 0,
+                            name = "Cuba"
+                        },
+                        new
+                        {
+                            id = 57,
+                            country_id = 0,
+                            name = "Cyprus"
+                        },
+                        new
+                        {
+                            id = 58,
+                            country_id = 0,
+                            name = "Czech Republic"
+                        },
+                        new
+                        {
+                            id = 59,
+                            country_id = 0,
+                            name = "Denmark"
+                        },
+                        new
+                        {
+                            id = 60,
+                            country_id = 0,
+                            name = "Djibouti"
+                        },
+                        new
+                        {
+                            id = 61,
+                            country_id = 0,
+                            name = "Dominica"
+                        },
+                        new
+                        {
+                            id = 62,
+                            country_id = 0,
+                            name = "Dominican Republic"
+                        },
+                        new
+                        {
+                            id = 63,
+                            country_id = 0,
+                            name = "East Timor"
+                        },
+                        new
+                        {
+                            id = 64,
+                            country_id = 0,
+                            name = "Ecuador"
+                        },
+                        new
+                        {
+                            id = 65,
+                            country_id = 0,
+                            name = "Egypt"
+                        },
+                        new
+                        {
+                            id = 66,
+                            country_id = 0,
+                            name = "El Salvador"
+                        },
+                        new
+                        {
+                            id = 67,
+                            country_id = 0,
+                            name = "Equatorial Guinea"
+                        },
+                        new
+                        {
+                            id = 68,
+                            country_id = 0,
+                            name = "Eritrea"
+                        },
+                        new
+                        {
+                            id = 69,
+                            country_id = 0,
+                            name = "Estonia"
+                        },
+                        new
+                        {
+                            id = 70,
+                            country_id = 0,
+                            name = "Ethiopia"
+                        },
+                        new
+                        {
+                            id = 71,
+                            country_id = 0,
+                            name = "Falkland Islands"
+                        },
+                        new
+                        {
+                            id = 72,
+                            country_id = 0,
+                            name = "Faroe Islands"
+                        },
+                        new
+                        {
+                            id = 73,
+                            country_id = 0,
+                            name = "Fiji Islands"
+                        },
+                        new
+                        {
+                            id = 74,
+                            country_id = 0,
+                            name = "Finland"
+                        },
+                        new
+                        {
+                            id = 75,
+                            country_id = 0,
+                            name = "France"
+                        },
+                        new
+                        {
+                            id = 76,
+                            country_id = 0,
+                            name = "French Guiana"
+                        },
+                        new
+                        {
+                            id = 77,
+                            country_id = 0,
+                            name = "French Polynesia"
+                        },
+                        new
+                        {
+                            id = 78,
+                            country_id = 0,
+                            name = "French Southern Territories"
+                        },
+                        new
+                        {
+                            id = 79,
+                            country_id = 0,
+                            name = "Gabon"
+                        },
+                        new
+                        {
+                            id = 80,
+                            country_id = 0,
+                            name = "Gambia The"
+                        },
+                        new
+                        {
+                            id = 81,
+                            country_id = 0,
+                            name = "Georgia"
+                        },
+                        new
+                        {
+                            id = 82,
+                            country_id = 0,
+                            name = "Germany"
+                        },
+                        new
+                        {
+                            id = 83,
+                            country_id = 0,
+                            name = "Ghana"
+                        },
+                        new
+                        {
+                            id = 84,
+                            country_id = 0,
+                            name = "Gibraltar"
+                        },
+                        new
+                        {
+                            id = 85,
+                            country_id = 0,
+                            name = "Greece"
+                        },
+                        new
+                        {
+                            id = 86,
+                            country_id = 0,
+                            name = "Greenland"
+                        },
+                        new
+                        {
+                            id = 87,
+                            country_id = 0,
+                            name = "Grenada"
+                        },
+                        new
+                        {
+                            id = 88,
+                            country_id = 0,
+                            name = "Guadeloupe"
+                        },
+                        new
+                        {
+                            id = 89,
+                            country_id = 0,
+                            name = "Guam"
+                        },
+                        new
+                        {
+                            id = 90,
+                            country_id = 0,
+                            name = "Guatemala"
+                        },
+                        new
+                        {
+                            id = 91,
+                            country_id = 0,
+                            name = "Guernsey and Alderney"
+                        },
+                        new
+                        {
+                            id = 92,
+                            country_id = 0,
+                            name = "Guinea"
+                        },
+                        new
+                        {
+                            id = 93,
+                            country_id = 0,
+                            name = "Guinea-Bissau"
+                        },
+                        new
+                        {
+                            id = 94,
+                            country_id = 0,
+                            name = "Guyana"
+                        },
+                        new
+                        {
+                            id = 95,
+                            country_id = 0,
+                            name = "Haiti"
+                        },
+                        new
+                        {
+                            id = 96,
+                            country_id = 0,
+                            name = "Heard Island and McDonald Islands"
+                        },
+                        new
+                        {
+                            id = 97,
+                            country_id = 0,
+                            name = "Honduras"
+                        },
+                        new
+                        {
+                            id = 98,
+                            country_id = 0,
+                            name = "Hong Kong S.A.R."
+                        },
+                        new
+                        {
+                            id = 99,
+                            country_id = 0,
+                            name = "Hungary"
+                        },
+                        new
+                        {
+                            id = 100,
+                            country_id = 0,
+                            name = "Iceland"
+                        },
+                        new
+                        {
+                            id = 101,
+                            country_id = 0,
+                            name = "India"
+                        },
+                        new
+                        {
+                            id = 102,
+                            country_id = 0,
+                            name = "Indonesia"
+                        },
+                        new
+                        {
+                            id = 103,
+                            country_id = 0,
+                            name = "Iran"
+                        },
+                        new
+                        {
+                            id = 104,
+                            country_id = 0,
+                            name = "Iraq"
+                        },
+                        new
+                        {
+                            id = 105,
+                            country_id = 0,
+                            name = "Ireland"
+                        },
+                        new
+                        {
+                            id = 106,
+                            country_id = 0,
+                            name = "Israel"
+                        },
+                        new
+                        {
+                            id = 107,
+                            country_id = 0,
+                            name = "Italy"
+                        },
+                        new
+                        {
+                            id = 108,
+                            country_id = 0,
+                            name = "Jamaica"
+                        },
+                        new
+                        {
+                            id = 109,
+                            country_id = 0,
+                            name = "Japan"
+                        },
+                        new
+                        {
+                            id = 110,
+                            country_id = 0,
+                            name = "Jersey"
+                        },
+                        new
+                        {
+                            id = 111,
+                            country_id = 0,
+                            name = "Jordan"
+                        },
+                        new
+                        {
+                            id = 112,
+                            country_id = 0,
+                            name = "Kazakhstan"
+                        },
+                        new
+                        {
+                            id = 113,
+                            country_id = 0,
+                            name = "Kenya"
+                        },
+                        new
+                        {
+                            id = 114,
+                            country_id = 0,
+                            name = "Kiribati"
+                        },
+                        new
+                        {
+                            id = 115,
+                            country_id = 0,
+                            name = "Korea North"
+                        },
+                        new
+                        {
+                            id = 116,
+                            country_id = 0,
+                            name = "Korea South"
+                        },
+                        new
+                        {
+                            id = 117,
+                            country_id = 0,
+                            name = "Kuwait"
+                        },
+                        new
+                        {
+                            id = 118,
+                            country_id = 0,
+                            name = "Kyrgyzstan"
+                        },
+                        new
+                        {
+                            id = 119,
+                            country_id = 0,
+                            name = "Laos"
+                        },
+                        new
+                        {
+                            id = 120,
+                            country_id = 0,
+                            name = "Latvia"
+                        },
+                        new
+                        {
+                            id = 121,
+                            country_id = 0,
+                            name = "Lebanon"
+                        },
+                        new
+                        {
+                            id = 122,
+                            country_id = 0,
+                            name = "Lesotho"
+                        },
+                        new
+                        {
+                            id = 123,
+                            country_id = 0,
+                            name = "Liberia"
+                        },
+                        new
+                        {
+                            id = 124,
+                            country_id = 0,
+                            name = "Libya"
+                        },
+                        new
+                        {
+                            id = 125,
+                            country_id = 0,
+                            name = "Liechtenstein"
+                        },
+                        new
+                        {
+                            id = 126,
+                            country_id = 0,
+                            name = "Lithuania"
+                        },
+                        new
+                        {
+                            id = 127,
+                            country_id = 0,
+                            name = "Luxembourg"
+                        },
+                        new
+                        {
+                            id = 128,
+                            country_id = 0,
+                            name = "Macau S.A.R."
+                        },
+                        new
+                        {
+                            id = 129,
+                            country_id = 0,
+                            name = "Macedonia"
+                        },
+                        new
+                        {
+                            id = 130,
+                            country_id = 0,
+                            name = "Madagascar"
+                        },
+                        new
+                        {
+                            id = 131,
+                            country_id = 0,
+                            name = "Malawi"
+                        },
+                        new
+                        {
+                            id = 132,
+                            country_id = 0,
+                            name = "Malaysia"
+                        },
+                        new
+                        {
+                            id = 133,
+                            country_id = 0,
+                            name = "Maldives"
+                        },
+                        new
+                        {
+                            id = 134,
+                            country_id = 0,
+                            name = "Mali"
+                        },
+                        new
+                        {
+                            id = 135,
+                            country_id = 0,
+                            name = "Malta"
+                        },
+                        new
+                        {
+                            id = 136,
+                            country_id = 0,
+                            name = "Man (Isle of)"
+                        },
+                        new
+                        {
+                            id = 137,
+                            country_id = 0,
+                            name = "Marshall Islands"
+                        },
+                        new
+                        {
+                            id = 138,
+                            country_id = 0,
+                            name = "Martinique"
+                        },
+                        new
+                        {
+                            id = 139,
+                            country_id = 0,
+                            name = "Mauritania"
+                        },
+                        new
+                        {
+                            id = 140,
+                            country_id = 0,
+                            name = "Mauritius"
+                        },
+                        new
+                        {
+                            id = 141,
+                            country_id = 0,
+                            name = "Mayotte"
+                        },
+                        new
+                        {
+                            id = 142,
+                            country_id = 0,
+                            name = "Mexico"
+                        },
+                        new
+                        {
+                            id = 143,
+                            country_id = 0,
+                            name = "Micronesia"
+                        },
+                        new
+                        {
+                            id = 144,
+                            country_id = 0,
+                            name = "Moldova"
+                        },
+                        new
+                        {
+                            id = 145,
+                            country_id = 0,
+                            name = "Monaco"
+                        },
+                        new
+                        {
+                            id = 146,
+                            country_id = 0,
+                            name = "Mongolia"
+                        },
+                        new
+                        {
+                            id = 147,
+                            country_id = 0,
+                            name = "Montenegro"
+                        },
+                        new
+                        {
+                            id = 148,
+                            country_id = 0,
+                            name = "Montserrat"
+                        },
+                        new
+                        {
+                            id = 149,
+                            country_id = 0,
+                            name = "Morocco"
+                        },
+                        new
+                        {
+                            id = 150,
+                            country_id = 0,
+                            name = "Mozambique"
+                        },
+                        new
+                        {
+                            id = 151,
+                            country_id = 0,
+                            name = "Myanmar"
+                        },
+                        new
+                        {
+                            id = 152,
+                            country_id = 0,
+                            name = "Namibia"
+                        },
+                        new
+                        {
+                            id = 153,
+                            country_id = 0,
+                            name = "Nauru"
+                        },
+                        new
+                        {
+                            id = 154,
+                            country_id = 0,
+                            name = "Nepal"
+                        },
+                        new
+                        {
+                            id = 155,
+                            country_id = 0,
+                            name = "Bonaire, Sint Eustatius and Saba"
+                        },
+                        new
+                        {
+                            id = 156,
+                            country_id = 0,
+                            name = "Netherlands The"
+                        },
+                        new
+                        {
+                            id = 157,
+                            country_id = 0,
+                            name = "New Caledonia"
+                        },
+                        new
+                        {
+                            id = 158,
+                            country_id = 0,
+                            name = "New Zealand"
+                        },
+                        new
+                        {
+                            id = 159,
+                            country_id = 0,
+                            name = "Nicaragua"
+                        },
+                        new
+                        {
+                            id = 160,
+                            country_id = 0,
+                            name = "Niger"
+                        },
+                        new
+                        {
+                            id = 161,
+                            country_id = 0,
+                            name = "Nigeria"
+                        },
+                        new
+                        {
+                            id = 162,
+                            country_id = 0,
+                            name = "Niue"
+                        },
+                        new
+                        {
+                            id = 163,
+                            country_id = 0,
+                            name = "Norfolk Island"
+                        },
+                        new
+                        {
+                            id = 164,
+                            country_id = 0,
+                            name = "Northern Mariana Islands"
+                        },
+                        new
+                        {
+                            id = 165,
+                            country_id = 0,
+                            name = "Norway"
+                        },
+                        new
+                        {
+                            id = 166,
+                            country_id = 0,
+                            name = "Oman"
+                        },
+                        new
+                        {
+                            id = 167,
+                            country_id = 0,
+                            name = "Pakistan"
+                        },
+                        new
+                        {
+                            id = 168,
+                            country_id = 0,
+                            name = "Palau"
+                        },
+                        new
+                        {
+                            id = 169,
+                            country_id = 0,
+                            name = "Palestinian Territory Occupied"
+                        },
+                        new
+                        {
+                            id = 170,
+                            country_id = 0,
+                            name = "Panama"
+                        },
+                        new
+                        {
+                            id = 171,
+                            country_id = 0,
+                            name = "Papua new Guinea"
+                        },
+                        new
+                        {
+                            id = 172,
+                            country_id = 0,
+                            name = "Paraguay"
+                        },
+                        new
+                        {
+                            id = 173,
+                            country_id = 0,
+                            name = "Peru"
+                        },
+                        new
+                        {
+                            id = 174,
+                            country_id = 0,
+                            name = "Philippines"
+                        },
+                        new
+                        {
+                            id = 175,
+                            country_id = 0,
+                            name = "Pitcairn Island"
+                        },
+                        new
+                        {
+                            id = 176,
+                            country_id = 0,
+                            name = "Poland"
+                        },
+                        new
+                        {
+                            id = 177,
+                            country_id = 0,
+                            name = "Portugal"
+                        },
+                        new
+                        {
+                            id = 178,
+                            country_id = 0,
+                            name = "Puerto Rico"
+                        },
+                        new
+                        {
+                            id = 179,
+                            country_id = 0,
+                            name = "Qatar"
+                        },
+                        new
+                        {
+                            id = 180,
+                            country_id = 0,
+                            name = "Reunion"
+                        },
+                        new
+                        {
+                            id = 181,
+                            country_id = 0,
+                            name = "Romania"
+                        },
+                        new
+                        {
+                            id = 182,
+                            country_id = 0,
+                            name = "Russia"
+                        },
+                        new
+                        {
+                            id = 183,
+                            country_id = 0,
+                            name = "Rwanda"
+                        },
+                        new
+                        {
+                            id = 184,
+                            country_id = 0,
+                            name = "Saint Helena"
+                        },
+                        new
+                        {
+                            id = 185,
+                            country_id = 0,
+                            name = "Saint Kitts And Nevis"
+                        },
+                        new
+                        {
+                            id = 186,
+                            country_id = 0,
+                            name = "Saint Lucia"
+                        },
+                        new
+                        {
+                            id = 187,
+                            country_id = 0,
+                            name = "Saint Pierre and Miquelon"
+                        },
+                        new
+                        {
+                            id = 188,
+                            country_id = 0,
+                            name = "Saint Vincent And The Grenadines"
+                        },
+                        new
+                        {
+                            id = 189,
+                            country_id = 0,
+                            name = "Saint-Barthelemy"
+                        },
+                        new
+                        {
+                            id = 190,
+                            country_id = 0,
+                            name = "Saint-Martin (French part)"
+                        },
+                        new
+                        {
+                            id = 191,
+                            country_id = 0,
+                            name = "Samoa"
+                        },
+                        new
+                        {
+                            id = 192,
+                            country_id = 0,
+                            name = "San Marino"
+                        },
+                        new
+                        {
+                            id = 193,
+                            country_id = 0,
+                            name = "Sao Tome and Principe"
+                        },
+                        new
+                        {
+                            id = 194,
+                            country_id = 0,
+                            name = "Saudi Arabia"
+                        },
+                        new
+                        {
+                            id = 195,
+                            country_id = 0,
+                            name = "Senegal"
+                        },
+                        new
+                        {
+                            id = 196,
+                            country_id = 0,
+                            name = "Serbia"
+                        },
+                        new
+                        {
+                            id = 197,
+                            country_id = 0,
+                            name = "Seychelles"
+                        },
+                        new
+                        {
+                            id = 198,
+                            country_id = 0,
+                            name = "Sierra Leone"
+                        },
+                        new
+                        {
+                            id = 199,
+                            country_id = 0,
+                            name = "Singapore"
+                        },
+                        new
+                        {
+                            id = 200,
+                            country_id = 0,
+                            name = "Slovakia"
+                        },
+                        new
+                        {
+                            id = 201,
+                            country_id = 0,
+                            name = "Slovenia"
+                        },
+                        new
+                        {
+                            id = 202,
+                            country_id = 0,
+                            name = "Solomon Islands"
+                        },
+                        new
+                        {
+                            id = 203,
+                            country_id = 0,
+                            name = "Somalia"
+                        },
+                        new
+                        {
+                            id = 204,
+                            country_id = 0,
+                            name = "South Africa"
+                        },
+                        new
+                        {
+                            id = 205,
+                            country_id = 0,
+                            name = "South Georgia"
+                        },
+                        new
+                        {
+                            id = 206,
+                            country_id = 0,
+                            name = "South Sudan"
+                        },
+                        new
+                        {
+                            id = 207,
+                            country_id = 0,
+                            name = "Spain"
+                        },
+                        new
+                        {
+                            id = 208,
+                            country_id = 0,
+                            name = "Sri Lanka"
+                        },
+                        new
+                        {
+                            id = 209,
+                            country_id = 0,
+                            name = "Sudan"
+                        },
+                        new
+                        {
+                            id = 210,
+                            country_id = 0,
+                            name = "Suriname"
+                        },
+                        new
+                        {
+                            id = 211,
+                            country_id = 0,
+                            name = "Svalbard And Jan Mayen Islands"
+                        },
+                        new
+                        {
+                            id = 212,
+                            country_id = 0,
+                            name = "Swaziland"
+                        },
+                        new
+                        {
+                            id = 213,
+                            country_id = 0,
+                            name = "Sweden"
+                        },
+                        new
+                        {
+                            id = 214,
+                            country_id = 0,
+                            name = "Switzerland"
+                        },
+                        new
+                        {
+                            id = 215,
+                            country_id = 0,
+                            name = "Syria"
+                        },
+                        new
+                        {
+                            id = 216,
+                            country_id = 0,
+                            name = "Taiwan"
+                        },
+                        new
+                        {
+                            id = 217,
+                            country_id = 0,
+                            name = "Tajikistan"
+                        },
+                        new
+                        {
+                            id = 218,
+                            country_id = 0,
+                            name = "Tanzania"
+                        },
+                        new
+                        {
+                            id = 219,
+                            country_id = 0,
+                            name = "Thailand"
+                        },
+                        new
+                        {
+                            id = 220,
+                            country_id = 0,
+                            name = "Togo"
+                        },
+                        new
+                        {
+                            id = 221,
+                            country_id = 0,
+                            name = "Tokelau"
+                        },
+                        new
+                        {
+                            id = 222,
+                            country_id = 0,
+                            name = "Tonga"
+                        },
+                        new
+                        {
+                            id = 223,
+                            country_id = 0,
+                            name = "Trinidad And Tobago"
+                        },
+                        new
+                        {
+                            id = 224,
+                            country_id = 0,
+                            name = "Tunisia"
+                        },
+                        new
+                        {
+                            id = 225,
+                            country_id = 0,
+                            name = "Turkey"
+                        },
+                        new
+                        {
+                            id = 226,
+                            country_id = 0,
+                            name = "Turkmenistan"
+                        },
+                        new
+                        {
+                            id = 227,
+                            country_id = 0,
+                            name = "Turks And Caicos Islands"
+                        },
+                        new
+                        {
+                            id = 228,
+                            country_id = 0,
+                            name = "Tuvalu"
+                        },
+                        new
+                        {
+                            id = 229,
+                            country_id = 0,
+                            name = "Uganda"
+                        },
+                        new
+                        {
+                            id = 230,
+                            country_id = 0,
+                            name = "Ukraine"
+                        },
+                        new
+                        {
+                            id = 231,
+                            country_id = 0,
+                            name = "United Arab Emirates"
+                        },
+                        new
+                        {
+                            id = 232,
+                            country_id = 0,
+                            name = "United Kingdom"
+                        },
+                        new
+                        {
+                            id = 233,
+                            country_id = 0,
+                            name = "United States"
+                        },
+                        new
+                        {
+                            id = 234,
+                            country_id = 0,
+                            name = "United States Minor Outlying Islands"
+                        },
+                        new
+                        {
+                            id = 235,
+                            country_id = 0,
+                            name = "Uruguay"
+                        },
+                        new
+                        {
+                            id = 236,
+                            country_id = 0,
+                            name = "Uzbekistan"
+                        },
+                        new
+                        {
+                            id = 237,
+                            country_id = 0,
+                            name = "Vanuatu"
+                        },
+                        new
+                        {
+                            id = 238,
+                            country_id = 0,
+                            name = "Vatican City State (Holy See)"
+                        },
+                        new
+                        {
+                            id = 239,
+                            country_id = 0,
+                            name = "Venezuela"
+                        },
+                        new
+                        {
+                            id = 240,
+                            country_id = 0,
+                            name = "Vietnam"
+                        },
+                        new
+                        {
+                            id = 241,
+                            country_id = 0,
+                            name = "Virgin Islands (British)"
+                        },
+                        new
+                        {
+                            id = 242,
+                            country_id = 0,
+                            name = "Virgin Islands (US)"
+                        },
+                        new
+                        {
+                            id = 243,
+                            country_id = 0,
+                            name = "Wallis And Futuna Islands"
+                        },
+                        new
+                        {
+                            id = 244,
+                            country_id = 0,
+                            name = "Western Sahara"
+                        },
+                        new
+                        {
+                            id = 245,
+                            country_id = 0,
+                            name = "Yemen"
+                        },
+                        new
+                        {
+                            id = 246,
+                            country_id = 0,
+                            name = "Zambia"
+                        },
+                        new
+                        {
+                            id = 247,
+                            country_id = 0,
+                            name = "Zimbabwe"
+                        },
+                        new
+                        {
+                            id = 248,
+                            country_id = 0,
+                            name = "Kosovo"
+                        },
+                        new
+                        {
+                            id = 249,
+                            country_id = 0,
+                            name = "Curaçao"
+                        },
+                        new
+                        {
+                            id = 250,
+                            country_id = 0,
+                            name = "Sint Maarten (Dutch part)"
+                        });
                 });
 
             modelBuilder.Entity("MembershipPortal.data.TargetMarket", b =>
@@ -23766,6 +30362,79 @@ namespace MembershipPortal.core.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MembershipPortal.data.ClassCategory", b =>
+                {
+                    b.HasOne("MembershipPortal.data.FamilyCategory", "FamilyCategory")
+                        .WithMany()
+                        .HasForeignKey("FamilyCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FamilyCategory");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.Company", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Country", "Countries")
+                        .WithMany()
+                        .HasForeignKey("country_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MembershipPortal.data.LocalGovt", "LocalGovts")
+                        .WithMany()
+                        .HasForeignKey("localgovt_id");
+
+                    b.HasOne("MembershipPortal.data.CompanySectorCategory", "CompanySectorCategories")
+                        .WithMany()
+                        .HasForeignKey("sectorcategory_id");
+
+                    b.HasOne("MembershipPortal.data.CompanySectorType", "CompanySectorTypes")
+                        .WithMany()
+                        .HasForeignKey("sectortype_id");
+
+                    b.Navigation("CompanySectorCategories");
+
+                    b.Navigation("CompanySectorTypes");
+
+                    b.Navigation("Countries");
+
+                    b.Navigation("LocalGovts");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ContactInformation", b =>
+                {
+                    b.HasOne("MembershipPortal.data.HeardAboutUs", "HeardAboutUs")
+                        .WithMany()
+                        .HasForeignKey("heardaboutus_id");
+
+                    b.Navigation("HeardAboutUs");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserModel", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Company", "Companies")
+                        .WithMany()
+                        .HasForeignKey("Companiesid");
+
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.RoleModel", "Roles")
+                        .WithMany()
+                        .HasForeignKey("Rolesid");
+
+                    b.Navigation("Companies");
+
+                    b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ExternalEntries.Models.UserValidationTokenModel", b =>
+                {
+                    b.HasOne("MembershipPortal.data.ExternalEntries.Models.UserModel", "User")
+                        .WithMany()
+                        .HasForeignKey("Userid");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MembershipPortal.data.ExternalUnifiedModel", b =>
                 {
                     b.HasOne("MembershipPortal.data.Product", "Product")
@@ -23775,6 +30444,47 @@ namespace MembershipPortal.core.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.FamilyCategory", b =>
+                {
+                    b.HasOne("MembershipPortal.data.SegmentCategory", "SegmentCategory")
+                        .WithMany()
+                        .HasForeignKey("SegmentCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SegmentCategory");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.GTINRequest", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Company", "Companies")
+                        .WithMany()
+                        .HasForeignKey("company_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MembershipPortal.data.GTINFee", "GTINFee")
+                        .WithMany()
+                        .HasForeignKey("gtinfee_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Companies");
+
+                    b.Navigation("GTINFee");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.LocalGovt", b =>
+                {
+                    b.HasOne("MembershipPortal.data.State", "States")
+                        .WithMany()
+                        .HasForeignKey("state_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("States");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.PharmaceuticalInformation", b =>
@@ -23810,10 +30520,6 @@ namespace MembershipPortal.core.Migrations
                         .WithMany("Products")
                         .HasForeignKey("packagingtype_id");
 
-                    b.HasOne("MembershipPortal.data.TargetMarket", "TargetMarket")
-                        .WithMany()
-                        .HasForeignKey("targetmarket_id");
-
                     b.Navigation("BrandInformation");
 
                     b.Navigation("BrickCategory");
@@ -23823,8 +30529,36 @@ namespace MembershipPortal.core.Migrations
                     b.Navigation("PackageLevel");
 
                     b.Navigation("PackagingType");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.ProductTargetMarket", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Product", "Product")
+                        .WithMany("ProductTargetMarket")
+                        .HasForeignKey("product_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MembershipPortal.data.TargetMarket", "TargetMarket")
+                        .WithMany("ProductTargetMarket")
+                        .HasForeignKey("targetmarket_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("TargetMarket");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.State", b =>
+                {
+                    b.HasOne("MembershipPortal.data.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("country_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("MembershipPortal.data.BrandInformation", b =>
@@ -23850,6 +30584,13 @@ namespace MembershipPortal.core.Migrations
             modelBuilder.Entity("MembershipPortal.data.Product", b =>
                 {
                     b.Navigation("PharmaceuticalInformation_Product");
+
+                    b.Navigation("ProductTargetMarket");
+                });
+
+            modelBuilder.Entity("MembershipPortal.data.TargetMarket", b =>
+                {
+                    b.Navigation("ProductTargetMarket");
                 });
 #pragma warning restore 612, 618
         }

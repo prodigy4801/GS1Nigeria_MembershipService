@@ -8,6 +8,7 @@ namespace MembershipPortal.api.Models
 {
     public class BarcodeGeneratorModel
     {
+        public string registrationId { get; set; }
         public string gtin { get; set; }
         public BarcodeUtil.BarcodeFormat format { get; set; }
     }

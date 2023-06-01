@@ -13,6 +13,11 @@ namespace MembershipPortal.viewmodels
         public string email { get; set; }
         public string password { get; set; }
     }
+    public class Authentication_ForgotPassword
+    {
+        public string email { get; set; }
+        public string passwordchange { get; set; }
+    }
 
     public class AuthenticatedPayload
     {
@@ -47,5 +52,18 @@ namespace MembershipPortal.viewmodels
         [Required]
         [StringLength(200)]
         public string password { get; set; }
+    }
+
+    public class Authenticate_PasswordReset
+    {
+        public string email { get; set; }
+        public string currentpassword { get; set; }
+        public string newpassword { get; set; }
+    }
+
+    public class PasswordReset_Response
+    {
+        public string email { get; set; }
+        public bool resetstatus { get; set; }
     }
 }

@@ -46,6 +46,7 @@ namespace MembershipPortal.api
         {
             var apiKey = Configuration["AppSettings:Key"];
             var RegistrationApp = Configuration["RegistrationAPI_Settings:BaseURL"];
+            var conn = Configuration.GetConnectionString("MembershipPortalConfig");
 
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MembershipPortalConfig"),

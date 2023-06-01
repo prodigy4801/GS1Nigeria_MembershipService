@@ -14,6 +14,7 @@ using MembershipPortal.api.Authorization;
 using MembershipPortal.api.Models;
 using GS1NGBarcodeLib;
 using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace MembershipPortal.api.Controllers.V2
 {
@@ -81,29 +82,22 @@ namespace MembershipPortal.api.Controllers.V2
             }
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet(ApiRoutes.RImageBank.GetByRegistrationID)]
         public async Task<IActionResult> GetByRegistrationID(string registrationid)
         {
-            try
+            ServiceResponse<ImageBankVM> response = new ServiceResponse<ImageBankVM>
             {
-                var obj = await _service.GetByRegistrationID(registrationid);
-
-                if (obj.IsSuccess && obj.ReturnedObject != null)
-                {
-                    var result = _mapper.Map<ImageBankVM>(obj.ReturnedObject);
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
+                ReturnedObject = new ImageBankVM(),
+                IsSuccess = true,
+                Message = string.Empty
+            };
+            var obj = await _service.GetByRegistrationID(registrationid);
+            response = _mapper.Map<ServiceResponse<ImageBankVM>>(obj);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost(ApiRoutes.RImageBank.GenerateBarcode)]
         public async Task<IActionResult> GenerateBarcode(BarcodeGeneratorModel image)
         {
@@ -115,6 +109,17 @@ namespace MembershipPortal.api.Controllers.V2
             };
             try
             {
+                var verifyUserBarcodeImage = await _service.ProcessGenerationOfBarcodeImage(image.gtin, image.registrationId);
+                if(!verifyUserBarcodeImage.IsSuccess)
+                {
+                    result.IsSuccess = false;
+                    result.Message = verifyUserBarcodeImage.Message;
+                    result.ReturnedObject.DisplayImageLink = string.Empty;
+                    result.ReturnedObject.MainImageLink = string.Empty;
+
+                    return StatusCode(StatusCodes.Status200OK, result);
+                }
+
                 BarcodeResponseModel response = new BarcodeResponseModel();
                 DirectoryInfo di = new DirectoryInfo("barcodeImages");
                 FileInfo[] mainFile = di.GetFiles($"{image.gtin}.{GetImageExtension(image.format)}");
@@ -133,6 +138,8 @@ namespace MembershipPortal.api.Controllers.V2
                 response.MainImageLink = $"{baseUri}/{fileNameMain}";
 
                 result.ReturnedObject = response;
+                result.Message = verifyUserBarcodeImage.Message;
+                result.IsSuccess = true;
 
                 return StatusCode(StatusCodes.Status200OK, result);
 
@@ -140,6 +147,29 @@ namespace MembershipPortal.api.Controllers.V2
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet(ApiRoutes.RImageBank.DownloadBarcode)]
+        public async Task<IActionResult> DocumentDownload([FromQuery] string gtin)
+        {
+            try
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "barcodeImages", $"{gtin}.{GetImageExtension(BarcodeUtil.BarcodeFormat.PNG)}");
+                if (!System.IO.File.Exists(filePath)) return StatusCode(StatusCodes.Status200OK, "File to download does not exist in the server.");
+                var memory = new MemoryStream();
+                await using (var stream = new FileStream(filePath, FileMode.Open))
+                {
+                    await stream.CopyToAsync(memory);
+                }
+                memory.Position = 0;
+                string fileName = Path.GetFileName(filePath);
+                return File(memory, GetContentType(filePath), fileName);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, ex.Message);
             }
         }
 
@@ -163,6 +193,19 @@ namespace MembershipPortal.api.Controllers.V2
             }
 
             return extension;
+        }
+
+        private string GetContentType(string path)
+        {
+            var provider = new FileExtensionContentTypeProvider();
+            string contentType;
+
+            if (!provider.TryGetContentType(path, out contentType))
+            {
+                contentType = "application/octet-stream";
+            }
+
+            return contentType;
         }
 
         // POST api/<BenefitImageBankController>
